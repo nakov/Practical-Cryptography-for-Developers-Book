@@ -1,0 +1,52 @@
+/* This CSS code is applied for browser-only rendering in HTML format */
+
+.readme-book-cover-image {
+    float: right;
+    margin-left: 10px;
+    width: 50%;
+}
+
+@media screen and (min-width 480px) {
+    .readme-book-cover-image {
+        float: none;        
+    }
+}
+
+.markdown-section code {
+    padding: 0.2em 0em;
+    border-radius: 0.25em;
+    font-size: 1em;
+}
+
+.markdown-section pre {
+    padding: 0.4em 0.6em;
+    border-radius: 0.25em;
+    line-height: 1.5em;
+    margin-bottom: 1em;
+}
+
+.markdown-section pre>code {
+    font-size: 1em;
+}
+
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+    margin-top: 0.7em;
+    margin-bottom: .3em;
+}
+
+.markdown-section table {
+  max-width: 100%; 
+}
+
+.markdown-section table th {
+    background: #eee;
+}
+
+.markdown-section table td {
+  word-break: break-all;
+}
+
+.markdown-section pre>code {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}

@@ -1,0 +1,27 @@
+{
+    "plugins": [
+        "ga",
+        "meta",
+        "anchors",
+        "expandable-chapters-small",
+        "katex"
+    ],
+    "pluginsConfig": {
+        "ga": {
+            "token": "TODO"
+        },
+        "meta": {
+            "name": "google-site-verification",
+            "content": "TODO"
+        }
+    },
+    "pdf": {
+        "paperSize": "a4",
+        "margin": { 
+            "top": 48,
+            "bottom": 48,
+            "left": 36,
+            "right": 36
+        }
+    }
+}

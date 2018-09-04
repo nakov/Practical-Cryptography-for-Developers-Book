@@ -1,0 +1,43 @@
+/* This CSS code is applied for PDF rendering */
+
+.readme-book-cover-image {
+    display: none;
+}
+
+.page .section code,
+.page .section pre {
+    font-family: "Consolas", "Lucida Console", "Liberation Mono", "Menlo", "Courier New", monospace;
+}
+
+.page .section code {
+    padding: 0.2em 0em;
+    border-radius: 0.25em;
+    font-size: 1em;
+}
+
+.page .section pre {
+    padding: 0.4em 0.6em;
+    border-radius: 0.25em;
+    line-height: 1.5em;
+}
+
+.page .section pre>code {
+    font-size: 1em;
+}
+
+.page .section h1, .page .section h2, .page .section h3, .page .section h4, .page .section h5, .page .section h6 {
+    margin-top: 0.7em;
+    margin-bottom: .3em;
+}
+
+.page .section table {
+  max-width: 100%; 
+}
+
+.page .section table th {
+    background: #eee;
+}
+
+.page .section table td {
+  word-break: break-all;
+}
