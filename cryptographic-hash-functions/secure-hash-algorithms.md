@@ -31,7 +31,7 @@ SHA-512('hello') = 9b71d224bd62f3785d96d46ad3ea3d73319bfbc2890caadae2dff72519673
 
 ### More Hash Bits == Higher Collision Resistance
 
-By design, **more bits **at the hash output are expected to achieve **stronger security** and higher collision resistance (with some exceptions). As general rule, 128-bit hash functions are weaker than 256-bit hash functions, which are weaker than 512-bit hash functions.
+By design, **more bits at the hash output** are expected to achieve **stronger security** and higher collision resistance (with some exceptions). As general rule, 128-bit hash functions are weaker than 256-bit hash functions, which are weaker than 512-bit hash functions.
 
 Thus, SHA-512 is stronger than SHA-256, so we can expect that for SHA-512 it is more unlikely to practically find a collision than for SHA-256.
 

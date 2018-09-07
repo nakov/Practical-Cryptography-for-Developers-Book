@@ -36,13 +36,13 @@ RIPEMD-160: b'108f07b8382412612c048d07d13f814118445acd'
 
 Calculating `Keccak-256` hashes \(the hash function used in the Ethereum blockchain\) requires non-standard Python functions. In the below example we use the `pycryptodome` package available from PyPI: [https://pypi.org/project/pycryptodome](https://pypi.org/project/pycryptodome).
 
-First install "pycryptodome" (https://www.pycryptodome.org)
+First install "pycryptodome" \([https://www.pycryptodome.org](https://www.pycryptodome.org)\)
 
 ```py
 pip install pycryptodome
 ```
 
-Now write some Python code to calculate a Keccak-256 hash:
+Now write some Python code to calculate a **Keccak-256** hash:
 
 ```
 from Crypto.Hash import keccak
@@ -56,3 +56,6 @@ The **output **from the above examples is:
 ```
 Keccak256:  b'1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8'
 ```
+
+
+

@@ -19,7 +19,7 @@ How does ETHash work?
 * From the cache, a **1 GB dataset** is extracted to be used in mining.
 * Mining involves hashing together random slices of the dataset.
 
-Learn more about ETHash at: [https://github.com/ethereum/wiki/wiki/Ethash](https://github.com/ethereum/wiki/wiki/Ethash), [https://github.com/lukovkin/ethash](https://github.com/lukovkin/ethash).
+Learn more about **ETHash** at: [https://github.com/ethereum/wiki/wiki/Ethash](https://github.com/ethereum/wiki/wiki/Ethash), [https://github.com/lukovkin/ethash](https://github.com/lukovkin/ethash).
 
 ## Equihash
 
@@ -33,9 +33,9 @@ How does **Equihash** work?
 * Solves the "**Generalized Birthday Problem**" over the generated hash dataset \(pick 512 different strings from 2097152, such that the binary XOR of them is zero\). The best known solution \(Wagner's algorithm\) runs in exponential time, so it requires a lot of memory-intensive and computing-intensive calculations.
 * **Double SHA256** the solution to compute the final hash.
 
-Learn more about Equihash at: [https://www.cryptolux.org/images/b/b9/Equihash.pdf](https://www.cryptolux.org/images/b/b9/Equihash.pdf), [https://github.com/tromp/equihash](https://github.com/tromp/equihash).
+Learn more about **Equihash** at: [https://www.cryptolux.org/images/b/b9/Equihash.pdf](https://www.cryptolux.org/images/b/b9/Equihash.pdf), [https://github.com/tromp/equihash](https://github.com/tromp/equihash).
 
 ## More about ASIC-Resistant Hash Functions
 
-Lear more about the ASIC-resistant hash functions at: [https://github.com/ifdefelse/ProgPOW](https://github.com/ifdefelse/ProgPOW)
+Lear more about the **ASIC-resistant hash functions** at: [https://github.com/ifdefelse/ProgPOW](https://github.com/ifdefelse/ProgPOW).
 

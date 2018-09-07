@@ -1,8 +1,8 @@
 # Overview of Modern Cryptography
 
-In this chapter we shall introduce basic **cryptography concepts** like cryptographic **hash functions** \(SHA-256, SHA3, RIPEMD and others\), **HMAC** \(hashed message authentication code\), password to **key derivation** functions (like **Scrypt**), the Diffie-Hellman key-exchange protocol, **symmetric key** encryption schemes \(like the **AES **cipher\ with CBC and CTR block modes) and **asymmetric key** encryption schemes \(like the **RSA** cipher and elliptic curves-based cryptography / **ECC**, the secp256k1 curve and the Ed25519 cryptosystem\), **digital signatures** and **ECDSA**, as well as the concept of **entropy** and secure **random number** generation and **quantum-safe cryptography**.
+**Cryptography** has evolved from its first attempts (thousands years ago), through the first successful cryptographic algorithms for developers (like the now retired MD5 and DES) to modern crypto algortihms (like SHA-3, Argon2 and ChaCha20).
 
-We shall explain how the applied cryptography is related to **programming** and **blockchain development**.
+Let's first introduce the basic **cryptography concepts**, that developers should know, like cryptographic **hash functions** \(SHA-256, SHA3, RIPEMD and others\), **HMAC** \(hashed message authentication code\), password to **key derivation** functions (like **Scrypt**), the Diffie-Hellman key-exchange protocol, **symmetric key** encryption schemes \(like the **AES **cipher\ with CBC and CTR block modes) and **asymmetric key** encryption schemes \(like the **RSA** cipher and elliptic curves-based cryptography / **ECC**, the secp256k1 curve and the Ed25519 cryptosystem\), **digital signatures** and **ECDSA**, as well as the concept of **entropy** and secure **random number** generation and **quantum-safe cryptography**.
 
 ## Encrypt / Decrypt Message - Live Demo
 
