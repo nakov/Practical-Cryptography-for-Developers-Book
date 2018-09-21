@@ -4,4 +4,5 @@ A modern **practical book** about **cryptography for developers** with code exam
 
 Author: **Svetlin Nakov**, PhD - [http://www.nakov.com](http://www.nakov.com)
 
-(c) Svetlin Nakov, Sofia, Sep-Nov-2018
+Sofia, November 2018
+
