@@ -55,7 +55,7 @@ In computing theory, these is no efficient algorithm which can find a secret exp
 
 m = g<sup>s</sup> mod p
 
-there is no efficient (fast) algorithm to find the secret exponent **s**.
+there is no efficient (fast) algorithm to find the secret exponent **s**. This is known as the [Discrete Logartihm Problem (DLP)](https://en.wikipedia.org/wiki/Discrete_Logarithm_Problem_%28DLP%29).
 
 ## The DHKE Protocol
 
@@ -65,7 +65,7 @@ Now, after we are familiar with the above mathematical properties of the modular
 
 Let's explain each step of this key-exchange process:
 
- - Alice and Bob agree to use two public integers: **modulus p** and **base g**.
+ - Alice and Bob agree to use two public integers: **modulus p** and **base g** (where **p** is [prime](https://en.wikipedia.org/wiki/Prime_number), and **g** is a [primitive root modulo](https://en.wikipedia.org/wiki/Primitive_root_modulo_n) **p**).
    - For example, let **p** = 23 and **g** = 5.
    - The integers **g** and **p** are public, typically hard-coded constants in the source code.
    
@@ -86,9 +86,11 @@ Let's explain each step of this key-exchange process:
    - **s** = A<sup>b</sup> mod p = B<sup>a</sup> mod p = (g<sup>a</sup>)<sup>b</sup> mod p = (g<sup>b</sup>)<sup>a</sup> mod p = g<sup>ab</sup> mod p = **18**
    - The shared secret key **s** cannot be computed from the publicly available numbers **A** and **B**, because the secret exponents **a** and **b** cannot be efficiently calculated.
    
+In the most common implementation of DHKE (following the [RFC 3526](https://tools.ietf.org/html/rfc3526)) the base is **g** = **2** and the modulus **p** is a large **prime number** (1536 ... 8192 bits).
+   
 ## Security of the DHKE Protocol
 
-The DHKE protocol is based on the practical difficulty of the [Diffie–Hellman problem](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_problem), which is a variant of the well known in the computer science [DLP (discrete logarithm problem)](https://en.wikipedia.org/wiki/Discrete_logarithm#The_Discrete_Logarithm_Problem_\(DLP\)), for which no efficient algorithm still exists.
+The DHKE protocol is based on the practical difficulty of the [Diffie–Hellman problem](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_problem), which is a variant of the well known in the computer science [DLP (discrete logarithm problem)](https://en.wikipedia.org/wiki/Discrete_Logarithm_Problem_%28DLP%29), for which no efficient algorithm still exists.
 
 DHKE exchanges a **non-secret sequence of integer numbers** over insecure, public (sniffable) channel (such as signal going through a cable or propagated by waves in the air), but does not reveal the secretly-exchanged shared private key.
 
