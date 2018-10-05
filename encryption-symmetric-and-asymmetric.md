@@ -174,5 +174,3 @@ In order to better understand the idea behind the **asymmetric encryption**, you
 ![](/assets/asymmetric-encryption-online-demo-jsencrypt.png)
 
 In the above online demo you can **generate RSA public / private key pairs** and **encrypt** / **decrypt** text messages. Note that the message size is limited by the key length, so you can't encrypt long text. Internally, the above site uses the **RSAES-PKCS1-v1\_5** public key encryption scheme as specified in [RFC3447](https://tools.ietf.org/html/rfc3447).
-
-

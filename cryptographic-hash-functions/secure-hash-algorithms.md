@@ -2,17 +2,9 @@
 
 In the past, many **cryptographic hash algorithms** were proposed and used by software developers. Some of them was **broken** (like **MD5** and **SHA1**), some are still considered secure (like **SHA-2**, **SHA-3** and **BLAKE2**). Let's review the most widely used cryptographic hash functions \(algorithms\).
 
-## Insecure Hash Functions
-
-**Old hash algorithms **like **[MD5](https://en.wikipedia.org/wiki/MD5)**, **[SHA-0](https://en.wikipedia.org/wiki/SHA-1#SHA-0)** and **[SHA-1](https://en.wikipedia.org/wiki/SHA-1)** are considered **insecure** and were withdrawn due to **cryptographic weaknesses** \(collisions found\). **Don't use MD5**, **SHA-0** and **SHA-1**! All these hash functions are proven to be cryptographically **insecure**.
-
-You can find in Internet that **SHA1 collisions** can be practically generated and this results in algorithms for creating **fake digital signatures**, demonstrated by two different signed PDF documents which hold different content, but have the same hash value and the same digital signature. See [https://shattered.io](https://shattered.io).
-
-Avoid using of the following hash algorithms, which are considered **insecure** or have disputable security: **[MD2](https://en.wikipedia.org/wiki/MD2_\(hash_function)**, **[MD4](https://en.wikipedia.org/wiki/MD4)**, **[MD5](https://en.wikipedia.org/wiki/MD5)**, **[SHA-0](https://en.wikipedia.org/wiki/SHA-1#SHA-0)**, **[SHA-1](https://en.wikipedia.org/wiki/SHA-1)**, **[Panama](https://en.wikipedia.org/wiki/Panama_\(cryptography)**, **[HAVAL](https://en.wikipedia.org/wiki/HAVAL)** (disputable security, collisions found for HAVAL-128), **[Tiger](https://en.wikipedia.org/wiki/Tiger_\(hash_function)** (disputable, weaknesses found), **[SipHash](https://en.wikipedia.org/wiki/SipHash)** (it is not a cryptographic hash function).
-
 ## Secure Hash Functions
 
-**Modern cryptographic hash algorithms **are considered **secure** enough for most applications.
+**Modern cryptographic hash algorithms** (like **SHA-3** and **BLAKE2**) are considered **secure** enough for most applications.
 
 ### SHA-2, SHA-256, SHA-512
 
@@ -87,6 +79,14 @@ RIPEMD-320('hello') = eb0cf45114c56a8421fbcb33430fa22e0cd607560a88bbe14ce70bdf59
 ```
 
 All of the above popular secure hash functions (SHA-2, SHA-3, BLAKE2, RIPEMD) are not restricted by commercial patents and are **free for public use**.
+
+## Insecure Hash Functions
+
+**Old hash algorithms **like **[MD5](https://en.wikipedia.org/wiki/MD5)**, **[SHA-0](https://en.wikipedia.org/wiki/SHA-1#SHA-0)** and **[SHA-1](https://en.wikipedia.org/wiki/SHA-1)** are considered **insecure** and were withdrawn due to **cryptographic weaknesses** \(collisions found\). **Don't use MD5**, **SHA-0** and **SHA-1**! All these hash functions are proven to be cryptographically **insecure**.
+
+You can find in Internet that **SHA1 collisions** can be practically generated and this results in algorithms for creating **fake digital signatures**, demonstrated by two different signed PDF documents which hold different content, but have the same hash value and the same digital signature. See [https://shattered.io](https://shattered.io).
+
+Avoid using of the following hash algorithms, which are considered **insecure** or have disputable security: **[MD2](https://en.wikipedia.org/wiki/MD2_\(hash_function)**, **[MD4](https://en.wikipedia.org/wiki/MD4)**, **[MD5](https://en.wikipedia.org/wiki/MD5)**, **[SHA-0](https://en.wikipedia.org/wiki/SHA-1#SHA-0)**, **[SHA-1](https://en.wikipedia.org/wiki/SHA-1)**, **[Panama](https://en.wikipedia.org/wiki/Panama_\(cryptography)**, **[HAVAL](https://en.wikipedia.org/wiki/HAVAL)** (disputable security, collisions found for HAVAL-128), **[Tiger](https://en.wikipedia.org/wiki/Tiger_\(hash_function)** (disputable, weaknesses found), **[SipHash](https://en.wikipedia.org/wiki/SipHash)** (it is not a cryptographic hash function).
 
 ### Other Secure Hash Functions
 
