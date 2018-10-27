@@ -63,24 +63,45 @@ An elliptic curve over the finite field **𝔽<sub>p</sub>** consists of:
 **Example** of elliptic curve over the finite field **𝔽<sub>17</sub>**:
  - y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**)
 
-This elliptic curve over **𝔽<sub>p</sub>** looks like this:
+This elliptic curve over **𝔽<sub>17</sub>** looks like this:
 
 ![](/assets/elliptic-curve-over-f17-example.png)
 
+Note that the elliptic curve over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) consists of the blue points in the above diagram, i.e. in practice it a "_set of points_" is not "_curve_".
 
-### Calculating Elliptic Curves over Finite Fields
+### Elliptic Curves over Finite Fields: Calculations
 
-...
+It is pretty easy to calculate whether **certain point belongs to certain elliptic curve** over a finite field. For example, a point {**_x_**, **_y_**} belongs to the curve y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) when and only when:
+ - x<sup>3</sup> + **7** - y<sup>2</sup> ≡ 0 (mod **17**)
 
-### Multiplying a Point Over an Elliptic Curve
+The point {**5**, **8**} **belongs** to the curve, because `(5**3 + 7 - 8**2) % 17 == 0`. The point {**9**, **15**} **does not belong** to the curve, because `(9**3 + 7 - 15**2) % 17 != 0`. The calculations are in Python style. The elliptic curve and the points {**5**, **8**} and {**9**, **15**} are visualized below:
 
-...
+![](/assets/points-on-elliptic-curve-over-finite-field.png)
+
+### Multiplying a Point over an Elliptic Curve
+
+A point **G** over the curve can be multiplied by an integer **k**.
+ - **P** = **k** \* **G**
+ 
+The result from the multiplication is another point **P**, staying on the same curve. More details are not so valuable for developers. Just assume that a point can be multiplied to an integer. Everyone is free to [read more about EC point multiplication](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication).
+
+In **ECC**, when we multiply a fixed EC point **G** (called the **generator** point) by certain **integer k** (**private key**), we obtain EC point **P** (its corresponding **public key**).
+
+Consequently, in ECC we have:
+ - **k** == **private key** (integer)
+ - **P** == **public key** (point)
+ - **G** == **generator point** (fixed constant, a point on the EC)
+ 
+It is very **fast** to calculate **P** = **k** * **G**, using the well-known [ECC multiplication algorithms](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication).
+
+It is **extremely slow** (considered infeasible) to calculate k = P / G.
+
 
 ### Example: Multiply Points Over Elliptic Curves
 
 ...
 
-### Elliptic Curves Multiplication in Python
+### Elliptic Curves over Fp Multiplication in Python
 
 ...
 
@@ -93,6 +114,8 @@ This elliptic curve over **𝔽<sub>p</sub>** looks like this:
 ...
 
 ### ECC Domain Parameters and the "secp256k1" Curve
+
+In cryptography, elliptic curves over **_Fp_** are used, where the modulus **_p_** is very large prime, e.g. 256-bit number. The field of the curve is of size **p** x **p**, which is incredibly large.
 
 ...
 
