@@ -60,7 +60,7 @@ An elliptic curve over the finite field **𝔽p** consists of:
 
 
 
-Example of elliptic curve over F17:
+Example of elliptic curve over 𝔽<sub>17</sub>:
 y2 ≡ x3 + 7 (mod 17)
 
 
