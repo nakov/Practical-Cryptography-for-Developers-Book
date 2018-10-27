@@ -44,13 +44,25 @@ This is a visualization of the above elliptic curve:
 
 ![](/assets/bitcoin-elliptic-curve.png)
 
-To learn more about the equations of the elliptic curves and how the look like, play a bit with this online visualization tool: https://www.desmos.com/calculator/ialhd71we3.
+To learn more about the equations of the elliptic curves and how the look like, play a bit with this **online elliptic curve visualization tool**: https://www.desmos.com/calculator/ialhd71we3.
 
 ![](/assets/ecc-visualization-tool.png)
 
 ### Elliptic Curves over Finite Fields
 
-...
+The **elliptic curve cryptography (ECC)** uses **elliptic curves over the [finite field](https://en.wikipedia.org/wiki/Finite_field) 𝔽p** (where **_p_** is prime and **_p_** > 3). This means that the points of the curve are limited to **integer coordinates** within the field only, and the field is a **square matrix** of size **_p_** x **_p_**. All algebraic operations within the field (like point addition and multiplication) result in another point within the field.
+
+Unlike **RSA**, which uses for its key space the **integers** in the range [0...**_p_**-1] (the field ℤp), the **ECC** uses the **points** {**_x_**, **_y_**} within the Galois field **𝔽p** (where **_x_** and **_y_** are integers in the range [0...**_p_**-1]).
+
+An elliptic curve over the finite field **𝔽p** consists of:
+ - A set of integer coordinates {**_x_**, **_y_**}, such that **0** ≤ **_x_**, **_y_** < **_p_**
+ - Staying on the elliptic curve: **_y_**<sup>2</sup> ≡ x<sup>3</sup> + **_a_**x + **_b_** (mod **p**)
+
+
+
+Example of elliptic curve over F17:
+y2 ≡ x3 + 7 (mod 17)
+
 
 ### Calculating Elliptic Curves over Finite Fields
 
