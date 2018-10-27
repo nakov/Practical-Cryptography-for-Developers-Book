@@ -55,8 +55,8 @@ The **elliptic curve cryptography (ECC)** uses **elliptic curves over the [finit
 Unlike **RSA**, which uses for its key space the **integers** in the range [0...**_p_**-1] (the field ℤp), the **ECC** uses the **points** {**_x_**, **_y_**} within the Galois field **𝔽p** (where **_x_** and **_y_** are integers in the range [0...**_p_**-1]).
 
 An elliptic curve over the finite field **𝔽p** consists of:
- - A set of integer coordinates {**_x_**, **_y_**}, such that **0** ≤ **_x_**, **_y_** < **_p_**
- - Staying on the elliptic curve: **_y_**<sup>2</sup> ≡ x<sup>3</sup> + **_a_**x + **_b_** (mod **p**)
+ - a set of integer coordinates {**_x_**, **_y_**}, such that **0** ≤ **_x_**, **_y_** < **_p_**
+ - staying on the elliptic curve: **_y_**<sup>2</sup> ≡ x<sup>3</sup> + **_a_**x + **_b_** (mod **p**)
 
 
 
