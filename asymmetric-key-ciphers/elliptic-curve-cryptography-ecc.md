@@ -26,15 +26,29 @@ The **public keys** in the ECC are **EC points** in the elliptic curve's finite 
 
 **Elliptic-curve cryptography** provides several groups of algorithms, based on the math of the elliptic curves over finite fields:
 
-* ECC **digital signature** algorithms: [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) \(for classical curves\) and [**EdDSA**](https://en.wikipedia.org/wiki/EdDSA) \(for twisted Edwards curves\)
-* ECC **encryption** algorithms and hybrid encryption schemes: the [**ECIES**](https://en.wikipedia.org/wiki/Schnorr_signature) integrated encryption scheme and [**EEECC**](https://cse.unl.edu/~ssamal/crypto/EEECC.pdf) \(EC-based ElGamal\)
-* ECC **key agreement** algorithms: [**ECDH**](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie–Hellman), [**X25519**](https://cryptography.io/en/latest/hazmat/primitives/asymmetric/x25519/) and [**FHMQV**](https://fastd.readthedocs.io/en/v18/crypto/fhmqvc.html)
+* ECC **digital signature** algorithms like [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) \(for classical curves\) and [**EdDSA**](https://en.wikipedia.org/wiki/EdDSA) \(for twisted Edwards curves\).
+* ECC **encryption** algorithms and hybrid encryption schemes like the [**ECIES**](https://en.wikipedia.org/wiki/Integrated_Encryption_Scheme) integrated encryption scheme and [**EEECC**](https://cse.unl.edu/~ssamal/crypto/EEECC.pdf) \(EC-based ElGamal\).
+* ECC **key agreement** algorithms like [**ECDH**](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie–Hellman), [**X25519**](https://cryptography.io/en/latest/hazmat/primitives/asymmetric/x25519/) and [**FHMQV**](https://fastd.readthedocs.io/en/v18/crypto/fhmqvc.html).
 
 ## Elliptic Curves
 
-...
+In mathematics **elliptic curves** are plane algebraic curves, consisting of all points {**_x_**, **_y_**}, described by the equation:
+ - x<sup>2</sup> = y<sup>3</sup> + **_a_**x + **_b_**
 
-### Elliptic Curves over a Finite Fields
+For example, the [NIST curve `secp256k1`](https://en.bitcoin.it/wiki/Secp256k1) (used in Bitcoin) is based on an elliptic curve in the form:
+ - x<sup>2</sup> = y<sup>3</sup> + **_7_**
+
+In this example **_a_** = **0** and **_b_** = **7**.
+
+This is a visualization of the above elliptic curve:
+
+![](/assets/bitcoin-elliptic-curve.png)
+
+To learn more about the equations of the elliptic curves and how the look like, play a bit with this online visualization tool: https://www.desmos.com/calculator/ialhd71we3.
+
+![](/assets/ecc-visualization-tool.png)
+
+### Elliptic Curves over Finite Fields
 
 ...
 
