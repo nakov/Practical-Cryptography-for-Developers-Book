@@ -36,9 +36,7 @@ In mathematics **elliptic curves** are plane algebraic curves, consisting of all
  - x<sup>2</sup> = y<sup>3</sup> + **_a_**x + **_b_**
 
 For example, the [NIST curve `secp256k1`](https://en.bitcoin.it/wiki/Secp256k1) (used in Bitcoin) is based on an elliptic curve in the form:
- - x<sup>2</sup> = y<sup>3</sup> + **_7_**
-
-In this example **_a_** = **0** and **_b_** = **7**.
+ - x<sup>2</sup> = y<sup>3</sup> + **_7_** (the general elliptic curve equation, where **_a_** = **0** and **_b_** = **7**)
 
 This is a visualization of the above elliptic curve:
 
@@ -50,18 +48,24 @@ To learn more about the equations of the elliptic curves and how the look like, 
 
 ### Elliptic Curves over Finite Fields
 
-The **elliptic curve cryptography (ECC)** uses **elliptic curves over the [finite field](https://en.wikipedia.org/wiki/Finite_field) 𝔽p** (where **_p_** is prime and **_p_** > 3). This means that the points of the curve are limited to **integer coordinates** within the field only, and the field is a **square matrix** of size **_p_** x **_p_**. All algebraic operations within the field (like point addition and multiplication) result in another point within the field.
+The **elliptic curve cryptography (ECC)** uses **elliptic curves over the [finite field](https://en.wikipedia.org/wiki/Finite_field) 𝔽<sub>p</sub>** (where **_p_** is prime and **_p_** > 3). This means that the field is a **square matrix** of size **_p_** x **_p_** and the points on the curve are limited to **integer coordinates** within the field only. All algebraic operations within the field (like point addition and multiplication) result in another point within the field. The elliptic curve equation over the finite field **𝔽<sub>p</sub>** takes the following modular form:
+ - x<sup>2</sup> ≡ y<sup>3</sup> + **_a_**x + **_b_** (mod **_p_**)
 
-Unlike **RSA**, which uses for its key space the **integers** in the range [0...**_p_**-1] (the field ℤp), the **ECC** uses the **points** {**_x_**, **_y_**} within the Galois field **𝔽p** (where **_x_** and **_y_** are integers in the range [0...**_p_**-1]).
+Respectively, the "Bitcoin curve" `secp256k1` takes the form:
+- x<sup>2</sup> ≡ y<sup>3</sup> + **_7_** (mod **_p_**)
 
-An elliptic curve over the finite field **𝔽p** consists of:
+Unlike **RSA**, which uses for its key space the **integers** in the range [0...**_p_**-1] (the field ℤ<sub>p</sub>), the **ECC** uses the **points** {**_x_**, **_y_**} within the Galois field **𝔽<sub>p</sub>** (where **_x_** and **_y_** are integers in the range [0...**_p_**-1]).
+
+An elliptic curve over the finite field **𝔽<sub>p</sub>** consists of:
  - a set of integer coordinates {**_x_**, **_y_**}, such that **0** ≤ **_x_**, **_y_** < **_p_**
  - staying on the elliptic curve: **_y_**<sup>2</sup> ≡ x<sup>3</sup> + **_a_**x + **_b_** (mod **p**)
 
+**Example** of elliptic curve over the finite field **𝔽<sub>17</sub>**:
+ - y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**)
 
+This elliptic curve over **𝔽<sub>p</sub>** looks like this:
 
-Example of elliptic curve over 𝔽<sub>17</sub>:
-y2 ≡ x3 + 7 (mod 17)
+![](/assets/elliptic-curve-over-f17-example.png)
 
 
 ### Calculating Elliptic Curves over Finite Fields
