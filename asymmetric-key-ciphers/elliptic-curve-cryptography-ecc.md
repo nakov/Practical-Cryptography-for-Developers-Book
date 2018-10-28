@@ -85,19 +85,37 @@ The point {**5**, **8**} **belongs** to the curve, because `(5**3 + 7 - 8**2) % 
 A point **G** over an elliptic curve in finite field can be multiplied by an integer **k**:
  - **P** = **k** \* **G**
  
-The result from the multiplication is another point **P**, staying on the same curve. More details are not so valuable for developers, so just assume that **a point can be multiplied to an integer** and this operation is **fast**. Everyone is free to [read more about EC point multiplication](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication).
+The result from the multiplication is another point **P**, staying on the same curve. More details are not so valuable for developers, so just assume that **EC point can be multiplied by an integer** and this operation is **fast** and the result is another EC point on the same curve. Everyone is free to [read more about EC point multiplication](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication).
 
 In **ECC**, when we multiply a fixed EC point **G** (called the **generator** point) by certain **integer k** (**private key**), we obtain EC point **P** (its corresponding **public key**).
 
 Consequently, in ECC we have:
  - **k** == **private key** (integer)
  - **P** == **public key** (point)
- - **G** == **generator point** (fixed constant, a point on the EC)
+ - **G** == **generator point** (fixed constant, a starting point on the EC)
  
-It is very **fast** to calculate **P** = **k** \* **G**, using the well-known [ECC multiplication algorithms](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication) in time _log_<sub>2</sub>(**_k_**).
+It is very **fast** to calculate **P** = **k** \* **G**, using the well-known [ECC multiplication algorithms](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication) in time _log_<sub>2</sub>(**_k_**), e.g. the "[double-and-add algorithm](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication#Double-and-add)".
 
-It is **extremely slow** (considered infeasible) to calculate **k** = **P** / **G**. This asymmetry (fast multiplication and unfeasible slow 
+It is **extremely slow** (considered infeasible) to calculate **k** = **P** / **G**.
 
+This asymmetry (fast multiplication and unfeasible slow opposite operation) is the basis of the security behind the ECC cryptography, also known as the ECDLP problem.
+
+### Elliptic-Curve Discrete Logarithm Problem (ECDLP)
+
+The **Elliptic Curve Discrete Logarithm Problem (DLP)** in computer science is defined as follows:
+
+ - By given elliptic curve over **𝔽<sub>p</sub>** and generator point **_G_** on the curve and point **_P_**  on the curve, find the integer **_k_** (if it exists), such that **_P_** = **_k_** \* **_G_**
+ 
+The multiplicand **_k_** is called **[discrete logarithm](https://en.wikipedia.org/wiki/Discrete_logarithm)**, i.e. **k** = _log_<sub>**b**</sub>(**a**). The elements **_a_** and **_b_** can be simple integers modulo **_p_** (from the [group ℤ/pℤ](https://en.wikipedia.org/wiki/Multiplicative_group_of_integers_modulo_n)) or elements of [finite cyclic multiplicative group **G**](https://en.wikipedia.org/wiki/Cyclic_group) (modulo **_p_**), where ****_p_**** is typically a prime number.
+
+In cryptography, many algorithms rely on the **computational difficulty of the ECDLP problem** over carefully chosen group, for which **no efficient algorithm exists**.
+
+
+
+
+Because the fastest known algorithm to solve the ECDLP for key of size **_p_** (EC field size **_p_** \* **_p_**) needs $$\sqrt{p}$$ steps, this means that to achieve a **_p_**-bit **security strength**, a **_2\*p_**-bit curve is needed. Thus **256-bit EC curves** provide **128-bit security strength**.
+
+For example, the `secp256k1` (**_p_** = 256) curve provides 128-bit security, while the `curve448` (**_p_** = 448) provides 224-bit security.
 
 ### Example: Multiply Points Over Elliptic Curves
 
