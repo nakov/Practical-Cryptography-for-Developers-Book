@@ -43,9 +43,9 @@ Now, let's explain how the **DHKE** protocol works.
 
 ## The Math behind DHKE
 
-It is based on a simple property of **[modular exponentiations](https://en.wikipedia.org/wiki/Modular_exponentiation)**:
+**DHKE** is based on a simple property of **[modular exponentiations](https://en.wikipedia.org/wiki/Modular_exponentiation)**:
 
-(g<sup>a</sup>)<sup>b</sup> mod p = (g<sup>b</sup>)<sup>a</sup> mod p
+(**g**<sup>**a**</sup>)<sup>**b**</sup> mod **p** = (**g**<sup>**b**</sup>)<sup>**a**</sup> mod **p**
 
 where **g**, **a**, **b** and **p** are positive integers.
 
@@ -53,9 +53,19 @@ If we have **A** = **g<sup>a</sup>** mod **p** and **B** = **g<sup>b</sup>** mod
 
 In computing theory, these is no efficient algorithm which can find a secret exponent. If we have **m**, **g** and **p** from the below equation:
 
-m = g<sup>s</sup> mod p
+**m** = **g**<sup>**s**</sup> mod **p**
 
 there is no efficient (fast) algorithm to find the secret exponent **s**. This is known as the [Discrete Logartihm Problem (DLP)](https://en.wikipedia.org/wiki/Discrete_Logarithm_Problem_%28DLP%29).
+
+## Discrete Logarithm Problem (DLP)
+
+The **Discrete Logarithm Problem (DLP)** in computer science is defined as follows:
+
+ - By given element **_b_** and value **_a_** = **_b_**<sup>**_x_**</sup> find the exponent **_x_** (if it exists)
+ 
+The exponent **_x_** is called **[discrete logarithm](https://en.wikipedia.org/wiki/Discrete_logarithm)**, i.e. **x** = _log_<sub>**b**</sub>(**a**). The elements **_a_** and **_b_** can be simple integers (from the [group **ℤ**](https://en.wikipedia.org/wiki/Integer)) or elements of [Abelian group **G**](https://en.wikipedia.org/wiki/Abelian_group).
+
+In cryptography, many algorithms rely on the **computational difficulty of the DLP problem**, for which no efficient algorithm exists (in the general case).
 
 ## The DHKE Protocol
 
