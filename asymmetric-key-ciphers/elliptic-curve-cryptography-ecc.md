@@ -162,7 +162,7 @@ for k in range(0, 25):
     print(f"{k} * G = ({p.x}, {p.y})")
 ```
 
-The above code demonstrates the **EC multiplication**. It multiplies the generator point by 0, 1, 2, ..., 24. The output from the above program is as follows:
+The above code demonstrates the **EC multiplication**. It multiplies the generator point **G** by 0, 1, 2, ..., 24. The output from the above program is as follows:
 
 ```
 curve: "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
@@ -202,7 +202,7 @@ It is visible that **0** \* **G** = **_infinity_**. It is also clearly visible, 
 
 ### Multiplication of EC Points - Real-World Example in Python
 
-Now, let's write a **real-world example**. Instead of using our educational curve `p1707` (4-5-bit curve, p = 17), we shall use the cryptographic curve `secp192r1` (192-bit, p = 6277101735386680763835789423207666416083908700390324961279). The below example is similar to the previous:
+Now, let's write a **real-world example**. Instead of using our educational curve `p1707` (4-5-bit curve, p = 17), we shall use the 192-bit cryptographic curve `secp192r1` (192-bit, p = 6277101735386680763835789423207666416083908700390324961279). The below example is similar to the previous:
 
 ```py
 from tinyec import registry
@@ -262,6 +262,8 @@ public key: (5396030834456770190396776530938374882273836179487834152291, 3422160
 ```
 
 Later we shall use such pairs of ECC {private key, public key} to encrypt data, sign messages and verify signatures.
+
+Note that in real projects, 192-bit curves are considered weak, so 256-bit curves are recommended (or more bits), where the keys are also 256-bits (or respectively more).
 
 ### Public Key Compression in the Elliptic Key Cryptosystems
 
