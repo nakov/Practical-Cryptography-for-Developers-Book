@@ -12,7 +12,7 @@ The **private keys** in the ECC are integers \(in the range of the curve's field
 
 The **key generation** in the ECC cryptography is as simple as securely generating a **random integer** in certain range, so it is extremely fast. Any number within the range is valid ECC private key.
 
-The **public keys** in the ECC are **EC points** in the elliptic curve's finite field \(a pair of integer coordinates {**_x_**, **_y_**}\), but can be compressed to just one coordinate + 1 bit \(odd or even\). Thus the **compressed public key**, corresponding to a 256-bit ECC private key, is a **257-bit** integer. Example of ECC public key \(corresponding to the above private key, encoded in the Ethereum format, as hex with prefix `02` or `03`\) is: `0x02f54ba86dc1ccb5bed0224d23f01ed87e4a443c47fc690d7797a13d41d2340e1a`. In this format the public key actually takes 66 hex digits \(33 bytes\), which can be optimized to exactly 257 bits.
+The **public keys** in the ECC are **EC points** - pairs of integer coordinates {**_x_**, **_y_**}, laying on the curve. Due to their special properties, **EC points** can be **compressed** to just one coordinate + 1 bit \(odd or even\). Thus the **compressed public key**, corresponding to a 256-bit ECC private key, is a **257-bit** integer. Example of ECC public key \(corresponding to the above private key, encoded in the Ethereum format, as hex with prefix `02` or `03`\) is: `0x02f54ba86dc1ccb5bed0224d23f01ed87e4a443c47fc690d7797a13d41d2340e1a`. In this format the public key actually takes 33 bytes \(66 hex digits\), which can be optimized to exactly 257 bits.
 
 ## Curves and Key Length
 
@@ -58,7 +58,7 @@ Respectively, the "Bitcoin curve" `secp256k1` takes the form:
 
 Unlike **RSA**, which uses for its key space the **integers** in the range [0...**_p_**-1] (the field ℤ<sub>p</sub>), the **ECC** uses the **points** {**_x_**, **_y_**} within the Galois field **𝔽<sub>p</sub>** (where **_x_** and **_y_** are integers in the range [0...**_p_**-1]).
 
-An elliptic curve over the finite field **𝔽<sub>p</sub>** consists of:
+An **elliptic curve over the finite field** **𝔽<sub>p</sub>** consists of:
  - a set of integer coordinates {**_x_**, **_y_**}, such that **0** ≤ **_x_**, **_y_** < **_p_**
  - staying on the elliptic curve: **_y_**<sup>2</sup> ≡ x<sup>3</sup> + **_a_**x + **_b_** (mod **p**)
 
@@ -69,36 +69,46 @@ This elliptic curve over **𝔽<sub>17</sub>** looks like this:
 
 ![](/assets/elliptic-curve-over-f17-example.png)
 
-Note that the elliptic curve over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) consists of the blue points in the above figure, i.e. in practice it is a "_set of points_" is not "_curve_".
+Note that the elliptic curve over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) consists of the **blue points** at the above figure, i.e. in practice the "_elliptic curves_" used in cryptography are "_sets of points in square matrix_", not classical "_curves_".
 
 ### Elliptic Curves over Finite Fields: Calculations
 
 It is pretty easy to calculate whether **certain point belongs to certain elliptic curve** over a finite field. For example, a point {**_x_**, **_y_**} belongs to the curve y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) when and only when:
  - x<sup>3</sup> + **7** - y<sup>2</sup> ≡ 0 (mod **17**)
 
-The point {**5**, **8**} **belongs** to the curve, because `(5**3 + 7 - 8**2) % 17 == 0`. The point {**9**, **15**} **does not belong** to the curve, because `(9**3 + 7 - 15**2) % 17 != 0`. These calculations are in Python style. The above mentioned elliptic curve and the points {**5**, **8**} and {**9**, **15**} are visualized below:
+The point **P** {**5**, **8**} **belongs** to the curve, because `(5**3 + 7 - 8**2) % 17 == 0`. The point {**9**, **15**} **does not belong** to the curve, because `(9**3 + 7 - 15**2) % 17 != 0`. These calculations are in Python style. The above mentioned elliptic curve and the points {**5**, **8**} and {**9**, **15**} are visualized below:
 
 ![](/assets/points-on-elliptic-curve-over-finite-field.png)
 
-### Multiplying a Point over an Elliptic Curve
+### Multiplying ECC Point by Integer
 
-A point **G** over an elliptic curve in finite field can be multiplied by an integer **k**:
+A point **G** over an elliptic curve in finite field (ECC point) can be **multiplied by an integer** **k** and the result is another point **P** on the same curve:
  - **P** = **k** \* **G**
- 
-The result from the multiplication is another point **P**, staying on the same curve. More details are not so valuable for developers, so just assume that **EC point can be multiplied by an integer** and this operation is **fast** and the result is another EC point on the same curve. Everyone is free to [read more about EC point multiplication](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication).
 
-In **ECC**, when we multiply a fixed EC point **G** (called the **generator** point) by certain **integer k** (**private key**), we obtain EC point **P** (its corresponding **public key**).
+More details about how exactly the multiplication is done are not so valuable for developers, so just assume that **EC point can be multiplied by an integer** and this operation is **fast** and the result is another **EC point** on the same curve. Everyone is free to [read more about EC point multiplication](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication).
+
+For **example** let's take the EC point **G** = {**15**, **13**} on the elliptic curve over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) and multiply it by **k** = **6**. We shall obtain an EC point **P** = {**5**, **8**}:
+  - **P** = **k** \* **G** = **6** \* {**15**, **13**} = {**5**, **8**}
+
+The below figure visualizes this example:
+
+![](/assets/ECC-multiply-point-example.png)
+
+Elliptic curves over finite fields have a **[generator point G](https://en.wikipedia.org/wiki/Generating_set_of_a_group)**, which can **generate any other point** over the elliptic curve by multiplying **G** by some (unknown) integer. At the above example (the EC over **𝔽<sub>17</sub>**), if we take the point  on the curve as generator, any other blue point can be obtained by multiplying the generator by some integer. In cryptography the EC points form a **[cyclic group](https://en.wikipedia.org/wiki/Cyclic_group)**, which means that a number **n** exists (**n** > 1), such that **G** = **n** \* **G**.
+
+In **ECC**, when we multiply a fixed EC point **G** (the **generator** point) by certain **integer k** (**k** can be considered as **private key**), we obtain an EC point **P** (its corresponding **public key**).
 
 Consequently, in ECC we have:
- - **k** == **private key** (integer)
- - **P** == **public key** (point)
- - **G** == **generator point** (fixed constant, a starting point on the EC)
+  - **elliptic curve** (EC) over finite field **𝔽<sub>p</sub>**
+  - **G** == **generator point** (fixed constant, a starting point on the EC)
+  - **k** == **private key** (integer)
+  - **P** == **public key** (point)
  
-It is very **fast** to calculate **P** = **k** \* **G**, using the well-known [ECC multiplication algorithms](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication) in time _log_<sub>2</sub>(**_k_**), e.g. the "[double-and-add algorithm](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication#Double-and-add)".
+It is very **fast** to calculate **P** = **k** \* **G**, using the well-known [ECC multiplication algorithms](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication) in time _log_<sub>2</sub>(**_k_**), e.g. the "[double-and-add algorithm](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication#Double-and-add)". For 256-bit curves, it will take just a few hundreds simple EC operations.
 
 It is **extremely slow** (considered infeasible) to calculate **k** = **P** / **G**.
 
-This asymmetry (fast multiplication and unfeasible slow opposite operation) is the basis of the security behind the ECC cryptography, also known as the ECDLP problem.
+This asymmetry (fast multiplication and unfeasible slow opposite operation) is the basis of the security strength behind the ECC cryptography, also known as the **ECDLP problem**.
 
 ### Elliptic-Curve Discrete Logarithm Problem (ECDLP)
 
@@ -108,9 +118,11 @@ The **Elliptic Curve Discrete Logarithm Problem (DLP)** in computer science is d
  
 The **multiplication** of elliptic curve points in the group **𝔽<sub>p</sub>** is similar to **exponentiation** of integers in the group **ℤ<sub>p</sub>** and this is how the **ECDLP problem** is similar to the [**DLP problem**](../key-exchange/diffie-hellman-key-exchange.md#discrete-logarithm-problem-dlp) (discrete logarithm problem).
 
-In cryptography, many algorithms rely on the **computational difficulty of the ECDLP problem**, for which **no efficient algorithm exists**.
+In cryptography, many algorithms rely on the **computational difficulty of the ECDLP problem** over carefully chosen field **𝔽<sub>p</sub>**, for which **no efficient algorithm exists**.
 
-Because the fastest known algorithm to solve the ECDLP for key of size **_p_** (EC field size **_p_** \* **_p_**) needs $$\sqrt{p}$$ steps, this means that to achieve a **_p_**-bit **security strength**, a **_2\*p_**-bit curve is needed. Thus **256-bit EC curves** provide **128-bit security strength**.
+### ECC and Curve Security Strength
+
+Because the fastest known algorithm to solve the **ECDLP **for key of size **_p_** (EC over finite field of size **_p_** \* **_p_**) needs $$\sqrt{p}$$ steps, this means that to achieve a **_p_**-bit **security strength**, a **_2\*p_**-bit curve is needed. Thus **256-bit curves** provide **128-bit security strength**.
 
 For example, the `secp256k1` (**_p_** = 256) curve provides 128-bit security, while the `curve448` (**_p_** = 448) provides 224-bit security.
 
