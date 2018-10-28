@@ -109,7 +109,7 @@ At the above example (the EC over finite field y<sup>2</sup> ≡ x<sup>3</sup> +
 In the **ECC**, when we multiply a fixed EC point **G** (the **generator** point) by certain **integer k** (**k** can be considered as **private key**), we obtain an EC point **P** (its corresponding **public key**).
 
 Consequently, in ECC we have:
-  - **elliptic curve** (EC) over finite field **𝔽<sub>p</sub>**
+  - **Еlliptic curve** (EC) over finite field **𝔽<sub>p</sub>**
   - **G** == **generator point** (fixed constant, a starting point on the EC)
   - **k** == **private key** (integer)
   - **P** == **public key** (point)
@@ -236,7 +236,7 @@ Cyclic group order = 6277101735386680763835789423176059013767194773182842284081
 n * G = (None, None)
 ```
 
-We have a **cyclic group** of very large order **n** = 6277101735386680763835789423176059013767194773182842284081 and again **n** \* **G** = **_infinity_**, just like the previous example with our educational curve.
+The curve `secp192r1` uses a **cyclic group** of very large order **n** = 6277101735386680763835789423176059013767194773182842284081 and as we can expect, **n** \* **G** = **_infinity_**, just like at the previous example with our educational curve.
 
 Now, let's generate a random **private key** `privKey` (integer in the range [0...n-1]) and its corresponding **public key** `pubKey = privKey * G`:
 
