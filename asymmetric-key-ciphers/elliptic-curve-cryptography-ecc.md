@@ -32,7 +32,7 @@ The **public keys** in the ECC are **EC points** - pairs of integer coordinates 
 
 All these algorithms use a **curve** behind (like `secp256k1`, `curve25519` or `p521`) for the calculations and rely of the difficulty of the **ECDLP** (elliptic curve discrete logarithm problem). All these algorithms use public / private key pairs, where the **private key** is an integer and the **public key** is a point on the elliptic curve (EC point). Let's get into details about the elliptic curves over finite fields.
 
-## Elliptic Curves (in Math)
+## Elliptic Curves
 
 In mathematics **elliptic curves** are plane algebraic curves, consisting of all points {**_x_**, **_y_**}, described by the equation:
  - x<sup>2</sup> = y<sup>3</sup> + **_a_**x + **_b_**
@@ -48,7 +48,7 @@ To learn more about the equations of the elliptic curves and how they look like,
 
 ![](/assets/ecc-visualization-tool.png)
 
-### Elliptic Curves over Finite Fields (in Cryptography)
+### Elliptic Curves over Finite Fields
 
 The **elliptic curve cryptography (ECC)** uses **elliptic curves over the [finite field](https://en.wikipedia.org/wiki/Finite_field) 𝔽<sub>p</sub>** (where **_p_** is prime and **_p_** > 3). This means that the field is a **square matrix** of size **_p_** x **_p_** and the points on the curve are limited to **integer coordinates** within the field only. All algebraic operations within the field (like point addition and multiplication) result in another point within the field. The elliptic curve equation over the finite field **𝔽<sub>p</sub>** takes the following modular form:
  - x<sup>2</sup> ≡ y<sup>3</sup> + **_a_**x + **_b_** (mod **_p_**)
@@ -82,21 +82,29 @@ The point **P** {**5**, **8**} **belongs** to the curve, because `(5**3 + 7 - 8*
 
 ### Multiplying ECC Point by Integer
 
-A point **G** over an elliptic curve in finite field (ECC point) can be **multiplied by an integer** **k** and the result is another point **P** on the same curve:
+A point **G** over an elliptic curve over finite field (EC point) can be **multiplied by an integer** **k** and the result is another EC point **P** on the same curve and this operation is **fast**:
  - **P** = **k** \* **G**
 
-More details about how exactly the multiplication is done are not so valuable for developers, so just assume that **EC point can be multiplied by an integer** and this operation is **fast** and the result is another **EC point** on the same curve. Everyone is free to [read more about EC point multiplication](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication).
+The above operation involves some formulas and transformations, but for simplicity, we shall skip them. The important thing to know is that multiplying EC point by integer returns another EC point on the same curve and this operation is **fast**. Everyone is free to [read more about EC point multiplication](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication).
 
 For **example** let's take the EC point **G** = {**15**, **13**} on the elliptic curve over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) and multiply it by **k** = **6**. We shall obtain an EC point **P** = {**5**, **8**}:
   - **P** = **k** \* **G** = **6** \* {**15**, **13**} = {**5**, **8**}
 
-The below figure visualizes this example:
+The below figure visualizes this example of EC point multiplication:
 
 ![](/assets/ECC-multiply-point-example.png)
 
-Elliptic curves over finite fields have a **[generator point G](https://en.wikipedia.org/wiki/Generating_set_of_a_group)**, which can **generate any other point** over the elliptic curve by multiplying **G** by some (unknown) integer. At the above example (the EC over **𝔽<sub>17</sub>**), if we take the point  on the curve as generator, any other blue point can be obtained by multiplying the generator by some integer. In cryptography the EC points form a **[cyclic group](https://en.wikipedia.org/wiki/Cyclic_group)**, which means that a number **n** exists (**n** > 1), such that **G** = **n** \* **G**.
+### The "Generator" Point in ECC
 
-In **ECC**, when we multiply a fixed EC point **G** (the **generator** point) by certain **integer k** (**k** can be considered as **private key**), we obtain an EC point **P** (its corresponding **public key**).
+For the elliptic curves over finite fields ECC cryptosystems define a special pre-defined (constant) point called **[generator point G](https://en.wikipedia.org/wiki/Generating_set_of_a_group)**, which can **generate any other point** over the elliptic curve by multiplying **G** by some integer in the range [0...**n**]. The number **n** is called "**order**" of the cyclic group, defined by the EC.
+
+In ECC cryptography the EC points form a **[cyclic group](https://en.wikipedia.org/wiki/Cyclic_group)**, which means that a number **n** exists (**n** > 1), such that **n** \* **G** = **_infinity_**. All possible EC points over the curve, that can be generated from **G** are **n** (including the special point _infinity_).
+
+At the above example (the EC over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7**), if we take the point **G** = {**15**, **13**} as **generator**, any other point from the curve can be obtained by multiplying **G** by some integer in the range [1...18]. Thus the order of the EC is **n** = **18**.
+
+### Private Key, Public Key and the Generator Point in ECC
+
+In the **ECC**, when we multiply a fixed EC point **G** (the **generator** point) by certain **integer k** (**k** can be considered as **private key**), we obtain an EC point **P** (its corresponding **public key**).
 
 Consequently, in ECC we have:
   - **elliptic curve** (EC) over finite field **𝔽<sub>p</sub>**
@@ -104,9 +112,9 @@ Consequently, in ECC we have:
   - **k** == **private key** (integer)
   - **P** == **public key** (point)
  
-It is very **fast** to calculate **P** = **k** \* **G**, using the well-known [ECC multiplication algorithms](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication) in time _log_<sub>2</sub>(**_k_**), e.g. the "[double-and-add algorithm](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication#Double-and-add)". For 256-bit curves, it will take just a few hundreds simple EC operations.
+It is **very fast** to calculate **P** = **k** \* **G**, using the well-known [ECC multiplication algorithms](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication) in time _log_<sub>2</sub>(**_k_**), e.g. the "[double-and-add algorithm](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication#Double-and-add)". For 256-bit curves, it will take just a few hundreds simple EC operations.
 
-It is **extremely slow** (considered infeasible) to calculate **k** = **P** / **G**.
+It is **extremely slow** (considered unfeasible for large **k**) to calculate **k** = **P** / **G**.
 
 This asymmetry (fast multiplication and unfeasible slow opposite operation) is the basis of the security strength behind the ECC cryptography, also known as the **ECDLP problem**.
 
