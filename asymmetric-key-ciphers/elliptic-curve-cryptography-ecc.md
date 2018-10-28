@@ -71,6 +71,8 @@ This elliptic curve over **𝔽<sub>17</sub>** looks like this:
 
 Note that the elliptic curve over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) consists of the **blue points** at the above figure, i.e. in practice the "_elliptic curves_" used in cryptography are "_sets of points in square matrix_", not classical "_curves_".
 
+The above curve is "_educational_". It provides **very small key length** (4-5 bits). In the real world developers typically use curves of 256-bits or more.
+
 ### Elliptic Curves over Finite Fields: Calculations
 
 It is pretty easy to calculate whether **certain point belongs to certain elliptic curve** over a finite field. For example, a point {**_x_**, **_y_**} belongs to the curve y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) when and only when:
@@ -146,7 +148,7 @@ Now, after all the concepts, let's **write some code**. We shall use [the Python
 pip install tinyec
 ```
 
-We shall play with the curve from our previous examples y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**), with the generator point **G** = {15, 13}, which has order of **n** = **18**.
+We shall play with the educational curve from our previous examples y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**), with the generator point **G** = {15, 13}, which has order of **n** = **18**. We shall name it `p1707`.
 
 ```py
 from tinyec.ec import SubGroup, Curve
@@ -258,6 +260,8 @@ The above code will produce output like this:
 private key: 4225655318977962031264230130242180748818603147467615868902
 public key: (5396030834456770190396776530938374882273836179487834152291, 3422160588166914010077732710830109086004758012634997793937) on "secp192r1" => y^2 = x^3 + 6277101735386680763835789423207666416083908700390324961276x + 2455155546008943817740293915197451784769108058161191238065 (mod 6277101735386680763835789423207666416083908700390324961279)
 ```
+
+Later we shall use such pairs of ECC {private key, public key} to encrypt data, sign messages and verify signatures.
 
 ### Public Key Compression in the Elliptic Key Cryptosystems
 
