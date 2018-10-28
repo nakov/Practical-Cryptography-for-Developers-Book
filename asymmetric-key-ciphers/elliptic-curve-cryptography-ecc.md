@@ -106,12 +106,9 @@ The **Elliptic Curve Discrete Logarithm Problem (DLP)** in computer science is d
 
  - By given elliptic curve over **𝔽<sub>p</sub>** and generator point **_G_** on the curve and point **_P_**  on the curve, find the integer **_k_** (if it exists), such that **_P_** = **_k_** \* **_G_**
  
-The multiplicand **_k_** is called **[discrete logarithm](https://en.wikipedia.org/wiki/Discrete_logarithm)**, i.e. **k** = _log_<sub>**b**</sub>(**a**). The elements **_a_** and **_b_** can be simple integers modulo **_p_** (from the [group ℤ/pℤ](https://en.wikipedia.org/wiki/Multiplicative_group_of_integers_modulo_n)) or elements of [finite cyclic multiplicative group **G**](https://en.wikipedia.org/wiki/Cyclic_group) (modulo **_p_**), where ****_p_**** is typically a prime number.
+The **multiplication** of elliptic curve points in the group **𝔽<sub>p</sub>** is similar to **exponentiation** of integers in the group ℤ<sub>p</sub> and this is how the **ECDLP problem** is similar to the **DLP problem** (discrete logarithm problem).
 
-In cryptography, many algorithms rely on the **computational difficulty of the ECDLP problem** over carefully chosen group, for which **no efficient algorithm exists**.
-
-
-
+In cryptography, many algorithms rely on the **computational difficulty of the ECDLP problem**, for which **no efficient algorithm exists**.
 
 Because the fastest known algorithm to solve the ECDLP for key of size **_p_** (EC field size **_p_** \* **_p_**) needs $$\sqrt{p}$$ steps, this means that to achieve a **_p_**-bit **security strength**, a **_2\*p_**-bit curve is needed. Thus **256-bit EC curves** provide **128-bit security strength**.
 
