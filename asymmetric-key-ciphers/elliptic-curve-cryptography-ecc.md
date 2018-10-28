@@ -24,13 +24,15 @@ The **public keys** in the ECC are **EC points** in the elliptic curve's finite 
 
 ## ECC Algorithms
 
-**Elliptic-curve cryptography** provides several groups of algorithms, based on the math of the elliptic curves over finite fields:
+**Elliptic-curve cryptography** (ECC) provides several groups of algorithms, based on the math of the elliptic curves over finite fields:
 
 * ECC **digital signature** algorithms like [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) \(for classical curves\) and [**EdDSA**](https://en.wikipedia.org/wiki/EdDSA) \(for twisted Edwards curves\).
 * ECC **encryption** algorithms and hybrid encryption schemes like the [**ECIES**](https://en.wikipedia.org/wiki/Integrated_Encryption_Scheme) integrated encryption scheme and [**EEECC**](https://cse.unl.edu/~ssamal/crypto/EEECC.pdf) \(EC-based ElGamal\).
 * ECC **key agreement** algorithms like [**ECDH**](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie–Hellman), [**X25519**](https://cryptography.io/en/latest/hazmat/primitives/asymmetric/x25519/) and [**FHMQV**](https://fastd.readthedocs.io/en/v18/crypto/fhmqvc.html).
 
-## Elliptic Curves
+All these algorithms use a **curve** behind (like `secp256k1`, `curve25519` or `p521`) for the calculations and rely of the difficulty of the **ECDLP** (elliptic curve discrete logarithm problem). All these algorithms use public / private key pairs, where the **private key** is an integer and the **public key** is a point on the elliptic curve (EC point). Let's get into details about the elliptic curves over finite fields.
+
+## Elliptic Curves (in Math)
 
 In mathematics **elliptic curves** are plane algebraic curves, consisting of all points {**_x_**, **_y_**}, described by the equation:
  - x<sup>2</sup> = y<sup>3</sup> + **_a_**x + **_b_**
@@ -42,11 +44,11 @@ This is a visualization of the above elliptic curve:
 
 ![](/assets/bitcoin-elliptic-curve.png)
 
-To learn more about the equations of the elliptic curves and how the look like, play a bit with this **online elliptic curve visualization tool**: https://www.desmos.com/calculator/ialhd71we3.
+To learn more about the equations of the elliptic curves and how they look like, play a bit with this **online elliptic curve visualization tool**: https://www.desmos.com/calculator/ialhd71we3.
 
 ![](/assets/ecc-visualization-tool.png)
 
-### Elliptic Curves over Finite Fields
+### Elliptic Curves over Finite Fields (in Cryptography)
 
 The **elliptic curve cryptography (ECC)** uses **elliptic curves over the [finite field](https://en.wikipedia.org/wiki/Finite_field) 𝔽<sub>p</sub>** (where **_p_** is prime and **_p_** > 3). This means that the field is a **square matrix** of size **_p_** x **_p_** and the points on the curve are limited to **integer coordinates** within the field only. All algebraic operations within the field (like point addition and multiplication) result in another point within the field. The elliptic curve equation over the finite field **𝔽<sub>p</sub>** takes the following modular form:
  - x<sup>2</sup> ≡ y<sup>3</sup> + **_a_**x + **_b_** (mod **_p_**)
@@ -67,23 +69,23 @@ This elliptic curve over **𝔽<sub>17</sub>** looks like this:
 
 ![](/assets/elliptic-curve-over-f17-example.png)
 
-Note that the elliptic curve over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) consists of the blue points in the above diagram, i.e. in practice it a "_set of points_" is not "_curve_".
+Note that the elliptic curve over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) consists of the blue points in the above figure, i.e. in practice it is a "_set of points_" is not "_curve_".
 
 ### Elliptic Curves over Finite Fields: Calculations
 
 It is pretty easy to calculate whether **certain point belongs to certain elliptic curve** over a finite field. For example, a point {**_x_**, **_y_**} belongs to the curve y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) when and only when:
  - x<sup>3</sup> + **7** - y<sup>2</sup> ≡ 0 (mod **17**)
 
-The point {**5**, **8**} **belongs** to the curve, because `(5**3 + 7 - 8**2) % 17 == 0`. The point {**9**, **15**} **does not belong** to the curve, because `(9**3 + 7 - 15**2) % 17 != 0`. The calculations are in Python style. The elliptic curve and the points {**5**, **8**} and {**9**, **15**} are visualized below:
+The point {**5**, **8**} **belongs** to the curve, because `(5**3 + 7 - 8**2) % 17 == 0`. The point {**9**, **15**} **does not belong** to the curve, because `(9**3 + 7 - 15**2) % 17 != 0`. These calculations are in Python style. The above mentioned elliptic curve and the points {**5**, **8**} and {**9**, **15**} are visualized below:
 
 ![](/assets/points-on-elliptic-curve-over-finite-field.png)
 
 ### Multiplying a Point over an Elliptic Curve
 
-A point **G** over the curve can be multiplied by an integer **k**.
+A point **G** over an elliptic curve in finite field can be multiplied by an integer **k**:
  - **P** = **k** \* **G**
  
-The result from the multiplication is another point **P**, staying on the same curve. More details are not so valuable for developers. Just assume that a point can be multiplied to an integer. Everyone is free to [read more about EC point multiplication](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication).
+The result from the multiplication is another point **P**, staying on the same curve. More details are not so valuable for developers, so just assume that **a point can be multiplied to an integer** and this operation is **fast**. Everyone is free to [read more about EC point multiplication](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication).
 
 In **ECC**, when we multiply a fixed EC point **G** (called the **generator** point) by certain **integer k** (**private key**), we obtain EC point **P** (its corresponding **public key**).
 
@@ -92,9 +94,9 @@ Consequently, in ECC we have:
  - **P** == **public key** (point)
  - **G** == **generator point** (fixed constant, a point on the EC)
  
-It is very **fast** to calculate **P** = **k** * **G**, using the well-known [ECC multiplication algorithms](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication).
+It is very **fast** to calculate **P** = **k** \* **G**, using the well-known [ECC multiplication algorithms](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication) in time _log_<sub>2</sub>(**_k_**).
 
-It is **extremely slow** (considered infeasible) to calculate k = P / G.
+It is **extremely slow** (considered infeasible) to calculate **k** = **P** / **G**. This asymmetry (fast multiplication and unfeasible slow 
 
 
 ### Example: Multiply Points Over Elliptic Curves
