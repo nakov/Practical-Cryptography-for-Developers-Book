@@ -87,6 +87,8 @@ A point **G** over an elliptic curve over finite field (EC point) can be **multi
 
 The above operation involves some formulas and transformations, but for simplicity, we shall skip them. The important thing to know is that multiplying EC point by integer returns another EC point on the same curve and this operation is **fast**. Everyone is free to [read more about EC point multiplication](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication).
 
+### Example: Multiply EC Point by Integer
+
 For **example** let's take the EC point **G** = {**15**, **13**} on the elliptic curve over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) and multiply it by **k** = **6**. We shall obtain an EC point **P** = {**5**, **8**}:
   - **P** = **k** \* **G** = **6** \* {**15**, **13**} = {**5**, **8**}
 
@@ -114,33 +116,76 @@ Consequently, in ECC we have:
  
 It is **very fast** to calculate **P** = **k** \* **G**, using the well-known [ECC multiplication algorithms](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication) in time _log_<sub>2</sub>(**_k_**), e.g. the "[double-and-add algorithm](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication#Double-and-add)". For 256-bit curves, it will take just a few hundreds simple EC operations.
 
-It is **extremely slow** (considered unfeasible for large **k**) to calculate **k** = **P** / **G**.
+It is **extremely slow** (considered infeasible for large **k**) to calculate **k** = **P** / **G**.
 
-This asymmetry (fast multiplication and unfeasible slow opposite operation) is the basis of the security strength behind the ECC cryptography, also known as the **ECDLP problem**.
+This asymmetry (fast multiplication and infeasible slow opposite operation) is the basis of the security strength behind the ECC cryptography, also known as the **ECDLP problem**.
 
 ### Elliptic-Curve Discrete Logarithm Problem (ECDLP)
 
-The **Elliptic Curve Discrete Logarithm Problem (DLP)** in computer science is defined as follows:
+The **Elliptic Curve Discrete Logarithm Problem (ECDLP)** in computer science is defined as follows:
 
  - By given elliptic curve over finite field **𝔽<sub>p</sub>** and generator point **_G_** on the curve and point **_P_**  on the curve, find the integer **_k_** (if it exists), such that **_P_** = **_k_** \* **_G_**
  
-The **multiplication** of elliptic curve points in the group **𝔽<sub>p</sub>** is similar to **exponentiation** of integers in the group **ℤ<sub>p</sub>** and this is how the **ECDLP problem** is similar to the [**DLP problem**](../key-exchange/diffie-hellman-key-exchange.md#discrete-logarithm-problem-dlp) (discrete logarithm problem).
+For carefully chosen (by cryptographers) finite fields and elliptic curves, **the ECDLP problem has no efficient solution**.
+ 
+The **multiplication** of elliptic curve points in the group **𝔽<sub>p</sub>** is similar to **exponentiation** of integers in the group **ℤ<sub>p</sub>** (this is known as _multiplicative notation_) and this is how the **ECDLP problem** is similar to the [**DLP problem**](../key-exchange/diffie-hellman-key-exchange.md#discrete-logarithm-problem-dlp) (discrete logarithm problem).
 
-In cryptography, many algorithms rely on the **computational difficulty of the ECDLP problem** over carefully chosen field **𝔽<sub>p</sub>**, for which **no efficient algorithm exists**.
+In the ECC cryptography, many algorithms rely on the **computational difficulty of the ECDLP problem** over carefully chosen field **𝔽<sub>p</sub>** and elliptic curve, for which **no efficient algorithm exists**.
 
 ### ECC and Curve Security Strength
 
 Because the fastest known algorithm to solve the **ECDLP **for key of size **_p_** (EC over finite field of size **_p_** \* **_p_**) needs $$\sqrt{p}$$ steps, this means that to achieve a **_p_**-bit **security strength**, a **_2\*p_**-bit curve is needed. Thus **256-bit curves** provide **128-bit security strength**.
 
-For example, the `secp256k1` (**_p_** = 256) curve provides 128-bit security, while the `curve448` (**_p_** = 448) provides 224-bit security.
-
-### Example: Multiply Points Over Elliptic Curves
-
-...
+For example, the `secp256k1` (**_p_** = 256) curve provides 128-bit security and the `curve448` (**_p_** = 448) provides 224-bit security.
 
 ### Elliptic Curves over Fp Multiplication in Python
 
-...
+Now, after all the concepts, let's **write some code**. We shall use [the Python library `tinyec`](https://github.com/alexmgr/tinyec), which provides ECC primitives, such as **cyclic groups** (the `SubGroup` class), **elliptic curves** over finite fields (the `Curve` class) and EC **points** (the `Point` class). We shall play with the curve from our previous examples y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**), with the generator point **G** = {15, 13}, which has order of **n** = **18**.
+
+```py
+from tinyec.ec import SubGroup, Curve
+
+field = SubGroup(p=17, g=(15, 13), n=18, h=1)
+curve = Curve(a=0, b=7, field=field, name='p1707')
+G = curve.g
+
+for k in range(0, 25):
+    print(str(k) + " * G = " + str(k * G))
+```
+
+The above code demonstrates **EC multiplication**. It multiplies the generator point by 0, 1, 2, ... 24. The output from the above program is as follows:
+
+```
+0 * G = Inf on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+1 * G = (15, 13) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+2 * G = (2, 10) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+3 * G = (8, 3) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+4 * G = (12, 1) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+5 * G = (6, 6) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+6 * G = (5, 8) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+7 * G = (10, 15) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+8 * G = (1, 12) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+9 * G = (3, 0) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+10 * G = (1, 5) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+11 * G = (10, 2) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+12 * G = (5, 9) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+13 * G = (6, 11) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+14 * G = (12, 16) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+15 * G = (8, 14) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+16 * G = (2, 7) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+17 * G = (15, 4) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+18 * G = Inf on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+19 * G = (15, 13) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+20 * G = (2, 10) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+21 * G = (8, 3) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+22 * G = (12, 1) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+23 * G = (6, 6) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+24 * G = (5, 8) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+```
+
+It is visible that **0** \* **G** = **_infinity_**. It is also visible, that the order of the EC group is **n** = **18**, because after **18** \* **G** = _**infinity**_, **19** \* **G** = **1** \* **G**, **20** \* **G** = **2** \* **G**, etc.
+
+
 
 ### Public Key Compression in the Elliptic Key Cryptosystems
 
