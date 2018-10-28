@@ -261,7 +261,7 @@ private key: 4225655318977962031264230130242180748818603147467615868902
 public key: (5396030834456770190396776530938374882273836179487834152291, 3422160588166914010077732710830109086004758012634997793937) on "secp192r1" => y^2 = x^3 + 6277101735386680763835789423207666416083908700390324961276x + 2455155546008943817740293915197451784769108058161191238065 (mod 6277101735386680763835789423207666416083908700390324961279)
 ```
 
-Later we shall use such pairs of ECC {private key, public key} to encrypt data, sign messages and verify signatures.
+Later we shall use such **pairs of ECC keys** {private key, public key} to encrypt data, sign messages and verify signatures.
 
 Note that in real projects, 192-bit curves are considered weak, so 256-bit curves are recommended (or more bits), where the keys are also 256-bits (or respectively more).
 
