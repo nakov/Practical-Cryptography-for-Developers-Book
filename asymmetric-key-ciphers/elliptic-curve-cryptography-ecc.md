@@ -140,7 +140,13 @@ For example, the `secp256k1` (**_p_** = 256) curve provides 128-bit security and
 
 ### Elliptic Curves over Fp Multiplication in Python
 
-Now, after all the concepts, let's **write some code**. We shall use [the Python library `tinyec`](https://github.com/alexmgr/tinyec), which provides ECC primitives, such as **cyclic groups** (the `SubGroup` class), **elliptic curves** over finite fields (the `Curve` class) and EC **points** (the `Point` class). We shall play with the curve from our previous examples y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**), with the generator point **G** = {15, 13}, which has order of **n** = **18**.
+Now, after all the concepts, let's **write some code**. We shall use [the Python library `tinyec`](https://github.com/alexmgr/tinyec), which provides ECC primitives, such as **cyclic groups** (the `SubGroup` class), **elliptic curves** over finite fields (the `Curve` class) and EC **points** (the `Point` class). First, install the package `tinyec`:
+
+```py
+pip install tinyec
+```
+
+We shall play with the curve from our previous examples y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**), with the generator point **G** = {15, 13}, which has order of **n** = **18**.
 
 ```py
 from tinyec.ec import SubGroup, Curve
