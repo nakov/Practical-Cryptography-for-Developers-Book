@@ -271,9 +271,9 @@ Elliptic curves over finite fields **𝔽<sub>p</sub>** have **at most 2 points 
 
 ![](/assets/elliptic-curve-over-f17-points-per-y-coordinate.png)
 
-Due to this property, an elliptic curve point (EC point) **P** {**x**, **y**} can be **compressed** as **C** {**x**, **odd**/**even**). This means to erase its **y** coordinate and represent it as 1 bit (odd **y** or even **y**).
+Due to this property, an elliptic curve point (and respectively an ECC public key) **P** {**x**, **y**} can be **compressed** as **C** {**x**, **odd**/**even**). This means to erase the **y** coordinate from the point and represent it as 1 bit (odd **y** or even **y**).
 
-**Compressed EC point** is an EC point {**x**, **y**} represented in its shorter form {**x**, **odd** / **even**}. ECC public keys are EC points, so they can also be compressed in the same way.
+**Compressed EC point** is an EC point {**x**, **y**} represented in its shorter form {**x**, **odd** / **even**}. ECC **public keys** are EC points, so they can also be compressed in the same way.
 
 To **decompress a point**, we can calculate its two possible **y** coordinates by the formulas:
   - **y<sub>1</sub>** = mod_sqrt(x<sup>3</sup> + **a**x + **b**, **p**)
@@ -283,7 +283,7 @@ Then we take the **odd** or **even** from the above coordinates (according to th
 
 Let's take an **example**: at the elliptic curve y<sup>2</sup> ≡ x<sup>3</sup> + **_7_** (mod **17**) the point **P** {**10**, **15**} can be **compressed** as **C** {**10**, **odd**}. For **decompression**, we first calculate the two possible **y** coordinates for **x** = **10**: y<sub>1</sub> = 2 and y<sub>2</sub> = 15. Then we choose the **odd** one: **y** = **15**. The decompressed point is {**10**, **15**}.
 
-### Compressing a ECC Public Key - Example in Python
+### Compressing a EC Point / Public Key - Example in Python
 
 The code below implements **public key compression** and **decompression** in Python. It uses a library called `nummaster` for the "**_modular square root_**" function, which is unavailable in Python. First install the `nummaster` package:
 
@@ -291,7 +291,7 @@ The code below implements **public key compression** and **decompression** in Py
 pip install nummaster
 ```
 
-Now implement the EC compression and decompression functions:
+Now implement the EC point **compression** and **decompression** functions in Python:
 
 ```py
 from nummaster.basic import sqrtmod
@@ -326,7 +326,6 @@ original point = (10, 15)
 compressed = (10, 1)
 uncompressed = (10, 15)
 ```
-
 
 ### ECC Domain Parameters and the "secp256k1" Curve
 
