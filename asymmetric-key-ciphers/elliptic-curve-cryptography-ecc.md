@@ -104,9 +104,9 @@ This asymmetry (fast multiplication and unfeasible slow opposite operation) is t
 
 The **Elliptic Curve Discrete Logarithm Problem (DLP)** in computer science is defined as follows:
 
- - By given elliptic curve over **𝔽<sub>p</sub>** and generator point **_G_** on the curve and point **_P_**  on the curve, find the integer **_k_** (if it exists), such that **_P_** = **_k_** \* **_G_**
+ - By given elliptic curve over finite field **𝔽<sub>p</sub>** and generator point **_G_** on the curve and point **_P_**  on the curve, find the integer **_k_** (if it exists), such that **_P_** = **_k_** \* **_G_**
  
-The **multiplication** of elliptic curve points in the group **𝔽<sub>p</sub>** is similar to **exponentiation** of integers in the group ℤ<sub>p</sub> and this is how the **ECDLP problem** is similar to the **DLP problem** (discrete logarithm problem).
+The **multiplication** of elliptic curve points in the group **𝔽<sub>p</sub>** is similar to **exponentiation** of integers in the group **ℤ<sub>p</sub>** and this is how the **ECDLP problem** is similar to the [**DLP problem**](../key-exchange/diffie-hellman-key-exchange.md#discrete-logarithm-problem-dlp) (discrete logarithm problem).
 
 In cryptography, many algorithms rely on the **computational difficulty of the ECDLP problem**, for which **no efficient algorithm exists**.
 
