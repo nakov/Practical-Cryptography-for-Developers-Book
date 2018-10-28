@@ -138,9 +138,9 @@ Because the fastest known algorithm to solve the **ECDLP **for key of size **_p_
 
 For example, the `secp256k1` (**_p_** = 256) curve provides 128-bit security and the `curve448` (**_p_** = 448) provides 224-bit security.
 
-### Elliptic Curves over Fp Multiplication in Python
+### Multiplication of EC Points - Example in Python
 
-Now, after all the concepts, let's **write some code**. We shall use [the Python library `tinyec`](https://github.com/alexmgr/tinyec), which provides ECC primitives, such as **cyclic groups** (the `SubGroup` class), **elliptic curves** over finite fields (the `Curve` class) and EC **points** (the `Point` class). First, install the package `tinyec`:
+Now, after all the concepts, let's **write some code**. We shall use [the Python library `tinyec`](https://github.com/alexmgr/tinyec), which provides **ECC** primitives, such as **cyclic groups** (the `SubGroup` class), **elliptic curves** over finite fields (the `Curve` class) and EC **points** (the `Point` class). First, install the package `tinyec`:
 
 ```py
 pip install tinyec
@@ -153,45 +153,111 @@ from tinyec.ec import SubGroup, Curve
 
 field = SubGroup(p=17, g=(15, 13), n=18, h=1)
 curve = Curve(a=0, b=7, field=field, name='p1707')
-G = curve.g
+print('curve:', curve)
 
 for k in range(0, 25):
-    print(str(k) + " * G = " + str(k * G))
+    p = k * curve.g
+    print(f"{k} * G = ({p.x}, {p.y})")
 ```
 
-The above code demonstrates **EC multiplication**. It multiplies the generator point by 0, 1, 2, ... 24. The output from the above program is as follows:
+The above code demonstrates the **EC multiplication**. It multiplies the generator point by 0, 1, 2, ..., 24. The output from the above program is as follows:
 
 ```
-0 * G = Inf on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-1 * G = (15, 13) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-2 * G = (2, 10) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-3 * G = (8, 3) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-4 * G = (12, 1) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-5 * G = (6, 6) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-6 * G = (5, 8) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-7 * G = (10, 15) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-8 * G = (1, 12) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-9 * G = (3, 0) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-10 * G = (1, 5) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-11 * G = (10, 2) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-12 * G = (5, 9) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-13 * G = (6, 11) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-14 * G = (12, 16) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-15 * G = (8, 14) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-16 * G = (2, 7) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-17 * G = (15, 4) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-18 * G = Inf on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-19 * G = (15, 13) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-20 * G = (2, 10) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-21 * G = (8, 3) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-22 * G = (12, 1) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-23 * G = (6, 6) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
-24 * G = (5, 8) on "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+curve: "p1707" => y^2 = x^3 + 0x + 7 (mod 17)
+0 * G = (None, None)
+1 * G = (15, 13)
+2 * G = (2, 10)
+3 * G = (8, 3)
+4 * G = (12, 1)
+5 * G = (6, 6)
+6 * G = (5, 8)
+7 * G = (10, 15)
+8 * G = (1, 12)
+9 * G = (3, 0)
+10 * G = (1, 5)
+11 * G = (10, 2)
+12 * G = (5, 9)
+13 * G = (6, 11)
+14 * G = (12, 16)
+15 * G = (8, 14)
+16 * G = (2, 7)
+17 * G = (15, 4)
+18 * G = (None, None)
+19 * G = (15, 13)
+20 * G = (2, 10)
+21 * G = (8, 3)
+22 * G = (12, 1)
+23 * G = (6, 6)
+24 * G = (5, 8)
 ```
 
-It is visible that **0** \* **G** = **_infinity_**. It is also visible, that the order of the EC group is **n** = **18**, because after **18** \* **G** = _**infinity**_, **19** \* **G** = **1** \* **G**, **20** \* **G** = **2** \* **G**, etc.
+It is visible that **0** \* **G** = **_infinity_**. It is also clearly visible, that the EC group is **cyclic** and the order of the EC group is **n** = **18**, because starting from **k** = **18**, the next points repeat the first ones:
+ - **18** \* **G** = **0** \* **G** = _infinity_
+ - **19** \* **G** = **1** \* **G** = {15, 13}
+ - **20** \* **G** = **2** \* **G** = {2, 10}
+ - **21** \* **G** = **3** \* **G** = {8, 3}
+ - etc.
 
+### Multiplication of EC Points - Real-World Example in Python
 
+Now, let's write a **real-world example**. Instead of using our educational curve `p1707` (4-5-bit curve, p = 17), we shall use the cryptographic curve `secp192r1` (192-bit, p = 6277101735386680763835789423207666416083908700390324961279). The below example is similar to the previous:
+
+```py
+from tinyec import registry
+
+curve = registry.get_curve('secp192r1')
+print('curve:', curve)
+
+for k in range(0, 10):
+    p = k * curve.g
+    print(f"{k} * G = ({p.x}, {p.y})")
+
+print('Cyclic group order =', curve.field.n)
+
+nG = curve.field.n * curve.g
+print(f"n * G = ({nG.x}, {nG.y})")
+```
+
+The output is also similar to the previous example:
+
+```
+curve: "secp192r1" => y^2 = x^3 + 6277101735386680763835789423207666416083908700390324961276x + 2455155546008943817740293915197451784769108058161191238065 (mod 6277101735386680763835789423207666416083908700390324961279)
+0 * G = (None, None)
+1 * G = (602046282375688656758213480587526111916698976636884684818, 174050332293622031404857552280219410364023488927386650641)
+2 * G = (5369744403678710563432458361254544170966096384586764429448, 5429234379789071039750654906915254128254326554272718558123)
+3 * G = (2915109630280678890720206779706963455590627465886103135194, 2946626711558792003980654088990112021985937607003425539581)
+4 * G = (1305994880430903997305943738697779408316929565234787837114, 3981863977451150342116987835776121688410789618551673306674)
+5 * G = (410283251116784874018993562136566870110676706936762660240, 1206654674899825246688205669651974202006189255452737318561)
+6 * G = (4008504146453526025173196900303594155799995627910231899946, 3263759301305176906990806636587838100022690095020155627760)
+7 * G = (3473339081378406123852871299395262476289672479707038350589, 2152713176906603604200842901176476029776544337891569565621)
+8 * G = (1167950611014894512313033362696697441497340081390841490910, 4002177906111215127148483369584652296488769677804145538752)
+9 * G = (3176317450453705650283775811228493626776489433309636475023, 44601893774669384766793803854980115179612118075017062201)
+Cyclic group order = 6277101735386680763835789423176059013767194773182842284081
+n * G = (None, None)
+```
+
+We have a **cyclic group** of very large order **n** = 6277101735386680763835789423176059013767194773182842284081 and again **n** \* **G** = **_infinity_**, just like the previous example with our educational curve.
+
+Now, let's generate a random **private key** `privKey` (integer in the range [0...n-1]) and its corresponding **public key** `pubKey = privKey * G`:
+
+```py
+from tinyec import registry
+import secrets
+
+curve = registry.get_curve('secp192r1')
+
+privKey = secrets.randbelow(curve.field.n)
+pubKey = privKey * curve.g
+print("private key:", privKey)
+print("public key:", pubKey)
+```
+
+The above code will produce output like this:
+
+```
+private key: 4225655318977962031264230130242180748818603147467615868902
+public key: (5396030834456770190396776530938374882273836179487834152291, 3422160588166914010077732710830109086004758012634997793937) on "secp192r1" => y^2 = x^3 + 6277101735386680763835789423207666416083908700390324961276x + 2455155546008943817740293915197451784769108058161191238065 (mod 6277101735386680763835789423207666416083908700390324961279)
+```
 
 ### Public Key Compression in the Elliptic Key Cryptosystems
 
