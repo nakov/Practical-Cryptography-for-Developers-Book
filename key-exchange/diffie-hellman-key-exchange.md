@@ -63,9 +63,9 @@ The **Discrete Logarithm Problem (DLP)** in computer science is defined as follo
 
  - By given element **_b_** and value **_a_** = **_b_**<sup>**_x_**</sup> find the exponent **_x_** (if it exists)
  
-The exponent **_x_** is called **[discrete logarithm](https://en.wikipedia.org/wiki/Discrete_logarithm)**, i.e. **x** = _log_<sub>**b**</sub>(**a**). The elements **_a_** and **_b_** can be simple integers modulo **_p_** (from the [group ℤ/pℤ](https://en.wikipedia.org/wiki/Integers_modulo_n)) or elements of [Abelian group **G**](https://en.wikipedia.org/wiki/Abelian_group) modulo **_p_**.
+The exponent **_x_** is called **[discrete logarithm](https://en.wikipedia.org/wiki/Discrete_logarithm)**, i.e. **x** = _log_<sub>**b**</sub>(**a**). The elements **_a_** and **_b_** can be simple integers modulo **_p_** (from the [group ℤ/pℤ](https://en.wikipedia.org/wiki/Multiplicative_group_of_integers_modulo_n)) or elements of [finite cyclic multiplicative group **G**](https://en.wikipedia.org/wiki/Cyclic_group) (modulo **_p_**), where ****_p_**** is typically prime number.
 
-In cryptography, many algorithms rely on the **computational difficulty of the DLP problem**, for which no efficient algorithm exists (in the general case).
+In cryptography, many algorithms rely on the **computational difficulty of the DLP problem** over carefully chosen group, for which no efficient algorithm exists.
 
 ## The DHKE Protocol
 
