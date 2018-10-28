@@ -35,10 +35,10 @@ All these algorithms use a **curve** behind (like `secp256k1`, `curve25519` or `
 ## Elliptic Curves
 
 In mathematics **elliptic curves** are plane algebraic curves, consisting of all points {**_x_**, **_y_**}, described by the equation:
- - x<sup>2</sup> = y<sup>3</sup> + **_a_**x + **_b_**
+ - y<sup>2</sup> = x<sup>3</sup> + **_a_**x + **_b_**
 
 For example, the [NIST curve `secp256k1`](https://en.bitcoin.it/wiki/Secp256k1) (used in Bitcoin) is based on an elliptic curve in the form:
- - x<sup>2</sup> = y<sup>3</sup> + **_7_** (the general elliptic curve equation, where **_a_** = **0** and **_b_** = **7**)
+ - y<sup>2</sup> = x<sup>3</sup> + **_7_** (the general elliptic curve equation, where **_a_** = **0** and **_b_** = **7**)
 
 This is a visualization of the above elliptic curve:
 
@@ -51,10 +51,10 @@ To learn more about the equations of the elliptic curves and how they look like,
 ### Elliptic Curves over Finite Fields
 
 The **elliptic curve cryptography (ECC)** uses **elliptic curves over the [finite field](https://en.wikipedia.org/wiki/Finite_field) 𝔽<sub>p</sub>** (where **_p_** is prime and **_p_** > 3). This means that the field is a **square matrix** of size **_p_** x **_p_** and the points on the curve are limited to **integer coordinates** within the field only. All algebraic operations within the field (like point addition and multiplication) result in another point within the field. The elliptic curve equation over the finite field **𝔽<sub>p</sub>** takes the following modular form:
- - x<sup>2</sup> ≡ y<sup>3</sup> + **_a_**x + **_b_** (mod **_p_**)
+ - y<sup>2</sup> ≡ x<sup>3</sup> + **_a_**x + **_b_** (mod **_p_**)
 
 Respectively, the "Bitcoin curve" `secp256k1` takes the form:
-- x<sup>2</sup> ≡ y<sup>3</sup> + **_7_** (mod **_p_**)
+- y<sup>2</sup> ≡ x<sup>3</sup> + **_7_** (mod **_p_**)
 
 Unlike **RSA**, which uses for its key space the **integers** in the range [0...**_p_**-1] (the field ℤ<sub>p</sub>), the **ECC** uses the **points** {**_x_**, **_y_**} within the Galois field **𝔽<sub>p</sub>** (where **_x_** and **_y_** are integers in the range [0...**_p_**-1]).
 
@@ -267,11 +267,66 @@ Note that in real projects, **192-bit curves are considered weak**, so 256-bit c
 
 ### Public Key Compression in the Elliptic Key Cryptosystems
 
-...
+Elliptic curves over finite fields **𝔽<sub>p</sub>** have **at most 2 points per y coordinate** (odd **x** and even **x**). This property comes from the nature of the elliptic curve equation and is illustrated at the below graph:
 
-### Compressing a Public Key in Python
+![](/assets/elliptic-curve-over-f17-points-per-y-coordinate.png)
 
-...
+Due to this property, an elliptic curve point (EC point) **P** {**x**, **y**} can be **compressed** as **C** {**x**, **odd**/**even**). This means to erase its **y** coordinate and represent it as 1 bit (odd **y** or even **y**).
+
+**Compressed EC point** is an EC point {**x**, **y**} represented in its shorter form {**x**, **odd** / **even**}. ECC public keys are EC points, so they can also be compressed in the same way.
+
+To **decompress a point**, we can calculate its two possible **y** coordinates by the formulas:
+  - **y<sub>1</sub>** = mod_sqrt(x<sup>3</sup> + **a**x + **b**, **p**)
+  - **y<sub>2</sub>** = **p** - mod_sqrt(x<sup>3</sup> + **a**x + **b**, **p**)
+
+Then we take the **odd** or **even** from the above coordinates (according to the additional parity bit in the compressed representation).
+
+Let's take an **example**: at the elliptic curve y<sup>2</sup> ≡ x<sup>3</sup> + **_7_** (mod **17**) the point **P** {**10**, **15**} can be **compressed** as **C** {**10**, **odd**}. For **decompression**, we first calculate the two possible **y** coordinates for **x** = **10**: y<sub>1</sub> = 2 and y<sub>2</sub> = 15. Then we choose the **odd** one: **y** = **15**. The decompressed point is {**10**, **15**}.
+
+### Compressing a ECC Public Key - Example in Python
+
+The code below implements **public key compression** and **decompression** in Python. It uses a library called `nummaster` for the "**_modular square root_**" function, which is unavailable in Python. First install the `nummaster` package:
+
+```py
+pip install nummaster
+```
+
+Now implement the EC compression and decompression functions:
+
+```py
+from nummaster.basic import sqrtmod
+
+def compress_point(point):
+    return (point[0], point[1] % 2)
+
+def uncompress_point(compressed_point, p, a, b):
+    x, is_odd = compressed_point
+    y = sqrtmod(pow(x, 3, p) + a * x + b, p)
+    if bool(is_odd) == bool(y & 1):
+        return (x, y)
+    return (x, p - y)
+```
+
+Finally, compress and decompress the point {10, 15} on the curve y<sup>2</sup> ≡ x<sup>3</sup> + **_7_** (mod **17**), just as an example:
+
+```py
+p, a, b = 17, 0, 7
+point = (10, 15)
+print(f"original point = {point}")
+compressed_p = compress_point(point)
+print(f"compressed = {compressed_p}")
+restored_p = uncompress_point(compressed_p, p, a, b)
+print(f"uncompressed = {restored_p}")
+```
+
+The output of the above code is:
+
+```
+original point = (10, 15)
+compressed = (10, 1)
+uncompressed = (10, 15)
+```
+
 
 ### ECC Domain Parameters and the "secp256k1" Curve
 
