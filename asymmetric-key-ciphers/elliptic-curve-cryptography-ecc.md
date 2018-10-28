@@ -263,7 +263,7 @@ public key: (5396030834456770190396776530938374882273836179487834152291, 3422160
 
 Later we shall use such **pairs of ECC keys** {private key, public key} to encrypt data, sign messages and verify signatures.
 
-Note that in real projects, 192-bit curves are considered weak, so 256-bit curves are recommended (or more bits), where the keys are also 256-bits (or respectively more).
+Note that in real projects, **192-bit curves are considered weak**, so 256-bit curves are recommended (or more bits), where the keys are also 256-bits (or respectively more). We use 192-bit curve in the above example just to make the sample output smaller.
 
 ### Public Key Compression in the Elliptic Key Cryptosystems
 
