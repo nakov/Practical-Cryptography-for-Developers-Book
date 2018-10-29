@@ -330,11 +330,14 @@ uncompressed = (10, 15)
 ### Elliptic Curve Domain Parameters for ECC
 
 ECC elliptic curves are described by a set of elliptic curve **[domain parameters](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography#Domain_parameters)**, such as the curve equation parameters, the field parameters and the generator point coordinates. These parameters are specified in **cryptography standards**, such as:
-  - "[SEC 2: Recommended Elliptic Curve Domain Parameters](http://www.secg.org/sec2-v2.pdf)"
+  - [SEC 2: Recommended Elliptic Curve Domain Parameters](http://www.secg.org/sec2-v2.pdf)
   - [NIST FIPS PUB 186-4 Digital Signature Standard (DSS)](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf)
   - [Brainpool ECC Standard (RFC-5639)](https://tools.ietf.org/html/rfc5639)
   
-These standards define the parameters for a set of **named curves**, like `secp256k1`, `P-521` and `brainpoolP512t1`.
+These standards define the parameters for a set of **named curves**, such as `secp256k1`, `P-521` and `brainpoolP512t1`. The elliptic curves over finite fields, described in these crypto standards are well researched by cryptographers and are considered to have certain **security strength**, also declared in these standards.
+
+Some cryptographers (like [Daniel Bernstein](https://en.wikipedia.org/wiki/Daniel_J._Bernstein)) believe that most of the curves, described in the crypto-standards are "**unsafe**" and define their own **crypto-standards**, which considers **ECC security** in much broader level:
+  - **SafeCurves**: https://safecurves.cr.yp.to
 
 To use ECC all communicating parties should agree on the EC domain parameters (all the elements defining the elliptic curve) and usually a **named curve** is used.
 
