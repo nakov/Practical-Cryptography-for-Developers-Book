@@ -1,10 +1,12 @@
 ## ECDH Key Exchange \(Elliptic Curve Diffie–Hellman Key Exchange\)
 
-The [**ECDH**](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman) \(Elliptic Curve Diffie–Hellman Key Exchange\) is **anonymous key agreement scheme**, which allows two parties, each having an elliptic-curve public–private key pair, to establish a **shared secret** over an insecure channel. **ECDH** is very similar to the classical **DHKE** \(Diffie–Hellman Key Exchange\) algorithm, but it uses **ECC point multiplication** instead of **modular exponentiations**. ECDH is based on the following property of EC points:
+The [**ECDH**](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie–Hellman) \(Elliptic Curve Diffie–Hellman Key Exchange\) is **anonymous key agreement scheme**, which allows two parties, each having an elliptic-curve public–private key pair, to establish a **shared secret** over an insecure channel. **ECDH** is very similar to the classical **DHKE** \(Diffie–Hellman Key Exchange\) algorithm, but it uses **ECC point multiplication** instead of **modular exponentiations**. ECDH is based on the following property of EC points:
 
 * \(_**a**_ \* **G**\) \* _**b**_ = \(_**b**_ \* **G**\) \* _**a**_
 
-If we have two **secret numbers** _**a**_ and _**b**_ \(two **private keys**, belonging to Alice and Bob\) and an ECC elliptic curve with generator point **G**, we can exchange over an insecure channel the values \(_**a**_ \* **G**\) and \(_**b**_ \* **G**\) \(the **public keys** of Alice and Bob\) and then we can derive a shared secret: _**secret**_ = \(_**a**_ \* **G**\) \* _**b**_ = \(_**b**_ \* **G**\) \* _**a**_. Pretty simple.
+If we have two **secret numbers** _**a**_ and _**b**_ \(two **private keys**, belonging to Alice and Bob\) and an ECC elliptic curve with generator point **G**, we can exchange over an insecure channel the values \(_**a**_ \* **G**\) and \(_**b**_ \* **G**\) \(the **public keys** of Alice and Bob\) and then we can derive a shared secret: _**secret**_ = \(_**a**_ \* **G**\) \* _**b**_ = \(_**b**_ \* **G**\) \* _**a**_. Pretty simple. The above equation takes the following form:
+
+* alicePubKey \* bobPrivKey = bobPubKey \* alicePrivKey = _**secret**_
 
 The **ECDH** algorithm \(Elliptic Curve Diffie–Hellman Key Exchange\) is trivial:
 
@@ -53,7 +55,7 @@ print("Bob shared key:", compress(bobSharedKey))
 print("Equal shared keys:", aliceSharedKey == bobSharedKey)
 ```
 
-The **elliptic curve** used for the ECDH calculations is **256-bit** named curve `brainpoolP256r1`. The **private keys** are **256-bit** \(64 hex digits\) and are generated randomly. The **public keys** will be **257 bits** \(65 hex digits\), due to **key compression**. 
+The **elliptic curve** used for the ECDH calculations is **256-bit** named curve `brainpoolP256r1`. The **private keys** are **256-bit** \(64 hex digits\) and are generated randomly. The **public keys** will be **257 bits** \(65 hex digits\), due to **key compression**.
 
 The **output** of the above code looks like this:
 
