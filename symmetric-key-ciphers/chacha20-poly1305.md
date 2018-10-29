@@ -2,7 +2,7 @@
 
 **\[TODO\]**
 
-The **ChaCha20** stream cipher as well as the use  of the Poly1305 authenticator together with it for AEAD construction...
+The AEAD construction **ChaCha20-Poly1305** combines the **ChaCha20** stream cipher paired with the **Poly1305** authenticator...
 
 ## Chacha20-Poly1305 - Example in Python
 
