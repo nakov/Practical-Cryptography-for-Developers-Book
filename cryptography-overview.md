@@ -2,7 +2,7 @@
 
 **Cryptography** has evolved from its first attempts \(thousands years ago\), through the first successful cryptographic algorithms for developers \(like the now retired MD5 and DES\) to modern crypto algorithms \(like SHA-3, Argon2 and ChaCha20\).
 
-Let's first introduce the basic **cryptography concepts**, that developers should know, like cryptographic **hash functions** \(SHA-256, SHA3, RIPEMD and others\), **HMAC** \(hashed message authentication code\), password to **key derivation** functions \(like **Scrypt**\), the Diffie-Hellman key-exchange protocol, **symmetric key** encryption schemes \(like the **AES **cipher with CBC and CTR block modes\) and **asymmetric key** encryption schemes with public and private keys \(like the **RSA** cipher and elliptic curves-based cryptography / **ECC**, the secp256k1 curve and the Ed25519 cryptosystem\), **digital signatures** and **ECDSA**, as well as the concept of **entropy** and secure **random number** generation and **quantum-safe cryptography**.
+Let's first introduce very shortly the basic **cryptography concepts**, that developers should know, like cryptographic **hash functions** \(SHA-256, SHA3, RIPEMD and others\), **HMAC** \(hashed message authentication code\), password to **key derivation** functions \(like **Scrypt**\), the Diffie-Hellman key-exchange protocol, **symmetric key** encryption schemes \(like the **AES **cipher with CBC and CTR block modes\) and **asymmetric key** encryption schemes with public and private keys \(like the **RSA** cipher and elliptic curves-based cryptography / **ECC**, the secp256k1 curve and the Ed25519 cryptosystem\), **digital signatures** and **ECDSA**, as well as the concept of **entropy** and secure **random number** generation and **quantum-safe cryptography**.
 
 ## Encrypt / Decrypt Message - Live Demo
 
@@ -51,6 +51,4 @@ In cryptography the hashing, encryption algorithms and random generators follow 
 ## Cryptographic Libraries
 
 Developers should know the modern **cryptographic libraries** for their programming language and platform and how to use them. Developing with cryptography requires **understanding of the crypto-concepts**. Copy / pasting code from Internet or following an example from a blog may lead to insecure design and weak security. Cryptographic libraries are very useful, but you should **understand the concepts** first, then choose appropriate combination of algorithms and adjust carefully their parameters.
-
-
 

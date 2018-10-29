@@ -37,6 +37,8 @@
   * [AES Encrypt / Decrypt - Examples](symmetric-key-ciphers/aes-encrypt-decrypt-examples.md)
   * [Ethereum Wallet Encryption](symmetric-key-ciphers/ethereum-wallet-encryption.md)
   * [Exercises: AES Encrypt / Decrypt](symmetric-key-ciphers/exercises-aes-encrypt-decrypt.md)
+  * [ChaCha20-Poly1305](symmetric-key-ciphers/chacha20-poly1305.md)
+  * [Exercises: ChaCha20-Poly1305](symmetric-key-ciphers/exercises-chacha20-poly1305.md)
 * [Asymmetric Key Ciphers](asymmetric-key-ciphers.md)
   * [The RSA Cryptosystem - Concepts](asymmetric-key-ciphers/the-rsa-cryptosystem-concepts.md)
   * [RSA Encrypt / Decrypt - Examples](asymmetric-key-ciphers/rsa-encrypt-decrypt-examples.md)
