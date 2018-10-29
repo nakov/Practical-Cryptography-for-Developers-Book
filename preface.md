@@ -2,9 +2,7 @@
 
 ...
 
-
-
-Most books about cryptography are written either in too **academic style** with a lot of theory \(like http://cacr.uwaterloo.ca/hac/\).
+Most books about cryptography are written either in too **academic style** with a lot of theory \(like [http://cacr.uwaterloo.ca/hac/\](http://cacr.uwaterloo.ca/hac/\)\).
 
 ...
 
@@ -12,7 +10,7 @@ Others are too old: ...
 
 ...
 
-Crypto libraries come with limited and not consistently organized documentation, e.g. the Crypto++ Wiki \(https://www.cryptopp.com/wiki/Main\_page\).
+Crypto libraries come with limited and not consistently organized documentation, e.g. the Crypto++ Wiki \([https://www.cryptopp.com/wiki/Main\_page\](https://www.cryptopp.com/wiki/Main_page\)\).
 
 ...
 
@@ -25,4 +23,8 @@ The book author **Svetlin Nakov** is involved with applied cryptography from 200
 ...
 
 
+
+
+
+It is not required to be strong mathematician to understand the cryptographic concepts from developer perspective. This book will teach you the basic concepts is almost math-free style.
 

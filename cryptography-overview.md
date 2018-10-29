@@ -44,7 +44,13 @@ Cryptography provides **cryptographic hash functions** \(like SHA-3 and BLAKE2\)
 
 **Password hashing** and password to **key derivation functions** \(like Scrypt and Argon2\) protect user passwords and password encrypted documents and data by securely deriving a hash \(or key\) from a text-based passwords, injecting random parameters \(salt\) and using a lot of iterations and computing resources to make password cracking slow.
 
-## Confusion Diffusion
+## Confusion and Diffusion in Cryptography
 
-In cryptography the hashing, encryption algorithms and random generators should follow the Shannon's principles of[ confusion and diffusion](https://en.wikipedia.org/wiki/Confusion_and_diffusion). **Confusion **means that each bit in the output form a cipher should depend on several parts of the key and input data and thus direct mapping cannot be established. **Diffusion** means that changing one bit in the input should change approximately half of the bits in the output. These principles are true for most hash functions, MAC algorithms, random number generators, symmetric and asymmetric ciphers.
+In cryptography the hashing, encryption algorithms and random generators follow the Shannon's principles of[ confusion and diffusion](https://en.wikipedia.org/wiki/Confusion_and_diffusion). **Confusion **means that each bit in the output form a cipher should depend on several parts of the key and input data and thus direct mapping cannot be established. **Diffusion** means that changing one bit in the input should change approximately half of the bits in the output. These principles are incorporated in most hash functions, MAC algorithms, random number generators, symmetric and asymmetric ciphers.
+
+## Cryptographic Libraries
+
+Developers should know the modern **cryptographic libraries** for their programming language and platform and how to use them. Developing with cryptography requires **understanding of the crypto-concepts**. Copy / pasting code from Internet or following an example from a blog may lead to insecure design and weak security. Cryptographic libraries are very useful, but you should **understand the concepts** first, then choose appropriate combination of algorithms and adjust carefully their parameters.
+
+
 
