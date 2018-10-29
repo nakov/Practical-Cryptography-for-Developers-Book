@@ -1,8 +1,8 @@
 # Password Encryption: Encrypting User Passwords
 
-In software development we constantly use **password-based user authentication**. For example, if we have a Web site, we typically have admin panel, accessible after **login** \(based on **username** + **password**\).
+In software development we constantly use **password-based user authentication**. For example, if we have a Web site, we typically have admin panel, accessible after **login**, based on **username** + **password**.
 
-Developers often need to keep **user passwords** in the database. There are many ways to implement password-based authentication.
+Developers often need to keep **user passwords** in the database for their sites, apps or other systems. There are many ways to implement **password-based authentication**. Let's review them and discuss the good and bad practices.
 
 ## Clear-Text Passwords - Never Do Anti-Pattern
 
