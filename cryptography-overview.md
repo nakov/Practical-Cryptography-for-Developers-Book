@@ -14,11 +14,13 @@ We shall learn later that behind this simple **AES encryption**, there are **man
 
 # What is Cryptography?
 
-**Cryptography **is the science of providing **security **and **protection **of information. It is used everywhere in our digital world: when you open a Web site, send an email or connect to the WiFi network. What's why developers should have **at least basic understanding of cryptography** and how to use crypto algorithms and crypto libraries.
+**Cryptography **is the science of providing **security **and **protection **of information. It is used everywhere in our digital world: when you open a Web site, send an email or connect to the WiFi network. What's why developers should have **at least basic understanding of cryptography** and how to use crypto algorithms and crypto libraries, to understand hashing, symmetric and asymmetric ciphers and encryption schemes, as well as digital signatures and the cryptosystems and algorithms behind them.
 
 ## Encryption and Keys
 
-Cryptography deals with **storing and transmitting data in a secure way**, such that only those, for whom it is intended, can read and process it. This may involve **encrypting and decrypting data** using symmetric or asymmetric encryption schemes \(like AES and RSA\), where one or more **keys** are used to transform data from plain to encrypted form and back. **Symmetric encryption** uses the same key to encrypt and decrypt messages, while **asymmetric encryption** uses a key pair \(encryption key and corresponding decryption key\).
+Cryptography deals with **storing and transmitting data in a secure way**, such that only those, for whom it is intended, can read and process it. This may involve **encrypting and decrypting data** using symmetric or asymmetric encryption schemes , where one or more **keys** are used to transform data from plain to encrypted form and back.
+
+**Symmetric encryption** \(like AES, Twofish and ChaCha20\) uses the same key to encrypt and decrypt messages, while **asymmetric encryption** uses a **public-key cryptosystem** \(like RSA or ECC\) and a key-pair: private key \(encryption key\) and corresponding public key \(decryption key\). Encryption algorithms are often combined in encryption schemes \(like AES-256-CTR-HMAC-SHA-256, ChaCha20-Poly1305 or ECIES-AES-128-GCM\).
 
 Cryptography deals with **keys** \(large secret numbers\) and in many scenarios these **keys are derived **from numbers, passwords or passphrases using **key derivation algorithms** \(like PBKDF2 and Scrypt\).
 
@@ -26,7 +28,7 @@ Cryptography deals with **keys** \(large secret numbers\) and in many scenarios 
 
 Cryptography provides means of **digital signing of messages** which guarantee message authenticity, integrity and non-repudiation. Most digital signature algorithms \(like DSA, ECDSA and EdDSA\) use **asymmetric key pair** \(private and public key\): the message is **signed** by the private key and the signature is **verified** by the corresponding public key. In the bank systems **digital signatures **are used to sign and approve payments. In blockchain signed transactions allow users to transfer a blockchain asset from one address to another.
 
-Cryptography deals with **message authentication** and message authentication codes \(MAC codes\) to prove message authenticity, integrity and authorship. Authentication is used side by side with encryption, to ensure secure communication.Secure Random Numbers
+Cryptography deals with **message authentication** and message authentication codes \(MAC codes\) to prove message authenticity, integrity and authorship. Authentication is used side by side with encryption, to ensure secure communication.
 
 ## Secure Random Numbers
 
