@@ -149,5 +149,13 @@ decryptedMsg = decrypt_ECC(encryptedMsg, privKey)
 print("decrypted msg:", decryptedMsg)
 ```
 
+The output from the above code looks like this:
 
+```
+original msg: b'Text to be encrypted by ECC public key and decrypted by its corresponding ECC private key'
+encrypted msg: {'ciphertext': b'b5953b3082fcefdbde91dd3c03cf83dde0822c19be6ae906a634db65115295e7cbcd7a1a492d69ba5be91990c70d8df9dc84360cf554f155ef81ce1f0ad44bd9fdabbc5f960517089262b3390e61b37610012bee4e6bcae335', 'nonce': b'9d55f4b5c87fff773d0457f3b23a953e', 'authTag': b'5c9d339778925aa4e44f43252a28681d', 'ciphertextPubKey': '0x21dbc985b625f2a42d0f86fc234b49b55477928bae73dfac73bafd9bed50abe70'}
+decrypted msg: b'Text to be encrypted by ECC public key and decrypted by its corresponding ECC private key'
+```
+
+Enjoy the above example, play with it, try to understand how exactly it works, try to change the underlying ECC curve, try to change the symmetric encryption algorithm. Try to decrypt the ciphertext with wrong private key.
 
