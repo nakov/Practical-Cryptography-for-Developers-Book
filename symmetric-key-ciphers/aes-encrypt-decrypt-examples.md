@@ -27,12 +27,12 @@ import pyaes, pbkdf2, binascii, os, secrets
 
 # Derive a 256-bit AES encryption key from the password
 password = "s3cr3t*c0d3"
-passwordSalt = os.urandom(32)
+passwordSalt = os.urandom(16)
 key = pbkdf2.PBKDF2(password, passwordSalt).read(32)
 print('AES encryption key:', binascii.hexlify(key))
 ```
 
-The above code **derives a 256-bit key** using the **PBKDF2** key derivation algorithm from the password `s3cr3t*c0d3`. It uses a random password derivation **salt**. This salt should be stored in the output, together with the ciphertext, because without it the decryption key cannot be derived again and the decryption will be impossible.
+The above code **derives a 256-bit key** using the **PBKDF2** key derivation algorithm from the password `s3cr3t*c0d3`. It uses a random password derivation **salt** \(128-bit\). This salt should be stored in the output, together with the ciphertext, because without it the decryption key cannot be derived again and the decryption will be impossible.
 
 The output from the above code may look like this:
 
@@ -40,7 +40,7 @@ The output from the above code may look like this:
 AES encryption key: b'7625e224dc0f0ec91ad28c1ee67b1eb96d1a5459533c5c950f44aae1e32f2da3'
 ```
 
-The derived **key** consists of **64 hex digits** \(32 bytes\), which represents a 256-bit integer number. It will be different if you run the above code several times, because a random salt is used every time. If you use the same salt, the same key will be derived.
+The derived **key** consists of **64 hex digits** \(32 bytes\), which represents a **256-bit** integer number. It will be different if you run the above code several times, because a random salt is used every time. If you use the same salt, the same key will be derived.
 
 ## AES Encryption \(CTR Block Mode\)
 
@@ -49,7 +49,7 @@ Next, generate a **random 256-bit initial vector \(IV\)** for the AES CTR block 
 ```python
 # Encrypt the plaintext with the given key:
 #   ciphertext = AES-256-CTR-Encrypt(plaintext, key, iv)
-iv = secrets.randbelow(2 << 256)
+iv = secrets.randbits(256)
 plaintext = "Text for encryption"
 aes = pyaes.AESModeOfOperationCTR(key, pyaes.Counter(iv))
 ciphertext = aes.encrypt(plaintext)
@@ -103,3 +103,4 @@ Wrongly decrypted: b'\xe6!\n\x9a\xa9\x15\x12\xd9\xcb\x9cS\x86\xcc\xe1\x1d\x1a\x8
 ```
 
 Now it is your time to **play with the above code example**. Try to to encrypt and decrypt different messages, to change the input message, the key size, to hard-code the IV, the key and other parameters, switch to CBC mode, and see how the results change. Enjoy learning by playing.
+
