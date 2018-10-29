@@ -21,7 +21,7 @@
   * [Bcrypt](mac-and-key-derivation/bcrypt.md)
   * [Linux crypt\(\)](mac-and-key-derivation/linux-crypt.md)
   * [Argon2](mac-and-key-derivation/argon2.md)
-  * [Exercises: Scrypt Key Derivation](mac-and-key-derivation/exercises-scrypt-key-derivation.md)
+  * [Password Encryption](mac-and-key-derivation/password-encryption.md)
 * [Secure Random Generators](secure-random-generators.md)
   * [Pseudo-Random Numbers - Examples](secure-random-generators/pseudo-random-numbers-examples.md)
   * [Secure Random Generators \(CSPRNG\)](secure-random-generators/secure-random-generators-csprng.md)
