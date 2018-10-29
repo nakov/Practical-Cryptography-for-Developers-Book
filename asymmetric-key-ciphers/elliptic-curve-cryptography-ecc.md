@@ -100,7 +100,7 @@ The below figure visualizes this example of EC point multiplication:
 
 ### The "Generator" Point in ECC
 
-For the elliptic curves over finite fields ECC cryptosystems define a special pre-defined (constant) point called **[generator point G](https://en.wikipedia.org/wiki/Generating_set_of_a_group)**, which can **generate any other point** over the elliptic curve by multiplying **G** by some integer in the range [0...**n**]. The number **n** is called "**order**" of the cyclic group, defined by the EC.
+For the elliptic curves over finite fields ECC cryptosystems define a special pre-defined (constant) point called **[generator point G](https://en.wikipedia.org/wiki/Generating_set_of_a_group)**, which can **generate any other point** over the elliptic curve by multiplying **G** by some integer in the range [0...**n**]. The number **n** is called "**order**" of the cyclic group (the total number of different points over the curve), defined by the EC.
 
 In ECC cryptography the EC points form a **[cyclic group](https://en.wikipedia.org/wiki/Cyclic_group)**, which means that a number **n** exists (**n** > 1), such that **n** \* **G** = **_infinity_**. All possible EC points over the curve, that can be generated from **G** are **n** (including the special point _infinity_).
 
@@ -327,9 +327,23 @@ compressed = (10, 1)
 uncompressed = (10, 15)
 ```
 
-### ECC Domain Parameters and the "secp256k1" Curve
+### Elliptic Curve Domain Parameters for ECC
 
-In cryptography, elliptic curves over **_Fp_** are used, where the modulus **_p_** is very large prime, e.g. 256-bit number. The field of the curve is of size **p** x **p**, which is incredibly large.
+ECC elliptic curves are described by a set of elliptic curve **[domain parameters](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography#Domain_parameters)**, such as the curve equation parameters, the field parameters and the generator point coordinates. These parameters are specified in **cryptography standards**, such as:
+  - "[SEC 2: Recommended Elliptic Curve Domain Parameters](http://www.secg.org/sec2-v2.pdf)"
+  - [NIST FIPS PUB 186-4 Digital Signature Standard (DSS)](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf)
+  - [Brainpool ECC Standard (RFC-5639)](https://tools.ietf.org/html/rfc5639)
+  
+These standards define the parameters for a set of **named curves**, like `secp256k1`, `P-521` and `brainpoolP512t1`.
+
+To use ECC all communicating parties should agree on the EC domain parameters (all the elements defining the elliptic curve) and usually a **named curve** is used.
+
+
+
+
+In cryptography, **elliptic curves over the finite fields** are used, where the modulus **_p_** is very large integer (prime number for the most curves), e.g. **256-bit** number. The **finite field** of the curve is of square form of size **p** x **p**, which is incredibly large, and all possible EC points on the curve (the order of the curve **_n_**) is also a very big integer, e.g. 256-bit.
+
+We already know that a 256-bit curve (which means that **_p_** and **n** are 256-bit numbers) provides 128-bit **security strength**, which means that to find the private key from the public key or signature, the best known non-quantum algorithm will take approximately 2<sup>128</sup> operations.
 
 ...
 
