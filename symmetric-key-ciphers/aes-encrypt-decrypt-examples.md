@@ -1,6 +1,6 @@
 # AES Encryption / Decryption - Examples in Python
 
-Let's illustrate the **AES encryption** and **AES decryption** concepts through working **source code** in Python. The example below will illustrate a **password-based AES encryption**, without message authentication.
+Let's illustrate the **AES encryption** and **AES decryption** concepts through working **source code** in Python. The example below will illustrate a **password-based AES encryption**, without message authentication \(**unauthenticated encryption**\).
 
 ## Install Python Libraries pyaes and pbkdf2
 
