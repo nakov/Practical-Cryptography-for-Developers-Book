@@ -334,17 +334,28 @@ ECC elliptic curves are described by a set of elliptic curve **[domain parameter
   - [NIST FIPS PUB 186-4 Digital Signature Standard (DSS)](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf)
   - [Brainpool ECC Standard (RFC-5639)](https://tools.ietf.org/html/rfc5639)
   
-These standards define the parameters for a set of **named curves**, such as `secp256k1`, `P-521` and `brainpoolP512t1`. The elliptic curves over finite fields, described in these crypto standards are well researched by cryptographers and are considered to have certain **security strength**, also declared in these standards.
+These standards define the parameters for a set of **named curves**, such as `secp256k1`, `P-521` and `brainpoolP512t1`. The elliptic curves over finite fields, described in these crypto standards are well researched and analysed by cryptographers and are considered to have certain **security strength**, also described in these standards.
 
-Some cryptographers (like [Daniel Bernstein](https://en.wikipedia.org/wiki/Daniel_J._Bernstein)) believe that most of the curves, described in the crypto-standards are "**unsafe**" and define their own **crypto-standards**, which considers **ECC security** in much broader level:
-  - **SafeCurves**: https://safecurves.cr.yp.to
+Some cryptographers (like [Daniel Bernstein](https://en.wikipedia.org/wiki/Daniel_J._Bernstein)) believe that most of the curves, described in the official crypto-standards are "**unsafe**" and define their own **crypto-standards**, which consider the **ECC security** in much broader level.
 
-To use ECC all communicating parties should agree on the EC domain parameters (all the elements defining the elliptic curve) and usually a **named curve** is used.
+The Bernstein's **[SafeCurves](https://safecurves.cr.yp.to)** standard lists the curves, which are **safe** according to a set of ECC security requirements. The standard is available at https://safecurves.cr.yp.to.
 
+### Choosing an Elliptic Curve for ECC
 
+To use ECC all communicating parties should agree on the EC domain parameters (all the elements defining the elliptic curve). It is highly **recommended** to use a **named curve** from the above standards with **at least 256-bit** modulus. Standard curves are well studied by cryptographers to guarantee their security strength.
 
+**Don't use own elliptic curve** (with non-standard domain parameters), unless you are experienced cryptographer and you know very well what are you doing! Many curves have **weaknesses**, which make the ECDLP problem not so difficult and compromise the security. If you are afraid of backdoored curves, use a standard curve from the [SafeCurves list](https://safecurves.cr.yp.to).
 
-In cryptography, **elliptic curves over the finite fields** are used, where the modulus **_p_** is very large integer (prime number for the most curves), e.g. **256-bit** number. The **finite field** of the curve is of square form of size **p** x **p**, which is incredibly large, and all possible EC points on the curve (the order of the curve **_n_**) is also a very big integer, e.g. 256-bit.
+### Named Curves - Examples
+
+In ECC cryptography, **elliptic curves over the finite fields** are used, where the modulus **_p_** is very large integer (prime number for the most curves), e.g. **256-bit** number. The **finite field** of the curve is of square form of size **p** x **p**, which is incredibly large, and all possible EC points on the curve (the order of the curve **_n_**) is also a very big integer, e.g. 256-bit. For example, the **domain parameters** for the curves `secp256k1` (the Bitcoin curve) are defined as follows:
+
+  - **_p_** (modulus) = `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F`
+  - **_n_** (order; count of all possible EC points) = `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`
+  - **_a_** (the constant "a" in y^2 ≡ x^3 + a*x + b (mod p)) = `0x0000000000000000000000000000000000000000000000000000000000000000`
+  - **_b_** (the constant "b" in y^2 ≡ x^3 + a*x + b (mod p)) = `0x0000000000000000000000000000000000000000000000000000000000000007`
+  - **_g_** (the curve generator point G) = (`0x79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798`, `0x483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8`)
+
 
 We already know that a 256-bit curve (which means that **_p_** and **n** are 256-bit numbers) provides 128-bit **security strength**, which means that to find the private key from the public key or signature, the best known non-quantum algorithm will take approximately 2<sup>128</sup> operations.
 
