@@ -1,10 +1,10 @@
 # MAC Codes and Key Derivation Functions
 
-**Message authentication codes** (**MAC**), **HMAC** (hash-based message authentication code) and **KDF** (key derivation functions) play important role in cryptography. Let's explain when we need **MAC**, how to calculate **HMAC** and how it is related to key derivation functions.
+**Message authentication codes** \(**MAC**\), **HMAC** \(hash-based message authentication code\) and **KDF** \(key derivation functions\) play important role in cryptography. Let's explain when we need **MAC**, how to calculate **HMAC** and how it is related to key derivation functions.
 
 ## Message Authentication Code \(MAC\)
 
-**M**essage **A**uthentication **C**ode (**MAC**) is cryptographic code, calculated by given **key** and given **message**:
+**M**essage **A**uthentication **C**ode \(**MAC**\) is cryptographic code, calculated by given **key** and given **message**:
 
 ```
 auth_code = MAC(key, msg)
@@ -16,7 +16,7 @@ The MAC code is **digital authenticity code**, like a **digital signature**, but
 
 ## MAC Algorithms
 
-Many **algorithms** for calculating message authentication codes \(MAC\) exist in modern cryptography. The most popular are based on **hashing** algorithms, like [**HMAC**](https://en.wikipedia.org/wiki/HMAC) \(Hash-based MAC, e.g. HMAC-SHA256\) and [**KMAC**](https://www.cryptosys.net/manapi/api_kmac.html) \(Keccak-based MAC\). Others are based on **symmetric ciphers**, like [**CMAC**](https://en.wikipedia.org/wiki/One-key_MAC) \(Cipher-based MAC\), [**GMAC**](https://en.wikipedia.org/wiki/Galois/Counter_Mode) \(Galois MAC\) and [**Poly1305**](https://en.wikipedia.org/wiki/Poly1305) \(Bernstein's one-time authenticator\). Other MAC algorithms include [**UMAC**](https://en.wikipedia.org/wiki/UMAC) \(based on universal hashing\) and [**SipHash**](https://en.wikipedia.org/wiki/SipHash) \(simple, fast, secure MAC\).
+Many **algorithms** for calculating message authentication codes \(MAC\) exist in modern cryptography. The most popular are based on **hashing** algorithms, like [**HMAC**](https://en.wikipedia.org/wiki/HMAC) \(Hash-based MAC, e.g. HMAC-SHA256\) and [**KMAC**](https://www.cryptosys.net/manapi/api_kmac.html) \(Keccak-based MAC\). Others are based on **symmetric ciphers**, like [**CMAC**](https://en.wikipedia.org/wiki/One-key_MAC) \(Cipher-based MAC\), [**GMAC**](https://en.wikipedia.org/wiki/Galois/Counter_Mode) \(Galois MAC\) and [**Poly1305**](https://en.wikipedia.org/wiki/Poly1305) \(Bernstein's one-time authenticator\). Other MAC algorithms include [**UMAC**](https://en.wikipedia.org/wiki/UMAC) \(based on universal hashing\), [**VMAC**](https://en.wikipedia.org/wiki/VMAC) \(high-performance block cipher-based MAC\) and [**SipHash**](https://en.wikipedia.org/wiki/SipHash) \(simple, fast, secure MAC\).
 
 ## When We Need MAC Codes?
 
