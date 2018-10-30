@@ -33,7 +33,7 @@ This is what exactly the above two functions calculate.
 
 ## ECC-Based Secret Key Derivation - Example in Python
 
-The below Python code uses the `tinyec` library to calculate **ECC private-public key pair** \(based on the `brainpoolP256r1` curve\) and then derive a **secret key** from the ECC **public key** \(for encryption\) and later derive the same **secret key** \(for decryption\) from the **private key** and the generated for the encryption **ciphertext public key**:
+The below Python code uses the `tinyec` library to generate a **ECC private-public key pair** \(based on the `brainpoolP256r1` curve\) and then derive a **secret key** \(for encryption\) from the ECC **public key **and later derive the same **secret key** \(for decryption\) from the **private key** and the generated earlier **ciphertext public key**:
 
 ```py
 from tinyec import registry
@@ -67,17 +67,17 @@ decryptKey = ecc_calc_decryption_key(privKey, ciphertextPubKey)
 print("decryption key:", compress_point(decryptKey))
 ```
 
-The code is really simple and demonstrates that we can generate a pair { **secret key** + **cipher public key** } from given **public key** and later we can recover the **secret key** from the pair { **cipher public key** + **private key** }. The above code produces output like this:
+The code is pretty simple and demonstrates that we can generate a pair { **secret key** + **cipher public key** } from given **public key** and later we can recover the **secret key** from the pair { **cipher public key** + **private key** }. The above code produces output like this:
 
 ```
-private key: 0x935b43dc91b5f85ef13c13d0530205b6417039565c376a183bf422d84f460c0e
-public key: 0x8eab50f3bc65c9a10ccba9451c5dcac51f330f582bb99666137094d01087257f1
-ciphertext pubKey: 0x84058e1feef2db10ddb82377277488ed6e5f0e6b6c59fd4b254896e7ffee99100
-encryption key: 0x2897fc0218c0f2ae06769645833b34d54fb356ee4a7a1d2e5031fddb11de7c991
-decryption key: 0x2897fc0218c0f2ae06769645833b34d54fb356ee4a7a1d2e5031fddb11de7c991
+private key: 0x2e2921b4cde59cdf01e7a014a322abd530b3015085c31cb6e59502da761d29e9
+public key: 0x850d3873cf4ac50ddb54ddbd27f8225fc43bd3f4c2cc0a4f9d1f9ce15fc4eb711
+ciphertext pubKey: 0x71586f9999d3ee050005054bc681c1d96c5eb054ca15b080ba245e495627003b0
+encryption key: 0x9d13d3f8f9747669432f575731926b5ed99a6883f00146cbd3203ffa7ff8b1ae1
+decryption key: 0x9d13d3f8f9747669432f575731926b5ed99a6883f00146cbd3203ffa7ff8b1ae1
 ```
 
-It is clear that the **encryption key** \(derived from the public key\) and the **decryption key** \(derived from the corresponding private key\) **are the same**. This is due to the above discussed property of the ECC: pubKey \* ciphertextPrivKey = ciphertextPubKey \* privKey.
+It is clear that the **encryption key** \(derived from the public key\) and the **decryption key** \(derived from the corresponding private key\) **are the same**. This is due to the above discussed property of the ECC: pubKey \* ciphertextPrivKey = ciphertextPubKey \* privKey. These keys will be used for encryption and decryption in an integrated encryption scheme.
 
 ## ECC-Based Hybrid Encryption / Decryption - Example in Python
 
@@ -90,7 +90,7 @@ pip install tinyec
 pip install pycryptodome
 ```
 
-Let's play with this full **ECC + AES hybrid encryption**:
+Let's play with this full **ECC + AES hybrid encryption** example:
 
 ```py
 from tinyec import registry
@@ -147,6 +147,16 @@ print("encrypted msg:", encryptedMsgObj)
 decryptedMsg = decrypt_ECC(encryptedMsg, privKey)
 print("decrypted msg:", decryptedMsg)
 ```
+
+It starts from generating the ECC public and private key **key pair**: `pubKey` + `privKey`, using the `tinyec` library. These keys will be used to encrypt the message `msg` through the hybrid encryption scheme \(asymmetric ECC + symmetric AES\).
+
+Next, we encrypt `msg` by using the `pubKey` and we obtain as a result the following set of output: { `ciphertext`, `nonce`, `authTag`, `ciphertextPubKey` }. The `ciphertext` is obtained by the symmetric AES-GCM encryption, along with the `nonce` \(random AES initialization vector\) and authTag \(the MAC code of the encrypted text, obtained by the GCM block mode\). Additionally, we obtain a randomly generated `ciphertextPubKey`, which will be used to recover the AES symmetric key during the decryption.
+
+To decrypt the encrypted message, we use the data produces during the encryption { `ciphertext`, `nonce`, `authTag`, `ciphertextPubKey` }, along with the decryption `privateKey`. The result is the decrypted plaintext message. We use authenticated encryption \(GCM block mode\), so if the decryption key or some other parameter is incorrect, the decryption will fail with an exception.
+
+Internally, the `encrypt_ECC(msg, pubKey)` function first generates an ECC key-pair for the ciphertext and calculates the symmetric encryption ECC key `sharedECCKey = ciphertextPrivKey * pubKey` \(it is an EC point\). It is then transformed from ECC point to 256-bit AES secret key though hashing the `x` and `y` coordinates. Finally, the AES-256-GCM cipher \(from `pycryptodome`\) encrypts the message by the 256-bit shared secret key `secretKey` and produces `ciphertext` + `nonce` + `authTag`.
+
+The `decrypt_ECC(encryptedMsg{ciphertext, nonce, authTag, ciphertextPubKey}, privKey)` function internally first calculates the symmetric encryption ECC key `sharedECCKey = privKey * ciphertextPubKey` \(it is an EC point\). It is then transformed from ECC point to 256-bit AES secret key though hashing the `x` and `y` coordinates. Then the AES-256-GCM cipher is used to decrypt the `ciphertext` + `nonce` + `authTag` by the 256-bit shared secret key `secretKey`. The produces output is the original plaintext message \(or an exception in case of incorrect decryption key or unmatching `authTag`\).
 
 The output from the above code looks like this:
 
