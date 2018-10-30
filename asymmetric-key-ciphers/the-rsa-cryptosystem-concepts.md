@@ -1,6 +1,6 @@
 # The RSA Cryptosystem - Concepts
 
-The [**RSA cryptosystem**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29) is one of the first **public-key cryptosystems**, based on the math of the [**modular exponentiations**](https://en.wikipedia.org/wiki/Modular_exponentiation) and the computational difficulty of the [**RSA problem**](https://en.wikipedia.org/wiki/RSA_problem) and the closely related [**integer factorization problem**](https://en.wikipedia.org/wiki/Integer_factorization). The RSA algorithm is named after the initial letters of its authors \(**R**ivest–**S**hamir–**A**dleman\) and is widely used in the early ages of computer cryptography.
+The [**RSA cryptosystem**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29) is one of the first **public-key cryptosystems**, based on the math of the [**modular exponentiations**](https://en.wikipedia.org/wiki/Modular_exponentiation) and the computational difficulty of the [**RSA problem**](https://en.wikipedia.org/wiki/RSA_problem) and the closely related [**integer factorization problem** (**IFP**)](https://en.wikipedia.org/wiki/Integer_factorization). The RSA algorithm is named after the initial letters of its authors \(**R**ivest–**S**hamir–**A**dleman\) and is widely used in the early ages of computer cryptography.
 
 Later, when **ECC** cryptography evolved, the **ECC** slowly became dominant in the asymmetric cryptosystems, because of its higher security and shorter key lengths than **RSA**.
 
@@ -9,7 +9,7 @@ The **RSA** algorithm provides:
 * **Key-pair generation**: generate random **private key** \(typically of size 1024-4096 bits\) and corresponding **public key**.
 * **Encryption**: **encrypt** a secret message \(integer in the range \[0...key\_length\]\) using the public key and **decrypt** it back using the secret key.
 * **Digital signatures**: **sign** messages \(using the private key\) and **verify** message signature \(using the public key\).
-* **Key agreement**: securely exchange a secret key, used for encrypted communication later.
+* **Key exchange**: securely transport a secret key, used for encrypted communication later.
 
 RSA can work with keys of different **keys of length**: 1024, 2048, 3072, 4096, 8129, 16384 or even more bits. Key length of 3072-bits and above are considered **secure**. Longer keys provide higher security but consume **more computing time**, so there is a tradeoff between security and speed.
 
