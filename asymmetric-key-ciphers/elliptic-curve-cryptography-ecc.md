@@ -34,11 +34,15 @@ All these algorithms use a **curve** behind (like `secp256k1`, `curve25519` or `
 
 ## Elliptic Curves
 
-In mathematics **elliptic curves** are plane algebraic curves, consisting of all points {**_x_**, **_y_**}, described by the equation:
+In mathematics **[elliptic curves](http://mathworld.wolfram.com/EllipticCurve.html)** are plane algebraic curves, consisting of all points {**_x_**, **_y_**}, described by the equation:
+
+![](/assets/elliptic-curve-general-case.png)
+
+Cryptography uses **elliptic curves** in a simplified from:
  - y<sup>2</sup> = x<sup>3</sup> + **_a_**x + **_b_**
 
 For example, the [NIST curve `secp256k1`](https://en.bitcoin.it/wiki/Secp256k1) (used in Bitcoin) is based on an elliptic curve in the form:
- - y<sup>2</sup> = x<sup>3</sup> + **_7_** (the general elliptic curve equation, where **_a_** = **0** and **_b_** = **7**)
+ - y<sup>2</sup> = x<sup>3</sup> + **_7_** (the above elliptic curve equation, where **_a_** = **0** and **_b_** = **7**)
 
 This is a visualization of the above elliptic curve:
 
