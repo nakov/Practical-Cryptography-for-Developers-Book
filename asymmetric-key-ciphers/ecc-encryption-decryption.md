@@ -168,3 +168,9 @@ decrypted msg: b'Text to be encrypted by ECC public key and decrypted by its cor
 
 Enjoy the above example, play with it, try to understand how exactly it works, try to change the underlying ECC curve, try to change the symmetric encryption algorithm. Try to decrypt the ciphertext with wrong private key.
 
+## ECIES \(Elliptic Curve Integrated Encryption Scheme\)
+
+A hybrid encryption scheme similar to the above demonstrated code is standardised under the name **Elliptic Curve Integrated Encryption Scheme** \(**ECIES**\). ECIES ...
+
+
+
