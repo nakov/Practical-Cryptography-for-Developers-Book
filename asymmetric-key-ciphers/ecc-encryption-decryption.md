@@ -170,7 +170,11 @@ Enjoy the above example, play with it, try to understand how exactly it works, t
 
 ## ECIES \(Elliptic Curve Integrated Encryption Scheme\)
 
-A hybrid encryption scheme similar to the above demonstrated code is standardised under the name **Elliptic Curve Integrated Encryption Scheme** \(**ECIES**\). ECIES ...
+A hybrid encryption scheme similar to the above demonstrated code is standardised under the name **Elliptic Curve Integrated Encryption Scheme** \(**ECIES**\). ECIES combines ECC-based **asymmetric cryptography** with **symmetric ciphers** to provide data encryption by private key and decryption by its public key.
+
+
+
+
 
 
 

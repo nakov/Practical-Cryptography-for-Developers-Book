@@ -289,7 +289,9 @@ To **decompress a point**, we can calculate its two possible **y** coordinates b
 
 Then we take the **odd** or **even** from the above coordinates (according to the additional parity bit in the compressed representation).
 
-Let's take an **example**: at the elliptic curve y<sup>2</sup> ≡ x<sup>3</sup> + **_7_** (mod **17**) the point **P** {**10**, **15**} can be **compressed** as **C** {**10**, **odd**}. For **decompression**, we first calculate the two possible **y** coordinates for **x** = **10**: y<sub>1</sub> = 2 and y<sub>2</sub> = 15. Then we choose the **odd** one: **y** = **15**. The decompressed point is {**10**, **15**}.
+The **modular square root** (mod_sqrt) can be calculated using the [Tonelli–Shanks algorithm](https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm).
+
+Let's take an **example**: at the elliptic curve y<sup>2</sup> ≡ x<sup>3</sup> + **_7_** (mod **17**) the point **P** {**10**, **15**} can be **compressed** as **C** {**10**, **odd**}. For **decompression**, we first calculate the two possible **y** coordinates for **x** = **10** using the above formulas: y<sub>1</sub> = 2 and y<sub>2</sub> = 15. Then we choose the **odd** one: **y** = **15**. The decompressed point is {**10**, **15**}.
 
 ### Compressing a EC Point / Public Key - Example in Python
 
