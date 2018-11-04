@@ -186,10 +186,10 @@ The ECIES encryption scheme is a **framework**, not a concrete algorithm. It can
 
 ## ECIES \(Elliptic Curve Integrated Encryption Scheme\) - Example
 
-Now, let's demonstrate how the **ECIES encryption scheme** works in practice in **Python**. We shall use a Python library `ecies`:
+Now, let's demonstrate how the **ECIES encryption scheme** works in practice in **Python**. We shall use a Python library [`eciespy`](https://kigawas.me/eciespy/):
 
 ```py
-pip install ecies
+pip install eciespy
 ```
 
 Now, the Python code to generate public / private key pair and encrypt and decrypt a message is:
