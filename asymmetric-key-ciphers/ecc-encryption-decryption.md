@@ -1,25 +1,25 @@
 # ECC-Based Encryption / Decryption
 
-Assume we have a ECC **private-public key pair**. Asymmetric encryption says, that if we **encrypt data by ECC private key**, we will be able to **decrypt** the ciphertext later by the corresponding **public key**:
+Assume we have a ECC **private-public key pair**. We want to encrypt and decrypt data using these keys. By definition, **asymmetric encryption** works as follows: if we **encrypt data by a private key**, we will be able to **decrypt** the ciphertext later by the corresponding **public key**:
 
 ![](/assets/asymmetric-encryption-diagram.png)
 
-The above process can be directly applied for the **RSA** cryptosystem, but not for **ECC**. The elliptic curve cryptography \(ECC\) **does not directly provide encryption** method. Instead, we can use the **ECDH** \(Elliptic Curve Diffie–Hellman\) key exchange scheme to derive a **shared secret key** for symmetric data encryption and decryption. Let's get into details how to do this.
+The above process can be directly applied for the **RSA** cryptosystem, but not for the **ECC**. The elliptic curve cryptography \(ECC\) **does not directly provide encryption** method. Instead, we can design a **hybrid encryption scheme** by using the **ECDH** \(Elliptic Curve Diffie–Hellman\) key exchange scheme to derive a **shared secret key** for symmetric data encryption and decryption. Let's get into details how to do this.
 
 ## ECC-Based Secret Key Derivation
 
 Assume we have a **cryptographic elliptic curve** over finite field, along with its generator point **G**. We can use the following two functions to calculate a **shared a secret key** for **encryption** and **decryption**:
 
 * **calculateEncryptionKey**\(pubKey\) --&gt; \(sharedECCKey, ciphertextPubKey\)
-  1. Generate **ciphertextPrivKey** = _new random private key_.
+  1. Generate **ciphertextPrivKey** = _new **random** private key_.
   2. Calculate **ciphertextPubKey** = ciphertextPrivKey \* G.
   3. Calculate the ECDH shared secret: **sharedECCKey** = pubKey \* ciphertextPrivKey.
-  4. Return both the **sharedECCKey** + **ciphertextPubKey**. Use the **sharedECCKey** for symmetric encryption. Use the randomly generated **ciphertextPubKey** to calculate the decryption key.
+  4. Return both the **sharedECCKey** + **ciphertextPubKey**. Use the **sharedECCKey** for symmetric encryption. Use the randomly generated **ciphertextPubKey** to calculate the decryption key later.
 * **calculateDecryptionKey**\(privKey, ciphertextPubKey\) --&gt; sharedECCKey
   1. Calculate the the ECDH shared secret: **sharedECCKey** = ciphertextPubKey \* privKey.
   2. Return the **sharedECCKey** and use it for the decryption.
 
-The above calculations use the same math, like the **ECDH** algorithm. Recall that EC points have the following property:
+The above calculations use the same math, like the **ECDH** algorithm \(see the [previous section](/asymmetric-key-ciphers/ecdh-key-exchange.md)\). Recall that EC points have the following property:
 
 * \(_**a**_ \* **G**\) \* _**b**_ = \(_**b**_ \* **G**\) \* _**a**_
 
@@ -29,7 +29,7 @@ The above equation takes the following form:
 
 * pubKey \* ciphertextPrivKey = ciphertextPubKey \* privKey = **sharedECCKey**
 
-This is what exactly the above two functions calculate.
+This is what exactly the above two functions calculate, directly following the **ECDH key agreement** scheme.
 
 ## ECC-Based Secret Key Derivation - Example in Python
 
@@ -67,7 +67,7 @@ decryptKey = ecc_calc_decryption_key(privKey, ciphertextPubKey)
 print("decryption key:", compress_point(decryptKey))
 ```
 
-The code is pretty simple and demonstrates that we can generate a pair { **secret key** + **cipher public key** } from given **public key** and later we can recover the **secret key** from the pair { **cipher public key** + **private key** }. The above code produces output like this:
+The code is pretty simple and demonstrates that we can generate a pair { **secret key** + **ciphertext public key** } from given **public key** and later we can recover the **secret key** from the pair { **ciphertext public key** + **private key** }. The above code produces output like this:
 
 ```
 private key: 0x2e2921b4cde59cdf01e7a014a322abd530b3015085c31cb6e59502da761d29e9
@@ -77,20 +77,20 @@ encryption key: 0x9d13d3f8f9747669432f575731926b5ed99a6883f00146cbd3203ffa7ff8b1
 decryption key: 0x9d13d3f8f9747669432f575731926b5ed99a6883f00146cbd3203ffa7ff8b1ae1
 ```
 
-It is clear that the **encryption key** \(derived from the public key\) and the **decryption key** \(derived from the corresponding private key\) **are the same**. This is due to the above discussed property of the ECC: pubKey \* ciphertextPrivKey = ciphertextPubKey \* privKey. These keys will be used for encryption and decryption in an integrated encryption scheme.
+It is clear that the **encryption key** \(derived from the public key\) and the **decryption key** \(derived from the corresponding private key\) **are the same**. This is due to the above discussed property of the ECC: `pubKey * ciphertextPrivKey = ciphertextPubKey * privKey`. These keys will be used for encryption and decryption in an integrated encryption scheme. The above output will be different if you run the code \(due to the randomness used to generate `ciphertextPrivKey`, but the encryption and decryption keys will always be the same \(the ECDH shared secret\).
 
 ## ECC-Based Hybrid Encryption / Decryption - Example in Python
 
 Once we have the **secret key**, we can use it for **symmetric data encryption**, using a symmetric encryption scheme like AES-GCM or ChaCha20-Poly1305. Let's implement a fully-functional **asymmetric ECC encryption and decryption** hybrid scheme. It will be based on the `brainpoolP256r1` curve and the **AES-256-GCM** authenticated symmetric cipher.
 
-We shall use the `tinyec` and `pycryptodome` Python libraries:
+We shall use the `tinyec` and `pycryptodome` Python libraries respectively for ECC calculations and for the AES cipher:
 
 ```
 pip install tinyec
 pip install pycryptodome
 ```
 
-Let's play with this full **ECC + AES hybrid encryption** example:
+Let's examine this full **ECC + AES hybrid encryption** example:
 
 ```py
 from tinyec import registry
@@ -148,15 +148,15 @@ decryptedMsg = decrypt_ECC(encryptedMsg, privKey)
 print("decrypted msg:", decryptedMsg)
 ```
 
-It starts from generating the ECC public and private key **key pair**: `pubKey` + `privKey`, using the `tinyec` library. These keys will be used to encrypt the message `msg` through the hybrid encryption scheme \(asymmetric ECC + symmetric AES\).
+The above example starts from generating an ECC public and private key **key pair**: `pubKey` + `privKey`, using the `tinyec` library. These keys will be used to **encrypt** the message `msg` through the hybrid encryption scheme \(asymmetric ECC + symmetric AES\) and to **decrypt** is later back to its original form.
 
-Next, we encrypt `msg` by using the `pubKey` and we obtain as a result the following set of output: { `ciphertext`, `nonce`, `authTag`, `ciphertextPubKey` }. The `ciphertext` is obtained by the symmetric AES-GCM encryption, along with the `nonce` \(random AES initialization vector\) and authTag \(the MAC code of the encrypted text, obtained by the GCM block mode\). Additionally, we obtain a randomly generated `ciphertextPubKey`, which will be used to recover the AES symmetric key during the decryption.
+Next, we **encrypt** `msg` by using the `pubKey` and we obtain as a result the following set of output: { `ciphertext`, `nonce`, `authTag`, `ciphertextPubKey` }. The `ciphertext` is obtained by the symmetric AES-GCM encryption, along with the `nonce` \(random AES initialization vector\) and `authTag` \(the MAC code of the encrypted text, obtained by the GCM block mode\). Additionally, we obtain a randomly generated `ciphertextPubKey`, which will be used to recover the AES symmetric key during the decryption \(using the ECDH key agreement scheme, as it was show before\).
 
-To decrypt the encrypted message, we use the data produces during the encryption { `ciphertext`, `nonce`, `authTag`, `ciphertextPubKey` }, along with the decryption `privateKey`. The result is the decrypted plaintext message. We use authenticated encryption \(GCM block mode\), so if the decryption key or some other parameter is incorrect, the decryption will fail with an exception.
+To **decrypt** the encrypted message, we use the data produced during the encryption { `ciphertext`, `nonce`, `authTag`, `ciphertextPubKey` }, along with the decryption `privateKey`. The result is the decrypted plaintext message. We use authenticated encryption \(GCM block mode\), so if the decryption key or some other parameter is incorrect, the decryption will fail with an **exception**.
 
-Internally, the `encrypt_ECC(msg, pubKey)` function first generates an ECC key-pair for the ciphertext and calculates the symmetric encryption ECC key `sharedECCKey = ciphertextPrivKey * pubKey` \(it is an EC point\). It is then transformed from ECC point to 256-bit AES secret key though hashing the `x` and `y` coordinates. Finally, the AES-256-GCM cipher \(from `pycryptodome`\) encrypts the message by the 256-bit shared secret key `secretKey` and produces `ciphertext` + `nonce` + `authTag`.
+Internally, the `encrypt_ECC(msg, pubKey)` function first generates an **ECC key-pair** for the ciphertext and calculates the symmetric encryption shared ECC key `sharedECCKey = ciphertextPrivKey * pubKey`. This key is an EC point, so it is then transformed to **256-bit AES secret key** \(integer\) though hashing the point's `x` and `y` coordinates. Finally, the **AES-256-GCM** cipher \(from `pycryptodome`\) **encrypts** the message by the 256-bit shared secret key `secretKey` and produces as **output** `ciphertext` + `nonce` + `authTag`.
 
-The `decrypt_ECC(encryptedMsg{ciphertext, nonce, authTag, ciphertextPubKey}, privKey)` function internally first calculates the symmetric encryption ECC key `sharedECCKey = privKey * ciphertextPubKey` \(it is an EC point\). It is then transformed from ECC point to 256-bit AES secret key though hashing the `x` and `y` coordinates. Then the AES-256-GCM cipher is used to decrypt the `ciphertext` + `nonce` + `authTag` by the 256-bit shared secret key `secretKey`. The produces output is the original plaintext message \(or an exception in case of incorrect decryption key or unmatching `authTag`\).
+The `decrypt_ECC(encryptedMsg{ciphertext, nonce, authTag, ciphertextPubKey}, privKey)` function internally first calculates the symmetric encryption shared ECC key `sharedECCKey = privKey * ciphertextPubKey`. It is an EC point, so it should be first transformed to **256-bit AES secret key** though hashing the point's `x` and `y` coordinates. Then the **AES-256-GCM cipher** is used to **decrypt** the `ciphertext` + `nonce` + `authTag` by the 256-bit shared secret key `secretKey`. The produced output is the original plaintext message \(or an exception in case of incorrect decryption key or unmatching `authTag`\).
 
 The output from the above code looks like this:
 
@@ -166,7 +166,7 @@ encrypted msg: {'ciphertext': b'b5953b3082fcefdbde91dd3c03cf83dde0822c19be6ae906
 decrypted msg: b'Text to be encrypted by ECC public key and decrypted by its corresponding ECC private key'
 ```
 
-Enjoy the above example, play with it, try to understand how exactly it works, try to change the underlying ECC curve, try to change the symmetric encryption algorithm. Try to decrypt the ciphertext with wrong private key.
+Enjoy the above example, **play with it**, try to understand how exactly it works, try to change the underlying ECC curve, try to change the symmetric encryption algorithm, try to decrypt the ciphertext with wrong private key.
 
 ## ECIES \(Elliptic Curve Integrated Encryption Scheme\)
 
