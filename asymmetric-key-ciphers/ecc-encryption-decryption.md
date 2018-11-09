@@ -170,7 +170,15 @@ Enjoy the above example, **play with it**, try to understand how exactly it work
 
 ## ECIES \(Elliptic Curve Integrated Encryption Scheme\)
 
-A hybrid encryption scheme similar to the above demonstrated code is standardised under the name **Elliptic Curve Integrated Encryption Scheme** \(**ECIES**\). ECIES combines ECC-based **asymmetric cryptography** with **symmetric ciphers** to provide data encryption by private key and decryption by its public key. The **ECIES** encryption scheme uses **ECC** cryptography \(public key cryptosystem\) + key-derivation function \(**KDF**\) + symmetric encryption algorithm + **MAC** algorithm, combined together:
+A hybrid encryption scheme similar to the above demonstrated code is standardized under the name **Elliptic Curve Integrated Encryption Scheme** \(**ECIES**\).
+
+
+
+**TODO: standard name, link?**
+
+
+
+ECIES combines ECC-based **asymmetric cryptography** with **symmetric ciphers** to provide data encryption by private key and decryption by the corresponding public key. The **ECIES** encryption scheme uses **ECC** cryptography \(public key cryptosystem\) + key-derivation function \(**KDF**\) + **symmetric encryption** algorithm + **MAC** algorithm, combined together like it is shown on the figure below:
 
 ![](/assets/ECIES.png)
 
