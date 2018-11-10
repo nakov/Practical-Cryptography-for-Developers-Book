@@ -54,6 +54,8 @@ Sample text for ECIES encryption.
 
 **Sample input:**
 
+This example holds an incorrect decryption private key:
+
 ```
 9ab686c269b2c58f0fca699dde09cf24e23353e56bd60095d681b23709cb0dc3
 0442e2fba3fddba1ba9207f3276e141809782dc72529523aa1fcf35b15c4c22a9333ddacd7d64de4abd0a36138d430c50be7a98d5512cb8c2fe36ca45a0bbd7927c150ae3637c45093207531ce75e3841d4808ced85e82305d8da891708c20479388f6d4a7cde213bb36bf860c5df0077358a942eeb9a4c23e89bcc11f11
