@@ -170,23 +170,21 @@ Enjoy the above example, **play with it**, try to understand how exactly it work
 
 ## ECIES \(Elliptic Curve Integrated Encryption Scheme\)
 
-A hybrid encryption scheme similar to the above demonstrated code is standardized under the name **Elliptic Curve Integrated Encryption Scheme** \(**ECIES**\) in many crypto standards like[ ANSI X9.63](ftp://ftp.iks-jena.de/mitarb/lutz/standards/ansi/X9/x963-7-5-98.pdf), [IEEE 1363a](http://grouper.ieee.org/groups/1722/contributions/2012/1722a-butterworth-ieee1363.pdf), ISO/IEC 18033-2, and SECG SEC-1
+A hybrid encryption scheme similar to the above demonstrated code is standardized under the name **Elliptic Curve Integrated Encryption Scheme** \(**ECIES**\) in many crypto standards like [SECG SEC-1](http://www.secg.org/sec1-v2.pdf), [ISO/IEC 18033-2](https://www.shoup.net/iso/std4.pdf), [IEEE 1363a](http://grouper.ieee.org/groups/1722/contributions/2012/1722a-butterworth-ieee1363.pdf) and [ANSI X9.63](ftp://ftp.iks-jena.de/mitarb/lutz/standards/ansi/X9/x963-7-5-98.pdf).
 
-**TODO: standard name, link?**
-
-ECIES combines ECC-based **asymmetric cryptography** with **symmetric ciphers** to provide data encryption by private key and decryption by the corresponding public key. The **ECIES** encryption scheme uses **ECC** cryptography \(public key cryptosystem\) + key-derivation function \(**KDF**\) + **symmetric encryption** algorithm + **MAC** algorithm, combined together like it is shown on the figure below:
+The **ECIES standard** combines ECC-based **asymmetric cryptography** with **symmetric ciphers** to provide data encryption by EC private key and decryption by the corresponding EC public key. The **ECIES** encryption scheme uses **ECC** cryptography \(public key cryptosystem\) + key-derivation function \(**KDF**\) + **symmetric encryption** algorithm + **MAC** algorithm, combined together like it is shown on the figure below:
 
 ![](/assets/ECIES.png)
 
-The input of **ECIES encryption** consists of recipient's **public key** + **plain text message**. The output consists of sender's ephemeral public key \(**ciphertext public key**\) + **encrypted message** \(ciphertext + some parameters\) + **authentication tag** \(MAC code\):
+The input of the **ECIES encryption** consists of recipient's **public key** + **plain text message**. The output consists of sender's ephemeral public key \(**ciphertext public key**\) + **encrypted message** \(ciphertext + symmetric algorithm parameters\) + **authentication tag** \(MAC code\):
 
 * `ECIES-encrypt(recipientPublicKey, plaintextMessage)` ➔ `{ cipherTextPublicKey, encryptedMessage, authTag }`
 
-The **ECIES decryption** takes the output from the encryption + the **recipient's private key** and produces the original plaintext message or detects a problem \(e.g. integrity / authentication error\).
+The **ECIES decryption** takes the output from the encryption + the **recipient's private key** and produces the original plaintext message or detects a problem \(e.g. integrity / authentication error\):
 
 * `ECIES-decrypt(cipherTextPublicKey, encryptedMessage, authTag, recipientPrivateKey, )` ➔ `plaintextMessage`
 
-The ECIES encryption scheme is a **framework**, not a concrete algorithm. It can be implemented by plugging different algorithms, e.g. the **secp256k1** elliptic curve for public-key calculations + **PBKDF2** for KDF function + **AES-GCM** for symmetric cipher + authentication tag.
+The ECIES encryption scheme is a **framework**, not a concrete algorithm. It can be implemented by plugging different algorithms, e.g. the **secp256k1** or **P-521** elliptic curve for the public-key calculations + **PBKDF2** or **Scrypt** for KDF function + **AES-CTR** or **AES-GCM **or **ChaCha20-Poly1305** for symmetric cipher and authentication tag + **HMAC-SHA512** for MAC algorithm \(in case of unauthenticated encryption\).
 
 ## ECIES \(Elliptic Curve Integrated Encryption Scheme\) - Example
 
@@ -196,7 +194,7 @@ Now, let's demonstrate how the **ECIES encryption scheme** works in practice in 
 pip install eciespy
 ```
 
-Now, the Python code to generate public / private key pair and encrypt and decrypt a message is:
+A sample Python code to generate public / private key pair and encrypt and decrypt a message using ECIES is:
 
 ```py
 from ecies.utils import generate_eth_key
@@ -219,7 +217,9 @@ decrypted = decrypt(privKeyHex, encrypted)
 print("Decrypted:", decrypted)
 ```
 
-The output is as follows:
+The above code is pretty simple: just generate ECC **public + private key pair** using `ecies.utils.generate\_eth\_key()` and call the `ecies.encrypt(pubKey, msg)` and `decrypt(privKey, encryptedMsg)` functions from the `eciespy` library.
+
+The **output** form the above code looks like this:
 
 ```
 Encryption public key: 0x0dc8e06c055b45ecf110258ed5c0261ce2019b1bd0f8f226dcd010dade448b8f304a0915c68cdf7ddded8e4021d28fb92e27d08df695f48a0d2c41ddee750fc7
@@ -229,5 +229,5 @@ Encrypted: b'045699078bbd101e270572d0d68e87a8f7b6cc377ebeeffb60d2fcac5dc7bdd86a2
 Decrypted: b'Some plaintext for encryption'
 ```
 
-The Python `ecies` library uses **sec256k1 ECC** cryptography + **AES-256-GCM** authenticated encryption. Note that the above encrypted message holds together 4 values: `{cipherPubKey, AES-nonce, authTag, EAS-ciphertext}`.
+The Python `eciespy` library internally uses **ECC** cryptography over the **secp256k1** curve + **AES-256-GCM** authenticated encryption. Note that the above encrypted message holds together 4 values: `{cipherPubKey, AES-nonce, authTag, AES-ciphertext}`, packed in binary form and not directly visible from the above output.
 
