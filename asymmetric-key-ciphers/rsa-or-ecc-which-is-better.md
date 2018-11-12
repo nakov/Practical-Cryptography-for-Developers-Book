@@ -26,10 +26,9 @@ The **Elliptic-curve cryptography \(ECC\)** has some disadvantages:
 
 The RSA cryptosystem has the following advantages:
 
-* RSA is **easier to implement** than ECC.
-* RSA is **easier to understand** than ECC.
-* Very fast and simple encryption and signature algorithms.
-* Signing and decryption are similar; encryption and verification are similar.
+* RSA is **easier to implement** than ECC. Unless you implement the algorithms yourself, this may not be so important.
+* RSA is **easier to understand** than ECC. Signing and decryption are similar; encryption and verification are similar. This simplifies understanding. Simplicity is more important if you implement the algorithms yourself instead of using a well-known library.
+* RSA provides very **fast **and simple **encryption **and **signature **algorithms. This is due to the small public exponent.
 * Some cryptographers believe that **RSA with very large keys** \(e.g. 16384 bits\) is generally stronger than ECC.
 
 ## Disadvantages of RSA
@@ -40,5 +39,5 @@ The RSA cryptosystem has the following disadvantages:
 * In the RSA cryptosystem **signing** and **decryption** are slow \(for big private keys\), which are slightly tricky to implement securely. Typically, in the RSA cryptosystem the public exponent is small \(e.g. 65537 or 3\), so the calculations to encrypt a message or verify a signature are fast. In the same time, the private exponent is typically large \(e.g. 4096-bit integer\), so the calculations to sign or decrypt a message are slow.
 * RSA produces **large signatures** \(of the same length, like the private key\). This is unacceptable for many systems, which keep a lot of signatures, e.g. public blockchains.
 
-
+As a conclusion, the author of this book, as well as most cryptographers **recommend ECC over RSA in the general case** due to its  smaller key length and smaller signature length and high performance, especially with some highly optimized curves.
 
