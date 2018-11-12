@@ -16,23 +16,29 @@ The **Elliptic-curve cryptography \(ECC\)** has the following advantages over RS
 
 ## Disadvantages of ECC
 
-The **Elliptic-curve cryptography \(ECC\)** has some disadvantages, as well:
+The **Elliptic-curve cryptography \(ECC\)** has some disadvantages:
 
 * ECC is a **more complicated** and tricky to implement securely than RSA. This is not necessarily a problem is you use proven cryptographic libraries from trusted vendors. 
-* Signing with a **broken random number generator** compromises the signer's private key. Some signature schemes avoid randomness and has no such potential problem \(e.g. deterministic ECDSA\).
-* **ECC standards** aren't state-of-the-art, particularly ECDSA which is kind of a hack, compared to Schnorr signatures. Not all standardised curves are considered secure. You should use a strong curve.
+* Signing with a **broken random number generator** compromises the signer's private key. Signing two times with the same random number directly reveals signer's private key. Some signature schemes avoid randomness and has no such potential problem \(e.g. deterministic ECDSA\).
+* Not all **standardised curves** are considered secure. You should know how to select a strong curve for your ECC calculations.
 
 ## Advantages of RSA
 
-* Very fast, very simple encryption and verification.
-* Easier to implement than ECC.
-* Easier to understand.
+The RSA cryptosystem has the following advantages:
+
+* RSA is **easier to implement** than ECC.
+* RSA is **easier to understand** than ECC.
+* Very fast and simple encryption and signature algorithms.
 * Signing and decryption are similar; encryption and verification are similar.
+* Some cryptographers believe that **RSA with very large keys** \(e.g. 16384 bits\) is generally stronger than ECC.
 
 ## Disadvantages of RSA
 
-* Very slow key generation.
-* Slow signing and decryption, which are slightly tricky to implement securely.
+The RSA cryptosystem has the following disadvantages:
+
+* In the RSA cryptosystem **key generation is very slow** \(especially for large key-length\). It may take a **few minutes** on a modern laptop to generate a 16384-bit RSA key-pair!
+* In the RSA cryptosystem **signing** and **decryption** are slow \(for big private keys\), which are slightly tricky to implement securely. Typically, in the RSA cryptosystem the public exponent is small \(e.g. 65537 or 3\), so the calculations to encrypt a message or verify a signature are fast. In the same time, the private exponent is typically large \(e.g. 4096-bit integer\), so the calculations to sign or decrypt a message are slow.
+* RSA produces **large signatures** \(of the same length, like the private key\). This is unacceptable for many systems, which keep a lot of signatures, e.g. public blockchains.
 
 
 
