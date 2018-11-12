@@ -406,3 +406,13 @@ pubKey: 02f54ba86dc1ccb5bed0224d23f01ed87e4a443c47fc690d7797a13d41d2340e1a
 ```
 
 The public key is compressed and encoded in the standard format (encode the **y** coordinate as prefix `02` or `03`).
+
+## Edwards Curves
+
+Elliptic curve cryptography (ECC) uses sometimes curves, known as **[Edwards curves](https://en.wikipedia.org/wiki/Edwards_curve)**, which have the form:
+- x<sup>2</sup> + y<sup>2</sup> = 1 + **_d_**x<sup>2</sup>y<sup>2</sup>
+
+For example, if d = 300, the curve looks like this:
+
+![](/assets/Edmonds-curve.png)
+
