@@ -440,10 +440,23 @@ The above equation has its equivalent in the classical **Weierstrass form** for 
 
 The **Curve25519** is carefully engineered, by a team of cryptographers, led by Daniel Bernstein, at several levels of design and implementation to achieve **very high speeds** without compromising security.
 
-The **Curve25519** has **order** (in its underlying cyclic group) **n** = 2<sup>252</sup> + 0x14def9dea2f79cd65812631a5cf5d3ed and **cofactor** **h** = 8.
+The **Curve25519** has **order** (in its underlying cyclic group) **n** = 2<sup>252</sup> + 0x14def9dea2f79cd65812631a5cf5d3ed and **cofactor** **h** = 8 and provides **128-bit security** strength.
 
-Based on the **Curve25519** an **ECDH function** is derived, called **[X25519](https://en.wikipedia.org/wiki/Curve25519)** (used for elliptic-key Diffie–Hellman key agreement schemes) and **digital signature scheme** is derived, called **[Ed25519](https://en.wikipedia.org/wiki/EdDSA)**, based on the the **EdDSA** algorithm. These schemes are **extremely fast**, because they involve multiplications and other simple operations with small integers (mostly 32-bit arithmetic), which can be efficiently implemented in the modern microprocessors (CPUs).
+Based on the **Curve25519** an **ECDH function** is derived, called **[X25519](https://en.wikipedia.org/wiki/Curve25519)** (used for elliptic-key Diffie–Hellman key agreement schemes) and fast **digital signature scheme** is derived, called **[Ed25519](https://en.wikipedia.org/wiki/EdDSA)** (or **edwards25519**), based on the the **EdDSA** algorithm. These schemes are **very fast**, because they involve multiplications and other simple operations with small integers (mostly 32-bit arithmetic), which can be efficiently implemented in the modern microprocessors (CPUs).
 
+### Curve448, X448 and Ed448
 
+The [`Curve448`](https://en.wikipedia.org/wiki/Curve448) (**Curve448-Goldilocks**) is an untwisted **Edwards curve**, defined by the equation:
+- x<sup>2</sup> + y<sup>2</sup> = 1 - **_39081_**x<sup>2</sup>y<sup>2</sup>
 
-Learn more about the Curve25519 and Curve448 from the technical perspective from [RFC 7748 - Elliptic Curves for Security](https://tools.ietf.org/html/rfc7748).
+over the finite prime field **𝔽<sub>p</sub>**, where **_p_** = 2<sup>448</sup> - 2<sup>224</sup> - 1. It has **order** of **n** = 2<sup>446</sup> - 0x8335dc163bb124b65129c96fde933d8d723a70aadc873d6d54a7bb0d and **cofactor** **h** = 4. Like any other Edwards curve, the **Curve448** has equivalent in the **Weierstrass form**  (y<sup>2</sup> = x<sup>3</sup> + **_a_**x + **_b_**), but the above Edwards form provides significant optimizations in the EC point calculations and improved performance.
+
+Similarly to the **Curve25519**, which provides 128-bit security level, the **Curve448** provides **224-bit security** level, suitable for ECDH key agreement (known as **X448**) and for fast digital signatures (known as **Ed448** or **edwards448**).
+
+### Curve25519 or Curve448?
+
+Prefer **Curve448** to **Curve25519** when your application needs a **higher level of security**, but have in mind that **Curve448** is **slower** than **Curve25519** and uses longer key length and signature length.
+
+Learn more about the **Curve25519** and **Curve448** from the technical perspective from:
+ -  [**RFC 7748** - Elliptic Curves for Security](https://tools.ietf.org/html/rfc7748) - the Internet technical standard for implementing the **X25519** and **X448** key exchange protocols.
+ - [**RFC 8032** - Edwards-Curve Digital Signature Algorithm (EdDSA)](https://tools.ietf.org/html/rfc8032) - the Internet technical standard for implementing the the **Ed25519** and **EdDSA-Ed448** signature schemes.
