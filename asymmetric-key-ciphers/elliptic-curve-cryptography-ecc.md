@@ -418,7 +418,7 @@ For example, if **_d_** = 300, the curve looks like this:
 
 Every **Edwards curve** is birationally equivalent to an **elliptic curve in Weierstrass form** (y<sup>2</sup> = x<sup>3</sup> + **_a_**x + **_b_**) and thus has the same properties like the classical elliptic curves.
 
-**Edwards curves over a finite prime field 𝔽<sub>p</sub>** (where **p** is large prime number) define fast integer to EC point multiplication, which has similar cryptographic properties like the classical elliptic curves, and the **ECDLP** problem has the same computational hardness, suitable for cryptographic purposes.
+**Edwards curves over a finite prime field 𝔽<sub>p</sub>** (where **p** is large prime number) provide fast integer to EC point multiplication, which has similar cryptographic properties like the classical elliptic curves, and the **ECDLP** problem has the same computational difficulty, suitable for cryptographic purposes.
 
 ### Curve25519, X25519 and Ed25519
 
@@ -451,7 +451,7 @@ The [`Curve448`](https://en.wikipedia.org/wiki/Curve448) (**Curve448-Goldilocks*
 
 over the finite prime field **𝔽<sub>p</sub>**, where **_p_** = 2<sup>448</sup> - 2<sup>224</sup> - 1. It has **order** of **n** = 2<sup>446</sup> - 0x8335dc163bb124b65129c96fde933d8d723a70aadc873d6d54a7bb0d and **cofactor** **h** = 4. Like any other Edwards curve, the **Curve448** has equivalent in the **Weierstrass form**  (y<sup>2</sup> = x<sup>3</sup> + **_a_**x + **_b_**), but the above Edwards form provides significant optimizations in the EC point calculations and improved performance.
 
-Similarly to the **Curve25519**, which provides 128-bit security level, the **Curve448** provides **224-bit security** level, suitable for ECDH key agreement (known as **X448**) and for fast digital signatures (known as **Ed448** or **edwards448**).
+Similarly to the **Curve25519**, which provides 128-bit security level, the **Curve448** provides **224-bit security** level, suitable for ECDH key agreement (ECDH function, known as **[X448](https://tools.ietf.org/html/rfc7748#section-5)**) and for fast digital signatures (EdDSA algorithm, known as **[Ed448](https://tools.ietf.org/html/rfc8032#section-5.2)** or **edwards448**).
 
 ### Curve25519 or Curve448?
 
@@ -460,3 +460,5 @@ Prefer **Curve448** to **Curve25519** when your application needs a **higher lev
 Learn more about the **Curve25519** and **Curve448** from the technical perspective from:
  -  [**RFC 7748** - Elliptic Curves for Security](https://tools.ietf.org/html/rfc7748) - the Internet technical standard for implementing the **X25519** and **X448** key exchange protocols.
  - [**RFC 8032** - Edwards-Curve Digital Signature Algorithm (EdDSA)](https://tools.ietf.org/html/rfc8032) - the Internet technical standard for implementing the the **Ed25519** and **EdDSA-Ed448** signature schemes.
+
+In the general case, have in mind that **Curve25519 is faster** than **secp256k1** and the other 256-bit standard NIST curves and safer, so it is the recommended choice for 128-bit security. Similarly, the **Curve448** has better performance and security than the equivalent 448-bit NIST curves (like **secp224r1**), so it is the recommended choice for 224-bit security.
