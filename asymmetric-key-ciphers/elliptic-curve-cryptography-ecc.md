@@ -427,7 +427,7 @@ Elliptic curves in the elliptic curve cryptography (ECC) may be presented in sev
 For performance reasons elliptic curve cryptography (ECC) sometimes uses **[Edwards curves](https://en.wikipedia.org/wiki/Edwards_curve)**, which are elliptic curves in the following form:
 - x<sup>2</sup> + y<sup>2</sup> = 1 + **_d_**x<sup>2</sup>y<sup>2</sup>
 
-For example, if **_d_** = 300, the Edwards curve looks like this:
+For example, if **_d_** = 300, the Edwards curve x<sup>2</sup> + y<sup>2</sup> = 1 + **_300_**x<sup>2</sup>y<sup>2</sup> looks like this:
 
 ![](/assets/Edwards-curve.png)
 
