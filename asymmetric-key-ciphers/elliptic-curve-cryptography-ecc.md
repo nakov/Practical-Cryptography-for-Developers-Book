@@ -442,7 +442,7 @@ The above equation has its equivalent in the classical **Weierstrass form** for 
 
 The **Curve25519** is carefully engineered, by a team of cryptographers, led by Daniel Bernstein, at several levels of design and implementation to achieve **very high speeds** without compromising security.
 
-The **Curve25519** has **order** (in its underlying cyclic group) **n** = 2<sup>252</sup> + 0x14def9dea2f79cd65812631a5cf5d3ed and **cofactor** **h** = 8 and provides [**125.8-bit security** strength](http://safecurves.cr.yp.to/rho.html) (it is sometimes referred as ~ 128-bit security). The **private keys** for the Curve25519 are 252 bits and are usually encoded as **256-bit integers** (32 bytes, 64 hex digits). The **public keys** are typically encoded also as **256-bit integers**. This is very convenient for developers.
+The **Curve25519** has **order** (in its underlying cyclic group) **n** = 2<sup>252</sup> + 0x14def9dea2f79cd65812631a5cf5d3ed and **cofactor** **h** = 8 and provides [**125.8-bit security** strength](http://safecurves.cr.yp.to/rho.html) (it is sometimes referred as ~ 128-bit security). The **private keys** for the Curve25519 are 252 bits and are usually encoded as **256-bit integers** (32 bytes, 64 hex digits). The **public keys** are typically encoded also as **256-bit integers** and this is very convenient for developers.
 
 Based on the **Curve25519** an **ECDH function** is derived, called **[X25519](https://en.wikipedia.org/wiki/Curve25519)** (used for elliptic-key Diffie–Hellman key agreement schemes) and fast **digital signature scheme** is derived, called **[Ed25519](https://en.wikipedia.org/wiki/EdDSA)** (or **edwards25519**), based on the the **EdDSA** algorithm. These schemes are **very fast**, because they involve multiplications and other simple operations with small integers (mostly 32-bit arithmetic), which can be efficiently implemented in the modern microprocessors (CPUs). Note that X25519 and Ed25519 use **different encodings for the EC points**, so they are not directly compatible and require conversion if you want to use the same public-private key pairs.
 
@@ -455,7 +455,7 @@ over the finite prime field **𝔽<sub>p</sub>**, where **_p_** = 2<sup>448</sup
 
 The **Curve448** provides **~ 224-bit security** level (more precisely [**222.8-bits**](http://safecurves.cr.yp.to/rho.html)). The **private keys** for the Curve448 are 446 bits and are typically encoded as **448-bit integers** (56 bytes, 112 hex digits). The **public keys** are also encoded as **448-bit integers**.
 
-The **Curve448** is suitable for ECDH **key agreement** (ECDH function, known as **[X448](https://tools.ietf.org/html/rfc7748#section-5)**) and for fast **digital signatures** (EdDSA algorithm, known as **[Ed448](https://tools.ietf.org/html/rfc8032#section-5.2)** or **edwards448**).
+The **Curve448** is suitable for ECDH **key agreement** (ECDH function, known as **[X448](https://tools.ietf.org/html/rfc7748#section-5)**) and for fast **digital signatures** (EdDSA algorithm, known as **[Ed448](https://tools.ietf.org/html/rfc8032#section-5.2)** or **edwards448**). Note that X448 and Ed448 use **different encodings for the EC points**, so they are not directly compatible and require conversion if you want to use the same public-private key pairs.
 
 ### Curve25519 or Curve448?
 
