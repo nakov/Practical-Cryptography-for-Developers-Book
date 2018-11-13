@@ -459,7 +459,7 @@ The **Curve448** is suitable for ECDH **key agreement** (ECDH function, known as
 
 ### Curve25519 or Curve448?
 
-Prefer **Curve448** to **Curve25519** when your application needs a **higher level of security**, but have in mind that **Curve448** is **slower** than **Curve25519** and uses longer key length and signature length.
+Prefer **Curve448** to **Curve25519** when your application needs a **higher level of security**, but have in mind that **Curve448** is about 3 times **slower** than **Curve25519** and uses longer key length and signature length.
 
 Learn more about the **Curve25519** and **Curve448** from the technical perspective from:
  -  [**RFC 7748** - Elliptic Curves for Security](https://tools.ietf.org/html/rfc7748) - the Internet technical standard for implementing the **X25519** and **X448** key exchange protocols.
