@@ -422,6 +422,8 @@ Every **Edwards curve** is birationally equivalent to an **elliptic curve in Wei
 
 **Edwards curves over a finite prime field 𝔽<sub>p</sub>** (where **p** is large prime number) provide fast integer to EC point multiplication, which has similar cryptographic properties like the classical elliptic curves, and the **ECDLP** problem has the same computational difficulty, suitable for cryptographic purposes.
 
+**Examples** of well-known cryptographic elliptic **Edwards curves** over finite prime fields are: **Curve1174** (251-bit), **Curve25519** (255-bit), **Curve383187** (383-bit), **Curve41417** (414-bit), **Curve448** (448-bit), **E-521** (521-bit) and others.
+
 ### Curve25519, X25519 and Ed25519
 
 With carefully selected curve parameters, the **Edwards curves over finite fields** can implement ECC cryptosystems capable to provide ECDH **key agreement** schemes, **digital signatures** and **hybrid encryption** schemes, with very **high performance**.
