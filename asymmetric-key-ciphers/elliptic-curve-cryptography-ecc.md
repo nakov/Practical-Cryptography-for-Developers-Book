@@ -411,15 +411,18 @@ The public key is compressed and encoded in the standard format (encode the **y*
 
 ## Edwards Curves
 
-Elliptic curves in the elliptic curve cryptography (ECC) may be presented in several forms (representations), which are proven to be equivalent:
+Elliptic curves in the elliptic curve cryptography (ECC) may be presented in several **forms** (representations), which are proven to be birationally equivalent (isomorphic):
  - **Weierstrass form** of elliptic curve:
    - y<sup>2</sup> = x<sup>3</sup> + **_a_**x + **_b_**
-   - Example Weierstrass curve used in ECC: `secp256k1`
+   - Example Weierstrass curve used in ECC is `secp256k1`, which has the form y<sup>2</sup> = x<sup>3</sup> + **_7_**
+
  - **Montgomery form** of elliptic curve:
    - **_B_**y<sup>2</sup> = x<sup>3</sup> + **_A_**x<sup>2</sup> + x
-   - Example Montgomery curve used in ECC: `Curve25519`
+   - Example Montgomery curve used in ECC is `Curve25519`, which has the form y<sup>2</sup> = x<sup>3</sup> + **_486662_**x<sup>2</sup> + x
+   
  - **Edwards form** of elliptic curve:
-   - x2+y2=1+dx2y2
+   - x<sup>2</sup> + y<sup>2</sup> = 1 + **_d_**x<sup>2</sup>y<sup>2</sup>
+   - Example Edwards curve used in ECC is `Curve448`, which has the form 
 
 Elliptic curve cryptography (ECC) uses sometimes curves, known as **[Edwards curves](https://en.wikipedia.org/wiki/Edwards_curve)**, which have the form:
 - x<sup>2</sup> + y<sup>2</sup> = 1 + **_d_**x<sup>2</sup>y<sup>2</sup>
