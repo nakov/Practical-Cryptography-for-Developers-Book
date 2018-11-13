@@ -471,14 +471,14 @@ In the general case, have in mind that **Curve25519 is faster** than **secp256k1
 
 ### Curve25519 - Example in Python
 
-To demonstrate the **Curve25519** elliptic curve in practice, we shall фирст install the [`pynacl`](https://github.com/pyca/pynacl) crypto library for Python:
+To demonstrate the **Curve25519** elliptic curve in practice, we shall first install the [`pynacl`](https://github.com/pyca/pynacl) crypto library for Python:
 
 ```py
 pip install pynacl
 ```
-The [Python binding to the Networking and Cryptography (NaCl) library (PyNaCl)](https://pynacl.readthedocs.io) implements many modern cryptographic algorithms, including operations over the **Curve25519** and **Ed25519** signatures.
+The [Python binding to the Networking and Cryptography (NaCl) library (PyNaCl)](https://pynacl.readthedocs.io) implements many modern cryptographic algorithms, including the EC point arithmetic over the **Curve25519** and **Ed25519** signatures.
 
-Next, generate a random **252-bit private key** and its corresponding **254-bit private key** for the **Curve25519**. Both keys will be encoded internally to 256-bit numbers (32 bytes, **64 hex digits**):
+Next, generate a random 252-bit **private key** and its corresponding **public key** (EC point) on the **Curve25519**. Both keys will be encoded internally as **256-bit integers** (32 bytes, **64 hex digits**):
 
 ```py
 from nacl.public import PrivateKey
