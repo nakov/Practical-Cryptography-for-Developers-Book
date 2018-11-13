@@ -467,7 +467,30 @@ In the general case, have in mind that **Curve25519 is faster** than **secp256k1
 
 ### Curve25519 - Example in Python
 
-First, we shall install the `[pynacl](https://github.com/pyca/pynacl)` library for Python. It implements many modern cryptographic algorithms, including Curve25519, X25519 and Ed25519.
+First, we shall install the [`pynacl`](https://github.com/pyca/pynacl) crypto library for Python:
 
 ```py
+pip install pynacl
 ```
+The [Python binding to the Networking and Cryptography (NaCl) library (PyNaCl)](https://pynacl.readthedocs.io) implements many modern cryptographic algorithms, including **Curve25519** and **Ed25519** signatures.
+
+Next, generate a random **252-bit private key** and its corresponding **254-bit private key** for the **Curve25519**. Both keys will be encoded internally to 256-bit numbers (32 bytes, **64 hex digits**):
+
+```py
+from nacl.public import PrivateKey
+import binascii
+
+privKey = PrivateKey.generate()
+pubKey = privKey.public_key
+
+print("privKey:", binascii.hexlify(bytes(privKey)))
+print("pubKey: ", binascii.hexlify(bytes(pubKey)))
+```
+
+Sample output from the above code:
+```
+privKey: b'8175f7cd524a59b6efbd447985ce5d97c546b319521ff236203970e50052c641'
+pubKey:  b'cf97a96568fee4ddb232f617fd5b9df2d2e5b90e68ba7f6d5129ea92d7d8f95e'
+```
+
+It is visible that both the private key and the public key in the **Curve25519** ECC cryptosystem fit into 256-bit numbers (64 hex digits) and this simplifies developers.
