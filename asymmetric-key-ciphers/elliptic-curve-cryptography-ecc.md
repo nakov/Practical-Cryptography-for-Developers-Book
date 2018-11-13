@@ -491,10 +491,10 @@ print("privKey:", binascii.hexlify(bytes(privKey)))
 print("pubKey: ", binascii.hexlify(bytes(pubKey)))
 ```
 
-Sample output from the above code:
+The sample output from the above code shows that both the **public** and the **private** (secret) keys on the **Curve25519** are encoded as **256-bit integers** (64 hex digits) and this simplifies the developers:
 ```
 privKey: b'8175f7cd524a59b6efbd447985ce5d97c546b319521ff236203970e50052c641'
 pubKey:  b'cf97a96568fee4ddb232f617fd5b9df2d2e5b90e68ba7f6d5129ea92d7d8f95e'
 ```
 
-It is visible that both the private key and the public key in the **Curve25519** ECC cryptosystem fit into 256-bit numbers (64 hex digits) and this simplifies developers.
+In fact, different crypto libraries may use different **key encodings** and typically X25519 ECDH keys are encoded differently than Ed25519 keys.
