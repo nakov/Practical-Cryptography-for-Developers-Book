@@ -1,4 +1,4 @@
-# Elliptic Curve Cryptography \(ECC\) - Concepts
+25# Elliptic Curve Cryptography \(ECC\) - Concepts
 
 The [**Elliptic Curve Cryptography \(ECC\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) is modern **family of public-key cryptosystems**, which is based on the algebraic structures of the **elliptic curves over finite fields** and on the difficulty of the [**Elliptic Curve Discrete Logarithm Problem \(ECDLP\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography#Rationale).
 
@@ -18,9 +18,9 @@ The **public keys** in the ECC are **EC points** - pairs of integer coordinates 
 
 **ECC** crypto algorithms can use different underlying **elliptic curves**. Different curves provide different level of **security** \(cryptographic strength\), different **performance** \(speed\) and different **key length**, and also may involve different algorithms.
 
-**ECC curves**, adopted in the popular cryptographic libraries and security standards, have **name** \(named curves, e.g. `secp256k1` or `curve25519`\), **field size** \(which defines the key length, e.g. **256-bit**\), security **strength** \(usually the field size / 2 or less\), **performance** \(operations/sec\) and many other parameters.
+**ECC curves**, adopted in the popular cryptographic libraries and security standards, have **name** \(named curves, e.g. `secp256k1` or `Curve25519`\), **field size** \(which defines the key length, e.g. **256-bit**\), security **strength** \(usually the field size / 2 or less\), **performance** \(operations/sec\) and many other parameters.
 
-**ECC keys** have **length**, which directly depends on the underlying curve. In most applications \(like OpenSSL, OpenSSH and Bitcoin\) the default **key length** for the ECC private keys is **256 bits**, but depending on the curve many different ECC key sizes are possible: 192-bit \(curve `secp192r1`\), 233-bit \(curve `sect233k1`\), 224-bit \(curve `secp224k1`\), 256-bit \(curves `secp256k1` and `curve25519`\), 283-bit \(curve `sect283k1`\), 384-bit \(curves `p384` and `secp384r1`\), 409-bit \(curve `sect409r1`\), 414-bit \(curve `curve41417`\), 448-bit \(curve `Ed448-Goldilocks`\), 511-bit \(curve `M-511`\), 521-bit \(curve `p521`\), 571-bit \(curve `sect571k1`\) and many others.
+**ECC keys** have **length**, which directly depends on the underlying curve. In most applications \(like OpenSSL, OpenSSH and Bitcoin\) the default **key length** for the ECC private keys is **256 bits**, but depending on the curve many different ECC key sizes are possible: 192-bit \(curve `secp192r1`\), 233-bit \(curve `sect233k1`\), 224-bit \(curve `secp224k1`\), 256-bit \(curves `secp256k1` and `Curve25519`\), 283-bit \(curve `sect283k1`\), 384-bit \(curves `p384` and `secp384r1`\), 409-bit \(curve `sect409r1`\), 414-bit \(curve `Curve41417`\), 448-bit \(curve `Curve448-Goldilocks`\), 511-bit \(curve `M-511`\), 521-bit \(curve `P-521`\), 571-bit \(curve `sect571k1`\) and many others.
 
 ## ECC Algorithms
 
@@ -144,7 +144,7 @@ Because the fastest known algorithm to solve the **ECDLP **for key of size **_p_
 
 In fact, the strength is **slightly less**, because the **order** of the curve (**n**) is typically less than the fields size (**p**) and because the number of steps is not exactly $$\sqrt{p}$$, but $$0.886 * \sqrt{p}$$. A precise **security strength** estimation for the most popular **standard elliptic curves** is given here: [http://safecurves.cr.yp.to/rho.html](http://safecurves.cr.yp.to/rho.html).
 
-For example, the `secp256k1` (**_p_** = 256) curve provides ~ 128-bit security (127.8 bits to be precise) and the `curve448` (**_p_** = 448) provides ~ 224-bit security (222.8 bits to be precise).
+For example, the `secp256k1` (**_p_** = 256) curve provides ~ 128-bit security (127.8 bits to be precise) and the `Curve448` (**_p_** = 448) provides ~ 224-bit security (222.8 bits to be precise).
 
 ### Multiplication of EC Points - Example in Python
 
@@ -442,7 +442,7 @@ The above equation has its equivalent in the classical **Weierstrass form** for 
 
 The **Curve25519** is carefully engineered, by a team of cryptographers, led by Daniel Bernstein, at several levels of design and implementation to achieve **very high speeds** without compromising security.
 
-The **Curve25519** has **order** (in its underlying cyclic group) **n** = 2<sup>252</sup> + 0x14def9dea2f79cd65812631a5cf5d3ed and **cofactor** **h** = 8 and provides [**125.8-bit security** strength](http://safecurves.cr.yp.to/rho.html) (it is sometimes referred as ~ 128-bit security). The private keys for the Curve25519 are 252 bits, but are usually encoded as 256-bit values.
+The **Curve25519** has **order** (in its underlying cyclic group) **n** = 2<sup>252</sup> + 0x14def9dea2f79cd65812631a5cf5d3ed and **cofactor** **h** = 8 and provides [**125.8-bit security** strength](http://safecurves.cr.yp.to/rho.html) (it is sometimes referred as ~ 128-bit security). The **private keys** for the Curve25519 are **252 bits**, but are usually encoded as 256-bit values. The public keys are typically 
 
 Based on the **Curve25519** an **ECDH function** is derived, called **[X25519](https://en.wikipedia.org/wiki/Curve25519)** (used for elliptic-key Diffie–Hellman key agreement schemes) and fast **digital signature scheme** is derived, called **[Ed25519](https://en.wikipedia.org/wiki/EdDSA)** (or **edwards25519**), based on the the **EdDSA** algorithm. These schemes are **very fast**, because they involve multiplications and other simple operations with small integers (mostly 32-bit arithmetic), which can be efficiently implemented in the modern microprocessors (CPUs).
 
@@ -453,7 +453,7 @@ The [`Curve448`](https://en.wikipedia.org/wiki/Curve448) (**Curve448-Goldilocks*
 
 over the finite prime field **𝔽<sub>p</sub>**, where **_p_** = 2<sup>448</sup> - 2<sup>224</sup> - 1. It has **order** of **n** = 2<sup>446</sup> - 0x8335dc163bb124b65129c96fde933d8d723a70aadc873d6d54a7bb0d and **cofactor** **h** = 4. Like any other Edwards curve, the **Curve448** has equivalent in the **Weierstrass form**  (y<sup>2</sup> = x<sup>3</sup> + **_a_**x + **_b_**), but the above Edwards form provides significant optimizations in the EC point calculations and improved performance.
 
-Similarly to the **Curve25519**, which provides 128-bit security level, the **Curve448** provides **224-bit security** level, suitable for ECDH key agreement (ECDH function, known as **[X448](https://tools.ietf.org/html/rfc7748#section-5)**) and for fast digital signatures (EdDSA algorithm, known as **[Ed448](https://tools.ietf.org/html/rfc8032#section-5.2)** or **edwards448**).
+Similarly to the **Curve25519**, which provides ~ 128-bit security level, the **Curve448** provides **~ 224-bit security** level, suitable for ECDH key agreement (ECDH function, known as **[X448](https://tools.ietf.org/html/rfc7748#section-5)**) and for fast digital signatures (EdDSA algorithm, known as **[Ed448](https://tools.ietf.org/html/rfc8032#section-5.2)** or **edwards448**).
 
 ### Curve25519 or Curve448?
 
@@ -464,3 +464,10 @@ Learn more about the **Curve25519** and **Curve448** from the technical perspect
  - [**RFC 8032** - Edwards-Curve Digital Signature Algorithm (EdDSA)](https://tools.ietf.org/html/rfc8032) - the Internet technical standard for implementing the the **Ed25519** and **EdDSA-Ed448** signature schemes.
 
 In the general case, have in mind that **Curve25519 is faster** than **secp256k1** and the other 256-bit standard NIST curves and safer, so it is the recommended choice for 128-bit security. Similarly, the **Curve448** has better performance and security than the equivalent 448-bit NIST curves (like **secp224r1**), so it is the recommended choice for 224-bit security.
+
+### Curve25519 - Example in Python
+
+First, we shall install the `[pynacl](https://github.com/pyca/pynacl)` library for Python. It implements many modern cryptographic algorithms, including Curve25519, X25519 and Ed25519.
+
+```py
+```
