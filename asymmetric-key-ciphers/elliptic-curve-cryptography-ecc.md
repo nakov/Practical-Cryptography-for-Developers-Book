@@ -471,14 +471,14 @@ In the general case, have in mind that **Curve25519 is faster** than **secp256k1
 
 ### Curve25519 - Example in Python
 
-To demonstrate the **Curve25519** elliptic curve in practice, we shall first install the [`pynacl`](https://github.com/pyca/pynacl) crypto library for Python:
+To demonstrate the elliptic curve **Curve25519** in practice, we shall first install the [`pynacl`](https://github.com/pyca/pynacl) crypto library for Python:
 
 ```py
 pip install pynacl
 ```
 The [Python binding to the Networking and Cryptography (NaCl) library (PyNaCl)](https://pynacl.readthedocs.io) implements many modern cryptographic algorithms, including the EC point arithmetic over the **Curve25519** and **Ed25519** signatures.
 
-Next, generate a random 252-bit **private key** and its corresponding **public key** (EC point) on the **Curve25519**. Both keys will be encoded internally as **256-bit integers** (32 bytes, **64 hex digits**):
+Next, generate a random 252-bit **private key** and its corresponding **public key** (EC point) on the **Curve25519** (both keys will be encoded internally as **256-bit integers**):
 
 ```py
 from nacl.public import PrivateKey
@@ -491,7 +491,7 @@ print("privKey:", binascii.hexlify(bytes(privKey)))
 print("pubKey: ", binascii.hexlify(bytes(pubKey)))
 ```
 
-The sample output from the above code shows that both the **public** and the **private** (secret) keys on the **Curve25519** are encoded as **256-bit integers** (64 hex digits) and this simplifies the developers:
+The sample output from the above code shows that both the **public** and the **private** (secret) keys on the **Curve25519** are encoded as **256-bit integers** (64 hex digits, 32 bytes) and this simplifies the developers:
 ```
 privKey: b'8175f7cd524a59b6efbd447985ce5d97c546b319521ff236203970e50052c641'
 pubKey:  b'cf97a96568fee4ddb232f617fd5b9df2d2e5b90e68ba7f6d5129ea92d7d8f95e'
