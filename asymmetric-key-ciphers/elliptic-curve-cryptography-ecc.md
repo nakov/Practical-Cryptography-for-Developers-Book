@@ -1,4 +1,4 @@
-# Elliptic Curve Cryptography \(ECC\) - Concepts
+mcy# Elliptic Curve Cryptography \(ECC\) - Concepts
 
 The [**Elliptic Curve Cryptography \(ECC\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) is modern **family of public-key cryptosystems**, which is based on the algebraic structures of the **elliptic curves over finite fields** and on the difficulty of the [**Elliptic Curve Discrete Logarithm Problem \(ECDLP\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography#Rationale).
 
@@ -88,6 +88,8 @@ The point **P** {**5**, **8**} **belongs** to the curve, because `(5**3 + 7 - 8*
 
 ### Multiplying ECC Point by Integer
 
+Two points over an elliptic curve (EC points) can be **added** and the result is another point. This operation is known as **EC point addition**. If we add a point **G** to itself, the result is **G** + **G** = **2** \* **G**. If we add **G** again to the result, we will obtain **3** \* **G** and so on. This is how EC point multiplication is defined.
+
 A point **G** over an elliptic curve over finite field (EC point) can be **multiplied by an integer** **k** and the result is another EC point **P** on the same curve and this operation is **fast**:
  - **P** = **k** \* **G**
 
@@ -103,6 +105,10 @@ The below figure visualizes this example of EC point multiplication:
 ![](/assets/ECC-multiply-point-example.png)
 
 ### The "Generator" Point in ECC
+
+The points on an elliptic curve over a finite field in many cases form a finite **[cyclic algebraic group](https://en.wikipedia.org/wiki/Cyclic_group)**, which holds all the points on the curve. In a cyclic group, if two EC points are added or an EC point is multiplied to an integer, the result is another EC point from the same group (and on the same curve).
+
+Some curves form a single **cyclic group**, while others form several **cyclic subgroups**. In the second scenario the points on the curve stay in h subgroups, each of size r.
 
 For the elliptic curves over finite fields (in the classical Weierstrass normal form) ECC cryptosystems define a special pre-defined (constant) point called **[generator point G](https://en.wikipedia.org/wiki/Generating_set_of_a_group)**, which can **generate any other point** over the elliptic curve by multiplying **G** by some integer in the range [0...**n**]. The number **n** is called "**order**" of the cyclic group (the total number of different points over the curve), defined by the EC.
 
