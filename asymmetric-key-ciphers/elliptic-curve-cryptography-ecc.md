@@ -110,7 +110,7 @@ The below figure visualizes this example of EC point multiplication:
 
 Some curves form a single **cyclic group** (holding all their EC points), while others form several non-overlapping **cyclic subgroups** (each holding a subset of the curve's EC points). In the second scenario the points on the curve stay in **h** cyclic subgroups (partitions), each of order **r** (holding equal number of points). The order of entire the group is **n** = **h** \* **r** (the number of subgroups, multiplied by the number of points in each subgroup). The number of subgroups **h** holding the EC points is called **cofactor**.
 
-In other words, the points over an elliptic curve stay in one or several cyclic **subgroups**. The number of subgroups is called "**cofactor**". The total number of points in all subgroups is called "**order**" of the curve. If the curve has only one subgroup (cofactor = 1)
+In other words, the points over an elliptic curve stay in one or several non-overlapping cyclic **subgroups**. The number of subgroups is called "**cofactor**". The total number of points in all subgroups is called "**order**" of the curve. If the curve has **only one cyclic subgroup**, its cofactor **h** = **1**.
 
 ### The "Generator" Point in ECC
 
