@@ -38,7 +38,7 @@ In mathematics **[elliptic curves](http://mathworld.wolfram.com/EllipticCurve.ht
 
 ![](/assets/elliptic-curve-general-case.png)
 
-Cryptography uses **elliptic curves** in a simplified from:
+Cryptography uses **elliptic curves** in a simplified form (Weierstras form), which is defined as:
  - y<sup>2</sup> = x<sup>3</sup> + **_a_**x + **_b_**
 
 For example, the [NIST curve `secp256k1`](https://en.bitcoin.it/wiki/Secp256k1) (used in Bitcoin) is based on an elliptic curve in the form:
@@ -416,26 +416,33 @@ For example, if **_d_** = 300, the curve looks like this:
 
 ![](/assets/Edwards-curve.png)
 
-**Edwards curves over the finite field 𝔽<sub>p</sub>** define integer to EC point multiplication, which has similar cryptographic properties like in the traditional elliptic curves, and the **ECDLP** problem has the same computational hardness, suitable for cryptographic purposes.
+Every **Edwards curve** is birationally equivalent to an **elliptic curve in Weierstrass form** (y<sup>2</sup> = x<sup>3</sup> + **_a_**x + **_b_**) and thus has the same properties like the classical elliptic curves.
+
+**Edwards curves over a finite prime field 𝔽<sub>p</sub>** (where **p** is large prime number) define fast integer to EC point multiplication, which has similar cryptographic properties like the classical elliptic curves, and the **ECDLP** problem has the same computational hardness, suitable for cryptographic purposes.
 
 ### Curve25519, X25519 and Ed25519
 
 With carefully selected curve parameters, the **Edwards curves over finite fields** can implement ECC cryptosystems capable to provide ECDH **key agreement** schemes, **digital signatures** and **hybrid encryption** schemes, with very **high performance**.
 
-For example, the [**`Curve25519`**](https://en.wikipedia.org/wiki/Curve25519) is the Edwards curve, defined by the equation:
+For example, the [`Curve25519`](https://en.wikipedia.org/wiki/Curve25519) is the **Edwards curve**, defined by the following elliptic curve equation in [**Montgomery form**](https://en.wikipedia.org/wiki/Montgomery_curve):
 - y<sup>2</sup> = x<sup>3</sup> + **_486662_**x<sup>2</sup> + x
 
-defined over the finite field **𝔽<sub>p</sub>**, where **_p_** = 2<sup>255</sup> - 19.
+over the finite prime field **𝔽<sub>p</sub>**, where **_p_** = 2<sup>255</sup> - 19.
 
-In fact, the above equation does not match the Edwards curves equation, but the above curve is proven to be birationally equivalent to the following twisted Edwards curve:
+In fact, the above equation does not match directly the Edwards curve equation, but it is proven to be birationally equivalent to the following **twisted Edwards curve**:
 
 - -x<sup>2</sup> + y<sup>2</sup> = 1 + **_37095705934669439343138083508754565189542113879843219016388785533085940283555_**x<sup>2</sup>y<sup>2</sup>
 
 The elliptic curve **Curve25519** consists of all points {**x**, **y**} with integer coordinates,  defined by the modular equation:
 - y<sup>2</sup> ≡ x<sup>3</sup> + **_486662_**x<sup>2</sup> + x (mod **_2<sup>255</sup> - 19_**)
-It is carefully engineered, by a team of cryptographers, led by Daniel Bernstein, at several levels of design and implementation to achieve **very high speeds** without compromising security.
 
-Based on the **Curve25519** an **ECDH function** is derived, called **X25519** (used for elliptic-key Diffie–Hellman key agreement schemes) and **digital signature scheme** is derived, called **Ed25519**, based on the the **EdDSA** algorithm. These schemes are extremely fast, because they involve multiplications and other simple operations with small numbers, which can be efficiently implemented in the modern microprocessors (CPUs).
+The above equation has its equivalent in the classical **Weierstrass form** for the elliptic curves (y<sup>2</sup> = x<sup>3</sup> + **_a_**x + **_b_**), but the above form is designed especially for speed optimizations.
+
+The **Curve25519** is carefully engineered, by a team of cryptographers, led by Daniel Bernstein, at several levels of design and implementation to achieve **very high speeds** without compromising security.
+
+The **Curve25519** has **order** (in its underlying cyclic group) **n** = 2<sup>252</sup> + 0x14def9dea2f79cd65812631a5cf5d3ed and **cofactor** **h** = 8.
+
+Based on the **Curve25519** an **ECDH function** is derived, called **[X25519](https://en.wikipedia.org/wiki/Curve25519)** (used for elliptic-key Diffie–Hellman key agreement schemes) and **digital signature scheme** is derived, called **[Ed25519](https://en.wikipedia.org/wiki/EdDSA)**, based on the the **EdDSA** algorithm. These schemes are **extremely fast**, because they involve multiplications and other simple operations with small integers (mostly 32-bit arithmetic), which can be efficiently implemented in the modern microprocessors (CPUs).
 
 
 
