@@ -414,22 +414,29 @@ Elliptic curve cryptography (ECC) uses sometimes curves, known as **[Edwards cur
 
 For example, if **_d_** = 300, the curve looks like this:
 
-![](/assets/Edmonds-curve.png)
+![](/assets/Edwards-curve.png)
 
-**Edwards curves over the finite field 𝔽<sub>p</sub>** define integer to EC point multiplication, which has similar cryptographic properties like in the traditional curves, and the ECDLP problem has the same computational hardness.
+**Edwards curves over the finite field 𝔽<sub>p</sub>** define integer to EC point multiplication, which has similar cryptographic properties like in the traditional elliptic curves, and the **ECDLP** problem has the same computational hardness, suitable for cryptographic purposes.
 
 ### Curve25519, X25519 and Ed25519
 
-With carefully selected curve parameters, the **Edmonds curves over finite fields** can implement ECC cryptosystems capable to provide ECDH **key agreement** schemes, **digital signatures** and **hybrid encryption** schemes, with very **high performance**.
+With carefully selected curve parameters, the **Edwards curves over finite fields** can implement ECC cryptosystems capable to provide ECDH **key agreement** schemes, **digital signatures** and **hybrid encryption** schemes, with very **high performance**.
 
-For example, the [`Curve25519`](https://en.wikipedia.org/wiki/Curve25519) is the following Edmonds curve:
+For example, the [**`Curve25519`**](https://en.wikipedia.org/wiki/Curve25519) is the Edwards curve, defined by the equation:
 - y<sup>2</sup> = x<sup>3</sup> + **_486662_**x<sup>2</sup> + x
 
-defined over the finite field **𝔽<sub>p</sub>**, where **_p_** = 2<sup>255</sup> - 19
+defined over the finite field **𝔽<sub>p</sub>**, where **_p_** = 2<sup>255</sup> - 19.
+
+In fact, the above equation does not match the Edwards curves equation, but the above curve is proven to be birationally equivalent to the following twisted Edwards curve:
+
+- -x<sup>2</sup> + y<sup>2</sup> = 1 + **_37095705934669439343138083508754565189542113879843219016388785533085940283555_**x<sup>2</sup>y<sup>2</sup>
 
 The elliptic curve **Curve25519** consists of all points {**x**, **y**} with integer coordinates,  defined by the modular equation:
 - y<sup>2</sup> ≡ x<sup>3</sup> + **_486662_**x<sup>2</sup> + x (mod **_2<sup>255</sup> - 19_**)
-
 It is carefully engineered, by a team of cryptographers, led by Daniel Bernstein, at several levels of design and implementation to achieve **very high speeds** without compromising security.
 
 Based on the **Curve25519** an **ECDH function** is derived, called **X25519** (used for elliptic-key Diffie–Hellman key agreement schemes) and **digital signature scheme** is derived, called **Ed25519**, based on the the **EdDSA** algorithm. These schemes are extremely fast, because they involve multiplications and other simple operations with small numbers, which can be efficiently implemented in the modern microprocessors (CPUs).
+
+
+
+Learn more about the Curve25519 and Curve448 from the technical perspective from [RFC 7748 - Elliptic Curves for Security](https://tools.ietf.org/html/rfc7748).
