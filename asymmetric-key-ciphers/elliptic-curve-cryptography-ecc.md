@@ -461,15 +461,17 @@ The **Curve448** is suitable for ECDH **key agreement** (ECDH function, known as
 
 Prefer **Curve448** to **Curve25519** when your application needs a **higher level of security**, but have in mind that **Curve448** is about 3 times **slower** than **Curve25519** and uses longer key length and signature length.
 
+Prefer **Curve25519** to **Curve448** when you need better performance and smaller keys and signatures.
+
 Learn more about the **Curve25519** and **Curve448** from the technical perspective from:
  -  [**RFC 7748** - Elliptic Curves for Security](https://tools.ietf.org/html/rfc7748) - the Internet technical standard for implementing the **X25519** and **X448** key exchange protocols.
  - [**RFC 8032** - Edwards-Curve Digital Signature Algorithm (EdDSA)](https://tools.ietf.org/html/rfc8032) - the Internet technical standard for implementing the the **Ed25519** and **EdDSA-Ed448** signature schemes.
 
-In the general case, have in mind that **Curve25519 is faster** than **secp256k1** and the other 256-bit standard NIST curves and safer, so it is the recommended choice for 128-bit security. Similarly, the **Curve448** has better performance and security than the equivalent 448-bit NIST curves (like **secp224r1**), so it is the recommended choice for 224-bit security.
+In the general case, have in mind that **Curve25519 is faster** than **secp256k1** and the other 256-bit standard NIST curves and is considered more secure, so it is the recommended choice for ~ 128-bit security. Similarly, the **Curve448** has better performance than the classical curves with similar key length, so it is the recommended curve for ~ 224-bit security.
 
 ### Curve25519 - Example in Python
 
-First, we shall install the [`pynacl`](https://github.com/pyca/pynacl) crypto library for Python:
+To demonstrate the **Curve25519** elliptic curve in practice, we shall фирст install the [`pynacl`](https://github.com/pyca/pynacl) crypto library for Python:
 
 ```py
 pip install pynacl
