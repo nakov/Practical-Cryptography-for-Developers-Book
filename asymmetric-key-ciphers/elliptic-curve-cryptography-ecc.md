@@ -142,7 +142,7 @@ In the ECC cryptography, many algorithms rely on the **computational difficulty 
 
 Because the fastest known algorithm to solve the **ECDLP **for key of size **_p_** needs $$\sqrt{p}$$ steps, this means that to achieve a **_p_**-bit **security strength**, at least **_2\*p_-bit curve** is needed. Thus **256-bit elliptic curves** typically provide nearly **128-bit security strength**. 
 
-In fact, the strength is **slightly less**, because the **order** of the curve (**n**) is typically less than the fields size (**p**) and because the number of steps is not exactly $$\sqrt{p}$$, but $$0.886 * \sqrt{p}$$. A precise **security strength** estimation for the most popular **standard elliptic curves** is given here: [http://safecurves.cr.yp.to/rho.html](http://safecurves.cr.yp.to/rho.html).
+In fact, the strength is **slightly less**, because the **order** of the curve (**n**) is typically less than the fields size (**p**) and because the number of steps is not exactly $$\sqrt{p}$$, but is $$0.886 * \sqrt{p}$$. A precise **security strength** estimation for the most popular **standard elliptic curves** is given here: [http://safecurves.cr.yp.to/rho.html](http://safecurves.cr.yp.to/rho.html).
 
 For example, the `secp256k1` (**_p_** = 256) curve provides ~ 128-bit security (127.8 bits to be precise) and the `Curve448` (**_p_** = 448) provides ~ 224-bit security (222.8 bits to be precise).
 
@@ -277,7 +277,7 @@ Note that in real projects, **192-bit curves are considered weak**, so 256-bit c
 
 ### Public Key Compression in the Elliptic Key Cryptosystems
 
-Elliptic curves over finite fields **𝔽<sub>p</sub>** have **at most 2 points per y coordinate** (odd **x** and even **x**). This property comes from the nature of the elliptic curve equation and is illustrated at the below graph:
+Elliptic curves over finite fields **𝔽<sub>p</sub>** (in the Weierstrass form) have **at most 2 points per y coordinate** (odd **x** and even **x**). This property comes from the nature of the elliptic curve equation and is illustrated at the below graph:
 
 ![](/assets/elliptic-curve-over-f17-points-per-y-coordinate.png)
 
@@ -410,6 +410,16 @@ pubKey: 02f54ba86dc1ccb5bed0224d23f01ed87e4a443c47fc690d7797a13d41d2340e1a
 The public key is compressed and encoded in the standard format (encode the **y** coordinate as prefix `02` or `03`).
 
 ## Edwards Curves
+
+Elliptic curves in the elliptic curve cryptography (ECC) may be presented in several forms (representations), which are proven to be equivalent:
+ - **Weierstrass form** of elliptic curve:
+   - y<sup>2</sup> = x<sup>3</sup> + **_a_**x + **_b_**
+   - Example Weierstrass curve used in ECC: `secp256k1`
+ - **Montgomery form** of elliptic curve:
+   - **_B_**y<sup>2</sup> = x<sup>3</sup> + **_A_**x<sup>2</sup> + x
+   - Example Montgomery curve used in ECC: `Curve25519`
+ - **Edwards form** of elliptic curve:
+   - x2+y2=1+dx2y2
 
 Elliptic curve cryptography (ECC) uses sometimes curves, known as **[Edwards curves](https://en.wikipedia.org/wiki/Edwards_curve)**, which have the form:
 - x<sup>2</sup> + y<sup>2</sup> = 1 + **_d_**x<sup>2</sup>y<sup>2</sup>
