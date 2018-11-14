@@ -1,6 +1,6 @@
 # Symmetric and Asymmetric Encryption - Overview
 
-In cryptography two major types of encryption schemes are widely used: **symmetric encryption** (where a single **secret key** is used to encrypt and decrypt data) and **asymmetric encryption** (where a public key cryptosystem is used and encryption and decryption is done using a **pair of public and corresponding private key**). Let's explain these fundamental crypto-concepts in details.
+In cryptography two major types of encryption schemes are widely used: **symmetric encryption** \(where a single **secret key** is used to encrypt and decrypt data\) and **asymmetric encryption** \(where a public key cryptosystem is used and encryption and decryption is done using a **pair of public and corresponding private key**\). Let's explain these fundamental crypto-concepts in details.
 
 ## Symmetric Encryption - Concepts and Algorithms
 
@@ -169,8 +169,5 @@ We shall discuss the **RSA** and **ECC** cryptosystems in details later. Now, it
 
 ### Asymmetric Encryption - Online Demo
 
-In order to better understand the idea behind the **asymmetric encryption**, you can play with some online public key encryption tool to encrypt / decrypt a sample message by sample RSA private / public key. You can play a bit with this site: [http://travistidwell.com/jsencrypt/demo/](http://travistidwell.com/jsencrypt/demo/).
+In order to better understand the idea behind the **asymmetric encryption**, you can play with some online public key encryption tool to encrypt / decrypt a sample message by sample RSA private / public key. You can play a bit with this site: [http://travistidwell.com/jsencrypt/demo/](http://travistidwell.com/jsencrypt/demo/).![](/assets/asymmetric-encryption-online-demo-jsencrypt.png)In the above online demo you can **generate RSA public / private key pairs** and **encrypt** / **decrypt** text messages. Note that the message size is limited by the key length, so you can't encrypt long text. Internally, the above site uses the **RSAES-PKCS1-v1\_5** public key encryption scheme as specified in [RFC3447](https://tools.ietf.org/html/rfc3447).
 
-![](/assets/asymmetric-encryption-online-demo-jsencrypt.png)
-
-In the above online demo you can **generate RSA public / private key pairs** and **encrypt** / **decrypt** text messages. Note that the message size is limited by the key length, so you can't encrypt long text. Internally, the above site uses the **RSAES-PKCS1-v1\_5** public key encryption scheme as specified in [RFC3447](https://tools.ietf.org/html/rfc3447).
