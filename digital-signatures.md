@@ -38,15 +38,21 @@ The most popular digital signature schemes \(as of Nov 2018\) are: [**RSA signat
 
 ### RSA Signatures
 
-The **RSA** public-key cryptosystem provides a **digital signature scheme** \(sign + verify\), based on the math of the **modular exponentiations** and discrete logarithms. The [**RSA sign / verify**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29#Signing_messages) algorithm calculates a message **hash**, then **encrypts** it with the private key exponent to obtain the **signature** and **decrypts** the message with the public key exponent at the signature verification stage to ensure the signature is valid. RSA signatures are widely used in modern cryptography, e.g. for signing digital certificates to protect Web sites. For example \(as of Nov 2018\) the Microsoft's official Web site uses `Sha256RSA` for its digital certificate.
+The **RSA** public-key cryptosystem provides a cryptographic secure **digital signature scheme** \(sign + verify\), based on the math of the **modular exponentiations** and discrete logarithms. The [**RSA sign / verify**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29#Signing_messages) algorithm calculates a message **hash**, then **encrypts** it with the private key exponent to obtain the **signature** and **decrypts** the message with the public key exponent at the signature verification stage to ensure the signature is valid.
+
+**RSA signatures** are widely used in modern cryptography, e.g. for signing digital certificates to protect Web sites. For example \(as of Nov 2018\) the Microsoft's official Web site uses `Sha256RSA` for its digital certificate. Nevertheless, the trend in the last decade is to move from RSA and DSA to **elliptic curve-based signatures** \(like ECDSA and EdDSA\). Modern cryptographers and developers **prefer ECC signatures** for their shorter key length, shorter signature, higher security \(for the same key length\) and better performance.
 
 ### DSA \(Digital Signature Algorithm\)
 
-...
+The **DSA \(Digital Signature Algorithm\)** is a cryptographic secure standard for **digital signatures** \(signing messages and signature verification\), based on the math of the **modular exponentiations** and discrete logarithms. It is alternative of RSA and is used instead of RSA, because of patents limitations with RSA \(until Sept 2000\). DSA is variant of the [ElGamal signature scheme](https://en.wikipedia.org/wiki/ElGamal_signature_scheme).
+
+**DSA** uses a **random value k** when the signature is computed and this opens a potential vulnerability: if two messages are sent using the same value of **k **and the same **private key**, then an attacker can compute the private key directly.
+
+In the modern cryptography, the **elliptic-curve-based signatures** \(liike ECDSA and EdDSA\) are **prefered to DSA**, because of shorter key lengths, shorter signature lengths, higher security levels \(for the same key length\) and better performance.
 
 ### ECDSA \(Elliptic Curve Digital Signature Algorithm\)
 
-...
+The ECDSA
 
 Sha256ECDSA \(used in SSL certificates, e.g. by Amazon\)
 

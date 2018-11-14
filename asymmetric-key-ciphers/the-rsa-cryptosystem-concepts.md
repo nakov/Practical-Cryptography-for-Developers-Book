@@ -98,7 +98,7 @@ The above PEM ASN.1-encoded message, holding the RSA private key data, can be de
 **Encrypting a message** using certain RSA **public key** {**_n_**, **_e_**} is done by the following transformation:
   - **_encryptedMsg_** = (**_msg_**)<sup>**_e_**</sup> mod **_n_**
  
-The **_msg_** here is a number in the range [0...**_n_**). Text messages should be encoded as integers in the range [0...**_n_**) before encryption (see [EAOP](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding)). For larger texts, **hybrid encryption** should be used (encrypt a secret key and use it to symmetrically encrypt the text, see [RSA-KEM](https://tools.ietf.org/html/rfc5990)).
+The **_msg_** here is a number in the range [0...**_n_**). Text messages should be **encoded as integers** in the range [0...**_n_**) before encryption (see [EAOP](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding)). For larger texts, **hybrid encryption** should be used (encrypt a secret key and use it to symmetrically encrypt the text, see [RSA-KEM](https://tools.ietf.org/html/rfc5990)).
  
 The above operation **cannot be reversed**: no efficient algorithm exists to calculate **_msg_** from **_encryptedMsg_**, **_e_** and **_n_** (see [the RSA problem](https://en.wikipedia.org/wiki/RSA_problem)), which all are **public** (non-secret) by design.
 
@@ -139,3 +139,7 @@ The RSA calculations work correctly. This is because the key-pair meets the RSA 
 In the real world, typically the RSA modulus **_n_** and the private exponent **_d_** are 3072-bit or 4096-bit integers and the public exponent **_e_** is 65537.
 
 For further reading, look at this excellent explanation about **how RSA works** in detail with explainations and examples: http://doctrina.org/How-RSA-Works-With-Examples.html.
+
+Because RSA encryption is a **deterministic** (has no random component) attackers can successfully launch a **[chosen plaintext attack](https://en.wikipedia.org/wiki/Chosen-plaintext_attack)** against by encrypting likely plaintexts with the public key and test if they are equal to the ciphertext. This may not be a problem, but is a **weakness**, that should be considered when developers choose an encryption scheme.
+
+Hybrid encryption schemes like **RSA-KEM** solve this vulnerability and allow encrypting longer texts.
