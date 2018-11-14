@@ -22,12 +22,12 @@ Quantum-Resistant Crypto Algorithms
 
 ...
 
+Quantum-Safe key agreement: [https://en.wikipedia.org/wiki/CECPQ1](https://en.wikipedia.org/wiki/CECPQ1)
 
+Post-quantum signatures and key agreements \(XMSS, McEliece, NewHope\):  
+[https://github.com/randombit/botan](https://github.com/randombit/botan)
 
-Quantum-Safe key agreement: https://en.wikipedia.org/wiki/CECPQ1
-
-Post-quantum signatures and key agreements (XMSS, McEliece, NewHope):
-https://github.com/randombit/botan
+https://tools.ietf.org/html/rfc8391
 
 
 

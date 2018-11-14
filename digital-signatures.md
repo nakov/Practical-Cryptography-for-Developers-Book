@@ -1,4 +1,4 @@
-# Digital Signatures, DSA, ECDSA and EdDSA
+# Digital Signatures, ECDSA and EdDSA
 
 [**Digital signatures**](https://en.wikipedia.org/wiki/Digital_signature) are a cryptographic tool to **sign messages** and **verify message signatures** in order to provide proof of **authenticity** for digital messages or electronic documents. Digital signatures provide:
 
@@ -18,11 +18,11 @@
 
 Messages are **signed** by the sender using a **private key** \(signing key\). Typically the input message is **hashed** and then the **signature** is calculated by the signing algorithm. Most signature algorithms perform some calculation with the message hash + the signing key in a way that the result cannot be calculated without the signing key. The result from message signing is the **digital signature** \(one or more integers\):
 
-* `signMsg(msg, privKey) 🡒 signature`
+`signMsg(msg, privKey) 🡒 signature`
 
 Message **signatures** are **verified** by the corresponding **public key** \(verification key\). Typically the signed message is **hashed** and some calculation is performed by the signature algorithm using the message hash + the public key. The result from signing is a boolean value \(valid or invalid signature\):
 
-* `verifyMsgSignature(msg, signature, pubKey) 🡒 valid / invalid`
+`verifyMsgSignature(msg, signature, pubKey) 🡒 valid / invalid`
 
 A **message signature** mathematically guarantees that certain message was signed by certain \(secret\) **private key**, which corresponds to certain \(non-secret\) **public key**. After a message is signed, the message and **the signature cannot be modified** and thus message **authentication** and **integrity** is guaranteed. Anyone, who knows the **public key** of the message signer, can **verify the signature**. Аfter signing the signature author cannot reject the act of signing \(this is known as **non-repudiation**\).
 
@@ -30,25 +30,29 @@ A **message signature** mathematically guarantees that certain message was signe
 
 ## Digital Signature Schemes and Algorithms
 
-Most public-key cryptosystems like **RSA** and **ECC** provide secure **digital signature schemes** \(signature algorithms\). Examples of well known digital signature schemes are: [**DSA**](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm), [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), [**EdDSA**](https://en.wikipedia.org/wiki/EdDSA), [**RSA signatures**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29#Signing_messages), [**ElGamal signatures**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme) and [**Schnorr signatures**](https://en.wikipedia.org/wiki/Schnorr_signature). Most of these schemes are based on the difficulty of the **DLP** \(discrete logarithm problem\) and **ECDLP** \(elliptic-curve discrete logarithm problem\).
+Most public-key cryptosystems like **RSA** and **ECC** provide secure **digital signature schemes** \(signature algorithms\). Examples of well known digital signature schemes are: [**DSA**](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm), [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), [**EdDSA**](https://en.wikipedia.org/wiki/EdDSA), [**RSA signatures**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29#Signing_messages), [**ElGamal signatures**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme) and [**Schnorr signatures**](https://en.wikipedia.org/wiki/Schnorr_signature). The above mentioned signature schemes are based on the difficulty of the **DLP** \(discrete logarithm problem\) and **ECDLP** \(elliptic-curve discrete logarithm problem\) and are **quantum-breakable** \(powerful enough quantum computers may calculate the signing key from the message signature\). Quantum-safe signatures \(like **BLISS**, **XMSS** and **McEliece**\) are massively used, because of long key length, long signatures and slower performance, compared to ECDSA and EdDSA.
 
+The most popular digital signature schemes \(as of Nov 2018\) are: [**RSA signatures**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29#Signing_messages), [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) and [**EdDSA**](https://en.wikipedia.org/wiki/EdDSA). Let's give some details about them, along with some live code examples.
 
+### RSA Signatures
 
- We shall discuss the digital signatures in greater detail later in this section.
+The **RSA** public-key cryptosystem provides a **digital signature scheme** \(sign + verify\), based on the math of the **modular exponentiations** and discrete logarithms. The [**RSA sign / verify**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29#Signing_messages) algorithm calculates a message **hash**, then **encrypts** it with the private key exponent to obtain the **signature** and **decrypts** the message with the public key exponent at the signature verification stage to ensure the signature is valid. RSA signatures are widely used in modern cryptography, e.g. for signing digital certificates to protect Web sites. For example \(as of Nov 2018\) the Microsoft's official Web site uses `Sha256RSA` for its digital certificate.
 
-
-
-## DSA \(Digital Signature Algorithm\)
-
-...
-
-## ECDSA \(Elliptic Curve Digital Signature Algorithm\)
+### DSA \(Digital Signature Algorithm\)
 
 ...
 
-## EdDSA \(Edwards-curve Digital Signature Algorithm\)
+### ECDSA \(Elliptic Curve Digital Signature Algorithm\)
 
 ...
+
+Sha256ECDSA \(used in SSL certificates, e.g. by Amazon\)
+
+### EdDSA \(Edwards-curve Digital Signature Algorithm\)
+
+...
+
+### Other Signature Schemes and Algorithms
 
 Signature schemes:  
 ECDSA: r≡x\(\[H\(m\)s−1\]B+rs−1A\)\(mod n\)  
