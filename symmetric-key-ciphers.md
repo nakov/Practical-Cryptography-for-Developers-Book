@@ -1,10 +1,10 @@
 # Symmetric Key Ciphers - Overview
 
-**Symmetric key ciphers** \(like **AES**, **ChaCha20**,  **RC6**, **Twofish**, **CAST** and many others\) use the same key \(or password\) to **encrypt** and **decrypt** data. They are often used in combination with other algorithms into a **symmetric encryption schemes** \(like **ChaCha20-Poly1305** and **AES-256-CTR-HMAC-SHA256**\), often with password to **key derivation** algorithms \(like **Scrypt** and **Argon2**\). Symmetric key ciphers are **quantum-resistant**, which means that powerful quantum computers will not be able to break their security \(when big enough key lengths are used\).
+**Symmetric key ciphers** \(like **AES**, **ChaCha20**, **RC6**, **Twofish**, **CAST** and many others\) use the same key \(or password\) to **encrypt** and **decrypt** data. They are often used in combination with other algorithms into a **symmetric encryption schemes** \(like **ChaCha20-Poly1305** and **AES-128-GCM** and **AES-256-CTR-HMAC-SHA256**\), often with password to **key derivation** algorithms \(like **Scrypt** and **Argon2**\). Symmetric key ciphers are **quantum-resistant**, which means that powerful quantum computers will not be able to break their security \(when big enough key lengths are used\).
 
-## Asymmetric Encryption / Decryption
+## Symmetric Encryption / Decryption
 
-The **secret key** used to encrypt and decrypt the data is usually 128 bits or 256 bits and is called "**encryption key**". Sometimes it is given as hex or base64-encoded integer number or is derived through a **password-to-key derivation scheme**.
+**Symmetric encryption** and decryption uses a **secret key** or passphrase \(to derive the key from it\). The **secret key** used to encrypt and decrypt the data is usually 128 bits or 256 bits and is called "**encryption key**". Sometimes it is given as hex or base64-encoded integer number or is derived through a **password-to-key derivation scheme**.
 
 When the input data is encrypted, it is transformed to **encrypted ciphertext** and when the ciphertext is decrypted, it is transformed back to the original input data.
 
