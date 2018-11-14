@@ -2,7 +2,7 @@
 
 **Asymmetric key cryptosystems / public-key cryptosystems **\(like [**RSA**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29), [**elliptic curve cryptography \(ECC\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography), [**Diffie-Hellman**](https://en.wikipedia.org/wiki/Diffie–Hellman_key_exchange), [**ElGamal**](https://en.wikipedia.org/wiki/ElGamal_encryption), [**McEliece**](https://en.wikipedia.org/wiki/McEliece_cryptosystem), [**NTRU**](https://en.wikipedia.org/wiki/NTRU) and others\) use a pair of mathematically linked keys: **public key** \(encryption key\) and **private key** \(decryption key\).
 
-The asymmetric key cryptosystems provide **key-pair generation** \(private + public key\), **encryption algorithms** \(asymmetric key ciphers and encryption schemes like **RSA-OAEP** and **ECIES**\), **digital signature algorithms** \(like **DSA**, **ECDSA** and **EdDSA**\) and **key exchange algorithms** \(like **DHKE** and **ECDH**\). 
+The asymmetric key cryptosystems provide **key-pair generation** \(private + public key\), **encryption algorithms** \(asymmetric key ciphers and encryption schemes like **RSA-OAEP** and **ECIES**\), **digital signature algorithms** \(like **DSA**, **ECDSA** and **EdDSA**\) and **key exchange algorithms** \(like **DHKE** and **ECDH**\).
 
 A message **encrypted** by the **public key** is later **decrypted** by the **private key**. A message **signed** by the **private key** is later **verified** by the **public key**. The **public key** is typically shared with everyone, while the **private key** is kept secret. Calculating the private key from its corresponding public key is by design computationally infeasible.
 
@@ -20,6 +20,8 @@ The most important and most used public-key cryptosystems are **RSA** and **ECC*
 The [**RSA public-key cryptosystem**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29) is based on the mathematical concept of [**modular exponentiation**](https://en.wikipedia.org/wiki/Modular_exponentiation) \(numbers raised to a power by modulus\), along with some mathematical constructions and the [**integer factorization problem**](https://en.wikipedia.org/wiki/RSA_problem) \(which is considered to be computationally infeasible for large enough keys\).
 
 The [**elliptic-curve cryptography \(ECC\) cryptosystem**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) is based on the math of the on the algebraic structure of the **elliptic curves** over finite fields and the [**elliptic curve discrete logarithm problem \(ECDLP\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography#Rationale), which is considered to be computationally infeasible for large keys. **ECC** comes together with the **ECDSA** algorithm \(elliptic-curve digital signature algorithm\). ECC uses smaller keys and signatures than RSA and is prefered in most modern apps. We shall discuss ECC and ECDSA later in details, along with examples.
+
+Most **public-key cryptosystems** \(like RSA, ECC, DSA, ECDSA and EdDSA\) are **quantum-breakable** \(quantum-unsafe\), which means that \(at least on theory\) a powerful enough quantum computer will be able to break their security and compute the private key from given public key in seconds.
 
 ## Asymmetric Encryption Schemes
 
