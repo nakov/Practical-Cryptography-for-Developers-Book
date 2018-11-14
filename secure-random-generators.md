@@ -30,6 +30,8 @@ netNum():
 
 Of course, the **HMAC** function can be changed by some **cryptographic hash** function or another mathematical transformation like the [**Mersenne Twister**](https://en.wikipedia.org/wiki/Mersenne_Twister), but the main idea stays the same: pseudo-random generators have internal **state**, initialized with some **initial randomness** and over the time **change** their internal state and **generate pseudo-random numbers**, based on the current state. Good random number generators should be **fast** and should generate **statistical randomness** \(see the [Diehard tests](https://en.wikipedia.org/wiki/Diehard_tests)\), i.e. all numbers should have the same chance to be generated over the time.
 
+The above idea to generate random pseudo-numbers based on **HMAC\(key + counter\)**, with some complications, is known as the [**HMAC\_DRGB algorithm**](https://www.cs.cmu.edu/~kqy/resources/thesis.pdf), described in the security standard [NIST 800-90A](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-90a.pdf).
+
 ## Initial Entropy \(Seed\)
 
 To be secure, a **PRNG** \(which is statistically random\) should start by a **truly random initial seed**, which is absolutely **unpredictable**. If the seed is predictable, it will generate predictable sequence of random numbers and the entire random generation process will be **insecure**. That's why having unpredictable randomness at the start \(secure seed\) is very important.
@@ -76,16 +78,20 @@ r1 = random.randrange(1e49, 1e50-1)
 random.seed(time.time())
 r2 = random.randrange(1e49, 1e50-1)
 
-print(r1, r2)
+print(r1)
+print(r2)
 ```
 
 The above code will print **two equal numbers**, both depending on the current time. It is obvious that the same time in the initial seed causes the same \(predictable\) pseudo-random numbers to be generated in the output. This is a sample output of the above code:
 
 ```
-53285353661739398833155340591358345604323255820576 53285353661739398833155340591358345604323255820576
+53285353661739398833155340591358345604323255820576
+53285353661739398833155340591358345604323255820576
 ```
 
-If you run this code through a debugger or in a slow environment, the produced numbers may be different, due to time change between the two random generation executions.
+If you run this code through a **debugger** or in a slow environment, the produced numbers may be **different**, due to **time change** between the two random generation executions. Typically the Python interpreter at the **interactive console** produces two **different numbers**. To obtain the result, similar to the above, first save the code in a script file \(e.g. `insecure-rnd.py`\) and then execute the Python script file:
+
+![](/assets/insecure-rnd-python-demo.png)
 
 Basically, when the initial random seed is initialized with a predictable number like the current time, crackers can **try all possibilities within the range of +/- 5 seconds** and find the exact initial seed and then compromise the security.
 
