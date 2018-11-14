@@ -88,7 +88,7 @@ Decrypted: b'A message for encryption'
 
 * If you run the above example, your output will be different, because it generates different **random RSA key-pair** at each execution.
 * Even if you **encrypt the same message several times** with the same public key, you will get **different output**. This is because the **OAEP** padding algorithm injects some randomness with the padding.
-* If you try to **encrypt larger messages**, you will get and exception, because the 1024-bit key limits the maximum message length.
+* If you try to **encrypt larger messages**, you will get and exception, because the **1024-bit key limits** the maximum message length.
 
 Now **play with the above code**, modify it and run it to learn how RSA works in action.
 
