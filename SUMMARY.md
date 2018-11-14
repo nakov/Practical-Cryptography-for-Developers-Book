@@ -47,10 +47,11 @@
   * [Exercises: RSA Encrypt / Decrypt](asymmetric-key-ciphers/exercises-rsa-encrypt-decrypt.md)
   * [Elliptic Curve Cryptography \(ECC\)](asymmetric-key-ciphers/elliptic-curve-cryptography-ecc.md)
   * [ECDH Key Exchange](asymmetric-key-ciphers/ecdh-key-exchange.md)
+  * [ECDH Key Exchange - Examples](asymmetric-key-ciphers/ecdh-key-exchange-examples.md)
   * [Exercises: ECDH Key Exchange](asymmetric-key-ciphers/exercises-ecdh-key-exchange.md)
   * [ECC Encryption / Decryption](asymmetric-key-ciphers/ecc-encryption-decryption.md)
   * [Exercises: ECIES Encrypt / Decrypt](asymmetric-key-ciphers/exercises-ecies-encrypt-decrypt.md)
-  * [RSA or ECC? Which is Better?](asymmetric-key-ciphers/rsa-or-ecc-which-is-better.md)
+  * ECDH Key Exchange - Examples
 * [Digital Signatures](digital-signatures.md)
   * [RSA Signatures](digital-signatures/rsa-signatures.md)
   * [RSA: Sign / Verify - Examples](digital-signatures/rsa-sign-verify-examples.md)
