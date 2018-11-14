@@ -50,8 +50,9 @@
   * [ECDH Key Exchange - Examples](asymmetric-key-ciphers/ecdh-key-exchange-examples.md)
   * [Exercises: ECDH Key Exchange](asymmetric-key-ciphers/exercises-ecdh-key-exchange.md)
   * [ECC Encryption / Decryption](asymmetric-key-ciphers/ecc-encryption-decryption.md)
+  * [ECIES Hybrid Encryption Scheme](asymmetric-key-ciphers/ecies-public-key-encryption.md)
+  * [ECIES Encryption - Example](asymmetric-key-ciphers/ecies-example.md)
   * [Exercises: ECIES Encrypt / Decrypt](asymmetric-key-ciphers/exercises-ecies-encrypt-decrypt.md)
-  * ECDH Key Exchange - Examples
 * [Digital Signatures](digital-signatures.md)
   * [RSA Signatures](digital-signatures/rsa-signatures.md)
   * [RSA: Sign / Verify - Examples](digital-signatures/rsa-sign-verify-examples.md)
