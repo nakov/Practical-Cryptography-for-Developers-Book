@@ -126,9 +126,15 @@ In other words, the points over an elliptic curve stay in one or several non-ove
 
 For the elliptic curves over finite fields (in the classical Weierstrass normal form) having **cofactor h = 1**, the ECC cryptosystems define a special pre-defined (constant) point called **[generator point G](https://en.wikipedia.org/wiki/Generating_set_of_a_group)** (**base point**), which can **generate any other point** over the elliptic curve by multiplying **G** by some integer icn the range [0...**n**]. The number **n** is called "**order**" of the cyclic group (the total number of different points over the curve), defined by the EC. This curve's **order** defines the **total number of all possible private keys** for this curve.
 
-In ECC cryptography the EC points form **[cyclic groups](https://en.wikipedia.org/wiki/Cyclic_group)** (or cyclic subgroups), which means that a number **n** exists (**n** > 1), such that **n** \* **G** = **_infinity_**. For curves with cofactor = 1, all possible EC points over the curve, that can be generated from **G**, are **n** (including the special point _infinity_).
+In the ECC cryptography the EC points form **[cyclic groups](https://en.wikipedia.org/wiki/Cyclic_group)** (or cyclic subgroups), which means that a number **n** exists (**n** > 1), such that (**n** + 1) \* **G** = 0 \* **G** = **_infinity_**.
 
-At the above example (the EC over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** mod **17**), if we take the point **G** = {**15**, **13**} as **generator**, any other point from the curve can be obtained by multiplying **G** by some integer in the range [1...18]. Thus the order of the EC is **n** = **18**.
+For curves with **cofactor** = **1**, all possible EC points over the curve, that can be generated from **G**, are **n** (excluding the special point _infinity_). The number **n** is called "**order of the curve**".
+
+At the above example (the EC over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** mod **17**), if we take the point **G** = {**15**, **13**} as **generator**, any other point from the curve can be obtained by multiplying **G** by some integer in the range [1...17]. Thus the **order** of this EC is **n** = **17** and its cofactor **h** = **1**.
+
+For elliptic curves with cofactor **h** > 1, different **base points** can generate different **subgroups** of EC points on the curve. Choosing a certain **generator point**, we choose to operate over a certain **subgroup of points** on the curve and most EC point operations and ECC crypto algorithms will work well. Still in some cases, special attention should be given, so it is recommended to use only proven ECC implementations.
+
+If we want to generate all the EC points for a curve with cofactor > 1, we need to take one point from each subgroup as **subgroup generator** and multiply it to [1...**r**], where **r** is the order of the subgroups.
 
 ### Private Key, Public Key and the Generator Point in ECC
 
