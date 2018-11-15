@@ -185,9 +185,9 @@ In the ECC cryptography, many algorithms rely on the **computational difficulty 
 
 ### ECC and Curve Security Strength
 
-Because the fastest known algorithm to solve the **ECDLP **for key of size **_k_** needs $$\sqrt{k}$$ steps, this means that to achieve a **_k_**-bit **security strength**, at least **_2\*k_-bit curve** is needed. Thus **256-bit elliptic curves** typically provide nearly **128-bit security strength**. 
+Because the fastest known algorithm to solve the **ECDLP **for key of size **_k_** needs $$\sqrt{k}$$ steps, this means that to achieve a **_k_**-bit **security strength**, at least **_2\*k_-bit curve** is needed. Thus **256-bit elliptic curves** (where the field size **p** is 256-bit number) typically provide nearly **128-bit security strength**. 
 
-In fact, the strength is **slightly less**, because the **order** of the curve (**n**) is typically less than the fields size (**p**) and because the curve may have cofactor **h** > **1** (and subgroup order **r** = **n** / **h**) and because the number of steps is not exactly $$\sqrt{p}$$, but is $$0.886 * \sqrt{p}$$. A precise **security strength** estimation for the most popular **standard elliptic curves** is given here: [http://safecurves.cr.yp.to/rho.html](http://safecurves.cr.yp.to/rho.html).
+In fact, the strength is **slightly less**, because the **order** of the curve (**n**) is typically less than the fields size (**p**) and because the curve may have cofactor **h** > **1** (and subgroup order **r** = **n** / **h**, smaller than **n**) and because the number of steps is not exactly $$\sqrt{k}$$, but is $$0.886 * \sqrt{k}$$. A precise **security strength** estimation for the most popular **standard elliptic curves** is given here: [http://safecurves.cr.yp.to/rho.html](http://safecurves.cr.yp.to/rho.html).
 
 For example, the `secp256k1` (**_p_** = 256) curve provides ~ 128-bit security (127.8 bits to be precise) and the `Curve448` (**_p_** = 448) provides ~ 224-bit security (222.8 bits to be precise).
 
