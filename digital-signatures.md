@@ -26,11 +26,12 @@ Message **signatures** are **verified** by the corresponding **public key** \(ve
 
 A **message signature** mathematically guarantees that certain message was signed by certain \(secret\) **private key**, which corresponds to certain \(non-secret\) **public key**. After a message is signed, the message and **the signature cannot be modified** and thus message **authentication** and **integrity** is guaranteed. Anyone, who knows the **public key** of the message signer, can **verify the signature**. Аfter signing the signature author cannot reject the act of signing \(this is known as **non-repudiation**\).
 
-Most signature schemes work like it is shown at the following diagram:
-
+Most signature schemes work like it is shown at the following diagram:  
 ![](/assets/signature-sign-verify.png)
 
-At **signing**, the input message is **hashed** \(either alone, or along with the private key and other input parameters\), then some **computation** \(based on elliptic curves, discrete logarithms or other cryptographic primitive\) calculates the **digital signature**. At **signature verification**, the input message is again hashed \(either alone or along with the priva
+At **signing**, the input message is **hashed** \(either alone, or together with the public key and other input parameters\), then some **computation** \(based on elliptic curves, discrete logarithms or other cryptographic primitive\) calculates the **digital signature**. The **signed message** consists of the original message + the calculated signature.
+
+At **signature verification**, the original message is again **hashed** \(either alone or together with the public key\) and some calculation is performed between the message **hash**, the **signature** and the **public key**, and finally a **comparison** decides whether the signature is valid or not.
 
 **Digital signatures** are different from **MAC** \(message authentication codes\), because MACs are created and verified by the same secret key using a **symmetric algorithm,** while digital signatures are created by a signing key and are verified by a different verification key, corresponding to the signing key using an **asymmetric algorithm**. Both signatures and MAC codes provide message authentication and integrity.
 
