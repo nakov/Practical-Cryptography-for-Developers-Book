@@ -106,7 +106,7 @@ The below figure visualizes this example of EC point multiplication:
 
 ### Order and Cofactor of Elliptic Curve
 
-Аn elliptic curve over a finite field can form a finite **[cyclic algebraic group](https://en.wikipedia.org/wiki/Cyclic_group)**, which consists of all the points on the curve. In a cyclic group, if two EC points are added or an EC point is multiplied to an integer, the result is another EC point from the same cyclic group (and on the same curve). The **order of the group** is the total number of points, that can be obtained by multiplying an EC point from the curve to some integer, i.e. the **total number of all EC points** on the curve.
+Аn elliptic curve over a finite field can form a finite **[cyclic algebraic group](https://en.wikipedia.org/wiki/Cyclic_group)**, which consists of all the points on the curve. In a cyclic group, if two EC points are added or an EC point is multiplied to an integer, the result is another EC point from the same cyclic group (and on the same curve). The **order of the group** is the total number of points, that can be obtained by multiplying a base EC point from the curve to some integer, i.e. the **total number of all EC points** on the curve.
 
 Some curves form a single **cyclic group** (holding all their EC points), while others form several non-overlapping **cyclic subgroups** (each holding a subset of the curve's EC points). In the second scenario the points on the curve are split into **h** cyclic subgroups (partitions), each of order **r** (each subgroup holds equal number of points). The **order** of entire the group is **n** = **h** \* **r** (the number of subgroups, multiplied by the number of points in each subgroup). The number of subgroups **h** holding the EC points is called **cofactor**.
 
@@ -126,7 +126,7 @@ In other words, the points over an elliptic curve stay in one or several non-ove
 
 For the elliptic curves over finite fields (in the classical Weierstrass normal form) having **cofactor h = 1**, the ECC cryptosystems define a special pre-defined (constant) point called **[generator point G](https://en.wikipedia.org/wiki/Generating_set_of_a_group)** (**base point**), which can **generate any other point** over the elliptic curve by multiplying **G** by some integer icn the range [0...**n**]. The number **n** is called "**order**" of the cyclic group (the total number of different points over the curve), defined by the EC. This curve's **order** defines the **total number of all possible private keys** for this curve.
 
-In the ECC cryptography the EC points form **[cyclic groups](https://en.wikipedia.org/wiki/Cyclic_group)** (or cyclic subgroups), which means that a number **n** exists (**n** > 1), such that (**n** + 1) \* **G** = 0 \* **G** = **_infinity_**.
+In the ECC cryptography the EC points form **[cyclic groups](https://en.wikipedia.org/wiki/Cyclic_group)** (or **cyclic subgroups**), which means that a number **r** exists (**r** > 1), such that (**r** + 1) \* **G** = 0 \* **G** = **_infinity_**. The number **r** is called **order** of the group (or subgroup).
 
 For curves with **cofactor** = **1**, all possible EC points over the curve, that can be generated from **G**, are **n** (excluding the special point _infinity_). The number **n** is called "**order of the curve**".
 
@@ -142,7 +142,7 @@ In the **ECC**, when we multiply a fixed EC point **G** (the **generator** point
 
 Consequently, in ECC we have:
   - **Еlliptic curve** (EC) over finite field **𝔽<sub>p</sub>**
-  - **G** == **generator point** (fixed constant, a starting point on the EC)
+  - **G** == **generator point** (fixed constant, a base point on the EC)
   - **k** == **private key** (integer)
   - **P** == **public key** (point)
  
