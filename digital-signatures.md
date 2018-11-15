@@ -77,15 +77,15 @@ The **EdDSA** signature algorithm is works with Edwards elliptic curves like **C
 
 A short comparison between **Ed25519 EdDSA** signatures and **secp256k ECDSA** signatures is given below:
 
-|  | EdDSA-Ed25519 | ECDSA-secp256k1 | Comments |
-| :--- | :--- | :--- | :--- |
-| **Performance** | 8% **faster** | 8% **slower** | Source: [http://justmoon.github.io/curvebench/benchmark.html](http://justmoon.github.io/curvebench/benchmark.html) |
-| **Private key length** | **32** bytes \(256 bits, 251 variable bits + 5 predefined\) | **32** bytes \(256 bits\) | Private keys are stored as 256-bit integers |
-| **Public key length** \(compressed\) | **32** bytes \(256 bits = 255-bit y-coordinate + 1-bit x coordinate\) | **33** bytes \(257 bits = 256-bit x-coordinate + 1-bit y-coordinate\) | Compressed ed25519 public key fits in 256 bits. Compressed secp256k1 public key fits in 257 bits. |
-| **Signature size** | **64** bytes \(512 bits\) | **64** bytes \(512 bits\) or 65 bytes \(513 bits\) with the public recovery bit |  |
-| **Public key recovery** | not possible | possible |  |
-| **Security level** | ~128 bit \(more precisely 125.8\) | ~128 bit \(more precisely 127.8\) | Source: [https://safecurves.cr.yp.to/rho.html](https://safecurves.cr.yp.to/rho.html) |
-| **SafeCurves security tests** | 11 of 11 passed | 7 of 7 passed | Source: [https://safecurves.cr.yp.to](https://safecurves.cr.yp.to) |
+|  | EdDSA-Ed25519 | ECDSA-secp256k1 |
+| :--- | :--- | :--- |
+| **Performance** \([source](http://justmoon.github.io/curvebench/benchmark.html)\) | 8% **faste** | 8% **slower** |
+| **Private key length** | **32** bytes \(256 bits = 251 variable bits + 5 predefined\) | **32** bytes \(256 bits\) |
+| **Public key length** \(compressed\) | **32** bytes \(256 bits = 255-bit y-coordinate + 1-bit x coordinate\) | **33** bytes \(257 bits = 256-bit x-coordinate + 1-bit y-coordinate\) |
+| **Signature size** | **64** bytes \(512 bits\) | **64** bytes \(512 bits\) or 65 bytes \(513 bits\) with the public recovery bit |
+| **Public key recovery** | not possible | possible \(with 1 recovery bit added in the signature\) |
+| **Security level** \([source](https://safecurves.cr.yp.to/rho.html)\) | ~128 bit \(more precisely 125.8\) | ~128 bit \(more precisely 127.8\) |
+| **SafeCurves security** \([source](https://safecurves.cr.yp.to)\) | 11 of 11 tests passed | 7 of 11 tests passed |
 
 ### Other Signature Schemes and Algorithms
 
