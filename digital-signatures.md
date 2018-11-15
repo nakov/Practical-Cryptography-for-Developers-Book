@@ -32,19 +32,19 @@ A **message signature** mathematically guarantees that certain message was signe
 
 Most public-key cryptosystems like **RSA** and **ECC** provide secure **digital signature schemes** \(signature algorithms\). Examples of well known digital signature schemes are: [**DSA**](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm), [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), [**EdDSA**](https://en.wikipedia.org/wiki/EdDSA), [**RSA signatures**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29#Signing_messages), [**ElGamal signatures**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme) and [**Schnorr signatures**](https://en.wikipedia.org/wiki/Schnorr_signature).
 
-The above mentioned signature schemes are based on the difficulty of the **DLP** \(discrete logarithm problem\) and **ECDLP** \(elliptic-curve discrete logarithm problem\) and are **quantum-breakable** \(powerful enough quantum computers may calculate the signing key from the message signature\). Quantum-safe signatures \(like **BLISS**, **XMSS** and **McEliece**\) are massively used, because of long key length, long signatures and slower performance, compared to ECDSA and EdDSA.
+The above mentioned signature schemes are based on the difficulty of the **DLP** \(discrete logarithm problem\) and **ECDLP** \(elliptic-curve discrete logarithm problem\) and are **quantum-breakable** \(powerful enough quantum computers may calculate the signing key from the message signature\). **Quantum-safe** signatures \(like **BLISS**, **XMSS** and **McEliece**\) are not massively used, because of long key length, long signatures and slower performance, compared to ECDSA and EdDSA.
 
 The most popular digital signature schemes \(as of Nov 2018\) are: [**RSA signatures**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29#Signing_messages), [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) and [**EdDSA**](https://en.wikipedia.org/wiki/EdDSA). Let's give some details about them, along with some live code examples.
 
 ### RSA Signatures
 
-The **RSA** public-key cryptosystem provides a cryptographically secure **digital signature scheme** \(sign + verify\), based on the math of the **modular exponentiations** and discrete logarithms and the difficulty of the **integer factorization problem** \(**IFP**\). The [**RSA sign / verify**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29#Signing_messages) algorithm calculates a message **hash**, then **encrypts** the hash with the private key exponent to obtain the **signature** and **decrypts** the message with the public key exponent at the signature verification stage to ensure the signature is valid. RSA signatures are **deterministic** \(the same message + same private key produce the same signature\).
+The **RSA** public-key cryptosystem provides a cryptographically secure **digital signature scheme** \(sign + verify\), based on the math of the **modular exponentiations** and discrete logarithms and the difficulty of the **integer factorization problem** \(**IFP**\). The [**RSA sign / verify**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29#Signing_messages) algorithm calculates a message **hash**, then **encrypts** the hash with the private key exponent to obtain the **signature** and **decrypts** the message with the public key exponent at the signature verification stage to ensure the signature is valid. RSA signatures are **deterministic** \(the same message + same private key produce the same signature\). A non-deterministic variant of RSA-signatures is easy to be designed by padding the input message with some random bytes before signing.
 
 **RSA signatures** are widely used in modern cryptography, e.g. for signing digital certificates to protect Web sites. For example \(as of Nov 2018\) the Microsoft's official Web site uses `Sha256RSA` for its digital certificate. Nevertheless, the trend in the last decade is to move from RSA and DSA to **elliptic curve-based signatures** \(like ECDSA and EdDSA\). Modern cryptographers and developers **prefer ECC signatures** for their shorter key length, shorter signature, higher security \(for the same key length\) and better performance.
 
 ### DSA \(Digital Signature Algorithm\)
 
-The [**DSA \(Digital Signature Algorithm\)**](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm) is a cryptographically secure standard for **digital signatures** \(signing messages and signature verification\), based on the math of the **modular exponentiations** and discrete logarithms and the difficulty of the discrete logarithm problem \(**DLP**\). It is alternative of RSA and is used instead of RSA, because of patents limitations with RSA \(until Sept 2000\). **DSA** is variant of the [ElGamal signature scheme](https://en.wikipedia.org/wiki/ElGamal_signature_scheme).
+The [**DSA \(Digital Signature Algorithm\)**](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm) is a cryptographically secure standard for **digital signatures** \(signing messages and signature verification\), based on the math of the **modular exponentiations** and discrete logarithms and the difficulty of the discrete logarithm problem \(**DLP**\). It is alternative of RSA and is used instead of RSA, because of patents limitations with RSA \(until Sept 2000\). **DSA** is variant of the [**ElGamal signature scheme**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme).
 
 The **DSA signing **algorithm calculates a message **hash**, then generates a random integer **k** and computes the **signature** using the message **hash** + the **private key** exponent + the random number **k**. Due to randomness, the signature is **non-deterministic**. The **DSA signature verification** algorithm involves computations, based on the message hash + the public key exponent + the signature.
 
@@ -70,11 +70,15 @@ A **deterministic-ECDSA** variant is defined in [**RFC 6979**](https://tools.iet
 
 ### EdDSA \(Edwards-curve Digital Signature Algorithm\)
 
-**EdDSA** \(Edwards-curve Digital Signature Algorithm\) is a fast **digital signature algorithm**, using **elliptic curves** in Edwards form \(like [**Ed25519**](https://ed25519.cr.yp.to) and [**Ed448-Goldilocks**](https://eprint.iacr.org/2015/625.pdf)\), a deterministic variant of the [**Schnorr's signature**](https://en.wikipedia.org/wiki/Schnorr_signature) scheme, designed by a team of the well-known cryptographer [**Daniel Bernstein**](https://cr.yp.to/djb.html). **EdDSA** is more **simple** than **ECDSA**, more **secure** than **ECDSA** and is designed to be **faster** than **ECDSA** \(for curves with comparables key length\).
+**EdDSA** \(Edwards-curve Digital Signature Algorithm\) is a fast **digital signature algorithm**, using **elliptic curves** in Edwards form \(like [**Ed25519**](https://ed25519.cr.yp.to) and [**Ed448-Goldilocks**](https://eprint.iacr.org/2015/625.pdf)\), a deterministic variant of the [**Schnorr's signature**](https://en.wikipedia.org/wiki/Schnorr_signature) scheme, designed by a team of the well-known cryptographer [**Daniel Bernstein**](https://cr.yp.to/djb.html).
+
+**EdDSA** is more **simple** than **ECDSA**, more **secure** than **ECDSA** and is designed to be **faster** than **ECDSA** \(for curves with comparables key length\). Like **ECDSA**, the **EdDSA **signature scheme relies on the difficulty of the **ECDLP problem** \(elliptic-curve discrete logarithm problem\) for its security strength.
 
 The **EdDSA** signature algorithm is works with Edwards elliptic curves like **Curve25519** and **Curve448**, which are highly optimized for **performance** and **security**. It is shown that **Ed25519 signatures** are typically **faster** than traditional **ECDSA signatures** over curves with comparable key length. Still, the performance competition is disputable.
 
 The **EdDSA signing **algorithm generates a deterministic \(not random\) integer **r** \(computed by **hashing** the **message** and the hash of the **private key**\), then computes the **signature** {**Rs**, **s**} using the **hash** of \(the **message** + the **private key** + the number **r**\). The signature is **deterministic** \(the same message signed by the same key always gives the same signature\). The **ECDSA signature verification** algorithm involves elliptic-curve computations, based on the **message** \(hashed together with the public key and the EC point **Rs** from the signature\) + the **public key** + the **signature**.
+
+By design **EdDSA** signatures are **deterministic** \(which improves their security\). A non-deterministic variant of EdDSA-signatures is easy to be designed by padding the input message with some random bytes before signing.
 
 A short comparison between **Ed25519 EdDSA** signatures and **secp256k ECDSA** signatures is given below:
 
@@ -96,16 +100,18 @@ In the general case, it is considered that **EdDSA signatures are recommended** 
 
 ### Other Signature Schemes and Algorithms
 
-Most signature algorithms are derived from generic signature schemes like [**ElGamal signatures**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme) and [**Schnorr signatures**](https://en.wikipedia.org/wiki/Schnorr_signature):
+Most signature algorithms are derived from generic signature schemes like [**ElGamal signatures**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme) and [**Schnorr signatures**](https://en.wikipedia.org/wiki/Schnorr_signature).
 
+* **RSA signature** is derived from the **RSA** encryption scheme.
 * **DSA** and **ECDSA** are derived from **ElGamal** signature scheme.
 * **EdDSA** is derived from the **Schnorr** signature scheme.
-* **RSA signature** is derived from the **RSA** encryption scheme.
 
-Signature schemes:  
-ECDSA: r≡x\(\[H\(m\)s−1\]B+rs−1A\)\(mod n\)  
-ECGDSA: r≡x\(\[r−1H\(m\)\]B+r−1sA\)\(mod n\)  
-ECKCDSA: r=H\(x\(\[r⊕H\(m,h\)\]B+\[s\]A\)\)  
-SM2 signature: [https://tools.ietf.org/html/draft-shen-sm2-ecdsa-00](https://tools.ietf.org/html/draft-shen-sm2-ecdsa-00)  
-GOST R 34.10-2001: Digital Signature Algorithm: [https://tools.ietf.org/html/rfc5832](https://tools.ietf.org/html/rfc5832)
+Other **signature schemes** include:
+
+* [**ECGDSA**](https://www.teletrust.de/fileadmin/files/oid/ecgdsa_final.pdf): an elliptic-curve digital signature scheme, 
+* ECKCDSA: r=H\(x\(\[r⊕H\(m,h\)\]B+\[s\]A\)\)
+* SM2 signature: [https://tools.ietf.org/html/draft-shen-sm2-ecdsa-00](https://tools.ietf.org/html/draft-shen-sm2-ecdsa-00)
+* GOST R 34.10-2001: Digital Signature Algorithm: [https://tools.ietf.org/html/rfc5832](https://tools.ietf.org/html/rfc5832)
+
+
 
