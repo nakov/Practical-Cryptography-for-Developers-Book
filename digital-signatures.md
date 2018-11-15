@@ -83,9 +83,13 @@ A short comparison between **Ed25519 EdDSA** signatures and **secp256k ECDSA** s
 | **Private key length** | **32** bytes \(256 bits = 251 variable bits + 5 predefined\) | **32** bytes \(256 bits\) |
 | **Public key length** \(compressed\) | **32** bytes \(256 bits = 255-bit y-coordinate + 1-bit x coordinate\) | **33** bytes \(257 bits = 256-bit x-coordinate + 1-bit y-coordinate\) |
 | **Signature size** | **64** bytes \(512 bits\) | **64** bytes \(512 bits\) or 65 bytes \(513 bits\) with the public recovery bit |
-| **Public key recovery** | not possible | possible \(with 1 recovery bit added in the signature\) |
-| **Security level** \([source](https://safecurves.cr.yp.to/rho.html)\) | ~128 bit \(more precisely 125.8\) | ~128 bit \(more precisely 127.8\) |
-| **SafeCurves security** \([source](https://safecurves.cr.yp.to)\) | 11 of 11 tests passed | 7 of 11 tests passed |
+| **Public key recovery** | **not possible** \(due to hashing of the public key\) | **possible** \(with 1 recovery bit added in the signature\) |
+| **Security level** \([source](https://safecurves.cr.yp.to/rho.html)\) | **~128 bit** \(more precisely 125.8\) | **~128 bit** \(more precisely 127.8\) |
+| **SafeCurves security** \([source](https://safecurves.cr.yp.to)\) | **11 of 11** tests passed | **7 of 11** tests passed |
+
+Modern developers often use **Ed25519 signatures** instead of **256-bit curve ECDSA** signatures, because EdDSA-Ed25519 signature scheme uses keys, which fit in 32 bytes \(64 hex digits\), signatures fit in 64 bytes \(128 hex digits\), signing and verification is faster and the security is considered better.
+
+Public **blockchains** \(like Bitcoin and Ethereum\) often use **secp2561-based ECDSA** signatures, because the signer's public key \(and its blockchain address\) can be easily recovered from the signature \(together with the signed message\) by adding just 1 additional bit to the signature.
 
 ### Other Signature Schemes and Algorithms
 
