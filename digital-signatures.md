@@ -50,7 +50,7 @@ The **DSA signing **algorithm calculates a message **hash**, then generates a ra
 
 The **random value k** \(generated when the signature is computed\) opens a potential vulnerability: if two different messages are signed using the same value of **k **and the same **private key**, then an attacker can compute the signer's private key directly.
 
-A **deterministic-DSA** variant is defined in [**RFC 6979**](https://tools.ietf.org/html/rfc6979), which calculates the random number **k** as **HMAC** from the private key, the message hash and few other parameters. The deterministic ECDSA is considered more secure.
+A **deterministic-DSA** variant is defined in [**RFC 6979**](https://tools.ietf.org/html/rfc6979), which calculates the random number **k** as **HMAC** from the private key, the message hash and few other parameters. The deterministic DSA is considered more secure.
 
 In the modern cryptography, the **elliptic-curve-based signatures** \(liike ECDSA and EdDSA\) are **prefered to DSA**, because of shorter key lengths, shorter signature lengths, higher security levels \(for the same key length\) and better performance.
 
@@ -58,7 +58,8 @@ In the modern cryptography, the **elliptic-curve-based signatures** \(liike ECDS
 
 The [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) \(Elliptic Curve Digital Signature Algorithm\) is a cryptographically secure **digital signature** scheme, based on the elliptic-curve cryptography \(**ECC**\). ECDSA relies on the math of the **cyclic groups of elliptic curves** over finite fields and on the difficulty of the **ECDLP problem** \(elliptic-curve discrete logarithm problem\).
 
-**ECDSA** is adaptation of the classical **DSA** algorithm, which is derived from the [**ElGamal signature scheme**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme). More precisely, the **ECDSA** algorithm is a variant of the ElGamal signature, with some changes and optimizations to handle the representation of the group elements \(the points of the elliptic curve\). Like any other elliptic curve crypto algorithm, ECDSA uses a **curve** \(like the `secp256k1`\), **private key** \(random integer within the curve key length\) and **public key** \(EC point, calculated from the private key by multiplying it to the curve generator point\).
+**ECDSA** is adaptation of the classical **DSA** algorithm, which is derived from the [**ElGamal signature scheme**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme). More precisely, the **ECDSA** algorithm is a variant of the ElGamal signature, with some changes and optimizations to handle the representation  
+ of the group elements \(the points of the elliptic curve\). Like any other elliptic curve crypto algorithm, ECDSA uses a **curve** \(like the `secp256k1`\), **private key** \(random integer within the curve key length\) and **public key** \(EC point, calculated from the private key by multiplying it to the curve generator point\).
 
 The **ECDSA signing **algorithm calculates a message **hash**, then generates a random integer **k** and computes the **signature** using the message **hash** + the **private key** + the random number **k**. Due to randomness, the signature is **non-deterministic**. The **ECDSA signature verification** algorithm involves computations, based on the message **hash** + the **public key** + the **signature**.
 
@@ -66,7 +67,7 @@ The **random value k** \(generated when the signature is computed\) opens a pote
 
 A **deterministic-ECDSA** variant is defined in [**RFC 6979**](https://tools.ietf.org/html/rfc6979), which calculates the random number **k** as **HMAC** from the private key, the message hash and few other parameters. The deterministic ECDSA is considered more secure.
 
-Sha256ECDSA \(used in SSL certificates, e.g. by Amazon\)
+**ECDSA signatures** are the most widely used signing algorithm, used by millions every day \(as of Nov 2018\). For example, the digital certificates in Amazon Web sites are signed by the `Sha256ECDSA` signature scheme.
 
 ### EdDSA \(Edwards-curve Digital Signature Algorithm\)
 
