@@ -108,10 +108,10 @@ Most signature algorithms are derived from generic signature schemes like [**ElG
 
 Other **signature schemes** include:
 
-* [**ECGDSA**](https://www.teletrust.de/fileadmin/files/oid/ecgdsa_final.pdf): an elliptic-curve digital signature scheme, 
-* ECKCDSA: r=H\(x\(\[r⊕H\(m,h\)\]B+\[s\]A\)\)
-* SM2 signature: [https://tools.ietf.org/html/draft-shen-sm2-ecdsa-00](https://tools.ietf.org/html/draft-shen-sm2-ecdsa-00)
-* GOST R 34.10-2001: Digital Signature Algorithm: [https://tools.ietf.org/html/rfc5832](https://tools.ietf.org/html/rfc5832)
+* [**ECGDSA**](https://www.teletrust.de/fileadmin/files/oid/ecgdsa_final.pdf): an elliptic-curve digital signature scheme \(based on the difficulty of the ECDLP problem\), a slightly simplified variant of ECDSA, known as **the German version of ECDSA**.
+* [**ECKDSA**](https://eprint.iacr.org/2007/357.pdf): an elliptic-curve digital signature scheme \(based on the difficulty of the ECDLP problem\), a complicated variant of ECDSA, known as **the Korean version of ECDSA**. The ECKDSA signs given **message** by given EC **private key**, along with the signer's **digital certificate** hash. This add **identity** to the digital signature, in addition to message authentication, integrity and non-repudiation.
+* [**SM2 signature**](https://tools.ietf.org/html/draft-shen-sm2-ecdsa-00): an elliptic-curve digital signature scheme \(based on the difficulty of the ECDLP problem\), known as the **Chinese digital signature algorithm**, developed by the Chinese Academy of Science.
+* [**GOST R 34.10-2001**](https://tools.ietf.org/html/rfc5832): an elliptic-curve digital signature scheme \(based on the difficulty of the ECDLP problem\), known as the **Russian digital signature algorithm**, one of the Russian cryptographic standard algorithms \(called GOST algorithms\).
 
-
+After the short review of the most popular digital signature algorithms, let's get into technical details about the **RSA**, **ECDSA** and **EdDSA** algorithms, with code examples.
 
