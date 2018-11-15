@@ -108,17 +108,27 @@ The below figure visualizes this example of EC point multiplication:
 
 Аn elliptic curve over a finite field can form a finite **[cyclic algebraic group](https://en.wikipedia.org/wiki/Cyclic_group)**, which consists of all the points on the curve. In a cyclic group, if two EC points are added or an EC point is multiplied to an integer, the result is another EC point from the same cyclic group (and on the same curve). The **order of the group** is the total number of points, that can be obtained by multiplying an EC point from the curve to some integer, i.e. the **total number of all EC points** on the curve.
 
-Some curves form a single **cyclic group** (holding all their EC points), while others form several non-overlapping **cyclic subgroups** (each holding a subset of the curve's EC points). In the second scenario the points on the curve stay in **h** cyclic subgroups (partitions), each of order **r** (holding equal number of points). The order of entire the group is **n** = **h** \* **r** (the number of subgroups, multiplied by the number of points in each subgroup). The number of subgroups **h** holding the EC points is called **cofactor**.
+Some curves form a single **cyclic group** (holding all their EC points), while others form several non-overlapping **cyclic subgroups** (each holding a subset of the curve's EC points). In the second scenario the points on the curve are split into **h** cyclic subgroups (partitions), each of order **r** (each subgroup holds equal number of points). The **order** of entire the group is **n** = **h** \* **r** (the number of subgroups, multiplied by the number of points in each subgroup). The number of subgroups **h** holding the EC points is called **cofactor**.
+
+![](/assets/elliptic-curve-subgroups.png)
+
+The **cofactor** is typically expressed by the following formula:
+  - **h** = **n** / **r**
+
+where
+  - **n** is the **order** of the curve (the number of all its points)
+  - **h** is the curve **cofactor** (the number of non-overlapping **subgroups** of points, which together hold all curve points)
+  - **r** is the order of the subgroups (the number of elements in each subgroup of points)
 
 In other words, the points over an elliptic curve stay in one or several non-overlapping cyclic **subgroups**. The number of subgroups is called "**cofactor**". The total number of points in all subgroups is called "**order**" of the curve. If the curve consists of **only one cyclic subgroup**, its **cofactor** **h** = **1**. Example of elliptic curve having cofactor = 1 is `secp256k1`. Example of curve having cofactor = 8 is `Curve25519`.
 
 ### The "Generator" Point in ECC
 
-For the elliptic curves over finite fields (in the classical Weierstrass normal form) having **cofactor h = 1**, the ECC cryptosystems define a special pre-defined (constant) point called **[generator point G](https://en.wikipedia.org/wiki/Generating_set_of_a_group)**, which can **generate any other point** over the elliptic curve by multiplying **G** by some integer icn the range [0...**n**]. The number **n** is called "**order**" of the cyclic group (the total number of different points over the curve), defined by the EC. This curve's **order** defines the **total number of all possible private keys** for this curve.
+For the elliptic curves over finite fields (in the classical Weierstrass normal form) having **cofactor h = 1**, the ECC cryptosystems define a special pre-defined (constant) point called **[generator point G](https://en.wikipedia.org/wiki/Generating_set_of_a_group)** (**base point**), which can **generate any other point** over the elliptic curve by multiplying **G** by some integer icn the range [0...**n**]. The number **n** is called "**order**" of the cyclic group (the total number of different points over the curve), defined by the EC. This curve's **order** defines the **total number of all possible private keys** for this curve.
 
 In ECC cryptography the EC points form **[cyclic groups](https://en.wikipedia.org/wiki/Cyclic_group)** (or cyclic subgroups), which means that a number **n** exists (**n** > 1), such that **n** \* **G** = **_infinity_**. For curves with cofactor = 1, all possible EC points over the curve, that can be generated from **G**, are **n** (including the special point _infinity_).
 
-At the above example (the EC over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7**), if we take the point **G** = {**15**, **13**} as **generator**, any other point from the curve can be obtained by multiplying **G** by some integer in the range [1...18]. Thus the order of the EC is **n** = **18**.
+At the above example (the EC over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** mod **17**), if we take the point **G** = {**15**, **13**} as **generator**, any other point from the curve can be obtained by multiplying **G** by some integer in the range [1...18]. Thus the order of the EC is **n** = **18**.
 
 ### Private Key, Public Key and the Generator Point in ECC
 
