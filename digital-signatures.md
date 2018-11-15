@@ -70,7 +70,23 @@ A **deterministic-ECDSA** variant is defined in [**RFC 6979**](https://tools.iet
 
 ### EdDSA \(Edwards-curve Digital Signature Algorithm\)
 
-**EdDSA** is a fast **digital signature algorithm**, using **elliptic curves** in Edwards form \(like **Ed25519** and **Ed448**\).
+**EdDSA** \(Edwards-curve Digital Signature Algorithm\) is a fast **digital signature algorithm**, using **elliptic curves** in Edwards form \(like [**Ed25519**](https://ed25519.cr.yp.to) and [**Ed448-Goldilocks**](https://eprint.iacr.org/2015/625.pdf)\), a variant of [**Schnorr's signature**](https://en.wikipedia.org/wiki/Schnorr_signature) scheme, designed by a team of the well-known cryptographer [**Daniel Bernstein**](https://cr.yp.to/djb.html). **EdDSA** is more **simple** than **ECDSA**, more **secure** than **ECDSA** and is designed to be **faster** than **ECDSA** \(for curves with comparables key length\).
+
+The **EdDSA** signature algorithm is works with Edwards elliptic curves like **Curve25519** and **Curve448**, which are highly optimized for **performance** and **security**. It is shown that **Ed25519 signatures** are typically **faster** than traditional **ECDSA signatures** over curves with comparable key length. Still, the performance competition is disputable.
+
+A short comparison between **Ed25519 EdDSA** signatures and **secp256k ECDSA** signatures is given below:
+
+|  | EdDSA-Ed25519 | ECDSA-secp256k1 | Comments |
+| :--- | :--- | :--- | :--- |
+| **Performance** | 8% **faster** | 8% **slower** | Source: [http://justmoon.github.io/curvebench/benchmark.html](http://justmoon.github.io/curvebench/benchmark.html) |
+| **Private key length** | **32** bytes \(256 bits\) | **32** bytes \(256 bits\) |  |
+| **Public key length** | **32** bytes \(256 bits\) | **33** bytes \(257 bits\) |  |
+| **Signature size** | **64** bytes \(512 bits\) | **64** bytes \(512 bits\) or 65 bytes \(513 bits\) with the public recovery bit |  |
+| **Public key recovery** | not possible | possible |  |
+| **Security level** | ~128 bit \(more precisely 125.8\) | ~128 bit \(more precisely 127.8\) | Source: [https://safecurves.cr.yp.to/rho.html](https://safecurves.cr.yp.to/rho.html) |
+| **SafeCurves security tests** | 11 of 11 passed | 7 of 7 passed | Source: [https://safecurves.cr.yp.to](https://safecurves.cr.yp.to) |
+
+
 
 ### Other Signature Schemes and Algorithms
 
