@@ -90,7 +90,7 @@ A **deterministic-ECDSA** variant is defined in [**RFC 6979**](https://tools.iet
 The **EdDSA** signature algorithm is works with Edwards elliptic curves like **Curve25519** and **Curve448**, which are highly optimized for **performance** and **security**. It is shown that **Ed25519 signatures** are typically **faster** than traditional **ECDSA signatures** over curves with comparable key length. Still, the performance competition is disputable. The **EdDSA sign / verify** process works as follows:
 
 * The **EdDSA signing **algorithm generates a deterministic \(not random\) integer **r** \(computed by **hashing** the **message** and the hash of the **private key**\), then computes the **signature** {**Rs**, **s**}, where **Rs** is computed from **r** and **s** is computed from the **hash** of \(the **message** + the **public key** derived from the private + the number **r**\) + the **private key**. The signature is **deterministic** \(the same message signed by the same key always gives the same signature\).
-* The **EdDSA signature verification** algorithm involves elliptic-curve computations, based on the **message** \(hashed together with the public key and the EC point **Rs** from the signature\) + the **public key** + the **signature**.
+* The **EdDSA signature verification** algorithm involves elliptic-curve computations, based on the **message** \(hashed together with the public key and the EC point **Rs** from the signature\) + the **public key** + **s** from the **signature** {**Rs**, **s**}.
 
 By design **EdDSA** signatures are **deterministic** \(which improves their security\). A non-deterministic variant of EdDSA-signatures is easy to be designed by padding the input message with some random bytes before signing.
 
