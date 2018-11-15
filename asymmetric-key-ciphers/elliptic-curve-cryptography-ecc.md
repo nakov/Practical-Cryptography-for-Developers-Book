@@ -143,12 +143,9 @@ To summarize, in the ECC cryptography the EC points, together with the generator
 
 Elliptic curve subgroups usually have **many generator points**, but cryptographers carefully select one of them, which generates the entire group (or subgroup) and is suitable for performance optimizations in the  computations. This is the generator known as "**G**".
 
-It is known that for some curves different generator points generate subgroups of different order. More precisely, if the group order is **n**, for each prime **d** dividing **n**, there is a point **Q** such that **d** \* **Q** = **_infinity_**. This means that some points used as generators will generate smaller subgroups that other. This is the reason why cryptographers usually choose the subgroup order **r** to be a **prime number**.
+It is known that for some curves different generator points generate subgroups of different order. More precisely, if the group order is **n**, for each prime **d** dividing **n**, there is a point **Q** such that **d** \* **Q** = **_infinity_**. This means that some points used as generators for the same curve will generate smaller subgroups than others. This is the reason why cryptographers usually choose the **subgroup order** **r** to be a **prime number**.
 
-For elliptic curves with cofactor **h** > 1, different **base points** can generate different **subgroups** of EC points on the curve. By choosing a certain **generator point**, we choose to operate over a certain **subgroup of points** on the curve and most EC point operations and ECC crypto algorithms will work well. Still in some cases, special attention should be given, so it is recommended to use only proven ECC implementations.
-
-If we want to generate all the EC points for a curve with cofactor > 1, we need to take one point from each subgroup as **subgroup generator** and multiply it to [1...**r**], where **r** is the order of the subgroups.
-
+For elliptic curves with cofactor **h** > 1, different **base points** can generate different **subgroups** of EC points on the curve. By choosing a certain **generator point**, we choose to operate over a certain **subgroup of points** on the curve and most EC point operations and ECC crypto algorithms will work well. Still in some cases, special attention should be given, so it is recommended to use only proven ECC implementations, algorithms and software packages.
 
 ### Generator Point - Example
 
@@ -156,7 +153,7 @@ At the above example (the EC over finite field y<sup>2</sup> ≡ x<sup>3</sup> +
 
 Note that the curve has 17 normal EC points (shown at the above figures) + one special "**_point at infinity_**", all staying in a single subgroup, and the curve order is **18** (not 17).
 
-Note also, that if we take the point {5, 9} as generator, it will generate just 3 EC points: {5, 8}, {5, 9} and _infinity_. Because the curve order is not prime number, different generators may generate subgroups of different order.
+Note also, that if we take the **point {5, 9} as generator**, it will generate **just 3 EC points**: {5, 8}, {5, 9} and **_infinity_**. Because the curve order is not prime number, different generators may generate subgroups of different order. This is a good example why we should not "invent" our own elliptic curves for cryptographic purposes and we should use proven curves.
 
 ### Private Key, Public Key and the Generator Point in ECC
 
@@ -188,9 +185,9 @@ In the ECC cryptography, many algorithms rely on the **computational difficulty 
 
 ### ECC and Curve Security Strength
 
-Because the fastest known algorithm to solve the **ECDLP **for key of size **_p_** needs $$\sqrt{p}$$ steps, this means that to achieve a **_p_**-bit **security strength**, at least **_2\*p_-bit curve** is needed. Thus **256-bit elliptic curves** typically provide nearly **128-bit security strength**. 
+Because the fastest known algorithm to solve the **ECDLP **for key of size **_k_** needs $$\sqrt{k}$$ steps, this means that to achieve a **_k_**-bit **security strength**, at least **_2\*k_-bit curve** is needed. Thus **256-bit elliptic curves** typically provide nearly **128-bit security strength**. 
 
-In fact, the strength is **slightly less**, because the **order** of the curve (**n**) is typically less than the fields size (**p**) and because the number of steps is not exactly $$\sqrt{p}$$, but is $$0.886 * \sqrt{p}$$. A precise **security strength** estimation for the most popular **standard elliptic curves** is given here: [http://safecurves.cr.yp.to/rho.html](http://safecurves.cr.yp.to/rho.html).
+In fact, the strength is **slightly less**, because the **order** of the curve (**n**) is typically less than the fields size (**p**) and because the curve may have cofactor **h** > **1** (and subgroup order **r** = **n** / **h**) and because the number of steps is not exactly $$\sqrt{p}$$, but is $$0.886 * \sqrt{p}$$. A precise **security strength** estimation for the most popular **standard elliptic curves** is given here: [http://safecurves.cr.yp.to/rho.html](http://safecurves.cr.yp.to/rho.html).
 
 For example, the `secp256k1` (**_p_** = 256) curve provides ~ 128-bit security (127.8 bits to be precise) and the `Curve448` (**_p_** = 448) provides ~ 224-bit security (222.8 bits to be precise).
 
