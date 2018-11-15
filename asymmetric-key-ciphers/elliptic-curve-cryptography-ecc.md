@@ -93,9 +93,13 @@ Two points over an elliptic curve (EC points) can be **added** and the result is
 A point **G** over an elliptic curve over finite field (EC point) can be **multiplied by an integer** **k** and the result is another EC point **P** on the same curve and this operation is **fast**:
  - **P** = **k** \* **G**
 
-The above operation involves some formulas and transformations, but for simplicity, we shall skip them. The important thing to know is that **multiplying EC point by integer returns another EC point** on the same curve and this operation is **fast**. Multiplying an EC point by 0 returns a special EC point called "**_infinity_**". Everyone is free to [read more about EC point multiplication](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication) in Wikipedia.
+The above operation involves some formulas and transformations, but for simplicity, we shall skip them. The important thing to know is that **multiplying EC point by integer returns another EC point** on the same curve and this operation is **fast**. Multiplying an EC point by 0 returns a special EC point called "**_infinity_**". 
+
+Everyone is free to [read more about EC point multiplication](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication) in Wikipedia.
 
 ### Example: Multiply EC Point by Integer
+
+The formulas for EC multiplication differ for the different forms of **representation of the curve**. In this example, we shall use an elliptic curve in the classical **Weierstrass form**.
 
 For **example** let's take the EC point **G** = {**15**, **13**} on the elliptic curve over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** (mod **17**) and multiply it by **k** = **6**. We shall obtain an EC point **P** = {**5**, **8**}:
   - **P** = **k** \* **G** = **6** \* {**15**, **13**} = {**5**, **8**}
@@ -108,7 +112,7 @@ The below figure visualizes this example of EC point multiplication:
 
 Аn elliptic curve over a finite field can form a finite **[cyclic algebraic group](https://en.wikipedia.org/wiki/Cyclic_group)**, which consists of all the points on the curve. In a cyclic group, if two EC points are added or an EC point is multiplied to an integer, the result is another EC point from the same cyclic group (and on the same curve). The **order of the curve** is the **total number of all EC points** on the curve. This total number of points includes also the special point called "[**_point at infinity_**](https://en.wikipedia.org/wiki/Point_at_infinity)", which is obtained when a point is multiplied by 0.
 
-Some curves form a single **cyclic group** (holding all their EC points), while others form several non-overlapping **cyclic subgroups** (each holding a subset of the curve's EC points). In the second scenario the points on the curve are split into **h** cyclic subgroups (partitions), each of order **r** (each subgroup holds equal number of points). The **order** of entire group is **n** = **h** \* **r** (the number of subgroups, multiplied by the number of points in each subgroup). The number of subgroups **h** holding the EC points is called **cofactor**.
+Some curves form a single **cyclic group** (holding all their EC points), while others form several non-overlapping **[cyclic subgroups](https://en.wikipedia.org/wiki/Subgroup)** (each holding a subset of the curve's EC points). In the second scenario the points on the curve are split into **h** cyclic subgroups (partitions), each of order **r** (each subgroup holds equal number of points). The **order** of entire group is **n** = **h** \* **r** (the number of subgroups, multiplied by the number of points in each subgroup). The number of subgroups **h** holding the EC points is called **cofactor**.
 
 ![](/assets/elliptic-curve-subgroups.png)
 
@@ -118,9 +122,12 @@ The **cofactor** is typically expressed by the following formula:
 where
   - **n** is the **order of the curve** (the number of all its points)
   - **h** is the curve **cofactor** (the number of non-overlapping **subgroups** of points, which together hold all curve points)
-  - **r** is the **order of the subgroups** (the number of elements in each subgroup of points, including the **_infinity_** point for each subgroup)
+  - **r** is the **order of the subgroups** (the number of points in each subgroup, including the **_infinity_** point for each subgroup)
 
-In other words, the points over an elliptic curve stay in one or several non-overlapping cyclic **subgroups**. The number of subgroups is called "**cofactor**". The total number of points in all subgroups is called "**order**" of the curve. If the curve consists of **only one cyclic subgroup**, its **cofactor** **h** = **1**. Example of elliptic curve having cofactor = 1 is `secp256k1`. Example of curve having cofactor = 8 is `Curve25519`.
+In other words, the points over an elliptic curve stay in one or several non-overlapping subsets, called **cyclic subgroups**. The number of subgroups is called "**cofactor**". The total number of points in all subgroups is called "**order**" of the curve and is usually denoted by **n**. If the curve consists of **only one cyclic subgroup**, its **cofactor** **h** = **1**. If the curve consists of several subgroups, its **cofactor** > **1**.
+  - Example of elliptic curve having **cofactor** = **1** is `secp256k1`.
+  - Example of elliptic curve having **cofactor** = **8** is `Curve25519`.
+  - Example of elliptic curve having **cofactor** = **4** is `Curve448`.
 
 ### The "Generator" Point in ECC
 
@@ -130,11 +137,11 @@ For curves with **cofactor** = **1** there is **only one subgroup** and the orde
 
 When **G** and **n** are carefully selected, and the **cofactor** = **1**, all possible EC points on the curve (including the special point **_infinity_**) can be generated from the generator **G** by multiplying it by integer in the range [1...**n**]. This integer **n** is known as "**order of the curve**".
 
-It is important to know that the **order r of the subgroup**, obtained from certain EC generator point **G** (which may be different from the order of the curve) defines the **total number of all possible private keys** for this curve: **r** = **n** / **h** (curve order, divided by the curve cofactor).
+It is important to know that the **order r of the subgroup**, obtained from certain EC generator point **G** (which may be different from the order of the curve) defines the **total number of all possible private keys** for this curve: **r** = **n** / **h** (curve order, divided by the curve cofactor). Cryptographers select carefully the elliptic curve domain parameters (curve equation, generator point, cofactor, etc.) to ensure that **the key space is large enough** for certain cryptographic strength.
 
-In the ECC cryptography the EC points form **[cyclic groups](https://en.wikipedia.org/wiki/Cyclic_group)** (or **cyclic subgroups**), which means that a number **r** exists (**r** > 1), such that **r** \* **G** = 0 \* **G** = **_infinity_**. The number **r** is called **order** of the group (or subgroup).
+To summarize, in the ECC cryptography the EC points, together with the generator point **G** form **[cyclic groups](https://en.wikipedia.org/wiki/Cyclic_group)** (or **[cyclic subgroups](https://en.wikipedia.org/wiki/Subgroup)**), which means that a number **r** exists (**r** > 1), such that **r** \* **G** = 0 \* **G** = **_infinity_** and all points in the subgroup can be obtained by multiplying **G** by integer in the range [1...**r**]. The number **r** is called **order** of the **group** (or **subgroup**).
 
-
+Elliptic curves usually have **many generator points**, but cryptographers select one of them, that is suitable for optimizations to speed-up the computations. This is the generator known as "**G**".
 
 At the above example (the EC over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** mod **17**), if we take the point **G** = {**15**, **13**} as **generator**, any other point from the curve can be obtained by multiplying **G** by some integer in the range [1...17]. Thus the **order** of this EC is **n** = **17** and its cofactor **h** = **1**.
 
