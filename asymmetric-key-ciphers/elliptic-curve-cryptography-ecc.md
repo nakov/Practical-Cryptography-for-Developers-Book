@@ -299,6 +299,8 @@ for k in range(0, 10):
     p = k * curve.g
     print(f"{k} * G = ({p.x}, {p.y})")
 
+print("Cofactor =", curve.field.h)
+
 print('Cyclic group order =', curve.field.n)
 
 nG = curve.field.n * curve.g
@@ -319,11 +321,12 @@ curve: "secp192r1" => y^2 = x^3 + 6277101735386680763835789423207666416083908700
 7 * G = (3473339081378406123852871299395262476289672479707038350589, 2152713176906603604200842901176476029776544337891569565621)
 8 * G = (1167950611014894512313033362696697441497340081390841490910, 4002177906111215127148483369584652296488769677804145538752)
 9 * G = (3176317450453705650283775811228493626776489433309636475023, 44601893774669384766793803854980115179612118075017062201)
+Cofactor = 1
 Cyclic group order = 6277101735386680763835789423176059013767194773182842284081
 n * G = (None, None)
 ```
 
-The curve `secp192r1` uses a **cyclic group** of very large order **n** = 6277101735386680763835789423176059013767194773182842284081 and as we can expect, **n** \* **G** = **_infinity_**, just like at the previous example with our educational curve.
+The curve `secp192r1` uses a **cyclic group** of very large order **n** = 6277101735386680763835789423176059013767194773182842284081 (prime number) with **cofactor** **h** = 1, and as we can expect, **n** \* **G** = **_infinity_**, just like at the previous example with our educational curve.
 
 Now, let's generate a random **private key** `privKey` (integer in the range [0...n-1]) and its corresponding **public key** `pubKey = privKey * G`:
 
