@@ -128,7 +128,7 @@ For the elliptic curves over finite fields, the ECC cryptosystems define a speci
 
 For curves with **cofactor** = **1** there is only one subgroup and  the order **n** of the curve (the total number of different points over the curve, including the **_infinity_**) is equal to the number **r**.
 
-It is important to know that the **subgroup's order**, obtained from certain generator point defines the **total number of all possible private keys** for this curve. This number is: **r** = **n** / **h** (curve order, divided by the cofactor).
+It is important to know that the **order r of the subgroup**, obtained from certain EC generator point **G** defines the **total number of all possible private keys** for this curve: **r** = **n** / **h** (curve order, divided by the cofactor).
 
 In the ECC cryptography the EC points form **[cyclic groups](https://en.wikipedia.org/wiki/Cyclic_group)** (or **cyclic subgroups**), which means that a number **r** exists (**r** > 1), such that **r** \* **G** = 0 \* **G** = **_infinity_**. The number **r** is called **order** of the group (or subgroup).
 
