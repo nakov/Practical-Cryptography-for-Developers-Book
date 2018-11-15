@@ -141,9 +141,9 @@ It is important to know that the **order r of the subgroup**, obtained from cert
 
 To summarize, in the ECC cryptography the EC points, together with the generator point **G** form **[cyclic groups](https://en.wikipedia.org/wiki/Cyclic_group)** (or **[cyclic subgroups](https://en.wikipedia.org/wiki/Subgroup)**), which means that a number **r** exists (**r** > 1), such that **r** \* **G** = 0 \* **G** = **_infinity_** and all points in the subgroup can be obtained by multiplying **G** by integer in the range [1...**r**]. The number **r** is called **order** of the **group** (or **subgroup**).
 
-Elliptic curves usually have **many generator points**, but cryptographers select one of them, that is suitable for optimizations to speed-up the computations. This is the generator known as "**G**".
+Elliptic curve subgroups usually have **many generator points**, but cryptographers carefully select one of them, which is suitable for optimizations in order to speed-up the computations. This is the generator known as "**G**".
 
-At the above example (the EC over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** mod **17**), if we take the point **G** = {**15**, **13**} as **generator**, any other point from the curve can be obtained by multiplying **G** by some integer in the range [1...17]. Thus the **order** of this EC is **n** = **17** and its cofactor **h** = **1**.
+At the above example (the EC over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** mod **17**), if we take the point **G** = {**15**, **13**} as **generator**, any other point from the curve can be obtained by multiplying **G** by some integer in the range [1...18]. Thus the **order** of this EC is **n** = **18** and its cofactor **h** = **1**. Note that the curve has 17 normal EC points (shown at the aboves) + one special "**point at infinity**", all staying in a single subgroup, and the curve order is **18** (not 17).
 
 For elliptic curves with cofactor **h** > 1, different **base points** can generate different **subgroups** of EC points on the curve. Choosing a certain **generator point**, we choose to operate over a certain **subgroup of points** on the curve and most EC point operations and ECC crypto algorithms will work well. Still in some cases, special attention should be given, so it is recommended to use only proven ECC implementations.
 
