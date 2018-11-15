@@ -143,6 +143,8 @@ To summarize, in the ECC cryptography the EC points, together with the generator
 
 Elliptic curve subgroups usually have **many generator points**, but cryptographers carefully select one of them, which generates the entire group (or subgroup) and is suitable for performance optimizations in the  computations. This is the generator known as "**G**".
 
+It is known that for some curves different generator points generate subgroups of different order. More precisely, if the group order is **n**, for each prime **d** dividing **n**, there is a point **Q** such that **d** \* **Q** = **_infinity_**. This means that some points used as generators will generate smaller subgroups that other. This is the reason why cryptographers usually choose the subgroup order **r** to be a **prime number**.
+
 For elliptic curves with cofactor **h** > 1, different **base points** can generate different **subgroups** of EC points on the curve. By choosing a certain **generator point**, we choose to operate over a certain **subgroup of points** on the curve and most EC point operations and ECC crypto algorithms will work well. Still in some cases, special attention should be given, so it is recommended to use only proven ECC implementations.
 
 If we want to generate all the EC points for a curve with cofactor > 1, we need to take one point from each subgroup as **subgroup generator** and multiply it to [1...**r**], where **r** is the order of the subgroups.
