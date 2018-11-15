@@ -70,10 +70,11 @@ A **deterministic-ECDSA** variant is defined in [**RFC 6979**](https://tools.iet
 
 ### EdDSA \(Edwards-curve Digital Signature Algorithm\)
 
-**EdDSA** \(Edwards-curve Digital Signature Algorithm\) is a fast **digital signature algorithm**, using **elliptic curves** in Edwards form \(like [**Ed25519**](https://ed25519.cr.yp.to) and [**Ed448-Goldilocks**](https://eprint.iacr.org/2015/625.pdf)\), a variant of  
- [**Schnorr's signature**](https://en.wikipedia.org/wiki/Schnorr_signature) scheme, designed by a team of the well-known cryptographer [**Daniel Bernstein**](https://cr.yp.to/djb.html). **EdDSA** is more **simple** than **ECDSA**, more **secure** than **ECDSA** and is designed to be **faster** than **ECDSA** \(for curves with comparables key length\).
+**EdDSA** \(Edwards-curve Digital Signature Algorithm\) is a fast **digital signature algorithm**, using **elliptic curves** in Edwards form \(like [**Ed25519**](https://ed25519.cr.yp.to) and [**Ed448-Goldilocks**](https://eprint.iacr.org/2015/625.pdf)\), a deterministic variant of the [**Schnorr's signature**](https://en.wikipedia.org/wiki/Schnorr_signature) scheme, designed by a team of the well-known cryptographer [**Daniel Bernstein**](https://cr.yp.to/djb.html). **EdDSA** is more **simple** than **ECDSA**, more **secure** than **ECDSA** and is designed to be **faster** than **ECDSA** \(for curves with comparables key length\).
 
 The **EdDSA** signature algorithm is works with Edwards elliptic curves like **Curve25519** and **Curve448**, which are highly optimized for **performance** and **security**. It is shown that **Ed25519 signatures** are typically **faster** than traditional **ECDSA signatures** over curves with comparable key length. Still, the performance competition is disputable.
+
+The **EdDSA signing **algorithm generates a deterministic \(not random\) integer **r** \(computed by **hashing** the **message** and the hash of the **private key**\), then computes the **signature** {**Rs**, **s**} using the **hash** of \(the **message** + the **private key** + the number **r**\). The signature is **deterministic** \(the same message signed by the same key always gives the same signature\). The **ECDSA signature verification** algorithm involves elliptic-curve computations, based on the **message** \(hashed together with the public key and the EC point **Rs** from the signature\) + the **public key** + the **signature**.
 
 A short comparison between **Ed25519 EdDSA** signatures and **secp256k ECDSA** signatures is given below:
 
@@ -83,7 +84,7 @@ A short comparison between **Ed25519 EdDSA** signatures and **secp256k ECDSA** s
 | **Private key length** | **32** bytes \(256 bits = 251 variable bits + 5 predefined\) | **32** bytes \(256 bits\) |
 | **Public key length** \(compressed\) | **32** bytes \(256 bits = 255-bit y-coordinate + 1-bit x coordinate\) | **33** bytes \(257 bits = 256-bit x-coordinate + 1-bit y-coordinate\) |
 | **Signature size** | **64** bytes \(512 bits\) | **64** bytes \(512 bits\) or 65 bytes \(513 bits\) with the public recovery bit |
-| **Public key recovery** | **not possible** \(due to hashing of the public key\) | **possible** \(with 1 recovery bit added in the signature\) |
+| **Public key recovery** | **not possible** \(signature verification involves hasing of the public key\) | **possible** \(with 1 recovery bit added in the signature\) |
 | **Security level** \([source](https://safecurves.cr.yp.to/rho.html)\) | **~128 bit** \(more precisely 125.8\) | **~128 bit** \(more precisely 127.8\) |
 | **SafeCurves security** \([source](https://safecurves.cr.yp.to)\) | **11 of 11** tests passed | **7 of 11** tests passed |
 
@@ -91,9 +92,15 @@ Modern developers often use **Ed25519 signatures** instead of **256-bit curve EC
 
 Public **blockchains** \(like Bitcoin and Ethereum\) often use **secp2561-based ECDSA** signatures, because the signer's public key \(and its blockchain address\) can be easily recovered from the signature \(together with the signed message\) by adding just 1 additional bit to the signature.
 
+In the general case, it is considered that **EdDSA signatures are recommended** to ECDSA, but this is highly disputable and depends on the use case, on the curves involved and many other parameters.
+
 ### Other Signature Schemes and Algorithms
 
-Generic signature schemes: [**ElGamal signatures**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme) and [**Schnorr signatures**](https://en.wikipedia.org/wiki/Schnorr_signature).
+Most signature algorithms are derived from generic signature schemes like [**ElGamal signatures**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme) and [**Schnorr signatures**](https://en.wikipedia.org/wiki/Schnorr_signature):
+
+* **DSA** and **ECDSA** are derived from **ElGamal** signature scheme.
+* **EdDSA** is derived from the **Schnorr** signature scheme.
+* **RSA signature** is derived from the **RSA** encryption scheme.
 
 Signature schemes:  
 ECDSA: r≡x\(\[H\(m\)s−1\]B+rs−1A\)\(mod n\)  
