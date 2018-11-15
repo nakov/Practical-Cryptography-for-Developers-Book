@@ -128,7 +128,7 @@ For the elliptic curves over finite fields (in the classical Weierstrass normal 
 
 In the ECC cryptography the EC points form **[cyclic groups](https://en.wikipedia.org/wiki/Cyclic_group)** (or **cyclic subgroups**), which means that a number **r** exists (**r** > 1), such that **r** \* **G** = 0 \* **G** = **_infinity_**. The number **r** is called **order** of the group (or subgroup).
 
-For curves with **cofactor** = **1**, all possible EC points over the curve, that can be generated from **G**, are **n** (excluding the special point _infinity_). The number **n** is called "**order of the curve**".
+For curves with **cofactor** = **1**, all possible EC points over the curve, that can be generated from **G**, are **n** (including the special point _infinity_). The number **n** is called "**order of the curve**".
 
 At the above example (the EC over finite field y<sup>2</sup> ≡ x<sup>3</sup> + **7** mod **17**), if we take the point **G** = {**15**, **13**} as **generator**, any other point from the curve can be obtained by multiplying **G** by some integer in the range [1...17]. Thus the **order** of this EC is **n** = **17** and its cofactor **h** = **1**.
 
