@@ -14,6 +14,10 @@
 
 [https://en.wikipedia.org/wiki/Transport\_Layer\_Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)
 
+## External Authorization and OAuth
+
+...
+
 ## Two-Factor Authentication and One-Time Passwords
 
 [https://cryptography.io/en/latest/hazmat/primitives/twofactor/](https://cryptography.io/en/latest/hazmat/primitives/twofactor/)
@@ -22,7 +26,5 @@
 
 Infected Cryptosystems and Crypto Backdoors
 
-https://en.wikipedia.org/wiki/Kleptography
-
-
+[https://en.wikipedia.org/wiki/Kleptography](https://en.wikipedia.org/wiki/Kleptography)
 
