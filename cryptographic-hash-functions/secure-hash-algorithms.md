@@ -39,11 +39,15 @@ Unlike **SHA-2**, the **SHA-3** family of cryptographic hash functions are not v
 
 The hash function **Keccak-256**, which is used in the **Ethereum** blockchain, is a variant of SHA3-256 with some constants changed in the code.
 
+The hash functions **SHAKE128(msg, length)** and **SHAKE256(msg, length)** are variants of the **SHA3-256** and **SHA3-512** algorithms, where the output message length can vary.
+
 Examples of SHA3 hashes:
 ```
-SHA3-256('hello')   = 3338be694f50c5f338814986cdf0686453a888b84f424d792af4b9202398f392
+SHA3-256('hello') = 3338be694f50c5f338814986cdf0686453a888b84f424d792af4b9202398f392
 Keccak-256('hello') = 1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8
-SHA3-512('hello')   = 75d527c368f2efe848ecf6b073a36767800805e9eef2b1857d5f984f036eb6df891d75f72d9b154518c1cd58835286d1da9a38deba3de98b5a53e5ed78a84976
+SHA3-512('hello') = 75d527c368f2efe848ecf6b073a36767800805e9eef2b1857d5f984f036eb6df891d75f72d9b154518c1cd58835286d1da9a38deba3de98b5a53e5ed78a84976
+SHAKE-128('hello', 256) = 4a361de3a0e980a55388df742e9b314bd69d918260d9247768d0221df5262380
+SHAKE-256('hello', 160) = 1234075ae4a1e77316cf2d8000974581a343b9eb
 ```
 
 ### BLAKE2 / BLAKE2s / BLAKE2b
