@@ -2,7 +2,7 @@
 
 ...
 
-Most books about cryptography are written either in too **academic style** with a lot of theory \(like [http://cacr.uwaterloo.ca/hac](http://cacr.uwaterloo.ca/hac/%29\)\).
+Most books about cryptography are written either in too **academic style** with a lot of theory \(like [http://cacr.uwaterloo.ca/hac](http://cacr.uwaterloo.ca/hac/%29%29\)\).
 
 ...
 
@@ -10,15 +10,17 @@ Others are too old: ...
 
 ...
 
-Others are good, by not free:
+Others are not bad, but not free:
 
-https://leanpub.com/crypto
+[https://leanpub.com/crypto](https://leanpub.com/crypto)
 
-Crypto libraries come with limited and not consistently organized documentation, e.g. the Crypto++ Wiki \([https://www.cryptopp.com/wiki/Main\_page](https://www.cryptopp.com/wiki/Main_page%29\)\).
+https://www.amazon.com/Cryptography-Developers-Tom-St-Denis/dp/1597491047
+
+Crypto libraries come with limited and not consistently organized documentation, e.g. the Crypto++ Wiki \([https://www.cryptopp.com/wiki/Main\_page](https://www.cryptopp.com/wiki/Main_page%29%29\)\).
 
 ...
 
-Now I am happy to publis a **developer-firendly practical cryptography book**.** **It holds just **what developers need to know** in order to **use cryptography in their every day work**. It does not cover the internals of the algortihms and how to design symmetric ciphers or authentication algorithms. It covers the basic understanding of the **core cryptographic concepts** and how to use them: **libraries, tools, code examples**.
+Now I am happy to publish a **developer-friendly practical cryptography book**.** **It holds just **what developers need to know** in order to **use cryptography in their every day work**. It does not cover the internals of the algortithms and how to design symmetric ciphers or authentication algorithms. It covers the basic understanding of the **core cryptographic concepts** and how to use them: **libraries, tools, code examples**.
 
 ...
 
