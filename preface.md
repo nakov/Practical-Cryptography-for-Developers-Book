@@ -2,7 +2,7 @@
 
 ...
 
-Most books about cryptography are written either in too **academic style** with a lot of theory \(like [http://cacr.uwaterloo.ca/hac](http://cacr.uwaterloo.ca/hac/%29%29\)\).
+Most books about cryptography are written either in too **academic style** with a lot of theory, like [http://cacr.uwaterloo.ca/hac](http://cacr.uwaterloo.ca/hac/%29%29%29\).
 
 ...
 
@@ -14,9 +14,9 @@ Others are not bad, but not free:
 
 [https://leanpub.com/crypto](https://leanpub.com/crypto)
 
-https://www.amazon.com/Cryptography-Developers-Tom-St-Denis/dp/1597491047
+[https://www.amazon.com/Cryptography-Developers-Tom-St-Denis/dp/1597491047](https://www.amazon.com/Cryptography-Developers-Tom-St-Denis/dp/1597491047)
 
-Crypto libraries come with limited and not consistently organized documentation, e.g. the Crypto++ Wiki \([https://www.cryptopp.com/wiki/Main\_page](https://www.cryptopp.com/wiki/Main_page%29%29\)\).
+Crypto libraries come with limited and not consistently organized documentation, e.g. the Crypto++ Wiki [https://www.cryptopp.com/wiki/Main\_page](https://www.cryptopp.com/wiki/Main_page%29%29%29\).
 
 ...
 
