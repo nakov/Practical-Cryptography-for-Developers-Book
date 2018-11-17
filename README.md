@@ -4,7 +4,7 @@ A modern **practical book** about **cryptography for developers** with code exam
 
 Author: **Svetlin Nakov**, PhD - [http://www.nakov.com](http://www.nakov.com)
 
-This book is open-source, published under the **[MIT license](https://opensource.org/licenses/MIT)**.
+This book is free and open-source, published under the **[MIT license](https://opensource.org/licenses/MIT)**.
 
 Official **GitHub** repo: [https://github.com/nakov/practical-cryptography-for-developers-book](https://github.com/nakov/practical-cryptography-for-developers-book).
 
