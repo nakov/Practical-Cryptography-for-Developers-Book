@@ -17,7 +17,7 @@ RSA can work with keys of different **keys of length**: 1024, 2048, 3072, 4096, 
 
 Generating an RSA public + private key pair involves the following:
 
-Using some non-trivial [math computations from the number theory](https://en.wikipedia.org/wiki/RSA\_\(cryptosystem\)#Key_generation), find three very large integers _**e**_, _**d**_ and _**n**_, such that:
+Using some non-trivial [math computations from the number theory](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29#Key_generation), find three very large integers _**e**_, _**d**_ and _**n**_, such that:
  - (**_m_**<sup>**_e_**</sup>)<sup>**_d_**</sup> ≡ **_m_** (mod **_n_**) for all **_m_** in the range [0...**_n_**)
     
 The integer number **_n_** is called "**modulus**" and it defines the RSA **key length**. It is typically very large prime number (e.g. 2048 bits).
