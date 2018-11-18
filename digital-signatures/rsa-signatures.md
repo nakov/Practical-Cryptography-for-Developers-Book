@@ -27,8 +27,8 @@ The hash _**h**_ should be in the range \[0..._**n**_\). The obtained **signatur
 3. Compare _**h**_ with _**h'**_ to find whether the signature is valid or not
 
 If the signature is correct, then the following will be true:
-$$
-h' = s^e \pmod n = (h^d)^e \pmod n = h
-$$
+
+$$h' = s^e \pmod n = (h^d)^e \pmod n = h$$
+
 The **RSA sign / verify algorithm** is pretty simple. Let's implement it with some code.
 
