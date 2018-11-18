@@ -72,5 +72,5 @@ Now, the signature will be **invalid** and the output from the above code will b
 Signature valid (tampered): False
 ```
 
-Enjoy playing with the above RSA sign / verify examples. Try to modify the code, e.g. use 4096-bit keys, try to tamper the public key at the signature verification step or 
+Enjoy **playing with the above RSA sign / verify examples**. Try to modify the code, e.g. use 4096-bit keys, try to tamper the public key at the signature verification step or
 
