@@ -97,7 +97,7 @@ A short comparison between **Ed25519 EdDSA** signatures and **secp256k ECDSA** s
 
 |  | EdDSA-Ed25519 | ECDSA-secp256k1 |
 | :--- | :--- | :--- |
-| **Performance** \([source](http://justmoon.github.io/curvebench/benchmark.html)\) | 8% **faste** | 8% **slower** |
+| **Performance** \([source](http://justmoon.github.io/curvebench/benchmark.html)\) | 8% **faster** | 8% **slower** |
 | **Private key length** | **32** bytes \(256 bits = 251 variable bits + 5 predefined\) | **32** bytes \(256 bits\) |
 | **Public key length** \(compressed\) | **32** bytes \(256 bits = 255-bit y-coordinate + 1-bit x coordinate\) | **33** bytes \(257 bits = 256-bit x-coordinate + 1-bit y-coordinate\) |
 | **Signature size** | **64** bytes \(512 bits\) | **64** bytes \(512 bits\) or 65 bytes \(513 bits\) with the public recovery bit |
