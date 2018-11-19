@@ -1,4 +1,4 @@
-# ECDSA: Elliptic Curve Signatures
+# ECDSA: Elliptic Curve Digital Signatures
 
 The [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) \(Elliptic Curve Digital Signature Algorithm\) is a cryptographically secure **digital signature scheme**, based on the elliptic-curve cryptography \([**ECC**](/asymmetric-key-ciphers/elliptic-curve-cryptography-ecc.md)\). **ECDSA** relies on the math of the **cyclic groups of elliptic curves over finite fields** and on the difficulty of the [**ECDLP problem**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography#Rationale) \(elliptic-curve discrete logarithm problem\). The [**ECDSA sign / verify**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) algorithm relies on EC point multiplication and works as described below.
 
@@ -23,15 +23,28 @@ The **private key** _**k**_ is generated as a **random integer** in the range \[
 
 ## ECDSA Sign
 
-The ECDSA signing algorithm takes as input a **message **_**msg**_** **+ a **private key **_**privKey**_** **and produces as output a **signature**, which consists of pair of integers {_**r**_, _**s**_}. The ECDSA signing algorithm works as follows:
+The ECDSA signing algorithm \([RFC 6979](https://tools.ietf.org/html/rfc6979#section-3.2)\) takes as input a message _**msg**_** **+ a private key _**privKey**_** **and produces as output a **signature**, which consists of pair of integers {_**r**_, _**s**_}. The **ECDSA signing** algorithm works as follows:
 
 1. Calculate the message **hash**, using a cryptographic hash function like SHA-256:
    * _**h**_ = hash\(_**msg**_\)
 2. Generate securely a **random** number _**k**_ in the range \[1.._**n**_-1\]
    * In case of **deterministic-ECDSA**, the value _**k**_ is HMAC-derived from _**h**_ + _**privKey**_ \(see [RFC 6979](https://tools.ietf.org/html/rfc6979#section-3.2)\)
-3. Calculate the number _**r**_ = x-coordinate of _**k**_ \* **G**
-4. 
+3. Calculate the number _**r**_ = x-coordinate of \(_**k**_ \* **G**\) mod _**n**_
+4. Calculate _**s**_ = inverse\_mod\(_**k**_, _**n**_\) \* \(_**h**_ + _**privKey**_ \* _**r**_\) mod _**n**_
+   * The modular inverse of _**k**_ \(mod _**n**_\) is a number $$ k^-1 \pmod n $$, such that  $$k * k^-1 \equiv 1 \pmod n $$
+5. Return the signature {_**r**_, _**s**_}
+
+The calculated **signature** {_**r**_, _**s**_} is a pair of integers, each in the range \[0..._**n**_-1\]. This means that for 256-bit elliptic curves \(like `secp256k1`\),  the ECDSA signature is 512 bits and for 521-bit curves \(like ` secp521r1`\), the signature is 1042 bits.
+
 ## ECDSA Verify Signature
 
-...
+The algorithm to **verify a ECDSA signature** takes as input the signed message _**msg**_ + the signature {_**r**_, _**s**_} produced from the signing algorithm + the public key _**pubKey**_, corresponding to the signer's private key. The output is boolean value: _**valid**_ or _**invalid**_ signature. The **ECDSA signature verify** algorithm works as follows:
+
+1. Calculate the message **hash**, using a cryptographic hash function like SHA-256: 
+   * _**h**_ = hash\(_**msg**_\)
+2. ...
+3. ...
+4. ...
+
+
 
