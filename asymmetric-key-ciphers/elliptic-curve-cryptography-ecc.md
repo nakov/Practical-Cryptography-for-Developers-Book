@@ -1,4 +1,4 @@
-p# Elliptic Curve Cryptography \(ECC\) - Concepts
+# Elliptic Curve Cryptography \(ECC\) - Concepts
 
 The [**Elliptic Curve Cryptography \(ECC\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) is modern **family of public-key cryptosystems**, which is based on the algebraic structures of the **elliptic curves over finite fields** and on the difficulty of the [**Elliptic Curve Discrete Logarithm Problem \(ECDLP\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography#Rationale).
 
