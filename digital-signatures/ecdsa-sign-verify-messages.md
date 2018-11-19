@@ -31,8 +31,8 @@ The ECDSA signing algorithm \([**RFC 6979**](https://tools.ietf.org/html/rfc6979
 2. Generate securely a **random** number _**k**_ in the range \[1.._**n**_-1\]
    * In case of **deterministic-ECDSA**, the value _**k**_ is HMAC-derived from _**h**_ + _**privKey**_ \(see [RFC 6979](https://tools.ietf.org/html/rfc6979#section-3.2)\)
 3. Calculate the random point _**R**_ = _**k**_ \* **G** and take its x-coordinate: _**r**_ = _**R**_**.x**
-4. Calculate the signature proof: _**s**_ = $$k^-1 * (h + r * privKey) \pmod n$$
-   * The modular inverse $$k^-1 \pmod n$$ is an integer, such that $$k * k^-1 \equiv 1 \pmod n $$
+4. Calculate the signature proof: _**s**_ = $$k^{-1} * (h + r * privKey) \pmod n$$
+   * The modular inverse $$k^{-1} \pmod n$$ is an integer, such that $$k * k^{-1} \equiv 1 \pmod n $$
 5. Return the **signature** {_**r**_, _**s**_}.
 
 The calculated **signature** {_**r**_, _**s**_} is a pair of integers, each in the range \[1..._**n**_-1\]. It encodes the random point _**R**_ = _**k**_ \* **G**, along with a proof _**s**_, confirming that the signer knows the message _**h**_ and the private key _**privKey**_. The proof _**s**_ is by idea verifiable using the corresponding _**pubKey**_.
@@ -44,7 +44,7 @@ The calculated **signature** {_**r**_, _**s**_} is a pair of integers, each in t
 The algorithm to **verify a ECDSA signature** takes as input the signed message _**msg**_ + the signature {_**r**_, _**s**_} produced from the signing algorithm + the public key _**pubKey**_, corresponding to the signer's private key. The output is boolean value: _**valid**_ or _**invalid**_ signature. The **ECDSA signature verify** algorithm works as follows \(with minor simplifications\):
 
 1. Calculate the message **hash**, with the same cryptographic hash function used during the signing: _**h**_ = hash\(_**msg**_\)
-2. Calculate the modular inverse of the signature proof: _**s1**_ = $$s^-1 \pmod n$$
+2. Calculate the modular inverse of the signature proof: _**s1**_ = $$s^{-1} \pmod n$$
 3. Recover the random point used during the signing: _**R'**_ = \(_**h**_ \* **s1**\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey**_
 4. Take from _**R'**_ its x-coordinate: _**r'**_ = _**R'**_**.x**
 5. Calculate the signature validation **result **by comparing whether _**r'**_ == _**r**_
@@ -67,20 +67,20 @@ How does the above sign / verify scheme work? It is not obvious, but let's play 
 
 The equation behind the recovering of the point _**R'**_, calculated during the **signature verification**, can be transformed by replacing the _**pubKey**_ with _**privKey**_ \* **G** as follows:
 
-_**R'**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**                  
-   **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**                  
+_**R'**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**                    
+   **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**                    
  **_   = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G**
 
-If we take the number _**s**_ = $$k^-1 * (h + r * privKey) \pmod n$$**,** calculated during the signing process, we can calculate _**s1**_ = $$s^-1 \pmod n$$ like this:
+If we take the number _**s**_ = $$k^{-1} * (h + r * privKey) \pmod n$$**,** calculated during the signing process, we can calculate _**s1**_ = $$s^{-1} \pmod n$$ like this:
 
-_**s1**_ = $$s^-1 \pmod n$$ =  
-     = $$(k^-1 * (h + r * privKey))^-1 \pmod n$$ =  
-     = $$k * (h + r * privKey)^-1 \pmod n$$
+_**s1**_ = $$s^{-1} \pmod n$$ =  
+     = $$(k^{-1} * (h + r * privKey))^{-1} \pmod n$$ =  
+     = $$k * (h + r * privKey)^{-1} \pmod n$$
 
 Now, replace _**s1**_ in the point _**R'**_.
 
 _**R'**_ = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G** =  
-  = $$(h + r * privKey) * k * (h + r * privKey)^-1 \pmod n$$_** \* **_**G **=_**                  
+  = $$(h + r * privKey) * k * (h + r * privKey)^{-1} \pmod n$$_** \* **_**G **=_**                    
  **_ = **k** \* **G**
 
 The final step is to **compare** the **point **_**R'**_ \(decoded by the _**pubKey**_\) with the **point **_**R**_ \(encoded by the _**privKey**_\). The algorithm in fact compares only the x-coordinates of _**R'**_ and _**R**_: the integers _**r'**_ and _**r**_.
