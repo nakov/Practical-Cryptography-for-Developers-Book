@@ -1,6 +1,6 @@
 # RSA: Sign / Verify - Examples
 
-Let's demonstrate in practice the **RSA sign / verify** algorithm. We shall use the `pycryptodome` package in Python to generate **RSA keys**. After the keys are generated, we shall compute RSA digital signatures and verify signatures by a simple modular exponentiation.
+Let's demonstrate in practice the **RSA sign / verify** algorithm. We shall use the `pycryptodome` package in Python to generate **RSA keys**. After the keys are generated, we shall compute RSA digital signatures and verify signatures by a simple modular exponentiation \(by encrypting and decrypting the message hash\).
 
 ```py
 pip install pycryptodome
@@ -42,7 +42,7 @@ Signature: 0x650c9f2e6701e3fe73d3054904a9a4bbdb96733f1c4c743ef573ad6ac14c5a3bf8a
 
 The **signature** is **1024-bit integer** \(128 bytes, 256 hex digits\). This signature size corresponds to the RSA key size.
 
-Now, let's **verify the signature**, by decrypting the signature using the public key \(raise the _**signature**_ to power _**e**_ modulo _**n**_\) and comparing the obtained **hash from the signature** to the **hash** of the signed message:
+Now, let's **verify the signature**, by decrypting the signature using the public key \(raise the _**signature**_ to power _**e**_ modulo _**n**_\) and comparing the obtained **hash from the signature** to the **hash** of the originally signed message:
 
 ```py
 # RSA verify signature
@@ -78,23 +78,46 @@ Enjoy **playing with the above RSA sign / verify examples**. Try to modify the c
 
 ## The RSA Signature Standards \(RSASP1, RSAVP1, PKCS\#1 v1.5\)
 
-The simple use of **RSA signatures** is demonstrated above, but the industry usually follows the crypto standards. For the RSA signatures, the most adopted standard is "**PKCS\#1 v1.5**", described in [**RFC 8017**](https://tools.ietf.org/html/rfc8017#page-15).
+The simple use of **RSA signatures** is demonstrated above, but the industry usually follows the crypto standards. For the RSA signatures, the most adopted standard is "**PKCS\#1**", which has several versions \(1.5, 2.0, 2.1, 2.2\), the latest described in [**RFC 8017**](https://tools.ietf.org/html/rfc8017#page-15). The PKCS\#1 standard defines the RSA signing algorithm \(**RSASP1**\) and the RSA signature verification algorithm \(**RSAVP1**\), which are almost the same like the implemented in the previous section.
 
-\[TODO\]
+To demonstrate the PKCS\#1 RSA digital signatures, we shall use the following code, based on the `pycryptodome` Python library:
 
-\[TODO\]
+```py
+from Crypto.PublicKey import RSA
+from Crypto.Signature.pkcs1_15 import PKCS115_SigScheme
+from Crypto.Hash import SHA256
+import binascii
 
-\[TODO\]
+# Generate 1024-bit RSA key pair (private + public key)
+keyPair = RSA.generate(bits=1024)
 
-\[TODO\]
+# Sign the message using the PKCS#1 v1.5 signature scheme
+msg = b'A message for signing'
+hash = SHA256.new(msg)
+signer = PKCS115_SigScheme(keyPair)
+signature = signer.sign(hash)
+print("Signature:", binascii.hexlify(signature))
 
-\[TODO\]
+# Verify valid PKCS#1 v1.5 signature
+msg = b'A message for signing'
+hash = SHA256.new(msg)
+signer = PKCS115_SigScheme(keyPair)
+try:
+    signer.verify(hash, signature)
+    print("Signature is valid.")
+except:
+    print("Signature is invalid.")
 
-\[TODO\]
+# Verify invalid PKCS#1 v1.5 signature
+msg = b'A tampered message'
+hash = SHA256.new(msg)
+signer = PKCS115_SigScheme(keyPair)
+try:
+    signer.verify(hash, signature)
+    print("Signature is valid.")
+except:
+    print("Signature is invalid.")
+```
 
-\[TODO\]
-
-\[TODO\]
-
-\[TODO\]
+The output from the above code demonstrates that the **PKCS\#1 RSA signing** produces **1024-bit digital signature** and that it successfully validated if the message, the signature or the message is not tampered.
 
