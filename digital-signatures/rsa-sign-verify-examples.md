@@ -76,11 +76,11 @@ Signature valid (tampered): False
 
 Enjoy **playing with the above RSA sign / verify examples**. Try to modify the code, e.g. use 4096-bit keys, try to tamper the public key at the signature verification step or the signature.
 
-## The RSA Signature Standards \(RSASP1, RSAVP1, PKCS\#1 v1.5\)
+## The RSA Signature Standard PKCS\#1
 
-The simple use of **RSA signatures** is demonstrated above, but the industry usually follows the crypto standards. For the RSA signatures, the most adopted standard is "**PKCS\#1**", which has several versions \(1.5, 2.0, 2.1, 2.2\), the latest described in [**RFC 8017**](https://tools.ietf.org/html/rfc8017#page-15). The PKCS\#1 standard defines the RSA signing algorithm \(**RSASP1**\) and the RSA signature verification algorithm \(**RSAVP1**\), which are almost the same like the implemented in the previous section.
+The simple use of **RSA signatures** is demonstrated above, but the industry usually follows the **crypto standards**. For the RSA signatures, the most adopted standard is "**PKCS\#1**", which has several versions \(1.5, 2.0, 2.1, 2.2\), the latest described in [**RFC 8017**](https://tools.ietf.org/html/rfc8017#page-15). The PKCS\#1 standard defines the RSA signing algorithm \(**RSASP1**\) and the RSA signature verification algorithm \(**RSAVP1**\), which are almost the same like the implemented in the previous section.
 
-To demonstrate the PKCS\#1 RSA digital signatures, we shall use the following code, based on the `pycryptodome` Python library:
+To demonstrate the **PKCS\#1 RSA digital signatures**, we shall use the following code, based on the `pycryptodome` Python library, which implements RSA sign / verify, following the **PKCS\#1 v1.5** specification:
 
 ```py
 from Crypto.PublicKey import RSA
@@ -91,14 +91,14 @@ import binascii
 # Generate 1024-bit RSA key pair (private + public key)
 keyPair = RSA.generate(bits=1024)
 
-# Sign the message using the PKCS#1 v1.5 signature scheme
+# Sign the message using the PKCS#1 v1.5 signature scheme (RSASP1)
 msg = b'A message for signing'
 hash = SHA256.new(msg)
 signer = PKCS115_SigScheme(keyPair)
 signature = signer.sign(hash)
 print("Signature:", binascii.hexlify(signature))
 
-# Verify valid PKCS#1 v1.5 signature
+# Verify valid PKCS#1 v1.5 signature (RSAVP1)
 msg = b'A message for signing'
 hash = SHA256.new(msg)
 signer = PKCS115_SigScheme(keyPair)
@@ -108,7 +108,7 @@ try:
 except:
     print("Signature is invalid.")
 
-# Verify invalid PKCS#1 v1.5 signature
+# Verify invalid PKCS#1 v1.5 signature (RSAVP1)
 msg = b'A tampered message'
 hash = SHA256.new(msg)
 signer = PKCS115_SigScheme(keyPair)
@@ -119,5 +119,13 @@ except:
     print("Signature is invalid.")
 ```
 
-The output from the above code demonstrates that the **PKCS\#1 RSA signing** produces **1024-bit digital signature** and that it successfully validated if the message, the signature or the message is not tampered.
+The output from the above code demonstrates that the **PKCS\#1 RSA signing** with 1024-bit RSA private key produces **1024-bit digital signature** and that it is successfully validated afterwards with the corresponding public key. If the message or the signature or the public key is tampered, the signature fails to validate. The output from the above example looks like this:
+
+```
+Signature: b'243b9ed6561ab3bddead98508af0ac34b4567b1358011ace24db71ce2bc7f1a2e942b6231aa84cb07bae85b668d7c7cd0bc40cdda6f8162de57f0ee842e589c58f94aa4f96d51355f8aa395d7db950ebb9d375fca3124b6222699a645e93287bc6f5eb5b750fc0b470588f949a887dff75ed42cf01d9642a5d497f609b8cd043'
+Signature is valid.
+Signature is invalid.
+```
+
+Note that in real-world applications the RSA key length should be **at least 3072 bits** to provide secure enough signatures.
 
