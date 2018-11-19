@@ -59,7 +59,7 @@ The [**DSA \(Digital Signature Algorithm\)**](https://en.wikipedia.org/wiki/Digi
 * The **DSA signing **algorithm computes a message **hash**, then generates a random integer **k** and computes the **signature** \(а pair of integers {**r**, **s**}\), where **r** is computed from **k** and **s** is computed using the message **hash** + the **private key** exponent + the random number **k**. Due to randomness, the signature is **non-deterministic**.
 * The **DSA signature verification** algorithm involves computations, based on the message **hash** + the **public key** exponent + the **signature** {**r**, **s**}.
 
-The **random value k** \(generated when the signature is computed\) opens a potential vulnerability: if two different messages are signed using the same value of **k **and the same **private key**, then an attacker can compute the signer's private key directly.
+The **random value k** \(generated when the signature is computed\) opens a potential vulnerability: if two different messages are signed using the same value of **k **and the same **private key**, then an attacker can compute the signer's private key directly \(see [https://github.com/tintinweb/ecdsa-private-key-recovery](https://github.com/tintinweb/ecdsa-private-key-recovery)\).
 
 A **deterministic-DSA** variant is defined in [**RFC 6979**](https://tools.ietf.org/html/rfc6979), which calculates the random number **k** as **HMAC** from the private key, the message hash and few other parameters. The **deterministic DSA is considered more secure**.
 
@@ -74,7 +74,7 @@ The [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_A
 * The **ECDSA signing **algorithm computes a message **hash**, then generates a random integer **k** and computes the **signature** \(a pair of integers {**r**, **s**}\), where **r** is computed from **k** and **s** is computed using the message **hash** + the **private key** + the random number **k**. Due to the randomness, the signature is **non-deterministic**.
 * The **ECDSA signature verification** algorithm involves computations, based on the message **hash** + the **public key** + the **signature** {**r**, **s**}.
 
-The **random value k** \(generated when the signature is computed\) opens a potential vulnerability: if two different messages are signed using the same value of **k **and the same **private key**, then an attacker can compute the signer's private key directly.
+The **random value k** \(generated when the signature is computed\) opens a potential vulnerability: if two different messages are signed using the same value of **k **and the same **private key**, then an attacker can compute the signer's private key directly \(see [https://github.com/tintinweb/ecdsa-private-key-recovery](https://github.com/tintinweb/ecdsa-private-key-recovery)\).
 
 A **deterministic-ECDSA** variant is defined in [**RFC 6979**](https://tools.ietf.org/html/rfc6979), which calculates the random number **k** as **HMAC** from the private key + the message hash + few other parameters. The **deterministic ECDSA is considered more secure**.
 

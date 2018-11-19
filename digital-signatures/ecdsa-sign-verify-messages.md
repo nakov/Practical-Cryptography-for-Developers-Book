@@ -67,8 +67,8 @@ How does the above sign / verify scheme work? It is not obvious, but let's play 
 
 The equation behind the recovering of the point _**R'**_, calculated during the **signature verification**, can be transformed by replacing the _**pubKey**_ with _**privKey**_ \* **G** as follows:
 
-_**R'**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**              
-   **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**              
+_**R'**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**                  
+   **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**                  
  **_   = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G**
 
 If we take the number _**s**_ = $$k^-1 * (h + r * privKey) \pmod n$$**,** calculated during the signing process, we can calculate _**s1**_ = $$s^-1 \pmod n$$ like this:
@@ -80,10 +80,16 @@ _**s1**_ = $$s^-1 \pmod n$$ =
 Now, replace _**s1**_ in the point _**R'**_.
 
 _**R'**_ = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G** =  
-  = $$(h + r * privKey) * k * (h + r * privKey)^-1 \pmod n$$_** \* **_**G **=_**              
+  = $$(h + r * privKey) * k * (h + r * privKey)^-1 \pmod n$$_** \* **_**G **=_**                  
  **_ = **k** \* **G**
 
 The final step is to **compare** the **point **_**R'**_ \(decoded by the _**pubKey**_\) with the **point **_**R**_ \(encoded by the _**privKey**_\). The algorithm in fact compares only the x-coordinates of _**R'**_ and _**R**_: the integers _**r'**_ and _**r**_.
 
 It is expected that _**r'**_ == _**r**_ if the signature is **valid** and _**r'**_ ≠ _**r**_ if the signature or the message or the public key is incorrect.
+
+## ECDSA: Public Key Recovery from Signature
+
+It is important to know that the **ECDSA signature scheme** allows the **public key to be recovered** from the signed **message** together with the **signature**. The recovery process is based on some **mathematical computations** \(described in the [**SECG: SEC 1**](http://www.secg.org/sec1-v2.pdf) standard\) and returns two possible candidate points that might be the **public key**, corresponding to the signature, and these two points can be directly checked whether they match the signature and the public key can be recovered.
+
+The **public key recovery from the ECDSA signature** is very useful in bandwidth constrained or storage constrained environments \(such as blockchain systems\), when transmission or storage of the public keys cannot be afforded. It is possible for signatures, based on the **ElGamal signature scheme** \(such as DSA and ECDSA\).
 
