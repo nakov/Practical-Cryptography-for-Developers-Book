@@ -85,3 +85,15 @@ As it is visible from the above output, the random generated **secp256k1 private
 
 As we already know, in ECDSA it is possible to recover the public key from signature
 
+\[TODO\]
+
+\[TODO\]
+
+\[TODO\]
+
+\[TODO\]
+
+\[TODO\]
+
+
+
