@@ -11,7 +11,7 @@ The **RSA** algorithm provides:
 * **Digital signatures**: **sign** messages \(using the private key\) and **verify** message signature \(using the public key\).
 * **Key exchange**: securely transport a secret key, used for encrypted communication later.
 
-RSA can work with keys of different **keys of length**: 1024, 2048, 3072, 4096, 8129, 16384 or even more bits. Key length of 3072-bits and above are considered **secure**. Longer keys provide higher security but consume **more computing time**, so there is a tradeoff between security and speed.
+RSA can work with keys of different **keys of length**: 1024, 2048, 3072, 4096, 8129, 16384 or even more bits. Key length of 3072-bits and above are considered **secure**. Longer keys provide higher security but consume **more computing time**, so there is a tradeoff between security and speed. Very long RSA keys (e.g. 50000 bits or 65536 bits) may be **too slow for practical use**, e.g. key generation may take from several minutes to several hours.
 
 ## RSA Key Generation
 
