@@ -60,7 +60,7 @@ Signature valid: True
 
 Now, let's try to **tamper the message** and verify the signature again:
 
-```
+```py
 # RSA verify signature (tampered msg)
 msg = b'A message for signing (tampered)'
 hash = int.from_bytes(sha512(msg).digest(), byteorder='big')
