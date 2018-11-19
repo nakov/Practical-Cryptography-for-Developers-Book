@@ -19,9 +19,9 @@ The **ECDSA key-pair** consists of:
 * **private key** \(integer\): _**privKey**_
 * **public key** \(EC point\): _**pubKey**_ = _**privKey**_ \* **G**
 
-The **private key** is generated as a **random integer** in the range \[0..._**n**_-1\]. The public key _**pubKey**_ is a point on the elliptic curve, calculated by the EC point multiplication: _**pubKey**_ = _**privKey**_ \* **G**.
+The **private key** is generated as a **random integer** in the range \[0..._**n**_-1\]. The public key _**pubKey**_ is a point on the elliptic curve, calculated by the EC point multiplication: _**pubKey**_ = _**privKey**_ \* **G** \(the private key, multiplied by the generator point **G**\).
 
-The public key EC point {_**x**_, _**y**_} can be **compressed** to just one of the coordinates + 1 bit \(parity\). For the `secp256k1` curve, the private key is 256-bit integer and the compressed public key is 257-bit integer.
+The public key EC point {_**x**_, _**y**_} can be **compressed** to just one of the coordinates + 1 bit \(parity\). For the `secp256k1` curve, the private key is 256-bit integer \(32 bytes\) and the compressed public key is 257-bit integer \(~ 33 bytes\).
 
 ## ECDSA Sign
 
@@ -35,7 +35,7 @@ The ECDSA signing algorithm \([RFC 6979](https://tools.ietf.org/html/rfc6979#sec
    * The modular inverse $$k^-1 \pmod n$$ is an integer, such that $$k * k^-1 \equiv 1 \pmod n $$
 5. Return the signature {_**r**_, _**s**_}
 
-The calculated **signature** {_**r**_, _**s**_} is a pair of integers, each in the range \[1..._**n**_-1\]. This means that for 256-bit elliptic curves \(like `secp256k1`\),  the ECDSA signature is 512 bits and for 521-bit curves \(like `secp521r1`\), the signature is 1042 bits.
+The calculated **signature** {_**r**_, _**s**_} is a pair of integers, each in the range \[1..._**n**_-1\]. This means that for 256-bit elliptic curves \(like `secp256k1`\) the ECDSA signature is 512 bits \(64 bytes\) and for 521-bit curves \(like `secp521r1`\) the signature is 1042 bits.
 
 ## ECDSA Verify Signature
 
@@ -49,13 +49,5 @@ The algorithm to **verify a ECDSA signature** takes as input the signed message 
 
 How does the above work? It is not obvious, but let's play a bit with the equations:
 
-
-
-
-
-
-
 _**s1**_ = $$s^-1 \pmod n$$ = $$k * (h + privKey * r) ^-1\pmod n$$
-
-
 
