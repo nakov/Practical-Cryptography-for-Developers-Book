@@ -1,4 +1,4 @@
-# Elliptic Curve Cryptography \(ECC\) - Concepts
+p# Elliptic Curve Cryptography \(ECC\) - Concepts
 
 The [**Elliptic Curve Cryptography \(ECC\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) is modern **family of public-key cryptosystems**, which is based on the algebraic structures of the **elliptic curves over finite fields** and on the difficulty of the [**Elliptic Curve Discrete Logarithm Problem \(ECDLP\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography#Rationale).1
 
@@ -143,7 +143,7 @@ To summarize, in the ECC cryptography the EC points, together with the generator
 
 Elliptic curve subgroups usually have **many generator points**, but cryptographers carefully select one of them, which generates the entire group (or subgroup) and is suitable for performance optimizations in the  computations. This is the generator known as "**G**".
 
-It is known that for some curves different generator points generate subgroups of different order. More precisely, if the group order is **n**, for each prime **d** dividing **n**, there is a point **Q** such that **d** \* **Q** = **_infinity_**. This means that some points used as generators for the same curve will generate smaller subgroups than others. This is the reason why cryptographers usually choose the **subgroup order** **r** to be a **prime number**.
+It is known that for some curves different generator points generate subgroups of different order. More precisely, if the group order is **n**, for each prime **d** dividing **n**, there is a point **Q** such that **d** \* **Q** = **_infinity_**. This means that some points used as generators for the same curve will generate smaller subgroups than others. if the group is small, the security is weak. This is known as **["small-subgroup" attacks](https://tools.ietf.org/html/rfc2785)**. This is the reason why cryptographers usually choose the **subgroup order** **r** to be a **prime number**.
 
 For elliptic curves with cofactor **h** > 1, different **base points** can generate different **subgroups** of EC points on the curve. By choosing a certain **generator point**, we choose to operate over a certain **subgroup of points** on the curve and most EC point operations and ECC crypto algorithms will work well. Still in some cases, special attention should be given, so it is recommended to use only proven ECC implementations, algorithms and software packages.
 
