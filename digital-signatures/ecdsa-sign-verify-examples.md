@@ -83,17 +83,43 @@ As it is visible from the above output, the random generated **secp256k1 private
 
 ## Public Key Recovery from ECDSA Signature
 
-As we already know, in ECDSA it is possible to recover the public key from signature
+As we already know, in ECDSA it is possible to **recover the public key from signature**. Let's demonstrate this by adding the following code at the end of the previous example:
 
-\[TODO\]
+```py
+from pycoin.ecdsa import possible_public_pairs_for_signature
 
-\[TODO\]
+def recoverPubKeyFromSignature(msg, signature):
+    msgHash = sha3_256Hash(msg)
+    recoveredPubKey = possible_public_pairs_for_signature(generator_secp256k1, msgHash, signature)
+    return recoveredPubKey[0]
 
-\[TODO\]
+msg = "Message for ECDSA signing"
+recoveredPubKey = recoverPubKeyFromSignature(msg, signature)
+print("\nMessage:", msg)
+print("Signature: r=" + hex(signature[0]) + ", s=" + hex(signature[1]))
+print("Recovered public key from signature: (" +
+      hex(recoveredPubKey[0]) + ", " + hex(recoveredPubKey[1]) + ")")
+```
 
-\[TODO\]
+The above code recovers the possible EC **public keys** from the ECDSA **signature** + the signed **message**, using the algorithm, described in [http://www.secg.org/sec1-v2.pdf](http://www.secg.org/sec1-v2.pdf). The expected output from the above code \(together with the previous code\) looks like this:
 
-\[TODO\]
+```
+Message: Message for ECDSA signing
+Private key: 0xc374556584db050001c2c9265b546e66d3dbbe8239d17427c176d834a19638dc
+Signature: r=0xd034c98af3274ad93f3c8ce944bbc17b11b6aa170c5f097ed98687fa0d93347c, s=0xa2318ceea2002caba38efbba3bf8ef8d43236a6edc33c040734d8eb2ed77f608
 
+Message: Message for ECDSA signing
+Public key: (0x10b5d9028ec828a0f9111e36f046afa5a0c677357351093426bcec10c663db7d, 0x271763c56fcd87b72d59ceaa5b9c3fd2122788fe344751a9bde373f903e5bb20)
+Signature valid? True
 
+Message: Tampered message
+Signature (tampered msg) valid? False
+
+Message: Message for ECDSA signing
+Signature: r=0xd034c98af3274ad93f3c8ce944bbc17b11b6aa170c5f097ed98687fa0d93347c, s=0xa2318ceea2002caba38efbba3bf8ef8d43236a6edc33c040734d8eb2ed77f608
+Recovered public key from signature: (0x1353fd26a6cb6110980cfd2bb5eca3b3cc3e08c930ad5991395dd826a250c79, 0xba6825142e230ee1fa2b406f3f9158a47ee49daca8ac47898c5fd92d805a101e)
+Recovered public key from signature: (0x10b5d9028ec828a0f9111e36f046afa5a0c677357351093426bcec10c663db7d, 0x271763c56fcd87b72d59ceaa5b9c3fd2122788fe344751a9bde373f903e5bb20)
+```
+
+It is obvious that the **recovered possible public keys** are two: one is equal to the public key, matching the signer's private key, and the other is not \(it matches the math behind the public key recovery, but is not the correct one\).
 
