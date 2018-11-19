@@ -54,7 +54,7 @@ To learn more about the equations of the elliptic curves and how they look like,
 
 ### Elliptic Curves over Finite Fields
 
-The **elliptic curve cryptography (ECC)** uses **elliptic curves over the [finite field](https://en.wikipedia.org/wiki/Finite_field) 𝔽<sub>p</sub>** (where **_p_** is prime and **_p_** > 3) or **𝔽<sub>2<sup>_m_**</sup></sub> (where the fields size **_p_** = 2<sup>**_m_**</sup>). This means that the field is a **square matrix** of size **_p_** x **_p_** and the points on the curve are limited to **integer coordinates** within the field only. All algebraic operations within the field (like point addition and multiplication) result in another point within the field. The elliptic curve equation over the finite field **𝔽<sub>p</sub>** takes the following modular form:
+The **elliptic curve cryptography (ECC)** uses **elliptic curves over the [finite field](https://en.wikipedia.org/wiki/Finite_field) 𝔽<sub>p</sub>** (where **_p_** is prime and **_p_** > 3) or **𝔽<sub>2<sup>_m_</sup></sub>** (where the fields size **_p_** = 2<sup>**_m_**</sup>). This means that the field is a **square matrix** of size **_p_** x **_p_** and the points on the curve are limited to **integer coordinates** within the field only. All algebraic operations within the field (like point addition and multiplication) result in another point within the field. The elliptic curve equation over the finite field **𝔽<sub>p</sub>** takes the following modular form:
  - y<sup>2</sup> ≡ x<sup>3</sup> + **_a_**x + **_b_** (mod **_p_**)
 
 Respectively, the "Bitcoin curve" `secp256k1` takes the form:
