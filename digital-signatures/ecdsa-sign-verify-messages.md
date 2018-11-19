@@ -30,31 +30,34 @@ The ECDSA signing algorithm \([RFC 6979](https://tools.ietf.org/html/rfc6979#sec
 1. Calculate the message **hash**, using a cryptographic hash function like SHA-256: _**h**_ = hash\(_**msg**_\)
 2. Generate securely a **random** number _**k**_ in the range \[1.._**n**_-1\]
    * In case of **deterministic-ECDSA**, the value _**k**_ is HMAC-derived from _**h**_ + _**privKey**_ \(see [RFC 6979](https://tools.ietf.org/html/rfc6979#section-3.2)\)
-3. Calculate the point _**R**_ = _**k**_ \* **G** and the number _**r**_ = x-coordinate-of\(_**R**_\)
-4. Calculate _**s**_ = $$k^-1 * (h + r * privKey) \pmod n$$
+3. Calculate the random point _**R**_ = _**k**_ \* **G** and take its x-coordinate: _**r**_ = _**R**_**.x**
+4. Calculate the signature proof: _**s**_ = $$k^-1 * (h + r * privKey) \pmod n$$
    * The modular inverse $$k^-1 \pmod n$$ is an integer, such that $$k * k^-1 \equiv 1 \pmod n $$
 5. Return the **signature** {_**r**_, _**s**_}.
 
-The calculated **signature** {_**r**_, _**s**_} is a pair of integers, each in the range \[1..._**n**_-1\]. It encodes the random point _**R**_, along with a proof _**s**_, that the signer knows the message _**h**_ and the private key _**privKey**_, verifiable by the corresponding _**pubKey**_.
+The calculated **signature** {_**r**_, _**s**_} is a pair of integers, each in the range \[1..._**n**_-1\]. It encodes the random point _**R**_ = _**k**_ \* **G**, along with a proof _**s**_, confirming that the signer knows the message _**h**_ and the private key _**privKey**_. The proof _**s**_ is by idea verifiable using the corresponding _**pubKey**_.
 
- This means that for 256-bit elliptic curves \(like `secp256k1`\) the ECDSA signature is 512 bits \(64 bytes\) and for 521-bit curves \(like `secp521r1`\) the signature is 1042 bits.
+**ECDSA signatures** are **2 times longer** than the signer's **private key** for the curve used during the signing process. For example, for 256-bit elliptic curves \(like `secp256k1`\) the ECDSA signature is 512 bits \(64 bytes\) and for 521-bit curves \(like `secp521r1`\) the signature is 1042 bits.
 
 ## ECDSA Verify Signature
 
 The algorithm to **verify a ECDSA signature** takes as input the signed message _**msg**_ + the signature {_**r**_, _**s**_} produced from the signing algorithm + the public key _**pubKey**_, corresponding to the signer's private key. The output is boolean value: _**valid**_ or _**invalid**_ signature. The **ECDSA signature verify** algorithm works as follows \(with minor simplifications\):
 
-1. Calculate the message **hash**, using a cryptographic hash function like SHA-256: _**h**_ = hash\(_**msg**_\)
-2. Calculate _**s1**_ = $$s^-1 \pmod n$$
-3. Calculate _**P**_ = \(_**h**_ \* **s1**\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey**_
-4. Calculate _**r'**_ = x-coordinate-of\(_**P**_\) mod _**n**_
+1. Calculate the message **hash**, with the same cryptographic hash function used during the signing: _**h**_ = hash\(_**msg**_\)
+2. Calculate the modular inverse of the signature proof: _**s1**_ = $$s^-1 \pmod n$$
+3. Recover the random point used during the signing: _**R'**_ = \(_**h**_ \* **s1**\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey**_
+4. Take from _**R'**_ its x-coordinate: _**r'**_ = _**R'**_**.x**
 5. Calculate the signature validation **result **by comparing whether _**r'**_ == _**r**_
+
+The general idea of the signature verification is to **recover the point **_**R'**_ using the public key and check whether it is same point like the point _**R**_, generated randomly during the signing process. 
 
 ## How Does it Work?
 
 The **ECDSA signature** {_**r**_, _**s**_} has the following simple explanation:
 
-* The signing **signing** encodes a random point _**r**_ \(represented by its _**x**_ coordinate only\) through elliptic-curve transformations using the private key _**privKey**_ and the message hash _**h**_ into a number _**s**_, which is the proof that the message signer knows the private key _**privKey**_.
-* The **signature verification** decodes the number _**s**_ from the signature back to its original point _**r**_, using the public key _**pubKey**_ and the message hash _**h**_ and compares it with _**r**_.
+* The signing **signing** encodes a random point _**R**_ \(represented by its _**x**_ coordinate only\) through elliptic-curve transformations using the private key _**privKey**_ and the message hash _**h**_ into a number _**s**_, which is the **proof** that the message signer knows the private key _**privKey**_. The signature {_**r**_, _**s**_} cannot reveal the private key due to the difficulty of the **ECDLP problem**.
+
+* The **signature verification** decodes the proof number _**s**_ from the signature back to its original point _**R**_, using the public key _**pubKey**_ and the message hash _**h**_ and compares the x-coordinate of the recovered _**R**_ with the _**r**_ value from the signature.
 
 ## The Math behind ECDSA Sign / Verify
 
@@ -62,8 +65,8 @@ Read this section **only if you like math**. How does the above sign / verify sc
 
 The point _**P**_, calculated during the **signature verification** can be transformed by replacing the _**pubKey**_ by _**privKey**_ \* **G** as follows:
 
-_**P**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**  
-  **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**  
+_**P**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**    
+  **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**    
  **_  = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G**
 
 If we take the number _**s**_ = $$k^-1 * (h + r * privKey) \pmod n$$**,** calculated during the signing process, we can calculate _**s1**_ = $$s^-1 \pmod n$$ like this:
@@ -75,7 +78,7 @@ _**s1**_ = $$s^-1 \pmod n$$
 Now, replace _**s1**_ in the point _**p**_.
 
 _**P**_ = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G** =  
-  = $$(h + r * privKey) * k * (h + r * privKey)^-1 \pmod n$$_** \* **_**G **=_**  
+  = $$(h + r * privKey) * k * (h + r * privKey)^-1 \pmod n$$_** \* **_**G **=_**    
  **_ = **k** \* **G**  
 The final step is to compare the point p \(decoded with the pubKey\) with the point _**R**_ \(encoded by the _**privKey**_\).
 
@@ -88,8 +91,4 @@ During the signature verification we have:
 * _**r'**_ = x-coordinate-of\(_**p**_\) mod _**n**_ = x-coordinate-of\(_**k**_ \* **G**\) mod _**n**_
 
 It is expected that _**r'**_ == _**r**_ if the signature is valid and different if the signature or message or the public key is incorrect.
-
-
-
-
 
