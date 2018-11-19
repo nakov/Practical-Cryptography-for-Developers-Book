@@ -11,7 +11,7 @@ Next, generate a 1024-bit **RSA key-pair**:
 ```py
 from Crypto.PublicKey import RSA
 
-keyPair = RSA.generate(1024)
+keyPair = RSA.generate(bits=1024)
 print(f"Public key:  (n={hex(keyPair.n)}, e={hex(keyPair.e)})")
 print(f"Private key: (n={hex(keyPair.n)}, d={hex(keyPair.d)})")
 ```
@@ -39,6 +39,8 @@ The obtained digital signature is an integer in the range of the RSA key length 
 ```
 Signature: 0x650c9f2e6701e3fe73d3054904a9a4bbdb96733f1c4c743ef573ad6ac14c5a3bf8a4731f6e6276faea5247303677fb8dbdf24ff78e53c25052cdca87eecfee85476bcb8a05cb9a1efef7cb87dd68223e117ce800ac46177172544757a487be32f5ab8fe0879fa8add78be465ea8f8d5acf977e9f1ae36d4d47816ea6ed41372b
 ```
+
+The **signature** is **1024-bit integer** \(128 bytes, 256 hex digits\). This signature size corresponds to the RSA key size.
 
 Now, let's **verify the signature**, by decrypting the signature using the public key \(raise the _**signature**_ to power _**e**_ modulo _**n**_\) and comparing the obtained **hash from the signature** to the **hash** of the signed message:
 
