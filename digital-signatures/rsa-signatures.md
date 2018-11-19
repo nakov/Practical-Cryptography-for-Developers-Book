@@ -4,7 +4,9 @@ The **RSA** public-key cryptosystem provides a **digital signature scheme** \(si
 
 ## Key Generation
 
-The RSA algorithm uses **keys** of size 1024, 2048, 4096, ..., 16384 bits. RSA supports also longer keys, but the performance is too slow for practical use. For 128-bit security level, a 3072-bit key is required. The **RSA key-pair** consists of:
+The RSA algorithm uses **keys** of size 1024, 2048, 4096, ..., 16384 bits. RSA supports also longer keys \(e.g. 65536 bits\), but the performance is too slow for practical use \(some operations take several minutes\). For 128-bit security level, a 3072-bit key is required.
+
+The **RSA key-pair** consists of:
 
 * public key {_**n**_, _**e**_}
 * private key {_**n**_, _**d**_}
