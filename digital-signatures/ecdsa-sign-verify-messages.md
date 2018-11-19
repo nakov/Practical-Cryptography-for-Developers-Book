@@ -55,40 +55,35 @@ The general idea of the signature verification is to **recover the point **_**R'
 
 The **ECDSA signature** {_**r**_, _**s**_} has the following simple explanation:
 
-* The signing **signing** encodes a random point _**R**_ \(represented by its _**x**_ coordinate only\) through elliptic-curve transformations using the private key _**privKey**_ and the message hash _**h**_ into a number _**s**_, which is the **proof** that the message signer knows the private key _**privKey**_. The signature {_**r**_, _**s**_} cannot reveal the private key due to the difficulty of the **ECDLP problem**.
+* The signing **signing** encodes a random point _**R**_ \(represented by its x-coordinate only\) through elliptic-curve transformations using the private key _**privKey**_ and the message hash _**h**_ into a number _**s**_, which is the **proof** that the message signer knows the private key _**privKey**_. The signature {_**r**_, _**s**_} cannot reveal the private key due to the difficulty of the **ECDLP problem**.
 
 * The **signature verification** decodes the proof number _**s**_ from the signature back to its original point _**R**_, using the public key _**pubKey**_ and the message hash _**h**_ and compares the x-coordinate of the recovered _**R**_ with the _**r**_ value from the signature.
 
 ## The Math behind ECDSA Sign / Verify
 
-Read this section **only if you like math**. How does the above sign / verify scheme work? It is not obvious, but let's play a bit with the equations.
+Read this section **only if you like math**. Most developer may skip it.
 
-The point _**P**_, calculated during the **signature verification** can be transformed by replacing the _**pubKey**_ by _**privKey**_ \* **G** as follows:
+How does the above sign / verify scheme work? It is not obvious, but let's play a bit with the equations.
 
-_**P**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**      
-  **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**      
- **_  = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G**
+The equation behind the recovering of the point _**R'**_, calculated during the **signature verification**, can be transformed by replacing the _**pubKey**_ with _**privKey**_ \* **G** as follows:
+
+_**R'**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**          
+   **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**          
+ **_   = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G**
 
 If we take the number _**s**_ = $$k^-1 * (h + r * privKey) \pmod n$$**,** calculated during the signing process, we can calculate _**s1**_ = $$s^-1 \pmod n$$ like this:
 
-_**s1**_ = $$s^-1 \pmod n$$  
-     = $$(k^-1 * (h + r * privKey))^-1 \pmod n$$  
+_**s1**_ = $$s^-1 \pmod n$$ =  
+     = $$(k^-1 * (h + r * privKey))^-1 \pmod n$$ =  
      = $$k * (h + r * privKey)^-1 \pmod n$$
 
-Now, replace _**s1**_ in the point _**p**_.
+Now, replace _**s1**_ in the point _**R'**_.
 
-_**P**_ = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G** =  
-  = $$(h + r * privKey) * k * (h + r * privKey)^-1 \pmod n$$_** \* **_**G **=_**      
- **_ = **k** \* **G**  
-The final step is to compare the point p \(decoded with the pubKey\) with the point _**R**_ \(encoded by the _**privKey**_\).
+_**R'**_ = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G** =  
+  = $$(h + r * privKey) * k * (h + r * privKey)^-1 \pmod n$$_** \* **_**G **=_**          
+ **_ = **k** \* **G**
 
-During the signing we have:
+The final step is to **compare** the **point **_**R'**_ \(decoded using the _**pubKey**_\) with the **point **_**R**_ \(encoded by the _**privKey**_\). The algorithm compares only the x-coordinates of _**R'**_ and _**R**_: the integers _**r'**_ and _**r**_.
 
-* _**r**_ = x-coordinate-of\(_**k**_ \* **G**\) mod _**n**_
-
-During the signature verification we have:
-
-* _**r'**_ = x-coordinate-of\(_**p**_\) mod _**n**_ = x-coordinate-of\(_**k**_ \* **G**\) mod _**n**_
-
-It is expected that _**r'**_ == _**r**_ if the signature is valid and different if the signature or message or the public key is incorrect.
+It is expected that _**r'**_ == _**r**_ if the signature is **valid** and _**r'**_ ≠ _**r **_if the signature or the message or the public key is incorrect.
 
