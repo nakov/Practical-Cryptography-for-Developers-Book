@@ -1,6 +1,6 @@
 # ECDSA: Elliptic Curve Digital Signatures
 
-The [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) \(Elliptic Curve Digital Signature Algorithm\) is a cryptographically secure **digital signature scheme**, based on the elliptic-curve cryptography \([**ECC**](/asymmetric-key-ciphers/elliptic-curve-cryptography-ecc.md)\). **ECDSA** relies on the math of the **cyclic groups of elliptic curves over finite fields** and on the difficulty of the [**ECDLP problem**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography#Rationale) \(elliptic-curve discrete logarithm problem\). The [**ECDSA sign / verify**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) algorithm relies on EC point multiplication and works as described below.
+The [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) \(Elliptic Curve Digital Signature Algorithm\) is a cryptographically secure **digital signature scheme**, based on the elliptic-curve cryptography \([**ECC**](/asymmetric-key-ciphers/elliptic-curve-cryptography-ecc.md)\). **ECDSA** relies on the math of the **cyclic groups of elliptic curves over finite fields** and on the difficulty of the [**ECDLP problem**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography#Rationale) \(elliptic-curve discrete logarithm problem\). The [**ECDSA sign / verify**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) algorithm relies on EC point multiplication and works as described below. ECDSA keys and signatures are shorter than in RSA for the same security level. A 256-bit ECDSA signature has the same security strength like 3072-bit RSA signature.
 
 **ECDSA** uses [cryptographic **elliptic curves** \(EC\)](/asymmetric-key-ciphers/elliptic-curve-cryptography-ecc.md) over finite fields in the classical Weierstrass form. These curves are described by their **EC domain parameters**, specified by various cryptographic standards such as [**SECG: SEC 2**](http://www.secg.org/sec2-v2.pdf) and [**Brainpool \(RFC 5639\)**](https://tools.ietf.org/html/rfc5639). Elliptic curves, used in cryptography, define:
 
@@ -25,7 +25,7 @@ The public key EC point {_**x**_, _**y**_} can be **compressed** to just one of 
 
 ## ECDSA Sign
 
-The ECDSA signing algorithm \([RFC 6979](https://tools.ietf.org/html/rfc6979#section-3.2)\) takes as input a message _**msg**_** **+ a private key _**privKey**_** **and produces as output a **signature**, which consists of pair of integers {_**r**_, _**s**_}. The **ECDSA signing** algorithm works as follows \(with minor simplifications\):
+The ECDSA signing algorithm \([**RFC 6979**](https://tools.ietf.org/html/rfc6979#section-3.2)\) takes as input a message _**msg**_** **+ a private key _**privKey**_** **and produces as output a **signature**, which consists of pair of integers {_**r**_, _**s**_}. The **ECDSA signing** algorithm is based on the [**ElGamal signature scheme**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme) and works as follows \(with minor simplifications\):
 
 1. Calculate the message **hash**, using a cryptographic hash function like SHA-256: _**h**_ = hash\(_**msg**_\)
 2. Generate securely a **random** number _**k**_ in the range \[1.._**n**_-1\]
@@ -59,7 +59,7 @@ The **ECDSA signature** {_**r**_, _**s**_} has the following simple explanation:
 
 * The **signature verification** decodes the proof number _**s**_ from the signature back to its original point _**R**_, using the public key _**pubKey**_ and the message hash _**h**_ and compares the x-coordinate of the recovered _**R**_ with the _**r**_ value from the signature.
 
-## The Math behind ECDSA Sign / Verify
+## The Math behind the ECDSA Sign / Verify
 
 Read this section **only if you like math**. Most developer may skip it.
 
@@ -67,8 +67,8 @@ How does the above sign / verify scheme work? It is not obvious, but let's play 
 
 The equation behind the recovering of the point _**R'**_, calculated during the **signature verification**, can be transformed by replacing the _**pubKey**_ with _**privKey**_ \* **G** as follows:
 
-_**R'**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**          
-   **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**          
+_**R'**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**              
+   **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**              
  **_   = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G**
 
 If we take the number _**s**_ = $$k^-1 * (h + r * privKey) \pmod n$$**,** calculated during the signing process, we can calculate _**s1**_ = $$s^-1 \pmod n$$ like this:
@@ -80,10 +80,10 @@ _**s1**_ = $$s^-1 \pmod n$$ =
 Now, replace _**s1**_ in the point _**R'**_.
 
 _**R'**_ = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G** =  
-  = $$(h + r * privKey) * k * (h + r * privKey)^-1 \pmod n$$_** \* **_**G **=_**          
+  = $$(h + r * privKey) * k * (h + r * privKey)^-1 \pmod n$$_** \* **_**G **=_**              
  **_ = **k** \* **G**
 
-The final step is to **compare** the **point **_**R'**_ \(decoded using the _**pubKey**_\) with the **point **_**R**_ \(encoded by the _**privKey**_\). The algorithm compares only the x-coordinates of _**R'**_ and _**R**_: the integers _**r'**_ and _**r**_.
+The final step is to **compare** the **point **_**R'**_ \(decoded by the _**pubKey**_\) with the **point **_**R**_ \(encoded by the _**privKey**_\). The algorithm in fact compares only the x-coordinates of _**R'**_ and _**R**_: the integers _**r'**_ and _**r**_.
 
-It is expected that _**r'**_ == _**r**_ if the signature is **valid** and _**r'**_ ≠ _**r **_if the signature or the message or the public key is incorrect.
+It is expected that _**r'**_ == _**r**_ if the signature is **valid** and _**r'**_ ≠ _**r**_ if the signature or the message or the public key is incorrect.
 
