@@ -438,7 +438,7 @@ To use ECC all communicating parties should agree on the EC domain parameters (a
 
 ### Named Curves - Example
 
-In ECC cryptography, **elliptic curves over the finite fields** are used, where the modulus **_p_** is very large integer (prime number for the most curves), e.g. **256-bit** number. The **finite field** of the curve is of square form of size **p** x **p**, which is incredibly large, and all possible EC points on the curve (the order of the curve **_n_**) is also a very big integer, e.g. 256-bit. For example, the **domain parameters** for the curve **`secp256k1`** (the Bitcoin curve) are defined as follows:
+In ECC cryptography, **elliptic curves over the finite fields** are used, where the modulus **_p_** and the order **_n_** are very large integers (**_n_** is usually prime number), e.g. **256-bit** number. The **finite field** of the curve is of square form of size **p** x **p**, which is incredibly large, and all possible EC points on the curve (the order of the curve **_n_**) is also a very big integer, e.g. 256-bit. For example, the **domain parameters** for the curve **`secp256k1`** (the Bitcoin curve) are defined as follows:
 
   - **_p_** (modulus) = `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F`
   - **_n_** (order; size; the count of all possible EC points) = `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`
