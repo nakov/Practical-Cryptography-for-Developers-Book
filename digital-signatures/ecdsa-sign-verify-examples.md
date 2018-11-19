@@ -2,7 +2,7 @@
 
 After we explained in details how the **ECDSA signature **algorithm works, now let's demonstrate it in practice with **code examples**.
 
-In this example, we shall use the `pycoin` Python package, which implements the **ECDSA signature algorithm** with the curve `secp256k1` \(used in the Bitcoin cryptography\), as well as many other functionalities related to the Bitcoin blockchain:
+In this example, we shall use the [`pycoin` ](https://github.com/richardkiss/pycoin)Python package, which implements the **ECDSA signature algorithm** with the curve `secp256k1` \(used in the Bitcoin cryptography\), as well as many other functionalities related to the Bitcoin blockchain:
 
 ```py
 pip install pycoin
@@ -81,7 +81,7 @@ Signature (tampered msg) valid? False
 
 As it is visible from the above output, the random generated **secp256k1 private key **is **64 hex digits** \(256 bits\). After signing, the obtained signature {_**r**_, _**s**_} consists of 2 \* 256-bit integers. The **public key**, obtained by multiplying the private key by the curve generator point, consists of 2 \* 256 bits \(uncompressed\). The produced ECDSA digital signature verifies correctly after signing. If the message is tampered, the signature fails to verify.
 
-## Public Key Recovery from ECDSA Signature
+## Public Key Recovery from the ECDSA Signature
 
 As we already know, in ECDSA it is possible to **recover the public key from signature**. Let's demonstrate this by adding the following code at the end of the previous example:
 
@@ -90,18 +90,20 @@ from pycoin.ecdsa import possible_public_pairs_for_signature
 
 def recoverPubKeyFromSignature(msg, signature):
     msgHash = sha3_256Hash(msg)
-    recoveredPubKey = possible_public_pairs_for_signature(generator_secp256k1, msgHash, signature)
-    return recoveredPubKey[0]
+    recoveredPubKeys = possible_public_pairs_for_signature(
+        generator_secp256k1, msgHash, signature)
+    return recoveredPubKeys
 
 msg = "Message for ECDSA signing"
-recoveredPubKey = recoverPubKeyFromSignature(msg, signature)
+recoveredPubKeys = recoverPubKeyFromSignature(msg, signature)
 print("\nMessage:", msg)
 print("Signature: r=" + hex(signature[0]) + ", s=" + hex(signature[1]))
-print("Recovered public key from signature: (" +
-      hex(recoveredPubKey[0]) + ", " + hex(recoveredPubKey[1]) + ")")
+for pk in recoveredPubKeys:
+    print("Recovered public key from signature: (" +
+          hex(pk[0]) + ", " + hex(pk[1]) + ")")
 ```
 
-The above code recovers the possible EC **public keys** from the ECDSA **signature** + the signed **message**, using the algorithm, described in [http://www.secg.org/sec1-v2.pdf](http://www.secg.org/sec1-v2.pdf). The expected output from the above code \(together with the previous code\) looks like this:
+The above code recovers the all **possible EC public keys** from the ECDSA **signature** + the signed **message**, using the algorithm, described in [http://www.secg.org/sec1-v2.pdf](http://www.secg.org/sec1-v2.pdf). Note that **multiple EC public keys** \(0, 1 or 2\) may match the message + signature. The expected output from the above code \(together with the previous code\) looks like this:
 
 ```
 Message: Message for ECDSA signing
@@ -121,5 +123,55 @@ Recovered public key from signature: (0x1353fd26a6cb6110980cfd2bb5eca3b3cc3e08c9
 Recovered public key from signature: (0x10b5d9028ec828a0f9111e36f046afa5a0c677357351093426bcec10c663db7d, 0x271763c56fcd87b72d59ceaa5b9c3fd2122788fe344751a9bde373f903e5bb20)
 ```
 
-It is obvious that the **recovered possible public keys** are two: one is equal to the public key, matching the signer's private key, and the other is not \(it matches the math behind the public key recovery, but is not the correct one\).
+It is obvious that the **recovered possible public keys** are 2: one is equal to the public key, matching the signer's private key, and the other is not \(it matches the math behind the public key recovery, but is not the correct one\). To avoid this ambiguity, **the signature can be extended** to hold {_**r**_, _**s**_, _**v**_}, where _**v**_ holds the parity of the _**y**_ coordinate of the random point **R** from the ECDSA signing algorithm. This coordinate is lost, because the ECDSA signature takes just the **x** coordinate or **R**.
+
+## Public Key Recovery from Extended ECDSA Signature
+
+To **recover with confidence the public key** from ECDSA signature + message, we need a library that generates **extended ECDSA signatures** {_**r**_, _**s**_, _**v**_} and supports internally the public key recovery. Let's play with the `eth_keys` Python library:
+
+```py
+pip install eth_keys
+```
+
+The [**eth\_keys**](https://github.com/ethereum/eth-keys/) is part of the Ethereum project and implements **secp256k1**-based ECC cryptography, private and public keys, ECDSA extended signatures {_**r**_, _**s**_, _**v**_} and Ethereum blockchain addresses. The following example demonstrates private key generation, message signing, public key recovery from signature + message and signature verification:
+
+```py
+import eth_keys, os
+
+# Generate the private + public key pair (using the secp256k1 curve)
+signerPrivKey = eth_keys.keys.PrivateKey(os.urandom(32))
+signerPubKey = signerPrivKey.public_key
+print('Private key (64 hex digits):', signerPrivKey)
+print('Public key (uncompressed, 128 hex digits):', signerPubKey)
+
+# ECDSA sign message (using the curve secp256k1 + Keccak-256)
+msg = b'Message for signing'
+signature = signerPrivKey.sign_msg(msg)
+print('Message:', msg)
+print('Signature: [r = {0}, s = {1}, v = {2}]'.format(
+    hex(signature.r), hex(signature.s), hex(signature.v)))
+
+# ECDSA public key recovery from signature + verify signature
+# (using the curve secp256k1 + Keccak-256 hash)
+msg = b'Message for signing'
+recoveredPubKey = signature.recover_public_key_from_msg(msg)
+print('Recovered public key (128 hex digits):', recoveredPubKey)
+print('Public key correct?', recoveredPubKey == signerPubKey)
+valid = signerPubKey.verify_msg(msg, signature)
+print("Signature valid?", valid)
+```
+
+The output from the above code looks like this:
+
+```
+Private key (64 hex digits): 0x68abc765746a33272e47b0a96a0b4184048f70354221e04219fbc223bfe79794
+Public key (uncompressed, 128 hex digits): 0x30a6dc572da312587144e7ccda1e9abd901323adebe7091bb4985e1202c2a10bc25f681b3d2e1a671438f0b125287b473c09ca345c5583cd627232b536b9ca0a
+Message: b'Message for signing'
+Signature: [r = 0x4cddf146c578d20a31fa6128e5d9afe6ac666e5ef5899f2767cacb56a42703cc, s = 0x3847036857aa3f077a2e142eee707e5af2653baa99b9d10764a0be3d61595dbb, v = 0x0]
+Recovered public key (128 hex digits): 0x30a6dc572da312587144e7ccda1e9abd901323adebe7091bb4985e1202c2a10bc25f681b3d2e1a671438f0b125287b473c09ca345c5583cd627232b536b9ca0a
+Public key correct? True
+Signature valid? True
+```
+
+The **public key recovery** will always be successful, because there is no ambiguity with the **extended ECDSA signature**. The **signature verification** will be successful, unless the message, the public key or the signature is tampered. You are free to play with the above code, to change it, to tamper the signed message and to see what happens. Enjoy!
 
