@@ -49,7 +49,7 @@ The algorithm to **verify a ECDSA signature** takes as input the signed message 
 4. Take from _**R'**_ its x-coordinate: _**r'**_ = _**R'**_**.x**
 5. Calculate the signature validation **result **by comparing whether _**r'**_ == _**r**_
 
-The general idea of the signature verification is to **recover the point **_**R'**_ using the public key and check whether it is same point like the point _**R**_, generated randomly during the signing process. 
+The general idea of the signature verification is to **recover the point **_**R'**_ using the public key and check whether it is same point _**R**_, generated randomly during the signing process.
 
 ## How Does it Work?
 
@@ -65,8 +65,8 @@ Read this section **only if you like math**. How does the above sign / verify sc
 
 The point _**P**_, calculated during the **signature verification** can be transformed by replacing the _**pubKey**_ by _**privKey**_ \* **G** as follows:
 
-_**P**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**    
-  **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**    
+_**P**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**      
+  **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**      
  **_  = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G**
 
 If we take the number _**s**_ = $$k^-1 * (h + r * privKey) \pmod n$$**,** calculated during the signing process, we can calculate _**s1**_ = $$s^-1 \pmod n$$ like this:
@@ -78,7 +78,7 @@ _**s1**_ = $$s^-1 \pmod n$$
 Now, replace _**s1**_ in the point _**p**_.
 
 _**P**_ = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G** =  
-  = $$(h + r * privKey) * k * (h + r * privKey)^-1 \pmod n$$_** \* **_**G **=_**    
+  = $$(h + r * privKey) * k * (h + r * privKey)^-1 \pmod n$$_** \* **_**G **=_**      
  **_ = **k** \* **G**  
 The final step is to compare the point p \(decoded with the pubKey\) with the point _**R**_ \(encoded by the _**privKey**_\).
 
