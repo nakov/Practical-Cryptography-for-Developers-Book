@@ -78,7 +78,11 @@ Enjoy **playing with the above RSA sign / verify examples**. Try to modify the c
 
 The simple use of **RSA signatures** is demonstrated above, but the industry usually follows the crypto standards. For the RSA signatures, the most adopted standard is "**PKCS\#1 v1.5**", described in [**RFC 8017**](https://tools.ietf.org/html/rfc8017#page-15).
 
+\[TODO\]
 
+\[TODO\]
+
+\[TODO\]
 
 \[TODO\]
 
@@ -86,7 +90,9 @@ The simple use of **RSA signatures** is demonstrated above, but the industry usu
 
 \[TODO\]
 
+\[TODO\]
 
+\[TODO\]
 
-
+\[TODO\]
 
