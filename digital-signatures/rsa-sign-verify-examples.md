@@ -74,3 +74,19 @@ Signature valid (tampered): False
 
 Enjoy **playing with the above RSA sign / verify examples**. Try to modify the code, e.g. use 4096-bit keys, try to tamper the public key at the signature verification step or the signature.
 
+## The RSA Signature Standards \(RSASP1, RSAVP1, PKCS\#1 v1.5\)
+
+The simple use of **RSA signatures** is demonstrated above, but the industry usually follows the crypto standards. For the RSA signatures, the most adopted standard is "**PKCS\#1 v1.5**", described in [**RFC 8017**](https://tools.ietf.org/html/rfc8017#page-15).
+
+
+
+\[TODO\]
+
+\[TODO\]
+
+\[TODO\]
+
+
+
+
+
