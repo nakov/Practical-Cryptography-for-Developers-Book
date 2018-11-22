@@ -56,6 +56,7 @@
 * [Digital Signatures](digital-signatures.md)
   * [RSA Signatures](digital-signatures/rsa-signatures.md)
   * [RSA: Sign / Verify - Examples](digital-signatures/rsa-sign-verify-examples.md)
+  * [Exercises: RSA Sign and Verify](digital-signatures/exercises-rsa-sign-and-verify.md)
   * [ECDSA: Elliptic Curve Signatures](digital-signatures/ecdsa-sign-verify-messages.md)
   * [ECDSA: Sign / Verify - Examples](digital-signatures/ecdsa-sign-verify-examples.md)
   * [Exercises: ECDSA Sign and Verify](digital-signatures/exercises-secp256k1-sign-verify.md)
