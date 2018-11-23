@@ -27,5 +27,39 @@ Sample output:
 
 ## EdDSA-Ed25519: Verify Signature
 
-...
+Write a program to **validate the Ed25519 digital signature**, created by the previous exercise. The **input** comes as JSON document, holding the **message** + the **public key** \(uncompressed, hex string\) + the **signature**. Print as **output** a single word: "**valid**' or "**invalid**".
+
+Sample input \(correctly signed message\):
+
+```
+{
+  "msg": "Message for Ed25519 signing",
+  "pubKey":"7721a5832cb70cce1a960cf236d50a0e862555ccad400b5fee0bcf777f7ab476",
+  "signature":"6c4adbba332b5db520c0ec95433ea136f70fe2d50e8955a7049d216626a3491c0e5cbfefb8d779687cc9811311ccaf7cd07a0e96a570fb3a4b680a4ead60c602"
+}
+```
+
+Sample output:
+
+```
+valid
+```
+
+Sample input \(tampered message\):
+
+```
+{
+  "msg": "Tampered msg",
+  "pubKey":"7721a5832cb70cce1a960cf236d50a0e862555ccad400b5fee0bcf777f7ab476",
+  "signature":"6c4adbba332b5db520c0ec95433ea136f70fe2d50e8955a7049d216626a3491c0e5cbfefb8d779687cc9811311ccaf7cd07a0e96a570fb3a4b680a4ead60c602"
+}
+```
+
+Sample output:
+
+```
+invalid
+```
+
+
 
