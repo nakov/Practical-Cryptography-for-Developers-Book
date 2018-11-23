@@ -23,10 +23,10 @@ The **EdDSA signing** algorithm \([RFC 8032](https://tools.ietf.org/html/rfc8032
 
 `EdDSA_sign(msg, privKey) --> { r, s }`
 
-1. Calculate _**h**_ = hash\(_**msg**_\). Calculate _**pubKey**_ = _**privKey**_ \* **G**.
+1. Calculate _**pubKey**_ = _**privKey**_ \* **G**.
 2. Deterministically generate an integer _**r**_ = hash\(rightHalfBytes\(hash\(_**privKey**_\)\) + _**h**_\).
 3. Calculate the public key point behind _**r**_ by multiplying it by the curve generator: _**R**_ = _**r**_ \* **G**.
-4. Calculate _**k**_ = hash\(_**R**_ + _**pubKey**_ + _**h**_\).
+4. Calculate _**k**_ = hash\(_**R**_ + _**pubKey**_ + _**msg**_\).
 5. Calculate _**S**_ = _**r**_ + _**k**_ \* _**privKey**_.
 6. Return the **signature** { _**R**_, _**S**_ }.
 
@@ -38,11 +38,10 @@ The **EdDSA signature verification **algorithm \([RFC 8032](https://tools.ietf.o
 
 `EdDSA_signature_verify(msg, pubKey, signature { R, S} ) --> valid / invalid`
 
-1. Calculate _**h**_ = hash\(_**msg**_\)
-2. Calculate _**k**_ = hash\(_**R**_ + _**pubKey**_ + _**h**_\)
-3. Calculate _**v1**_ = _**S**_ \* **G**
-4. Calculate _**v2**_ = _**R**_ + _**k**_ \* _**pubKey**_
-5. Return _**v1**_ == _**v2**_
+1. Calculate _**k**_ = hash\(_**R**_ + _**pubKey**_ + _**msg**_\)
+2. Calculate _**v1**_ = _**S**_ \* **G**
+3. Calculate _**v2**_ = _**R**_ + _**k**_ \* _**pubKey**_
+4. Return _**v1**_ == _**v2**_
 
 ## How Does it Work? {#how-does-it-work}
 
