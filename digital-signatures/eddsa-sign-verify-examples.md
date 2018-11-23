@@ -4,7 +4,7 @@ After we explained in the previous section how the **EdDSA signatures** work, no
 
 ## Ed25519 - Example
 
-We shall use the Python library `ed25519`, which is based on the Bernstein's original optimized highly optimized C implementation of the **Ed25519** signature algorithm:
+We shall use the Python library [`ed25519`](https://github.com/warner/python-ed25519), which is based on the Bernstein's original optimized highly optimized C implementation of the **Ed25519** signature algorithm \(EdDSA over the Curve25519\):
 
 ```py
 pip install ed25519
@@ -39,6 +39,8 @@ Signature (64 bytes): b'6dd355667fae4eb43c6e0ab92e870edb2de0a88cae12dbd8591507f5
 The signature is valid.
 ```
 
+The **Ed25519 key pair** is generated randomly: first a 32-byte random seed is generated, then the private key is derived from the seed, then the public key is derived from the private key. The hash function for key generation is SHA-512.
+
 The **private key** is encoded as 64 hex digits \(32 bytes\). The **public key** is encoded also as 64 hex digits \(32 bytes\). The EdDSA **signature** {_**R**_, _**s**_} is 32 + 32 bytes \(64 bytes, 128 hex digits\).
 
 If we try to verify a tampered message, the verification will fail:
@@ -59,7 +61,25 @@ Invalid signature!
 
 ## Ed448 - Example
 
-Now, let's demonstrate how to use the **Ed448 signature** \(EdDSA over the Curve448-Goldilocks\).
+Now, let's demonstrate how to use the **Ed448 signature** \(EdDSA over the Curve448-Goldilocks curve\).
+
+We shall use the Python elliptic curve library [`ECPy`](https://github.com/cslashm/ECPy), which implements ECC with Weierstrass curves \(like `secp256k1` and `NIST P-256`\), Montgomery curves \(like `Curve25519` and `Curve448`\) and twisted Edwards curves \(like `Ed25519` and `Ed448`\):
+
+```py
+pip install ecpy
+```
+
+Next, generate a **private + public key pair** for the Ed25519 cryptosystem, **sign** a sample message, and **verify** the signature:
+
+```py
+...
+```
+
+The output from the above sample code looks like this:
+
+```
+...
+```
 
 
 

@@ -37,8 +37,6 @@ The `signECDSAsecp256k1(msg, privKey)` function takes a text **message** and 256
 
 The `verifyECDSAsecp256k1(msg, signature, pubKey)` function takes a text **message**, a ECDSA **signature** {_**r**_, _**s**_} and a 2\*256-bit ECDSA **public key** \(uncompressed\) and returns whether the signature is **valid** or not.
 
-## ECDSA Sign / Verify - Example
-
 Now let's demonstrate the above defined functions to **sign** a message and **verify** its signature:
 
 ```py
