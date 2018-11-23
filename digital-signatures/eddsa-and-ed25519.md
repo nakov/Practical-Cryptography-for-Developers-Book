@@ -8,7 +8,7 @@ The **EdDSA** signature algorithm and its variants **Ed25519** and **Ed448** are
 
 **Ed25519** and **Ed448** use small **private keys** \(32 or 57 bytes respectively\), small **public keys** \(32 or 57 bytes\) and **small signatures** \(64 or 114 bytes\) with **high security level** at the same time \(128-bit or 224-bit respectively\).
 
-Assume the curve has generator point **G**, and a subgroup order _**q**_.
+Assume the elliptic curve for the EdDSA algorithm comes with a generator point **G** and a subgroup order _**q**_ for the EC points, generated from **G**.
 
 The **EdDSA key-pair** consists of:
 
@@ -32,9 +32,7 @@ The **EdDSA signing** algorithm \([RFC 8032](https://tools.ietf.org/html/rfc8032
 5. Calculate _**s**_ = \(_**r**_ + _**h**_ \* _**privKey**_\) mod _**q**_
 6. Return the **signature** { _**R**_, _**s**_ }
 
-The produced **digital signature** is 64 bytes \(32 + 32 bytes\) for **Ed25519** and 114 bytes \(57 + 57 bytes\) for **Ed448**. It holds a compressed point _**R**_ + the integer _**s**_ \(confirming that the signer knows _**msg**_ and _**privKey**_\).
-
-An attacker can try to compute _**privKey**_ = \(_**s**_ - _**r**_\) / **h**.
+The produced **digital signature** is 64 bytes \(32 + 32 bytes\) for **Ed25519** and 114 bytes \(57 + 57 bytes\) for **Ed448**. It holds a compressed point _**R**_ + the integer _**s**_ \(confirming that the signer knows the _**msg**_ and the _**privKey**_\).
 
 ## EdDSA Verify Signature
 
@@ -43,21 +41,21 @@ The **EdDSA signature verification **algorithm \([RFC 8032](https://tools.ietf.o
 `EdDSA_signature_verify(msg, pubKey, signature { R, s } ) --> valid / invalid`
 
 1. Calculate _**h**_ = hash\(_**R**_ + _**pubKey**_ + _**msg**_\) mod _**q**_
-2. Calculate _**v1**_ = _**s**_ \* **G**
-3. Calculate _**v2**_ = _**R**_ + _**h**_ \* _**pubKey**_
-4. Return _**v1**_ == _**v2**_
+2. Calculate _**P1**_ = _**s**_ \* **G**
+3. Calculate _**P2**_ = _**R**_ + _**h**_ \* _**pubKey**_
+4. Return _**P1**_ == _**P2**_
 
 ## How Does it Work? {#how-does-it-work}
 
-During the verification the point _**v1**_ is calculated as: _**v1**_ = _**s**_ \* **G**.
+During the verification the point _**P1**_ is calculated as: _**P1**_ = _**s**_ \* **G**.
 
 During the signing _**s**_ = \(_**r**_ + _**h**_ \* _**privKey**_\) mod _**q**_. Now replace _**s**_ in the above equation:
 
-* _**v1**_ = _**s**_ \* **G =** \(_**r**_ + _**h**_ \* _**privKey**_\) mod _**q**_ \* **G** = _**r**_ \* **G** + _**h**_ \* _**privKey**_ \* **G** = _**R**_ + _**h**_ \* _**pubKey**_
+* _**P1**_ = _**s**_ \* **G =** \(_**r**_ + _**h**_ \* _**privKey**_\) mod _**q**_ \* **G** = _**r**_ \* **G** + _**h**_ \* _**privKey**_ \* **G** = _**R**_ + _**h**_ \* _**pubKey**_
 
-The above is exactly the other point _**v2**_.
+The above is exactly the other point _**P2**_. If these points _**P1**_ and _**P2**_ are the same EC point, this proves that the point _**P1**_, calculated by the private key matches the point _**P2**_, created by its corresponding public key.
 
-If you compare the signing and verification for EdDSA, you will find that **EdDSA is simpler than ECDSA**.
+## ECDSA vs EdDSA
 
-EdDSA does not provide a manner to recover the signer's public key from the signature and the message.
+If we compare the signing and verification for EdDSA, we shall find that **EdDSA is simpler than ECDSA**, easier to understand and to implement. Both signature algorithms have **similar security strength** for curves with similar key lengths. For the most popular curves \(liked `edwards25519` and `edwards448`\) the **EdDSA algorithm is slightly faster than ECDSA**, but this highly depends on the curves used and on the certain implementation. Unlike ECDSA the EdDSA signatures do not provide a way to **recover the signer's public key** from the signature and the message. Generally, it is considered that EdDSA is recommended for most modern apps.
 
