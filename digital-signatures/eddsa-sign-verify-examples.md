@@ -113,14 +113,16 @@ valid = signer.verify(msg, signature, pubKey)
 print("Valid signature?", valid)
 ```
 
-The output from the above code for the above Ed448 key pair is:
+The output from the above code example \(for the above Ed448 key pair\) is:
 
 ```
 Signature (114 bytes): b'5114674f1ce8a2615f2b15138944e5c58511804d72a96260ce8c587e7220daa90b9e65b450ff49563744d7633b43a78b8dc6ec3e3397b50080a15f06ce8005ad817a1681a4e96ee6b4831679ef448d7c283b188ed64d399d6bac420fadf33964b2f2e0f2d1abd401e8eb09ab29e3ff280600'
 Valid signature? True
 ```
 
-If we try to verify a tampered message, the verification will fail:
+The signature is **deterministic**: the same message with the same private key produces the same signature.
+
+If we try to verify the same signature with a tampered message, the verification will fail:
 
 ```py
 valid = signer.verify(b'Tampered msg', signature, pubKey)
