@@ -4,7 +4,7 @@ In this exercise we shall **sign** and **verify** messages using the **ECDSA** d
 
 ## Sign a Message with ECDSA / P-521
 
-Write a program to **sign a message** by given **private key**. The **input** consists of 2 text lines: message and private key. The message is given as **text** and the private key is given as **hex** string \(130-132 hex digits\). Use the **ECDSA deterministic signing** \(following [RFC 6979](https://tools.ietf.org/html/rfc6979)\) and the curve NIST **P-521**, which also known as **secp521r1**. Print the **output** as JSON document, holding the **digital signature** \(as hex string\), along with the **message** and the **public key** \(as hex string, uncompressed\) of the signer.
+Write a program to **sign a message** by given **private key**. The **input** consists of 2 text lines: message and private key. The message is given as **text** and the private key is given as **hex** string \(130-132 hex digits\). Use the **ECDSA deterministic signing** \(following [RFC 6979](https://tools.ietf.org/html/rfc6979)\) and the curve NIST **P-521**, which also known as **secp521r1**. Print the **output** as JSON document, holding the input **message** + the **public key** of the signer \(as hex string, uncompressed\) + the ECDSA **digital signature** \(as hex string\).
 
 Sample input:
 

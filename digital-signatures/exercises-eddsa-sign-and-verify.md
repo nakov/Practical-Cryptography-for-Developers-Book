@@ -6,7 +6,7 @@ The Ed25519 **private key** is encoded as 64 hex digits \(32 bytes\). The corres
 
 ## EdDSA-Ed25519: Sign Message
 
-Write a program to sign given text **message** with given **private key**. The input consists of 2 text lines. The **first line holds** the input **message** for signing. The **second line** holds the private key as **hex string**. Print the **output** as JSON document, holding the **digital signature** \(as hex string\), along with the **message** and the **public key** \(as hex string, uncompressed\) of the signer.
+Write a program to sign given text **message** with given **private key**. The input consists of 2 text lines. The **first line holds** the input **message** for signing. The **second line** holds the private key as **hex string**. Print the **output** as JSON document, holding the input **message** + the **public key** of the signer \(as hex string, uncompressed\) + the Ed25519 **digital signature** \(as hex string\).
 
 Sample input:
 
