@@ -524,7 +524,7 @@ For example, the [`Curve25519`](https://en.wikipedia.org/wiki/Curve25519) is the
 
 over the finite prime field **𝔽<sub>p</sub>**, where **_p_** = 2<sup>255</sup> - 19 (the curve is 255-bit).
 
-In fact, the above equation does not match directly the Edwards curve equation, but it is proven to be birationally equivalent to the following **twisted Edwards curve**:
+In fact, the above equation does not match directly the Edwards curve equation, but it is proven to be birationally equivalent to the following **twisted Edwards curve** (known as **edwards25519**):
 
 - -x<sup>2</sup> + y<sup>2</sup> = 1 + **_37095705934669439343138083508754565189542113879843219016388785533085940283555_**x<sup>2</sup>y<sup>2</sup>
 
@@ -535,9 +535,9 @@ The above equation has its equivalent in the classical **Weierstrass form** for 
 
 The **Curve25519** is carefully engineered, by a team of cryptographers, led by Daniel Bernstein, at several levels of design and implementation to achieve **very high speeds** without compromising security.
 
-The **Curve25519** has **order** (in its underlying cyclic group) **n** = 2<sup>252</sup> + 0x14def9dea2f79cd65812631a5cf5d3ed and **cofactor** **h** = 8 and provides [**125.8-bit security** strength](http://safecurves.cr.yp.to/rho.html) (it is sometimes referred as ~ 128-bit security). The **private keys** for the Curve25519 are 252 bits and are usually encoded as **256-bit integers** (32 bytes, 64 hex digits). The **public keys** are typically encoded also as **256-bit integers** and this is very convenient for developers.
+The **Curve25519** has **order** (in its underlying cyclic group) **n** = 2<sup>252</sup> + 0x14def9dea2f79cd65812631a5cf5d3ed and **cofactor** **h** = 8 and provides [**125.8-bit security** strength](http://safecurves.cr.yp.to/rho.html) (it is sometimes referred as ~ 128-bit security). The **private keys** for the Curve25519 are 251 bits and are usually encoded as **256-bit integers** (32 bytes, 64 hex digits). The **public keys** are typically encoded also as **256-bit integers** (255-bit y-coordinate + 1-bit x-coordinate) and this is very convenient for developers.
 
-Based on the **Curve25519** an **ECDH function** is derived, called **[X25519](https://en.wikipedia.org/wiki/Curve25519)** (used for elliptic-key Diffie–Hellman key agreement schemes) and fast **digital signature scheme** is derived, called **[Ed25519](https://en.wikipedia.org/wiki/EdDSA)** (or **edwards25519**), based on the the **EdDSA** algorithm. These schemes are **very fast**, because they involve multiplications and other simple operations with small integers (mostly 32-bit arithmetic), which can be efficiently implemented in the modern microprocessors (CPUs). Note that X25519 and Ed25519 use **different encodings for the EC points**, so they are not directly compatible and require conversion if you want to use the same public-private key pairs.
+Based on the **Curve25519** an **ECDH function** is derived, called **[X25519](https://en.wikipedia.org/wiki/Curve25519)** (used for elliptic-key Diffie–Hellman key agreement schemes) and fast **digital signature scheme** is derived, called **[Ed25519](https://en.wikipedia.org/wiki/EdDSA)**, based on the the **EdDSA** algorithm. These schemes are **very fast**, because they involve multiplications and other simple operations with small integers (mostly 32-bit arithmetic), which can be efficiently implemented in the modern microprocessors (CPUs). Note that X25519 and Ed25519 use **different encodings for the EC points**, so they are not directly compatible and require conversion if you want to use the same public-private key pairs.
 
 ### Curve448, X448 and Ed448
 
