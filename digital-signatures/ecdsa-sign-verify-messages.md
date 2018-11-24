@@ -67,9 +67,9 @@ How does the above sign / verify scheme work? It is not obvious, but let's play 
 
 The equation behind the recovering of the point _**R'**_, calculated during the **signature verification**, can be transformed by replacing the _**pubKey**_ with _**privKey**_ \* **G** as follows:
 
-_**R'**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=_**                        
-   **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=_**                        
- **_   = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G**
+_**R'**_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**pubKey **_=  
+_**   **_ = \(_**h**_ \* _**s1**_\) \* **G** + \(_**r**_ \* _**s1**_\) \* _**privKey \* **_**G**_** **_=  
+_** **_   = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G**
 
 If we take the number _**s**_ = $$k^{-1} * (h + r * privKey) \pmod n$$**,** calculated during the signing process, we can calculate _**s1**_ = $$s^{-1} \pmod n$$ like this:
 
@@ -80,8 +80,8 @@ _**s1**_ = $$s^{-1} \pmod n$$ =
 Now, replace _**s1**_ in the point _**R'**_.
 
 _**R'**_ = \(_**h**_ + _**r**_ \* _**privKey**_\)_** \* s1 \* **_**G** =  
-  = $$(h + r * privKey) * k * (h + r * privKey)^{-1} \pmod n$$_** \* **_**G **=_**                        
- **_ = **k** \* **G**
+  = $$(h + r * privKey) * k * (h + r * privKey)^{-1} \pmod n$$_** \* **_**G **=  
+_** **_ = **k** \* **G**
 
 The final step is to **compare** the **point **_**R'**_ \(decoded by the _**pubKey**_\) with the **point **_**R**_ \(encoded by the _**privKey**_\). The algorithm in fact compares only the x-coordinates of _**R'**_ and _**R**_: the integers _**r'**_ and _**r**_.
 

@@ -4,7 +4,8 @@
         "meta",
         "anchors",
         "expandable-chapters-small",
-        "katex"
+        "katex",
+        "sitemap"
     ],
     "pluginsConfig": {
         "ga": {
@@ -13,6 +14,9 @@
         "meta": {
             "name": "google-site-verification",
             "content": "66TqznOaEKbY6hOL9vg_iv28RqZNGQY7xKSuB639n-E"
+        },
+        "sitemap": {
+            "hostname": "https://cryptobook.nakov.com/"
         }
     },
     "pdf": {
