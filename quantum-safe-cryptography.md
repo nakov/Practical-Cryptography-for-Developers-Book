@@ -59,7 +59,7 @@ Conclusion: publishing the signed transactions \(like Ethereum does\) is not qua
 Cryptographic **hashes** \(like SHA2, SHA3, BLAKE2\) are considered **quantum-safe**:
 
 * On traditional computer, finding a collision for 256-bit hash takes √2^256 steps \(using the [**birthday attack**](https://en.wikipedia.org/wiki/Birthday_attack)\) -&gt; SHA256 has 2^128 crypto-strength
-* Quantum computers might find hash collisions in ∛2^256 operations \(see [the BHT algorithm](https://arxiv.org/pdf/quant-ph/9705002.pdf)\), but this is disputed \(see \[Bernstein 2009\] - [http://cr.yp.to/hash/collisioncost-20090823.pdf\](http://cr.yp.to/hash/collisioncost-20090823.pdf\)\)
+* Quantum computers might find hash collisions in ∛2^256 operations \(see [the BHT algorithm](https://arxiv.org/pdf/quant-ph/9705002.pdf)\), but this is disputed \(see \[Bernstein 2009\] - [http://cr.yp.to/hash/collisioncost-20090823.pdf\](http://cr.yp.to/hash/collisioncost-20090823.pdf%29\)
 * On theory it might take 2^85 quantum operations to find SHA256 / SHA3-256 collision, but in practice it may cost significantly more. 
 
 Conclusion: SHA256 / SHA3-256 are most probably quantum-safe
@@ -74,9 +74,9 @@ Conclusion: SHA256 / SHA3-256 are most probably quantum-safe
 
 Most symmetric ciphers \(like AES and ChaCha20\) are quantum-safe:
 
-* \[Grover's algorithm\]\([https://en.wikipedia.org/wiki/Grover's\_algorithm](https://en.wikipedia.org/wiki/Grover's_algorithm)\) finds AES secret key using √𝑁 quantum operations
+* \[Grover's algorithm\]\(\[[https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\](https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29\)\) finds AES secret key using √𝑁 quantum operations
 
-* Quantum era will **double the key size** of the symmetric ciphers \(see [http://cr.yp.to/codes/grovercode-20100303.pdf\](http://cr.yp.to/codes/grovercode-20100303.pdf\)\)
+* Quantum era will **double the key size** of the symmetric ciphers \(see [http://cr.yp.to/codes/grovercode-20100303.pdf\](http://cr.yp.to/codes/grovercode-20100303.pdf%29\)
 
 AES-256 in the post-quantum era is like AES-128 before
 
@@ -92,23 +92,20 @@ Conclusion: 256-bit symmetric ciphers are quantum safe
 
 Quantum-Safe key agreement: [https://en.wikipedia.org/wiki/CECPQ1](https://en.wikipedia.org/wiki/CECPQ1)
 
-https://ianix.com/pqcrypto/pqcrypto-deployment.html
+[https://ianix.com/pqcrypto/pqcrypto-deployment.html](https://ianix.com/pqcrypto/pqcrypto-deployment.html)
 
-https://pqcrypto.org/
+[https://pqcrypto.org/](https://pqcrypto.org/)
 
 Post-quantum signature scheme XMSS:
 
 * [https://tools.ietf.org/html/rfc8391](https://legacy.gitbook.com/book/svetlin-nakov/practical-cryptography-for-developers/edit#)
-* JS XMSS - https://www.npmjs.com/package/xmss
-* 
-Post-quantum key agreement schemes McEliece and NewHope
+* JS XMSS - [https://www.npmjs.com/package/xmss](https://www.npmjs.com/package/xmss)
+* Post-quantum key agreement schemes McEliece and NewHope
 
 Post-quantum signatures and key agreements \(XMSS, McEliece, NewHope\):  
 [https://github.com/randombit/botan](https://github.com/randombit/botan)
 
-
-
- QC-MDPC and libPQC are quantum-broken: https://eprint.iacr.org/2016/858.pdf
+QC-MDPC and libPQC are quantum-broken: [https://eprint.iacr.org/2016/858.pdf](https://eprint.iacr.org/2016/858.pdf)
 
 ### Hash-Based Public-Key Cryptography
 
@@ -128,9 +125,19 @@ MQE
 
 ...
 
-## SPHINCS+
+## SPHINCS+ Signatures in Python
 
-https://github.com/sphincs/pyspx
+[https://github.com/sphincs/pyspx](https://github.com/sphincs/pyspx)
+
+https://pypi.org/project/PySPX/
+
+### NewHope Key Exchange in Python
+
+https://github.com/anupsv/NewHope-Key-Exchange
+
+https://github.com/scottwn/PyNewHope
+
+
 
 
 
