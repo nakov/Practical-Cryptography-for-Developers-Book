@@ -52,7 +52,9 @@ First, install the Python package `scrypt` using the command:
 pip install scrypt
 ```
 
-Now, write the Python code to calculate Scrypt:
+Note that the `scrypt` package depends on OpenSSL, so first install it in its default location \(e.g. in `C:\OpenSSL-Win64` in Windows\), then install the **scrypt** Python package.
+
+Now, after the `scrypt` package is successfully installed, write the Python code to calculate a Scrypt hash:
 
 ```python
 import scrypt, binascii
