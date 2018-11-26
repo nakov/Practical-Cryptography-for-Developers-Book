@@ -1,4 +1,4 @@
-# RSA: Sign / Verify - Examples
+# RSA: Sign / Verify - Examples in Python
 
 Let's demonstrate in practice the **RSA sign / verify** algorithm. We shall use the `pycryptodome` package in Python to generate **RSA keys**. After the keys are generated, we shall compute RSA digital signatures and verify signatures by a simple modular exponentiation \(by encrypting and decrypting the message hash\).
 
