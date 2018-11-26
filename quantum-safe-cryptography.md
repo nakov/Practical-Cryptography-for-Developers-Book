@@ -38,7 +38,7 @@ Quantum-Resistant Crypto Algorithms
 
 ...
 
-## ECC Cryptography and Most Digital Signatures are Quantum-Broken!
+### ECC Cryptography and Most Digital Signatures are Quantum-Broken!
 
 ...
 
@@ -54,7 +54,7 @@ ECDSA, DSA, RSA, ElGamal cryptosystems are all quantum-broken
 
 Conclusion: publishing the signed transactions \(like Ethereum does\) is not quantum safe -&gt; avoid revealing the ECC public key
 
-## Hashes are Quantum Safe
+### Hashes are Quantum Safe
 
 Cryptographic **hashes** \(like SHA2, SHA3, BLAKE2\) are considered **quantum-safe**:
 
@@ -68,13 +68,13 @@ Conclusion: SHA256 / SHA3-256 are most probably quantum-safe
 
 ...
 
-## Symmetric Ciphers are Quantum Safe
+### Symmetric Ciphers are Quantum Safe
 
 ...
 
 Most symmetric ciphers \(like AES and ChaCha20\) are quantum-safe:
 
-* \[Grover's algorithm\]\(\[\[[https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\)\](https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29]%28https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29%29\)\) finds AES secret key using √𝑁 quantum operations
+* \[Grover's algorithm\]\(\[\[\[[https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\)\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\)\)\](https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29]%28https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29%29]%28https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29]%28https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29%29%29\)\) finds AES secret key using √𝑁 quantum operations
 
 * Quantum era will **double the key size** of the symmetric ciphers \(see [http://cr.yp.to/codes/grovercode-20100303.pdf\](http://cr.yp.to/codes/grovercode-20100303.pdf%29\)
 
@@ -119,22 +119,24 @@ QC-MDPC and libPQC are quantum-broken: [https://eprint.iacr.org/2016/858.pdf](ht
 
 ...
 
-**GLYPH** signatures \(lattice-based Ring-LWE Lattice, Ring-LWE, Ring Learning with Errors\)
+**GLYPH** signatures \(lattice-based Ring-LWE Lattice, Ring-LWE, Ring Learning  
+ with Errors\)
 
-* Implementation in Go: https://github.com/AidosKuneen/glyph
+* Implementation in Go: [https://github.com/AidosKuneen/glyph](https://github.com/AidosKuneen/glyph)
 
-**BLISS** - http://bliss.di.ens.fr
+**BLISS** - [http://bliss.di.ens.fr](http://bliss.di.ens.fr)
 
-* Implementation in Go: https://github.com/HcashOrg/bliss/blob/master/demo\_test.go
+* Implementation in Go: [https://github.com/HcashOrg/bliss/blob/master/demo\_test.go](https://github.com/HcashOrg/bliss/blob/master/demo_test.go)
 
 **NewHope**
 
-* Go implementation: https://github.com/Yawning/newhope
-* Python implementation: https://github.com/scottwn/PyNewHope
+* Go implementation: [https://github.com/Yawning/newhope](https://github.com/Yawning/newhope)
+* Python implementation: [https://github.com/scottwn/PyNewHope](https://github.com/scottwn/PyNewHope)
+* Python implementation: https://github.com/anupsv/NewHope-Key-Exchange 
 
 ### Multivariate-Quadratic-Equations Public-Key Cryptography
 
-Rainbow: https://github.com/bcgit/bc-java/tree/master/core/src/main/java/org/bouncycastle/pqc/crypto/rainbow
+Rainbow: [https://github.com/bcgit/bc-java/tree/master/core/src/main/java/org/bouncycastle/pqc/crypto/rainbow](https://github.com/bcgit/bc-java/tree/master/core/src/main/java/org/bouncycastle/pqc/crypto/rainbow)
 
 ...
 
