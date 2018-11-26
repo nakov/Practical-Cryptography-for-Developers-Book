@@ -1,6 +1,22 @@
 # Preface
 
-...
+You are a **software developer**? And sometimes you need to use **cryptography** in your daily job, like hashes, encryption and digital signatures? And you think cryptography is complex and full of math and it is for nerds only? No, this is not true, every developer can learn **how to use cryptographic algorithms**. This book will show you how, with code examples, with less math and more practice.
+
+You will learn **how to use cryptographic algorithms and cryptosystems** like hashes, MAC codes and key derivation functions \(KFD\), random generators, key exchange protocols, symmetric ciphers, encryption schemes and asymmetric cryptosystems, public-key cryptography, elliptic curves, digital signatures and quantum-safe crypto algorithms, together with modern cryptographic tools and libraries.
+
+I am happy to publish this free **developer-friendly practical cryptography book**.** **It holds just **what developers need to know** in order to **use cryptography in their every day work**. It does not cover the internals of the algorithms and how to design symmetric ciphers or authentication schemes. It covers the basic understanding of the **core cryptographic concepts** and how to use them: **libraries**, **tools**, **code examples**. This is what most developers need to know about cryptography.
+
+## This Book is for Developers!
+
+This book is designed** for developers** who write code every day, for **software engineers** who create software systems, Web applications, mobile apps and other software. It may be useful also for **DevOps engineers** who deal with crypto algorithms and write code to automate the IT infrastructure, for **system administrators**, who want to learn practical cryptography better, for IT security engineers, who need to deal with cryptography every day and to know which ciphers are safe and which are broken.
+
+This book is about **using crypto algorithms**, not about designing ciphers, signature schemes and cryptosystems. You will learn how cryptosystems work \(without deep math concepts\) and how to use them in your daily job. This book is not 100% free ot math, but the complexity level is reduced and complex concepts are explained in simplified and understandable style. This book is **from developers for developers**, not from university professors or mathematicians. It is about coding in a smart way, with understanding the concepts and **using the crypto algorithms and crypto libraries the right way**.
+
+## This Book is Free!
+
+The main book author **Dr. Svetlin Nakov** donates this book to the developer community as open-source project, under [the MIT license](https://opensource.org/licenses/MIT). Why? Because the **knowledge is for everyone** and should be shared, because developers should learn to use cryptography the right way, because our world needs more secure software, because **sharing knowledge and skills for free** is the greatest miracle of the modern education.
+
+## Why Another Book on Cryptography?
 
 Most books about cryptography are written either in too **academic style** with a lot of theory, like [http://cacr.uwaterloo.ca/hac](http://cacr.uwaterloo.ca/hac/%29%29%29\).
 
@@ -10,7 +26,7 @@ Others are too old: ...
 
 ...
 
-Others are not bad, but not free:
+Others are not bad, but are not free:
 
 [https://leanpub.com/crypto](https://leanpub.com/crypto)
 
@@ -20,9 +36,17 @@ Crypto libraries come with limited and not consistently organized documentation,
 
 ...
 
-Now I am happy to publish a **developer-friendly practical cryptography book**.** **It holds just **what developers need to know** in order to **use cryptography in their every day work**. It does not cover the internals of the algortithms and how to design symmetric ciphers or authentication algorithms. It covers the basic understanding of the **core cryptographic concepts** and how to use them: **libraries, tools, code examples**.
+
 
 ...
+
+
+
+## Why Python is Used for the Examples?
+
+...
+
+## About the Author: Dr. Svetlin Nakov
 
 The book author **Svetlin Nakov** is involved with applied cryptography from 2005, when he published the book "Java for Digitally Signing Documents of the Web" \(in Bulgarian\), following his master thesis on a similar topic.
 
