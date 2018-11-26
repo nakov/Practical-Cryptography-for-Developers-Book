@@ -29,7 +29,7 @@ decrypted = decrypt(privKeyHex, encrypted)
 print("Decrypted:", decrypted)
 ```
 
-The above code is pretty simple: just generate ECC **public + private key pair** using `ecies.utils.generate\_eth\_key()` and call the `ecies.encrypt(pubKey, msg)` and `decrypt(privKey, encryptedMsg)` functions from the `eciespy` library.
+The above code is pretty simple: just generate ECC **public + private key pair** using `ecies.utils.generate_eth_key()` and call the `ecies.encrypt(pubKey, msg)` and `decrypt(privKey, encryptedMsg)` functions from the `eciespy` library.
 
 The **output** form the above code looks like this:
 
