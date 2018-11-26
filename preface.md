@@ -100,7 +100,7 @@ I could list a few developer-friendly** books for practical cryptography** with 
 
 The absence of **good free book about cryptography and crypto algorithms for developers with code examples** motivates me even more to share my knowledge and skills in a developer-friendly cryptography book. I am happy to be one of the first authors to publish a high-quality free book on practical cryptography for software engineers.
 
-## What Does the Book Cover?
+## What Does this Book Cover?
 
 This book covers the most important modern cryptographic concepts, crypto algorithms and cryptographic constructions, used in the software industry:
 
