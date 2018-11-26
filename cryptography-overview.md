@@ -14,7 +14,7 @@ We shall learn later that behind this simple **AES encryption**, there are **man
 
 # What is Cryptography?
 
-**Cryptography **is the science of providing **security **and **protection **of information. It is used everywhere in our digital world: when you open a Web site, send an email or connect to the WiFi network. What's why developers should have **at least basic understanding of cryptography** and how to use crypto algorithms and crypto libraries, to understand hashing, symmetric and asymmetric ciphers and encryption schemes, as well as digital signatures and the cryptosystems and algorithms behind them.
+**Cryptography **is the science of providing **security **and **protection **of information. It is used everywhere in our digital world: when you open a Web site, send an email or connect to the WiFi network. That's why developers should have **at least basic understanding of cryptography** and how to use crypto algorithms and crypto libraries, to understand hashing, symmetric and asymmetric ciphers and encryption schemes, as well as digital signatures and the cryptosystems and algorithms behind them.
 
 ## Encryption and Keys
 
