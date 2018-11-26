@@ -11,15 +11,15 @@
 * **C** and **C++** cryptography
   * Crypto++, OpenSSL bindings, Nettle, libgcrypt
 
-
 TODO:
 
-* **OpenSSL** - https://en.wikipedia.org/wiki/OpenSSL
+* **OpenSSL** - [https://en.wikipedia.org/wiki/OpenSSL](https://en.wikipedia.org/wiki/OpenSSL)
 * **LibSodium**
 * **Crypto++**
-* **Lingcrypt** - https://en.wikipedia.org/wiki/Libgcrypt
+* **Lingcrypt** - [https://en.wikipedia.org/wiki/Libgcrypt](https://en.wikipedia.org/wiki/Libgcrypt)
 * **Bouncy Castle**
-* **Nettle** - https://git.lysator.liu.se/nettle/nettle
+* **Nettle** - [https://git.lysator.liu.se/nettle/nettle](https://git.lysator.liu.se/nettle/nettle)
+* **Botan** - https://botan.randombit.net
 * **Others...**
 
 # Summary

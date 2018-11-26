@@ -32,17 +32,17 @@ Svetlin Nakov has 20+ years of technical background as software engineer, softwa
 
 Svetlin has been a **speaker** at hundreds of conferences, seminars, meetups, courses and other trainings in the United States, Singapore, Germany, Egypt, Bulgaria and other locations. He holds a **PhD **degree in computer science \(for his research on computational linguistics and machine learning\), several **medals** from the **International Informatics Olympiads** \(IOI\) and the Bulgarian **President’s award “John Atanasoff”**. He has been a part-time assistant professor / trainer in Sofia University, New Bulgarian University, the Technical University of Sofia, Ngee Ann Polytechnic \(Singapore\), Kingsland University \(USA\) and few others.
 
-Currently Svetlin Nakov together with his partners drive the global expansion of the largest training center for software engineers in Bulgaria – the [**Software University**](https://softuni.org), where he inspires and teaches hundred of thousands of young people in computer science, software development, information technologies and digital skills, gives them a profession and a job.
+Currently **Svetlin Nakov** together with his partners drive the global expansion of the largest training center for software engineers in Bulgaria and the region – the [**Software University**](https://softuni.org), where he inspires and **teaches hundred of thousands of young people** in computer science, software development, information technologies and digital skills, and gives them a profession and a job.
 
 ## The History behind This Book
 
-Svetlin Nakov together with tens of co-authors has created and published as open-source projects \(in the period 2004-2018\) **tens of technical books** about computer programming and software technologies \(see [http://www.introprogramming.info](http://www.introprogramming.info) and [http://www.nakov.com/books](http://www.nakov.com/books%29%29\), most of which in Bulgarian language. In the last few years Svetlin switches to English and takes **global knowledge sharing initiative** for **better and accessible tech education**, demonstrated with creating and sharing free tech books, free tutorials, free tech webinars and seminars, conference talks and many other activities.
+Svetlin Nakov together with tens of co-authors has created and published as open-source projects \(in the period 2004-2018\) **tens of technical books** about computer programming and software technologies \(see [http://www.introprogramming.info](http://www.introprogramming.info) and [http://www.nakov.com/books](http://www.nakov.com/books%29%29%29\), most of which in Bulgarian language. In the last few years Svetlin switches to English and takes **global knowledge sharing initiative** for **better and accessible tech education**, demonstrated with creating and sharing free tech books, free tutorials, free tech webinars and seminars, conference talks and many other activities.
 
 The book author **Svetlin Nakov** is involved with **applied cryptography** from 2005, when he published the book "_Java for Digitally Signing Documents of the Web_" \(in Bulgarian\), following his master thesis on a similar topic. Later Nakov is involved in his practice as software engineer, tech trainer and entrepreneur, with **cryptography**, **software security** and **blockchain** systems, and his technical expertise grows along with his experience. In 2018 he decides to write a **free book** to share his knowledge about cryptography and crypto algorithms from developer's perspective and donate this knowledge to the global dev community. The book takes 3 months to be written and gets published in Nov 2018. You can get a free copy from [https://cryptobook.nakov.com](https://cryptobook.nakov.com).
 
 ## The Software University \(SoftUni\)
 
-The development of this book is supported by the [**Software University \(SoftUni\)**](https://softuni.org) - the biggest and most respected training center for software engineering and digital skills in the South-Eastern Europe, which gives high-quality tech education, practical skills, profession and job to tens of thousands of young people.
+The development of this book is supported by the [**Software University \(SoftUni\)**](https://softuni.org): the biggest and most respected training center for software engineering and digital skills in the South-Eastern Europe, which gives high-quality tech education, practical skills, profession and job to tens of thousands of young people.
 
 [![](/assets/SoftUni-banner.jpg)](https://softuni.org)
 
@@ -50,7 +50,26 @@ The development of this book is supported by the [**Software University \(SoftUn
 
 ## Why Yet Another Book on Cryptography?
 
-Most books about cryptography are written either in too **academic style** with a lot of theory, like [http://cacr.uwaterloo.ca/hac](http://cacr.uwaterloo.ca/hac/%29%29%29\).
+Most books about cryptography on the market are written either in too **academic style** with a lot of theory and math or are **outdated** and do not describe the cryptography used today or are too small, **weak in content** and unfinished. Others are better, but are **not free** and accessible for everyone. This book tries to compensate all above mentioned weak sides of the existing cryptography books on the market: its is **free**, **developer-friendly**, **comprehensive**, with less math and more **code examples**.
+
+### Academic Cryptography Books
+
+Many high-quality **academic cryptography books** exist on the market and some of them are **free**, but I can't recommend such a book to а developer. He will be bored and will start hating cryptography after the first chapter or two. Some examples:
+
+* Тhe "[**Handbook of Applied Cryptography**](http://cacr.uwaterloo.ca/hac)" \(by Alfred J. Menezes, Paul C. van Oorschot and Scott A. Vanstone\) is excellent for higher degree students, but is **too academic for developers**. It is available for **free** and explains the theory and the cryptography concepts very well, with lots of high-level math, but it is definitely not for developers. It does not provide working code examples and does not refers the most used crypto libraries in the software industry.
+
+* Another **academic cryptography book** example is "[**A Graduate Course in Applied Cryptography**](https://crypto.stanford.edu/~dabo/cryptobook/)" \(by Dan Boneh and Victor Shoup\). It is excellent **free** book about **theoretical cryptography**, but is not for developers. It is full of theory, concepts, math and formulas. It does not provide code examples and recommended libraries for developers.
+
+* The "[**Crypto 101**](https://www.crypto101.io)" is more **understandable for developers**, with more simple explanation for the core cryptographic concepts, but without code examples.
+
+### Crypto Libraries and Their Documentation
+
+Some **crypto libraries** try to provide **documentation** with crypto concepts and code examples, but they are typically **unfinished**, limited and not consistently organized, with a lot of missing points and can serve just to help you using certain library, but are not good source to learn the cryptographic concepts and do not provide systematic approach. Examples are:
+
+* [**Libsodium documentation**](https://download.libsodium.org/doc/) - combines API documentation with elements of cryptographical concepts. It is bound to the **C language**, used for the Libsodium project. Provides sample code examples.
+* [**The Crypto++ Wiki**](https://www.cryptopp.com/wiki/) - explains in brief some cryptography concepts along with guidelines how to use the Crypto++ library and the **C++** classes, implementing certain crypto algorithms. Provides sample code examples.
+* [**Botan - Developer's Manual**](https://botan.randombit.net/manual/) - a modern **C++** crypto-library, which comes with implementations of many modern crypto algorithms, along with documentation, which includes brief description of the underlying cryptographic concepts.
+* [**Libgcrypt**](https://gnupg.org/documentation/manuals/gcrypt/) - a cryptographic library, written in **C **as part of the GnuPG project. Comes with very light introduction to crypto concepts and a boring API documentation with almost no sample code.
 
 ...
 
@@ -58,15 +77,19 @@ Others are too old: ...
 
 ...
 
+### Practical Cryptography: Paid Books
+
 Others are not bad, but are not free:
 
 [https://leanpub.com/crypto](https://leanpub.com/crypto)
 
 [https://www.amazon.com/Cryptography-Developers-Tom-St-Denis/dp/1597491047](https://www.amazon.com/Cryptography-Developers-Tom-St-Denis/dp/1597491047)
 
-Crypto libraries come with limited and not consistently organized documentation, e.g. the Crypto++ Wiki [https://www.cryptopp.com/wiki/Main\_page](https://www.cryptopp.com/wiki/Main_page%29%29%29\).
+https://leanpub.com/javacryptotoolsandtech
 
-...
+https://books.google.bg/books/about/Beginning\_Cryptography\_with\_Java.html?id=WLLAD2FKH3IC
+
+Serious Cryptography - [https://nostarch.com/seriouscrypto](https://nostarch.com/seriouscrypto)
 
 ...
 
@@ -90,7 +113,7 @@ The recommended way to read this is **topic by topic** \(from the start to the e
 
 Play with the **code examples**: run them, modify them, break them, explore and experiment with the code and **learn by playing**.
 
-Try to solve the **practical exercises** in chapter. Developers **learn best by writing code** and this is what I recommend. You are given well described exercise problems, with clear input and output, covering well the content of each chapter, after each major section.
+Try to solve the **practical exercises** in chapter. Developers **learn best by writing code** and this is what I recommend. You are given well described exercise problems, with clear input and output, covering well the content after each major section.
 
 Now, start your developer **journey into the modern practical cryptography**. Enjoy the book!
 
