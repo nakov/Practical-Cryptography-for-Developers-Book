@@ -1,3 +1,6 @@
+
+---
+
 # Preface
 
 You are a **software developer**? And sometimes you need to use **cryptography** in your daily job, like hashes, encryption or digital signatures? And you think cryptography is complex and full of math and it is for nerds only? No, this is not true, every developer can learn **how to use cryptographic algorithms**. This book will show you how, with code examples and hands-on coding experience, with less math and more practice.
