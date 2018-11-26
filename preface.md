@@ -14,6 +14,8 @@ This book is designed** for developers** who write code every day, for **softwar
 
 This book is about **using crypto algorithms** and cryptographic packages, not about designing ciphers, signature schemes and cryptosystems. You will learn how cryptosystems work \(without too much math\) and how to use them in your daily job. This book is not 100% free ot math, but the complexity level is reduced to match the average developer's level, and complex concepts are explained in simplified and understandable style. This book is created **by developers for developers**, not by university professors or mathematicians. It is about coding in a smart way, with understanding the concepts and **using the crypto algorithms and crypto libraries the right way**. It is about the modern crypto algorithms and cryptographic techniques, used today in the software industry \(as of Nov 2018\).
 
+We assume that most developers use **higher level programming languages** \(such as JavaScript, Python, C\#, Java and PHP\), so most code examples in the book are given in **Python**, which can be translated to other languages with ease.
+
 ## This Book is Free!
 
 The main book author **Dr. Svetlin Nakov** donates this book and its entire content and code examples **for free** to the developer and IT community as **open-source project**, under [the MIT license](https://opensource.org/licenses/MIT). Why? Because the main book author and the people behind this project believe that the **knowledge is for everyone** and it should be **shared for free**, because developers should learn to use cryptography the right way, because our world needs more secure software, because **sharing knowledge and skills for free** is the greatest miracle of the modern education.
@@ -30,17 +32,17 @@ Svetlin Nakov has 20+ years of technical background as software engineer, softwa
 
 Svetlin has been a **speaker** at hundreds of conferences, seminars, meetups, courses and other trainings in the United States, Singapore, Germany, Egypt, Bulgaria and other locations. He holds a **PhD **degree in computer science \(for his research on computational linguistics and machine learning\), several **medals** from the **International Informatics Olympiads** \(IOI\) and the Bulgarian **President’s award “John Atanasoff”**. He has been a part-time assistant professor / trainer in Sofia University, New Bulgarian University, the Technical University of Sofia, Ngee Ann Polytechnic \(Singapore\), Kingsland University \(USA\) and few others.
 
-Currently Svetlin Nakov together with his partners drive the global expansion of the largest training center for software engineers in Bulgaria – the **Software University** \([https://softuni.org\](https://softuni.org%29\), where he inspires and teaches hundred of thousands of young people in computer science, software development, information technologies and digital skills, gives them a profession and a job.
+Currently Svetlin Nakov together with his partners drive the global expansion of the largest training center for software engineers in Bulgaria – the **Software University** \([https://softuni.org](https://softuni.org%29\)\), where he inspires and teaches hundred of thousands of young people in computer science, software development, information technologies and digital skills, gives them a profession and a job.
 
 ## The History behind This Book
 
-Svetlin Nakov together with tens of co-authors has created and published as open-source projects \(in the period 2004-2018\) **tens of technical books** about computer programming and software technologies \(see [http://www.introprogramming.info](http://www.introprogramming.info) and [http://www.nakov.com/books\](http://www.nakov.com/books%29\), most of which in Bulgarian language. In the last few years Svetlin switches to English and takes **global knowledge sharing initiative** for **better and accessible tech education**, demonstrated with creating and sharing free tech books, free tutorials, free tech webinars and seminars, conference talks and many other activities.
+Svetlin Nakov together with tens of co-authors has created and published as open-source projects \(in the period 2004-2018\) **tens of technical books** about computer programming and software technologies \(see [http://www.introprogramming.info](http://www.introprogramming.info) and [http://www.nakov.com/books](http://www.nakov.com/books%29\)\), most of which in Bulgarian language. In the last few years Svetlin switches to English and takes **global knowledge sharing initiative** for **better and accessible tech education**, demonstrated with creating and sharing free tech books, free tutorials, free tech webinars and seminars, conference talks and many other activities.
 
 The book author **Svetlin Nakov** is involved with **applied cryptography** from 2005, when he published the book "_Java for Digitally Signing Documents of the Web_" \(in Bulgarian\), following his master thesis on a similar topic. Later Nakov is involved in his practice as software engineer, tech trainer and entrepreneur, with **cryptography**, **software security** and **blockchain** systems, and his technical expertise grows along with his experience. In 2018 he decides to write a **free book** to share his knowledge about cryptography and crypto algorithms from developer's perspective and donate this knowledge to the global dev community. The book takes 3 months to be written and gets published in Nov 2018. You can get a free copy from [https://cryptobook.nakov.com](https://cryptobook.nakov.com).
 
 ## The Software University \(SoftUni\)
 
-The development of this book is supported by the [**Software University \(SoftUni\)**](https://softuni.org) - the biggest and most respected training center for software engineering and digital skills in the South-Eastern Europe, which gives high-quality tech education, practical skills, profession and job to tens of thousands of young people
+The development of this book is supported by the [**Software University \(SoftUni\)**](https://softuni.org) - the biggest and most respected training center for software engineering and digital skills in the South-Eastern Europe, which gives high-quality tech education, practical skills, profession and job to tens of thousands of young people.
 
 [![](/assets/SoftUni-banner.jpg)](https://softuni.org)
 
@@ -74,7 +76,13 @@ Crypto libraries come with limited and not consistently organized documentation,
 
 ## Why Python is Used for the Examples?
 
-...
+**Python** is one of easiest languages, a language, which is **readable** and **understandable** by all developers \(even devs who has zero experience with it\). The idea of the **code examples** is to illustrate the crypto algorithms, encryption schemes and other cryptography concepts in action, not to promote certain library, API, language or technology.
+
+Use the **code examples** as reference only, as guideline of how your code might look like, and adopt them to your favorite language and framework. Don't directly copy and paste the code examples. Sometimes we use a library, which is more user friendly and easier to install and use, instead of a faster and more reliable library from another vendor. Sometimes we use **hex-encoded** keys, ciphertexts, signatures and other values, in order to display them easier on the console, but in practice most apps will use binary encodings for increased performance and reduced network overhead.
+
+You are free to adopt the code examples to other languages. At the end of the book we have given examples how to use cryptography in the most popular programming languages: **JavaScript**, **C\#**, **Java** and **Python**. We skip giving examples with the lower level languages like **C** and **C++** because they work better for library writers \(to implement efficiently certain algorithm\), not for app developers. **C** and **C++** are more complex to setup and build, need more effort to manage the project dependencies and are more prone to errors.
+
+Most **application developers** \(e.g. Web devs, back-end devs, mobile devs and front-end devs\) **use higher level languages** \(like JS, Python, C\#, Java, PHP and Go\), but all of them will **understand the Python code** from the examples. If the code was given in C, it would be longer, more complex and less readable.
 
 ## How to Read This Book?
 
@@ -83,4 +91,6 @@ The recommended way to read this is **topic by topic** \(from the start to the e
 Play with the **code examples**: run them, modify them, break them, explore and experiment with the code and **learn by playing**.
 
 Try to solve the **practical exercises** in chapter. Developers **learn best by writing code** and this is what I recommend. You are given well described exercise problems, with clear input and output, covering well the content of each chapter, after each major section.
+
+Now, start your developer **journey into the modern practical cryptography**. Enjoy the book!
 
