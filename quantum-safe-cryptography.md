@@ -50,7 +50,7 @@ A **k**-bit number can be factored in time of order **O\(k^3\)** using a quantum
 
 * ~ 1.2 billion operations == ~ less than 1 second using good machine
 
-ECDSA, DSA, RSA, ElGamal cryptosystems are all quantum-broken
+ECDSA, DSA, RSA, ElGamal, DHKE, ECDH cryptosystems are all quantum-broken
 
 Conclusion: publishing the signed transactions \(like Ethereum does\) is not quantum safe -&gt; avoid revealing the ECC public key
 
@@ -74,7 +74,7 @@ Conclusion: SHA256 / SHA3-256 are most probably quantum-safe
 
 Most symmetric ciphers \(like AES and ChaCha20\) are quantum-safe:
 
-* \[Grover's algorithm\]\([https://en.wikipedia.org/wiki/Grover's\_algorithm](https://en.wikipedia.org/wiki/Grover's_algorithm)\) finds AES secret key using √𝑁 quantum operations
+* \[Grover's algorithm\]\(\[[https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\](https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29\)\) finds AES secret key using √𝑁 quantum operations
 
 * Quantum era will **double the key size** of the symmetric ciphers, see [http://cr.yp.to/codes/grovercode-20100303.pdf](http://cr.yp.to/codes/grovercode-20100303.pdf%29%29\)
 
@@ -139,7 +139,7 @@ QC-MDPC and libPQC are quantum-broken: [https://eprint.iacr.org/2016/858.pdf](ht
 
 **NTRU**: NTRUEncrypt and NTRUSign
 
-* https://en.wikipedia.org/wiki/NTRUEncrypt
+* [https://en.wikipedia.org/wiki/NTRUEncrypt](https://en.wikipedia.org/wiki/NTRUEncrypt)
 
 ### Zero-Knowledge Proof-Based
 
