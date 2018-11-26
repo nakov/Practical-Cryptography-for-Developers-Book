@@ -64,19 +64,13 @@ Many high-quality **academic cryptography books** exist on the market and some o
 
 ### Crypto Libraries and Their Documentation
 
-Some **crypto libraries** try to provide **documentation** with crypto concepts and code examples, but they are typically **unfinished**, limited and not consistently organized, with a lot of missing points and can serve just to help you using certain library, but are not good source to learn the cryptographic concepts and do not provide systematic approach. Examples are:
+Some **crypto libraries** try to provide **documentation** with crypto concepts and code examples, but they are typically **limited**, sometimes unfinished and not consistently organized, with a lot of missing points and can serve just to help you using certain library, but are not good source to learn the cryptographic concepts and do not provide systematic approach. Examples are:
 
-* [**Nettle Documentation**](http://www.lysator.liu.se/~nisse/nettle/nettle.html) - contains very good description of the most popular cryptographic concepts \(hashes, MAC, ciphers, 
+* [**Nettle Documentation**](http://www.lysator.liu.se/~nisse/nettle/nettle.html) - contains very good description of the most popular cryptographic concepts and popular algorithms \(hashes, MAC, symmetric ciphers, signatures\) along with reliable and fast **C** implementation.
 * [**Libsodium Documentation**](https://download.libsodium.org/doc/) - combines API documentation with elements of cryptographic concepts. It is bound to the **C language**, used for the Libsodium project. Provides sample code examples.
 * [**The Crypto++ Wiki**](https://www.cryptopp.com/wiki/) - explains in brief some cryptography concepts along with guidelines how to use the Crypto++ library and the **C++** classes, implementing certain crypto algorithms. Provides sample code examples.
 * [**Botan - Developer's Manual**](https://botan.randombit.net/manual/) - a modern **C++** crypto-library, which comes with implementations of many modern crypto algorithms, along with documentation, which includes brief description of the underlying cryptographic concepts.
 * [**Libgcrypt Manual**](https://gnupg.org/documentation/manuals/gcrypt/) - a cryptographic library, written in **C **as part of the GnuPG project. Comes with very light introduction to crypto concepts and a boring API documentation with almost no sample code.
-
-...
-
-Others are too old: ...
-
-...
 
 ### Practical Cryptography: Paid Books
 

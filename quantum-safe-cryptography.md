@@ -59,7 +59,7 @@ Conclusion: publishing the signed transactions \(like Ethereum does\) is not qua
 Cryptographic **hashes** \(like SHA2, SHA3, BLAKE2\) are considered **quantum-safe**:
 
 * On traditional computer, finding a collision for 256-bit hash takes √2^256 steps \(using the [**birthday attack**](https://en.wikipedia.org/wiki/Birthday_attack)\) -&gt; SHA256 has 2^128 crypto-strength
-* Quantum computers might find hash collisions in ∛2^256 operations \(see [the BHT algorithm](https://arxiv.org/pdf/quant-ph/9705002.pdf)\), but this is disputed \(see \[Bernstein 2009\] - http://cr.yp.to/hash/collisioncost-20090823.pdf
+* Quantum computers might find hash collisions in ∛2^256 operations \(see [the BHT algorithm](https://arxiv.org/pdf/quant-ph/9705002.pdf)\), but this is disputed \(see \[Bernstein 2009\] - [http://cr.yp.to/hash/collisioncost-20090823.pdf](http://cr.yp.to/hash/collisioncost-20090823.pdf)
 * On theory it might take 2^85 quantum operations to find SHA256 / SHA3-256 collision, but in practice it may cost significantly more. 
 
 Conclusion: SHA256 / SHA3-256 are most probably quantum-safe
@@ -74,7 +74,7 @@ Conclusion: SHA256 / SHA3-256 are most probably quantum-safe
 
 Most symmetric ciphers \(like AES and ChaCha20\) are quantum-safe:
 
-* [Grover's algorithm](https://en.wikipedia.org/wiki/Grover's_algorithm) finds AES secret key using √𝑁 quantum operations
+* \[Grover's algorithm\]\([https://en.wikipedia.org/wiki/Grover's\_algorithm](https://en.wikipedia.org/wiki/Grover's_algorithm)\) finds AES secret key using √𝑁 quantum operations
 
 * Quantum era will **double the key size** of the symmetric ciphers, see [http://cr.yp.to/codes/grovercode-20100303.pdf](http://cr.yp.to/codes/grovercode-20100303.pdf%29%29\)
 
@@ -135,9 +135,13 @@ QC-MDPC and libPQC are quantum-broken: [https://eprint.iacr.org/2016/858.pdf](ht
 
 **XMSS**
 
-Python implementation: [https://github.com/theQRL/QRL/blob/master/src/qrl/crypto/xmss.py](https://github.com/theQRL/QRL/blob/master/src/qrl/crypto/xmss.py)
+* Python implementation: [https://github.com/theQRL/QRL/blob/master/src/qrl/crypto/xmss.py](https://github.com/theQRL/QRL/blob/master/src/qrl/crypto/xmss.py)
 
-## Zero-Knowledge Proof-Based
+**NTRU**: NTRUEncrypt and NTRUSign
+
+* https://en.wikipedia.org/wiki/NTRUEncrypt
+
+### Zero-Knowledge Proof-Based
 
 PICNIC - [https://github.com/Microsoft/Picnic](https://github.com/Microsoft/Picnic)
 
