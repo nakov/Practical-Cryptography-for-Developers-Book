@@ -14,7 +14,7 @@
 
 [https://en.wikipedia.org/wiki/Transport\_Layer\_Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)
 
-## External Authorization and OAuth
+## External Authentication and OAuth
 
 ...
 
@@ -27,4 +27,21 @@
 Infected Cryptosystems and Crypto Backdoors
 
 [https://en.wikipedia.org/wiki/Kleptography](https://en.wikipedia.org/wiki/Kleptography)
+
+## Other Cryptographic Concepts and Standards
+
+Just to mention, the practical cryptography is endless. This is a list of crypto concepts, algorithm, protocols and standards that we will not going to explain in this book, but you can read about them from the provided links:
+
+* Kerberos - ...
+
+* IPsec - ...
+
+* WiFi cryptography standards - ...
+
+* PGP - ...
+
+* S/MIME - ...
+
+* 
+
 

@@ -102,6 +102,26 @@ The absence of **good free book about cryptography and crypto algorithms for dev
 
 ## What Does the Book Cover?
 
+This book covers the most important modern cryptographic concepts, crypto algorithms and cryptographic constructions, used in the software industry:
+
+* Cryptographic **hash functions**: ...
+* **MAC** codes: ...
+* Key derivation functions \(**KDF**\): ...
+* **Password encryption** techniques: ...
+* Random numbers and **secure random generators**: ...
+* **Key exchange** techniques: Diffie–Hellman Key Exchange \(DHKE\) and Elliptic Curve Diffie–Hellman \(ECDH\)
+* **Encryption** concepts: symmetric and asymmetric
+* Modern **symmetric key ciphers**: AES, ChaCha20, ...
+* Symmetric encryption **constructions**: AES-256-GCM, ChaCha20-Poly1307
+* **Asymmetric key ciphers** and public-key cryptosystems: RSA, ECC, ECDH
+* **Elliptic curves**: secp256k1, P-521, Curve25519, Curve448-Goldilocks
+* **Integrated encryption** schemes: ECIES
+* **Digital signature** algorithms: RSA signatures, ECDSA, EdDSA
+* **Quantum-safe cryptography**: ...
+* Other **cryptographic concepts**: digital certificates, TLS, one-time passwords \(OTP\), external authentication and OAuth
+* **Crypto libraries** and packages for developers: for JavaScript, C\#, Java, Python, C and C++
+* A lot of **code examples** and exercises, following each major section
+
 ...
 
 TODO
