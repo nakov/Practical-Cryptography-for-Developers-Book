@@ -1,8 +1,8 @@
 # Preface
 
-You are a **software developer**? And sometimes you need to use **cryptography** in your daily job, like hashes, encryption or digital signatures? And you think cryptography is complex and full of math and it is for nerds only? No, this is not true, every developer can learn **how to use cryptographic algorithms**. This book will show you how, with code examples, with less math and more practice.
+You are a **software developer**? And sometimes you need to use **cryptography** in your daily job, like hashes, encryption or digital signatures? And you think cryptography is complex and full of math and it is for nerds only? No, this is not true, every developer can learn **how to use cryptographic algorithms**. This book will show you how, with code examples and hands-on coding experience, with less math and more practice.
 
-It is not required to be а strong mathematician or even not strong mathematician to **understand the cryptographic concepts from the developer perspective**. This book will teach you the basics of **applied cryptography** in almost free of math style, following a step-by-step approach with lots of **code examples** and **practical exercises**, just like when you learn Web development, databases or mobile apps. Yes, if you can learn Web development or RESTful services, you can learn the practical aspect of cryptography as well. It is just like learning a new API or a new Web development framework: you learn a combination of **concepts** + **APIs** \(crypto algorithms implemented in crypto libraries\) + **tools** + **best practices** how to use these APIs and tools.
+It is not required to be а strong mathematician or even not strong mathematician to **understand the cryptographic concepts from the developer perspective**. This book will teach you the basics of **applied cryptography** in almost free of math style, following a step-by-step approach with lots of **code examples** and **practical exercises** \(hands-on experience\), just like when you learn Web development, databases or mobile apps. Yes, if you can learn Web development or RESTful services, you can learn the practical aspect of cryptography as well. It is just like learning a new API or a new Web development framework: you learn a combination of **concepts** + **APIs** \(crypto algorithms implemented in crypto libraries\) + **tools** + **best practices** how to use these APIs and tools.
 
 From this book you will learn **how to use cryptographic algorithms and cryptosystems** like hashes, MAC codes and key derivation functions \(KFD\), random generators, key exchange protocols, symmetric ciphers, encryption schemes, asymmetric cryptosystems, public-key cryptography, elliptic curves, digital signatures and quantum-safe crypto algorithms, together with modern cryptographic tools and libraries.
 
@@ -66,7 +66,7 @@ Many high-quality **academic cryptography books** exist on the market and some o
 
 ### Crypto Libraries and Their Documentation
 
-Some **crypto libraries** try to provide **documentation** with crypto concepts and code examples, but they are typically **limited**, sometimes unfinished and not consistently organized, with a lot of missing points and can serve just to help you using certain library, but are not good source to learn the cryptographic concepts and do not provide systematic approach. Examples are:
+Some **crypto libraries** try to provide **documentation** with crypto concepts and code examples, but they are typically **limited**, sometimes unfinished and not consistently organized, with a lot of missing points and can serve to help you using certain library, but are not the best source to learn the cryptographic concepts. Examples are:
 
 * [**Nettle Documentation**](http://www.lysator.liu.se/~nisse/nettle/nettle.html) - contains very good description of the most popular cryptographic concepts and popular algorithms \(hashes, MAC, symmetric ciphers, signatures\) along with reliable and fast **C** implementation.
 * [**Libsodium Documentation**](https://download.libsodium.org/doc/) - combines API documentation with elements of cryptographic concepts. It is bound to the **C **language, used for the Libsodium project. Provides sample code examples.
@@ -76,13 +76,15 @@ Some **crypto libraries** try to provide **documentation** with crypto concepts 
 
 ### Practical Cryptography: Paid Books
 
-To be honest, I made a **comprehensive research of the book market** \(in Nov 2018\) to find the best developer-friendly cryptography books. I was **deeply disappointed**! I didn't find any good practical book about **cryptography for programmers**, which I could recommend to a friend-developer \(not scientist or university student\) with confidence that this book is really good. I found **very good academic books** and a few books for developers \(rich of code examples\) with either not great quality or very focused on certain technology \(like a API reference / library manual\).
+To be honest, I conducted a **comprehensive research of the book market** \(in Nov 2018\) to find the best developer-friendly cryptography books. I was **deeply disappointed**! I didn't find any good practical book about **cryptography for programmers**, which I could recommend to a friend-developer \(not scientist or university student\) with confidence that this book is really good and is really what a developer needs: modern cryptography + simple explained concepts + code examples. I found **very good academic books** and a few **books for developers** \(rich of code examples\) with either not great quality or very focused on certain technology \(like a API reference / library manual\). Some of them were also outdated.
 
 Still, I could list a few developer-friendly** books for practical cryptography** with code examples, which are paid \(**no free edition**\) and bound to certain technology \(like Java or JavaScript\). Some examples:
 
-* [**  Beginning Cryptography with Java**](https://books.google.bg/books?id=WLLAD2FKH3IC) \(by David Hook\)
-* [**Cryptography for JavaScript Developers**](https://books.google.bg/books?id=8oBxDwAAQBAJ) \(by Anish Nath\)
-* ...
+* [**Secure Programming Cookbook for C and C++**](https://books.google.bg/books?id=aL3P3eJdiREC) \(by John Viega, Matt Messier  \) - provides secure coding guidelines for **C++** developers, including topics from cryptography \(hashes, MAC codes, symmetric ciphers, RSA and DSA, random numbers\), with code examples \(published in 2009, slightly outdated\).
+* [**Beginning Cryptography with Java**](https://books.google.bg/books?id=WLLAD2FKH3IC) \(by David Hook\) - a reference for JCA, JCE, JSSE and the Bouncy Castle crypto library with lots of code examples in Java \(published in 2005, outdated\).
+* [**Cryptography for JavaScript Developers: Web Cryptography API, SJCL**](https://books.google.bg/books?id=8oBxDwAAQBAJ) \(by Anish Nath\) - a reference full of code examples in JS, but does not explain the concepts like symmetric ciphers, authenticated encryption, etc. \(published in 2018\).
+* [**Hands-On Cryptography with Python**](https://books.google.bg/books?id=LsNiDwAAQBAJ) \(by Samuel Bowne\) - nice mini book \(87 pages, published in 2018\) with lots of code examples in Python, but with very limited scope: hashes, AES and RSA. No signatures, no elliptic curves, no MAC and key derivation functions.
+* [**Cryptography in C and C++**](https://books.google.bg/books?id=5cEYAAAAQBAJ) \(by Michael Welschenbach\) - guidelines how to implement crypto algorithms like AES and RSA. No signatures, no elliptic curves, no MAC and key derivation functions. Published in 2005 \(outdated\).
 * ...
 * ...
 
