@@ -65,6 +65,7 @@
   * [Exercises: EdDSA Sign and Verify](digital-signatures/exercises-eddsa-sign-and-verify.md)
 * [Quantum-Safe Cryptography](quantum-safe-cryptography.md)
   * [Quantum-Safe Signatures - Example](quantum-safe-cryptography/quantum-safe-signatures-example.md)
+  * [Quantum-Safe Key Exchange - Example](quantum-safe-cryptography/quantum-safe-key-exchange-example.md)
 * [More Cryptographic Concepts](more-cryptographic-concepts.md)
   * [Digital Certificates - Example](more-cryptographic-concepts/digital-certificates-example.md)
   * [TLS - Example](more-cryptographic-concepts/tls-example.md)
