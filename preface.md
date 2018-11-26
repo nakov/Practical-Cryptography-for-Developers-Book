@@ -60,6 +60,8 @@ Many high-quality **academic cryptography books** exist on the market and some o
 
 * Another **academic cryptography book** example is "[**A Graduate Course in Applied Cryptography**](https://crypto.stanford.edu/~dabo/cryptobook/)" \(by Dan Boneh and Victor Shoup\). It is excellent **free** book about **theoretical cryptography**, but is not for developers. It is full of theory, concepts, math and formulas. It does not provide code examples and recommended libraries for developers.
 
+* Yes another good academic cryptography book is "[**Understanding Cryptography: A Textbook for Students and Practitioners**](https://books.google.bg/books?id=f24wFELSzkoC)" \(by Christof Paar, Bart Preneel, Jan Pelzl\). Excellent book on **cryptography concepts**, well organized, with algorithms in pseudocode, but it is not for developers. It does not provide code examples and recommended libraries for developers.
+
 * The "[**Crypto 101**](https://www.crypto101.io)" is more **understandable for developers**, with more simple explanation for the core cryptographic concepts, but without code examples.
 
 ### Crypto Libraries and Their Documentation
@@ -67,24 +69,22 @@ Many high-quality **academic cryptography books** exist on the market and some o
 Some **crypto libraries** try to provide **documentation** with crypto concepts and code examples, but they are typically **limited**, sometimes unfinished and not consistently organized, with a lot of missing points and can serve just to help you using certain library, but are not good source to learn the cryptographic concepts and do not provide systematic approach. Examples are:
 
 * [**Nettle Documentation**](http://www.lysator.liu.se/~nisse/nettle/nettle.html) - contains very good description of the most popular cryptographic concepts and popular algorithms \(hashes, MAC, symmetric ciphers, signatures\) along with reliable and fast **C** implementation.
-* [**Libsodium Documentation**](https://download.libsodium.org/doc/) - combines API documentation with elements of cryptographic concepts. It is bound to the **C language**, used for the Libsodium project. Provides sample code examples.
+* [**Libsodium Documentation**](https://download.libsodium.org/doc/) - combines API documentation with elements of cryptographic concepts. It is bound to the **C **language, used for the Libsodium project. Provides sample code examples.
 * [**The Crypto++ Wiki**](https://www.cryptopp.com/wiki/) - explains in brief some cryptography concepts along with guidelines how to use the Crypto++ library and the **C++** classes, implementing certain crypto algorithms. Provides sample code examples.
 * [**Botan - Developer's Manual**](https://botan.randombit.net/manual/) - a modern **C++** crypto-library, which comes with implementations of many modern crypto algorithms, along with documentation, which includes brief description of the underlying cryptographic concepts.
 * [**Libgcrypt Manual**](https://gnupg.org/documentation/manuals/gcrypt/) - a cryptographic library, written in **C **as part of the GnuPG project. Comes with very light introduction to crypto concepts and a boring API documentation with almost no sample code.
 
 ### Practical Cryptography: Paid Books
 
-Others are not bad, but are not free:
+To be honest, I made a **comprehensive research of the book market** \(in Nov 2018\) to find the best developer-friendly cryptography books. I was **deeply disappointed**! I didn't find any good practical book about **cryptography for programmers**, which I could recommend to a friend-developer \(not scientist or university student\) with confidence that this book is really good. I found **very good academic books** and a few books for developers \(rich of code examples\) with either not great quality or very focused on certain technology \(like a API reference / library manual\).
 
-[https://leanpub.com/crypto](https://leanpub.com/crypto)
+Still, I could list a few developer-friendly** books for practical cryptography** with code examples, which are paid \(**no free edition**\) and bound to certain technology \(like Java or JavaScript\). Some examples:
 
-[https://www.amazon.com/Cryptography-Developers-Tom-St-Denis/dp/1597491047](https://www.amazon.com/Cryptography-Developers-Tom-St-Denis/dp/1597491047)
-
-[https://leanpub.com/javacryptotoolsandtech](https://leanpub.com/javacryptotoolsandtech)
-
-[https://books.google.bg/books/about/Beginning\_Cryptography\_with\_Java.html?id=WLLAD2FKH3IC](https://books.google.bg/books/about/Beginning_Cryptography_with_Java.html?id=WLLAD2FKH3IC)
-
-Serious Cryptography - [https://nostarch.com/seriouscrypto](https://nostarch.com/seriouscrypto)
+* [**  Beginning Cryptography with Java**](https://books.google.bg/books?id=WLLAD2FKH3IC) \(by David Hook\)
+* [**Cryptography for JavaScript Developers**](https://books.google.bg/books?id=8oBxDwAAQBAJ) \(by Anish Nath\)
+* ...
+* ...
+* ...
 
 ...
 
