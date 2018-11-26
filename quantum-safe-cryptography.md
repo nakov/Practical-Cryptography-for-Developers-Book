@@ -74,7 +74,7 @@ Conclusion: SHA256 / SHA3-256 are most probably quantum-safe
 
 Most symmetric ciphers \(like AES and ChaCha20\) are quantum-safe:
 
-* \[Grover's algorithm\]\(\[[https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\](https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29\)\) finds AES secret key using √𝑁 quantum operations
+* \[Grover's algorithm\]\(\[\[[https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\)\](https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29]%28https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29%29\)\) finds AES secret key using √𝑁 quantum operations
 
 * Quantum era will **double the key size** of the symmetric ciphers \(see [http://cr.yp.to/codes/grovercode-20100303.pdf\](http://cr.yp.to/codes/grovercode-20100303.pdf%29\)
 
@@ -119,9 +119,22 @@ QC-MDPC and libPQC are quantum-broken: [https://eprint.iacr.org/2016/858.pdf](ht
 
 ...
 
+**GLYPH** signatures \(lattice-based Ring-LWE Lattice, Ring-LWE, Ring Learning with Errors\)
+
+* Implementation in Go: https://github.com/AidosKuneen/glyph
+
+**BLISS** - http://bliss.di.ens.fr
+
+* Implementation in Go: https://github.com/HcashOrg/bliss/blob/master/demo\_test.go
+
+**NewHope**
+
+* Go implementation: https://github.com/Yawning/newhope
+* Python implementation: https://github.com/scottwn/PyNewHope
+
 ### Multivariate-Quadratic-Equations Public-Key Cryptography
 
-MQE
+Rainbow: https://github.com/bcgit/bc-java/tree/master/core/src/main/java/org/bouncycastle/pqc/crypto/rainbow
 
 ...
 
@@ -129,15 +142,11 @@ MQE
 
 [https://github.com/sphincs/pyspx](https://github.com/sphincs/pyspx)
 
-https://pypi.org/project/PySPX/
+[https://pypi.org/project/PySPX/](https://pypi.org/project/PySPX/)
 
 ### NewHope Key Exchange in Python
 
-https://github.com/anupsv/NewHope-Key-Exchange
+[https://github.com/anupsv/NewHope-Key-Exchange](https://github.com/anupsv/NewHope-Key-Exchange)
 
-https://github.com/scottwn/PyNewHope
-
-
-
-
+[https://github.com/scottwn/PyNewHope](https://github.com/scottwn/PyNewHope)
 
