@@ -36,9 +36,9 @@ Currently **Svetlin Nakov** together with his partners drive the global expansio
 
 ## The History behind This Book
 
-Svetlin Nakov together with tens of co-authors has created and published as open-source projects \(in the period 2004-2018\) **tens of technical books** about computer programming and software technologies \(see [http://www.introprogramming.info](http://www.introprogramming.info) and [http://www.nakov.com/books](http://www.nakov.com/books%29%29%29\), most of which in Bulgarian language. In the last few years Svetlin switches to English and takes **global knowledge sharing initiative** for **better and accessible tech education**, demonstrated with creating and sharing free tech books, free tutorials, free tech webinars and seminars, conference talks and many other activities.
+Svetlin Nakov together with tens of co-authors has created and published as open-source projects \(in the period 2004-2018\) **tens of technical books** about computer programming and software technologies \(see [http://www.introprogramming.info](http://www.introprogramming.info) and [http://www.nakov.com/books](http://www.nakov.com/books)\), most of which in Bulgarian language. In the last few years Svetlin switches to English and takes **global knowledge sharing initiative** for **better and accessible tech education**, demonstrated with creating and sharing free tech books, free tutorials, free tech webinars and seminars, conference talks and many other activities.
 
-The book author **Svetlin Nakov** is involved with **applied cryptography** from 2005, when he published the book "_Java for Digitally Signing Documents of the Web_" \(in Bulgarian\), following his master thesis on a similar topic. Later Nakov is involved in his practice as software engineer, tech trainer and entrepreneur, with **cryptography**, **software security** and **blockchain** systems, and his technical expertise grows along with his experience. In 2018 he decides to write a **free book** to share his knowledge about cryptography and crypto algorithms from developer's perspective and donate this knowledge to the global dev community. The book takes 3 months to be written and gets published in Nov 2018. You can get a free copy from [https://cryptobook.nakov.com](https://cryptobook.nakov.com).
+The book author **Svetlin Nakov** is involved with **applied cryptography** from 2005, when he published the book "_Java for Digitally Signing Documents of the Web_" \(in Bulgarian\), following his master thesis on a similar topic. Later Nakov is involved in his practice as software engineer, tech trainer and entrepreneur, with **cryptography**, **software security** and **blockchain** systems, and his technical expertise grows along with his experience. In 2018 he decides to write a **free book** to share his knowledge about cryptography and crypto algorithms from developer's perspective and donate this knowledge to the global dev community. The book takes 3 months to be written and gets published in Nov 2018. You can get a free copy from: [https://cryptobook.nakov.com](https://cryptobook.nakov.com).
 
 ## The Software University \(SoftUni\)
 
@@ -85,9 +85,9 @@ Others are not bad, but are not free:
 
 [https://www.amazon.com/Cryptography-Developers-Tom-St-Denis/dp/1597491047](https://www.amazon.com/Cryptography-Developers-Tom-St-Denis/dp/1597491047)
 
-https://leanpub.com/javacryptotoolsandtech
+[https://leanpub.com/javacryptotoolsandtech](https://leanpub.com/javacryptotoolsandtech)
 
-https://books.google.bg/books/about/Beginning\_Cryptography\_with\_Java.html?id=WLLAD2FKH3IC
+[https://books.google.bg/books/about/Beginning\_Cryptography\_with\_Java.html?id=WLLAD2FKH3IC](https://books.google.bg/books/about/Beginning_Cryptography_with_Java.html?id=WLLAD2FKH3IC)
 
 Serious Cryptography - [https://nostarch.com/seriouscrypto](https://nostarch.com/seriouscrypto)
 
