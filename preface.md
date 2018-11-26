@@ -68,11 +68,19 @@ Crypto libraries come with limited and not consistently organized documentation,
 
 ...
 
-## What does this Book Cover?
+## What Does the Book Cover?
 
 ...
 
 ## Why Python is Used for the Examples?
 
 ...
+
+## How to Read This Book?
+
+The recommended way to read this is **topic by topic** \(from the start to the end\). You may skip chapters and sections that you don't like, but please pass through them, because the content has internal dependencies.
+
+Play with the **code examples**: run them, modify them, break them, explore and experiment with the code and **learn by playing**.
+
+Try to solve the **practical exercises** in chapter. Developers **learn best by writing code** and this is what I recommend. You are given well described exercise problems, with clear input and output, covering well the content of each chapter, after each major section.
 
