@@ -104,6 +104,14 @@ The absence of **good free book about cryptography and crypto algorithms for dev
 
 ...
 
+TODO
+
+TODO
+
+TODO
+
+...
+
 ## Why Python is Used for the Examples?
 
 **Python** is one of easiest languages, a language, which is **readable** and **understandable** by all developers \(even devs who has zero experience with it\). The idea of the **code examples** is to illustrate the crypto algorithms, encryption schemes and other cryptography concepts in action, not to promote certain library, API, language or technology.
