@@ -4,7 +4,7 @@ In cryptography two major types of encryption schemes are widely used: **symmetr
 
 ## Symmetric Encryption - Concepts and Algorithms
 
-**Symmetric encryption** schemes use **the same key** \(or password\) to **encrypt** data and **decrypt** the encrypted data back to its original form:
+**Symmetric encryption** schemes use **the same symmetric key** \(or password\) to **encrypt** data and **decrypt** the encrypted data back to its original form:
 
 ![](/assets/symmetric-encryption.png)
 
@@ -54,9 +54,11 @@ In order to better understand the idea behind the symmetric encryption, you can 
 
 ![](/assets/aesencryption.net.png)
 
-It demonstrates how we can encrypt and decrypt messages, using the **AES cipher** \(with certain settings\) and certain password-to-key-derivation function. In the above example if we encrypt "_**secret msg**_" by the password "_**p@ss**_", we will get the [base64-encoded](https://en.wikipedia.org/wiki/Base64) binary data "_**jVJwOBmH+qMqHdg22KwMyg==**_" as output. After decryption with the same secret key we get back the original text "_**secret msg**_".
+It demonstrates how we can encrypt and decrypt messages, using the **AES cipher** \(with certain settings, more precisely AES-128-CBC\) and certain password-to-key-derivation function. In the above example if we encrypt the text "_**secret msg**_" by the password "_**p@ss**_", we will get the [base64-encoded](https://en.wikipedia.org/wiki/Base64) binary data "_**jVJwOBmH+qMqHdg22KwMyg==**_" as output. After decryption with the same secret key we get back the original text "_**secret msg**_".
 
-Note that the above encrypted text is dependent to many algorithm parameters and settings, so if you encrypt the same at another "_AES live example_" web site, the result most likely will be different.
+Note that the above encrypted text is dependent to many algorithm parameters and settings, so if you encrypt the same at another "_AES live example_" Web site, the result most likely will be different.
+
+Also note that the above mentioned Web site uses bad practices, old algorithms and weak cipher settings, so don't follow the code examples there.
 
 ## Public Key Cryptography - Concepts
 
@@ -64,7 +66,7 @@ Before introducing the **asymmetric key encryption** schemes and algorithms, we 
 
 The [**public key cryptography**](https://en.wikipedia.org/wiki/Public-key_cryptography) uses a different key to encrypt and decrypt data \(or to sign and verify messages\). Keys always come as **public + private key pairs**. **Asymmetric cryptography** deals with **encrypting **and **decrypting **messages using a public / private key, **signing **messages, **verifying **signatures and securely **exchanging keys**.
 
-Popular **public-key cryptosystems** \(asymmetric crypto algorithms\) are: **RSA** \(Rivest–Shamir–Adleman\), **ECC** \(elliptic curve cryptography\), **ElGamal**, **Diffie-Hellman**, **ECDH**, **DSA**, **ECDSA** and **EdDSA**. We shall demonstrate most of them in practice with code examples.
+Popular **public-key cryptosystems** \(asymmetric crypto algorithms\) like **RSA** \(Rivest–Shamir–Adleman\), **ECC** \(elliptic curve cryptography\), **Diffie-Hellman**, **ECDH**, **ECDSA** and **EdDSA**, are widely used in the modern cryptography and we shall demonstrate most of them in practice with code examples.
 
 ### Public Key Encryption / Decryption
 
@@ -140,7 +142,7 @@ A certain **public key** can be connected to certain **person** or **organizatio
 
 **Public key cryptosystems** provide mathematical framework and algorithms to generate public + private key pairs, to **sign**, **verify**, **encrypt** and **decrypt** messages and **exchange keys**, in a cryptographically secure way.
 
-Well-known public-key cryptosystems are: [**RSA**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29), [**ECC**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) and [**ElGamal**](https://en.wikipedia.org/wiki/ElGamal_encryption).
+Well-known public-key cryptosystems are: [**RSA**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29), [**ECC**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) and [**ElGamal**](https://en.wikipedia.org/wiki/ElGamal_encryption). Many **crypto algorithms** are based on the primitives from these cryptosystems like **RSA sign**, **RSA encrypt / decrypt**, **ECDH** key exchange and **ECDSA** and **EdDSA** signatures.
 
 ### The RSA Cryptosystem
 
@@ -160,13 +162,17 @@ Note that both **RSA** and **ECC** cryptosystems are **not quantum-safe**, which
 
 ## Asymmetric Encryption in Practice
 
-**Asymmetric encryption** works for **small messages** only \(limited from the public / private key length\). To encrypt larger messages [**key encapsulation mechanisms**](https://en.wikipedia.org/wiki/Key_encapsulation) or other techniques can be used, which encrypt asymmetrically a random secret key, then use it to symmetrically encrypt the larger messages. In practice, modern **asymmetric encryption schemes** involve using a symmetric encryption algorithm together with a public-key cryptosystem, key encapsulation and message authentication.
+**Asymmetric encryption** works for **small messages** only \(limited by the public / private key length\). To encrypt larger messages [**key encapsulation mechanisms**](https://en.wikipedia.org/wiki/Key_encapsulation) or other techniques can be used, which encrypt asymmetrically a random secret key, then use it to symmetrically encrypt the larger messages. In practice, modern **asymmetric encryption schemes** involve using a symmetric encryption algorithm together with a public-key cryptosystem, key encapsulation and message authentication.
 
 Popular **asymmetric encryption schemes** are: [**RSA-OAEP**](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding) \(based on RSA and OAEP padding\), [**RSAES-PKCS1-v1\_5**](https://tools.ietf.org/html/rfc3447#section-7.2) \(based on RSA and PKCS\#1 v1.5 padding\), [**DLIES**](https://en.wikipedia.org/wiki/Integrated_Encryption_Scheme) \(based on discrete logarithms and symmetric encryption\) and [**ECIES**](https://en.wikipedia.org/wiki/Integrated_Encryption_Scheme) \(based on elliptic curve cryptography and symmetric encryption\).
 
 ### Asymmetric Encryption - Online Demo
 
-In order to better understand the idea behind the **asymmetric encryption**, you can play with some online public key encryption tool to encrypt / decrypt a sample message by sample RSA private / public key. You can play a bit with this site: [http://travistidwell.com/jsencrypt/demo/](http://travistidwell.com/jsencrypt/demo/).![](/assets/asymmetric-encryption-online-demo-jsencrypt.png)In the above online demo you can **generate RSA public / private key pairs** and **encrypt** / **decrypt** text messages. Note that the message size is limited by the key length, so you can't encrypt long text. Internally, the above site uses the **RSAES-PKCS1-v1\_5** public key encryption scheme as specified in [RFC3447](https://tools.ietf.org/html/rfc3447).
+In order to better understand the idea behind the **asymmetric encryption**, you can play with some online public key encryption tool to encrypt / decrypt a sample message by sample RSA private / public key. You can play a bit with this site: [http://travistidwell.com/jsencrypt/demo/](http://travistidwell.com/jsencrypt/demo/).
+
+![](/assets/asymmetric-encryption-online-demo-jsencrypt.png)
+
+In the above online demo you can **generate RSA public / private key pairs** and **encrypt** / **decrypt** text messages. Note that **the message size is limited** by the key length, so you can't encrypt long text. You will get an error if you try. Internally, the above Web site uses the **RSAES-PKCS1-v1\_5** public key encryption scheme as specified in [RFC3447](https://tools.ietf.org/html/rfc3447).
 
 We shall discuss the **RSA** and **ECC** cryptosystems in details in the next few chapters. Now, it is important to learn that **symmetric and asymmetric cryptosystems work differently** and are used in different scenarios.
 
