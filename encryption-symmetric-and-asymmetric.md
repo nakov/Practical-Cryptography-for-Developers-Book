@@ -83,7 +83,7 @@ Note that **the above shown diagram is highly simplified** and does not fully re
 * For the **encryption** a random symmetric key `sk` is generated, the message is symmetrically encrypted by `sk`, then `sk` is asymmetrically encrypted using the recipient's public key.
 * For **decryption**, first the `sk` key is asymmetrically decrypted using the recipient's private key, then the ciphertext is decrypted symmetrically using `sk`.
 
-The above process can be simplified using a [**key encapsulation mechanism \(KEM\)**](https://en.wikipedia.org/wiki/Key_encapsulation) which encapsulates a random symmetric key into an asymmetrically encrypted message.
+The above process is known as [**key encapsulation mechanism \(KEM\)**](https://en.wikipedia.org/wiki/Key_encapsulation): encapsulate an asymmetrically-encrypted random \(ephemeral\) symmetric key and use symmetric algorithm for the data encryption.
 
 Public key encryption can work also in the opposite scenario: **encrypt data by a private key and decrypt it by the public key**. Thus someone can prove that he is owner of certain private key, while revealing only its corresponding public key. This approach is used by some digital signature schemes.
 
