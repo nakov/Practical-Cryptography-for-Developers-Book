@@ -6,7 +6,17 @@ Assume we have a ECC **private-public key pair**. We want to encrypt and decrypt
 
 ![](/assets/asymmetric-encryption-diagram.png)
 
-The above process can be directly applied for the **RSA** cryptosystem, but not for the **ECC**. The elliptic curve cryptography \(ECC\) **does not directly provide encryption** method. Instead, we can design a **hybrid encryption scheme** by using the **ECDH** \(Elliptic Curve Diffie–Hellman\) key exchange scheme to derive a **shared secret key** for symmetric data encryption and decryption. Let's get into details how to do this.
+The above process can be directly applied for the **RSA** cryptosystem, but not for the **ECC**. The elliptic curve cryptography \(ECC\) **does not directly provide encryption** method. Instead, we can design a **hybrid encryption scheme** by using the **ECDH** \(Elliptic Curve Diffie–Hellman\) key exchange scheme to derive a **shared secret key** for symmetric data encryption and decryption.
+
+This is how most **hybrid encryption schemes** works \(the encryption process\):
+
+![](/assets/hybrid-encryption.png)
+
+This is how most **hybrid encryption schemes** works \(the decryption process\):
+
+![](/assets/hybrid-decryption.png)
+
+Let's get into details how to design and implement an **ECC-based hybrid encryption scheme**.
 
 ## ECC-Based Secret Key Derivation \(using ECDH\)
 
@@ -31,11 +41,11 @@ The above equation takes the following form:
 
 * pubKey \* ciphertextPrivKey = ciphertextPubKey \* privKey = **sharedECCKey**
 
-This is what exactly the above two functions calculate, directly following the **ECDH key agreement** scheme.
+This is what exactly the above two functions calculate, directly following the **ECDH key agreement** scheme. In the hybrid encryption schemes the encapsulated **ciphertextPubKey** is also known as "**ephemeral key**", because it is used temporary, to derive the symmetric encryption key, using the ECDH key agreement scheme.
 
 ## ECC-Based Secret Key Derivation - Example in Python
 
-The below Python code uses the `tinyec` library to generate a **ECC private-public key pair** \(based on the `brainpoolP256r1` curve\) and then derive a **secret key** \(for encryption\) from the ECC **public key **and later derive the same **secret key** \(for decryption\) from the **private key** and the generated earlier **ciphertext public key**:
+The below Python code uses the `tinyec` library to generate a **ECC private-public key pair** for the message recipient \(based on the `brainpoolP256r1` curve\) and then derive a **secret shared key** \(for encryption\) and ephemeral **ciphertext public key** \(for ECDH\) from the recipient's **public key **and later derive the same **secret shared key** \(for decryption\) from the recipient's **private key** and the generated earlier ephemeral **ciphertext public key**:
 
 ```py
 from tinyec import registry
@@ -69,7 +79,7 @@ decryptKey = ecc_calc_decryption_key(privKey, ciphertextPubKey)
 print("decryption key:", compress_point(decryptKey))
 ```
 
-The code is pretty simple and demonstrates that we can generate a pair { **secret key** + **ciphertext public key** } from given **public key** and later we can recover the **secret key** from the pair { **ciphertext public key** + **private key** }. The above code produces output like this:
+The code is pretty simple and demonstrates that we can generate a pair { **secret key** + **ciphertext public key** } from given EC **public key** and later we can recover the same **secret key** from the pair { **ciphertext public key** + **private key** }. The above code produces output like this:
 
 ```
 private key: 0x2e2921b4cde59cdf01e7a014a322abd530b3015085c31cb6e59502da761d29e9
@@ -79,7 +89,9 @@ encryption key: 0x9d13d3f8f9747669432f575731926b5ed99a6883f00146cbd3203ffa7ff8b1
 decryption key: 0x9d13d3f8f9747669432f575731926b5ed99a6883f00146cbd3203ffa7ff8b1ae1
 ```
 
-It is clear that the **encryption key** \(derived from the public key\) and the **decryption key** \(derived from the corresponding private key\) **are the same**. This is due to the above discussed property of the ECC: `pubKey * ciphertextPrivKey = ciphertextPubKey * privKey`. These keys will be used for encryption and decryption in an integrated encryption scheme. The above output will be different if you run the code \(due to the randomness used to generate `ciphertextPrivKey`, but the encryption and decryption keys will always be the same \(the ECDH shared secret\).
+It is clear from the above output that the **encryption key** \(derived from the public key\) and the **decryption key** \(derived from the corresponding private key\) **are the same**. This is due to the above discussed property of the ECC: `pubKey * ciphertextPrivKey = ciphertextPubKey * privKey`. These keys will be used for data encryption and decryption in an integrated encryption scheme. The above output will be different if you run the code \(due to the randomness used to generate `ciphertextPrivKey`, but the encryption and decryption keys will always be the same \(the ECDH shared secret\).
+
+The above demonstrated mechanism for generating a shared ephemeral secret key, based on a ECC key pair, is an example of **KEM** \(key encapsulation mechanism\), based on the ECC and ECDH.
 
 ## ECC-Based Hybrid Encryption / Decryption - Example in Python
 
