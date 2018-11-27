@@ -104,33 +104,23 @@ The absence of **good free book about cryptography and crypto algorithms for dev
 
 This book covers the most important modern cryptographic concepts, crypto algorithms and cryptographic constructions, used in the software industry:
 
-* Cryptographic **hash functions**: concepts, SHA-2, SHA-3, BLAKE2, RIPEMD160, code examples, insecure hash functions, collisions
+* Cryptographic **hash functions**: concepts, SHA-2, SHA-3, BLAKE2, RIPEMD160, code examples, collisions
 * **MAC** codes: concepts, HMAC, CMAK, UMAC, applications, MAC-based random generators, code examples
 * Key derivation functions \(**KDF**\): concepts, from password to encryption key, PBKDF2, Scrypt, Bcrypt, Linux crypt\(\), Argon2, code examples
 * **Password encryption** techniques: from clear text, through hashing, to modern secure KDFs like Argon2
 * Random numbers and **secure random generators**: concepts, entropy, secure random numbers, CSPRNG, code examples
 * **Key exchange** techniques: key establishment and key agreement, Diffie–Hellman Key Exchange \(DHKE\) and Elliptic Curve Diffie–Hellman \(ECDH\) with code examples
-* **Encryption** concepts: symmetric and asymmetric ciphers, secret keys, encryption schemes, public-key cryptosystems, private and public keys, hybrid encryption, digital signatures
-* Modern **symmetric key ciphers**: AES, ChaCha20, ...
-* Symmetric encryption **constructions**: AES-256-GCM, ChaCha20-Poly1307
-* **Asymmetric key ciphers** and public-key cryptosystems: RSA, ECC, ECDH
-* **Elliptic curves**: secp256k1, P-521, Curve25519, Curve448-Goldilocks
-* **Integrated encryption** schemes: ECIES
-* **Digital signature** algorithms: RSA signatures, ECDSA, EdDSA
-* **Quantum-safe cryptography**: ...
-* Other **cryptographic concepts**: digital certificates, TLS, one-time passwords \(OTP\), external authentication and OAuth
-* **Crypto libraries** and packages for developers: for JavaScript, C\#, Java, Python, C and C++
+* **Encryption** concepts: symmetric and asymmetric ciphers, secret keys, symmetric encryption, encryption schemes, public-key cryptosystems, private and public keys, hybrid encryption, digital signatures
+* Modern **symmetric key ciphers**: concepts, block ciphers and stream ciphers, cipher block modes \(CBC, CTR, GCM\), the AES \(Rijndael\) cipher, the Salsa20 / ChaCha20 ciphers, with code examples
+* Symmetric encryption **constructions**: authenticated encryption, AES-256-GCM, ChaCha20-Poly1307, AES-256-CTR-HMAC, with code examples
+* **Asymmetric key ciphers** and public-key cryptosystems: the RSA cryptosystem \(RSA key pairs, encryption, decryption\), ECC \(elliptic curve cryptography, EC points and multiplication, named curves\), ECDH \(elliptic-curve Diffie–Hellman\) key exchange, code examples
+* **Elliptic curves**: widely used named curves like secp256k1, P-256, P-521, Curve25519, Curve448-Goldilocks, with code examples
+* **Integrated encryption** schemes: combining public-key cryptography with symmetric encryption algorithms, the ECIES hybrid encryption scheme, with code examples
+* **Digital signature** algorithms: concepts, signing messages, verifying signatures, RSA signatures, ECDSA and EdDSA
+* **Quantum-safe cryptography**: which classical cryptosystems are quantum-broken and which are quantum-safe, quantum-safe signatures and quantum-safe key exchange algorithms, SPHINCS+, NewHope and others, with code examples
+* Other **cryptographic concepts**: digital certificates, TLS \(Transport Layer Security\), one-time passwords \(OTP\), external authentication and OAuth
+* **Crypto libraries** and packages for developers: cryptography in JavaScript, C\#, Java, Python, C and C++
 * A lot of **code examples** and exercises, following each major section
-
-...
-
-TODO
-
-TODO
-
-TODO
-
-...
 
 ## Why Python is Used for the Examples?
 
