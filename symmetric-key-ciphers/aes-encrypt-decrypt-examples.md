@@ -106,13 +106,115 @@ Now it is your time to **play with the above code example**. Try to to encrypt a
 
 ## AES-256-GCM Example
 
-Now, let's give a full example how to use the **AES-256-GCM** symmetric encryption construction.
+Now, let's give a full example how to use the **AES-256-GCM** symmetric encryption construction. We shall use a different Python library for AES, called [`pycryptodome`](https://pycryptodome.readthedocs.io), which supports the the AES-256-GCM construction:
 
-**TODO**
+```py
+pip install pycryptodome
+```
 
-**TODO**
+Next, let's play with the below **AES-GCM example in Python**, which generates a random encryption key \(secret key\) and uses it to **encrypt** a text message, then **decrypts** it back to the original plaintext message: 
 
-**TODO**
+```py
+from Crypto.Cipher import AES
+import binascii, os
 
+def encrypt_AES_GCM(msg, secretKey):
+    aesCipher = AES.new(secretKey, AES.MODE_GCM)
+    ciphertext, authTag = aesCipher.encrypt_and_digest(msg)
+    return (ciphertext, aesCipher.nonce, authTag)
 
+def decrypt_AES_GCM(encryptedMsg, secretKey):
+    (ciphertext, nonce, authTag) = encryptedMsg
+    aesCipher = AES.new(secretKey, AES.MODE_GCM, nonce)
+    plaintext = aesCipher.decrypt_and_verify(ciphertext, authTag)
+    return plaintext
+
+secretKey = os.urandom(32)  # 256-bit random encryption key
+print("Encryption key:", binascii.hexlify(secretKey))
+
+msg = b'Message for AES-256-GCM + Scrypt encryption'
+encryptedMsg = encrypt_AES_GCM(msg, secretKey)
+print("encryptedMsg", {
+    'ciphertext': binascii.hexlify(encryptedMsg[0]),
+    'aesIV': binascii.hexlify(encryptedMsg[1]),
+    'authTag': binascii.hexlify(encryptedMsg[2])
+})
+
+decryptedMsg = decrypt_AES_GCM(encryptedMsg, secretKey)
+print("decryptedMsg", decryptedMsg)
+```
+
+The AES-GCM encryption takes as input a **message** + **encryption key** and produces as output a set of values: { **ciphertext** + **nonce** + **authTag** }.
+
+* The **ciphertext** is the encrypted message.
+* The **nonce** is the randomly generated initial vector \(IV\) for the GCM construction.
+* The **authTag** is the message authentication code \(MAC\) calculated during the encryption.
+
+The encryption **key size** generated in the above code is 256 bits \(32 bytes\) and it configures the AES-GCM cipher as AES-256-GCM. If we change the key size to 128 bits or 192 bits, we shall use AES-128-GCM or AES-192-GCM respectively.
+
+The output from the above code looks like this:
+
+```
+Encryption key: b'233f8ce4ac6aa125927ccd98af5750d08c9c61d98a3f5d43cbf096b4caaebe80'
+encryptedMsg {'ciphertext': b'1334cd5d487f7f47924187c94424a2079656838e063e5521e7779e441aa513de268550a89917fbfb0492fc', 'aesIV': b'2f3849399c60cb04b923bd33265b81c7', 'authTag': b'af453a410d142bc6f926c0f3bc776390'}
+decryptedMsg b'Message for AES-256-GCM + Scrypt encryption'
+```
+
+It is visible that the **encryption key** above is 256 bits \(64 hex digits\), the **ciphertext** has the same length as the input message \(43 bytes\), the **IV** is 128 bits \(32 hex digits\) and the **authentication tag** is is 128 bits \(32 hex digits\). If we change something before the decryption \(e.g. the **ciphertext** of the **IV**\), we will get and **exception**, because the message integrity will be broken:
+
+```py
+encryptedMsg = (b'wrong chiphertext', encryptedMsg[1], encryptedMsg[2])
+decryptedMsg = decrypt_AES_GCM(encryptedMsg, secretKey)  # ValueError: MAC check failed
+```
+
+## AES-256-GCM + Scrypt Example
+
+Now let's give a more complex example: **AES encryption of text by text password**. We shall use the authenticated encryption construction **AES-256-GCM**, combined with **Scrypt** key derivation:
+
+```py
+from Crypto.Cipher import AES
+import scrypt, os, binascii
+
+def encrypt_AES_GCM(msg, password):
+    kdfSalt = os.urandom(16)
+    secretKey = scrypt.hash(password, kdfSalt, N=16384, r=8, p=1, buflen=32)
+    aesCipher = AES.new(secretKey, AES.MODE_GCM)
+    ciphertext, authTag = aesCipher.encrypt_and_digest(msg)
+    return (kdfSalt, ciphertext, aesCipher.nonce, authTag)
+
+def decrypt_AES_GCM(encryptedMsg, password):
+    (kdfSalt, ciphertext, nonce, authTag) = encryptedMsg
+    secretKey = scrypt.hash(password, kdfSalt, N=16384, r=8, p=1, buflen=32)
+    aesCipher = AES.new(secretKey, AES.MODE_GCM, nonce)
+    plaintext = aesCipher.decrypt_and_verify(ciphertext, authTag)
+    return plaintext
+
+msg = b'Message for AES-256-GCM + Scrypt encryption'
+password = b's3kr3tp4ssw0rd'
+encryptedMsg = encrypt_AES_GCM(msg, password)
+print("encryptedMsg", {
+    'kdfSalt': binascii.hexlify(encryptedMsg[0]),
+    'ciphertext': binascii.hexlify(encryptedMsg[1]),
+    'aesIV': binascii.hexlify(encryptedMsg[2]),
+    'authTag': binascii.hexlify(encryptedMsg[3])
+})
+
+decryptedMsg = decrypt_AES_GCM(encryptedMsg, password)
+print("decryptedMsg", decryptedMsg)
+```
+
+The above code encrypts using **AES-256-GCM** given text **message** by given text **password**.
+
+* During the **encryption**, the Scrypt KDF function is used \(with some fixed parameters\) to **derive a secret key** from the password. The randomly generated **KDF salt** for the key derivation is stored together with the encrypted message and will be used during the decryption. Then the input message is **AES-encrypted** using the secret key and the output consists of **ciphertext** + **IV** \(random nonce\) + **authTag**. The final output holds these 3 values + the **KDF salt**.
+
+* During the **decryption**, the Scrypt key derivation \(with the same parameters\) is used to derive the same **secret key** from the encryption **password**, together with the **KDF salt** \(which was generated randomly during the encryption\). Then the ciphertext is **AES-decrypted** using the secret key, the IV \(nonce\) and the authTag. In case of success, the result is the decrypted original **plaintext**. In case of error, the authentication tag will fail to authenticate the decryption process and an **exception** will be thrown.
+
+The **output** from the above code looks like this:
+
+```
+encryptedMsg {'kdfSalt': b'2dd0b783290747ba62a63fc53591170d', 'ciphertext': b'223ed888dcd216dcd40c47ff7cdaa7fd7eab65f4f0405350a43c5cad5b6b47b527c709edec29d7d6967518', 'aesIV': b'7f114d946c77508ed2e6afe652c78f21', 'authTag': b'e84a14b9542320a0b1473141c989c48f'}
+decryptedMsg b'Message for AES-256-GCM + Scrypt encryption'
+```
+
+If you run the same code, the output will be different, due to randomness \(random KDF salt + random AES nonce\).
 
