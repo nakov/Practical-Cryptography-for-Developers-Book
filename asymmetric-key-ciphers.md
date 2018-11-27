@@ -25,13 +25,17 @@ Most **public-key cryptosystems** \(like RSA, ECC, DSA, ECDSA and EdDSA\) are **
 
 ## Asymmetric Encryption Schemes
 
-**Asymmetric encryption** is more complicated than symmetric encryption, not only because it uses **public** and **private keys**, but because asymmetric encryption can encrypt / decrypt only small messages, which should be mapped to the underlying math of the public-key cryptosystem. In the RSA system, the input message should be transformed to big integer \(e.g. using OAEP padding\), while in ECC the message should be mapped to elliptic curve point to be encrypted. Additionally, asymmetric ciphers are significantly slower than symmetric ciphers \(e.g. the RSA encryption is 1000 times slower than AES\).
+**Asymmetric encryption** is more complicated than symmetric encryption, not only because it uses **public** and **private keys**, but because asymmetric encryption can encrypt / decrypt only small messages, which should be mapped to the underlying math of the public-key cryptosystem. Some cryptosystems \(like ECC\) do not provide directly encryption primitives, so more complex schemes should be used.
 
-To overcome the above limitations and to allow encrypting messages of any size, modern cryptography uses **asymmetric encryption schemes** \(also known as **public key encryption schemes** / **asymmetric encryption constructions** / **hybrid encryption schemes**\), like **key encapsulation mechanisms** and **integrated encrypted schemes**, which combine asymmetric encryption with symmetric key ciphers.
+In the **RSA** system, the input message should be transformed to **big integer** \(e.g. using OAEP padding\), while in **ECC** the message cannot be directly encrypted and more complex encryption scheme is used, based on the elliptic-curve Diffie-Hellman Key Exchange \(ECDH\). It will be explained in details later in this chapter. Additionally, asymmetric ciphers are significantly slower than symmetric ciphers \(e.g. the RSA encryption is 1000 times slower than AES\).
+
+To overcome the above limitations and to allow encrypting messages of any size, modern cryptography uses **asymmetric encryption schemes** \(also known as **public key encryption schemes** / **asymmetric encryption constructions** / **hybrid encryption schemes**\), like **key encapsulation mechanisms** \(KEM\) and **integrated encrypted schemes**, which combine asymmetric encryption with symmetric key ciphers.
 
 This is how a large document or file can be **encrypted** by combining **public-key cryptography** and **symmetric crypto algorithm**:
 
 ![](/assets/hybrid-encryption.png)
+
+In the above diagram the encrypted symmetric key is known as **KEM block** \(encapsulated key, with public key encryption\) and the encrypted data file is known as **DEM block** \(encapsulated data, with symmetric encryption\). The encrypted message consists of these two blocks together \(encapsulated key + encapsulated data\).
 
 This is the corresponding **decryption** process \(decrypt an encrypted large document using **public-key cryptography** and **symmetric crypto algorithm**\):
 
