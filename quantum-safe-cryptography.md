@@ -2,19 +2,12 @@
 
 **Quantum computers** are ...
 
-TODO
+* TODO
+* TODO
+* TODO
 
-TODO
-
-TODO
-
-**Quantum computing** is a model of computing based on the quantum physics, which works differently than classical computers and can do things that classical computers can’t, such as breaking RSA and ECC efficiently. **Quantum computers** are not "faster computers" and they are not all-powerful and cannot do any computing job faster. Quantum computers are very efficient for certain problems and quite weak for others.
-
-
-
-
-
-
+**Quantum computing** is a model of computing based on the quantum physics, which works differently than classical computers and can do things that classical computers can’t, such  
+ as breaking RSA and ECC efficiently. **Quantum computers** are not "faster computers" and they are not all-powerful and cannot do any computing job faster. Quantum computers are very efficient for certain problems and quite weak for others.
 
 It is well known in computer science that **quantum computers will break some cryptographic algorithms**, especially the public-key cryptosystems like **RSA**, **ECC** and **ECDSA** that rely on the **IFP** \(integer factorization problem\), the **DLP** \(discrete logarithms problem\) and the **ECDLP** \(elliptic-curve discrete logarithm problem\). Quantum algorithms will not be the end of cryptography, because:
 
@@ -82,7 +75,7 @@ Conclusion: SHA256 / SHA3-256 are most probably quantum-safe
 
 Most symmetric ciphers \(like AES and ChaCha20\) are quantum-safe:
 
-* \[Grover's algorithm\]\(\[\[[https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\)\](https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29]%28https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29%29\)\) finds AES secret key using √𝑁 quantum operations
+* \[Grover's algorithm\]\(\[\[\[[https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\)\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\]\(https://en.wikipedia.org/wiki/Grover's\_algorithm\)\)\)\](https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29]%28https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29%29]%28https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29]%28https://en.wikipedia.org/wiki/Grover's_algorithm]%28https://en.wikipedia.org/wiki/Grover's_algorithm%29%29%29\)\) finds AES secret key using √𝑁 quantum operations
 
 * Quantum era will **double the key size** of the symmetric ciphers, see [http://cr.yp.to/codes/grovercode-20100303.pdf](http://cr.yp.to/codes/grovercode-20100303.pdf%29%29\)
 

@@ -72,6 +72,8 @@ Still, these documentations and manuals are **one of the best free learning reso
 
 * [**Nettle Documentation**](http://www.lysator.liu.se/~nisse/nettle/nettle.html) - contains very good description of the most popular cryptographic concepts and popular algorithms \(hashes, MAC, symmetric ciphers, signatures\) along with reliable and fast **C** implementation.
 
+* [**PyCA / Cryptography Documentation**](https://cryptography.io/en/latest/hazmat/primitives/) - contains basic description of many cryptographic primitives \(like hashes, MAC codes, symmetric encryption, authenticated encryption, asymmetric algorithms, key exchange, KDF and others\) along with code examples in **Python**, demonstrating how to use the pyca/cryptography library APIs and its crypto algorithms.
+
 * [**Libsodium Documentation**](https://download.libsodium.org/doc/) - combines API documentation with elements of cryptographic concepts. It is bound to the **C **language, used for the Libsodium project. Provides sample code examples.
 
 * [**The Crypto++ Wiki**](https://www.cryptopp.com/wiki/) - explains in brief some cryptography concepts along with guidelines how to use the Crypto++ library and the **C++** classes, implementing certain crypto algorithms. Provides sample code examples.

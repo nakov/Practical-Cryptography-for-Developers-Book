@@ -1,11 +1,11 @@
 # Quantum-Safe Signatures - Examples in Python
 
-In this example, we shall demonstrate the** **[**SPHINCS+** signature library](https://github.com/sphincs/sphincsplus). It implements **hash-based signatures**, which are designed to be **quantum-safe**. Note that the SPHINCS+ signatures are still **experimental** \(as of Nov 2018\) and their security is not still proven, because they are relatively new and are still not well analysed by cryptographers.
+In this example, we shall demonstrate the** **[**SPHINCS+** signature library](https://github.com/sphincs/sphincsplus). It implements **hash-based signatures**, which are designed to be **quantum-safe**. Note that the SPHINCS+ signatures are still **experimental** \(as of Nov 2018\) and their security is not still indisputably proven, because they are relatively new and are still not well analysed by cryptographers.
 
 We shall demonstrate the **SPHINCS+** cryptosystem for hash-based digital signatures, more precisely two of its configurations:
 
-* **SPHINCS+-128f** – 64-byte private key, 32-byte public key, ~16.9KB signature, instant key generation, signing speed &lt; 1 sec, instant verification, 128-bit security level
-* **SPHINCS+-128s** – 64-byte private key, 32-byte public key, ~ 8KB signature, instant key generation, signing speed ~ few secs, instant verification, 133-bit security level
+* **SPHINCS+-128f** – 64-byte private key, 32-byte public key, ~16.9KB signature, instant key generation, fast signing speed &lt; 1 sec, instant verification, 128-bit security level
+* **SPHINCS+-128s** – 64-byte private key, 32-byte public key, ~ 8KB signature, instant key generation, slow signing speed ~ few secs, instant verification, 133-bit security level
 
 To install the **official SPHINCS+ signature** library [**PySPX**](https://github.com/sphincs/pyspx) for Python, use the following command:
 
