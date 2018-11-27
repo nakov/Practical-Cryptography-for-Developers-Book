@@ -2,7 +2,16 @@
 
 In software development we constantly use **password-based user authentication**. For example, if we have a Web site, we typically have admin panel, accessible after **login**, based on **username** + **password**.
 
-Developers often need to keep **user passwords** in the database for their sites, apps or other systems. There are many ways to implement **password-based authentication**. Let's review them and discuss the good and bad practices.
+Developers often need to keep **user passwords** in the database for their sites, apps or other systems. There are many ways to implement **password-based authentication**, most popular given in the table below:
+
+| **Approach** | **Security** | **Comments** |
+| :--- | :--- | :--- |
+| Clear-text passwords | Extremely low | Never do this: compromised server will render all passwords leaked |
+| Simple password hash | Low | Vulnerable to dictionary attacks |
+| Salted hashed passwords | Average | Vulnerable to GPU-based and ASIC-based password cracking |
+| Secure KDF function \(like Argon2\) | High | Recommended, use strong KDF parameters |
+
+Let's review them and discuss the good and bad practices.
 
 ## Clear-Text Passwords - Never Do Anti-Pattern
 
