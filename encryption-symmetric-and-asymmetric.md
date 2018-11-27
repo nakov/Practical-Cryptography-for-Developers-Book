@@ -8,7 +8,7 @@ In cryptography two major types of encryption schemes are widely used: **symmetr
 
 ![](/assets/symmetric-encryption.png)
 
-Symmetric encryption usually combines several crypto algorithms into an **symmetric encryption scheme**, e.g. AES-256-CTR-HMAC-SHA256. The **encryption scheme** \(cipher construction\) may include: password to **key derivation** algorithm \(with certain parameters\) + **symmetric cipher** algorithm \(with certain parameters\) + **cipher block mode** algorithm + **message authentication** \(MAC\) algorithm.
+Symmetric encryption usually combines several crypto algorithms into an **symmetric encryption scheme**, e.g. AES-256-CTR-HMAC-SHA256. The **encryption scheme** \(cipher construction\) may include: password to **key derivation** algorithm \(with certain parameters\) + **symmetric cipher** algorithm \(with certain parameters\) + **cipher block mode** algorithm + **message authentication** \(MAC\) algorithm. This means that **the above shown diagram is simplified** and does not fully represent the process.
 
 ### Secret Keys
 
@@ -78,7 +78,7 @@ The encrypted data, obtained as result of encryption is called "**ciphertext**".
 
 ![](/assets/asymmetric-encryption-diagram.png)
 
-Typically, public-key cryptosystems can **encrypt messages of limited length** only and are slower than symmetric ciphers. For encrypting longer messages \(e.g. PDF documents\) usually a **public-key encryption scheme** \(also known as **hybrid encryption scheme**\) is used, which combines **symmetric** and **asymmetric encryption** like this:
+Note that **the above shown diagram is highly simplified** and does not fully represent the asymmetric encryption / decryption process. Typically, public-key cryptosystems can **encrypt messages of limited length** only and are slower than symmetric ciphers. For encrypting longer messages \(e.g. PDF documents\) usually a **public-key encryption scheme** \(also known as **hybrid encryption scheme**\) is used, which combines **symmetric** and **asymmetric encryption** like this:
 
 * For the **encryption** a random symmetric key `sk` is generated, the message is symmetrically encrypted by `sk`, then `sk` is asymmetrically encrypted using the recipient's public key.
 * For **decryption**, first the `sk` key is asymmetrically decrypted using the recipient's private key, then the ciphertext is decrypted symmetrically using `sk`.
