@@ -49,11 +49,17 @@ Examples of such asymmetric encryption schemes are: [**RSA-OAEP**](https://en.wi
 
 ### Key Encapsulation Mechanisms \(KEMs\)
 
-A [**key encapsulation mechanisms \(KEM\)**](https://en.wikipedia.org/wiki/Key_encapsulation) are asymmetric cryptographic techniques used to encrypt and encapsulate a secret key \(called "ephemeral symmetric key"\), which is used to encrypt an input message using a symmetric cryptographic cipher. **KEM** encapsulates \(wraps\) the ephemeral symmetric encryption key as part of the encrypted message, by encrypting it with the recipient's public key. In cryptography this process is known as "**key encapsulation**" or "**key wrapping**".
+A [**key encapsulation mechanisms \(KEM\)**](https://en.wikipedia.org/wiki/Key_encapsulation) are asymmetric cryptographic techniques used to encrypt and encapsulate a secret key \(called "ephemeral symmetric key"\), which is used to encrypt an input message using a symmetric cryptographic cipher. **KEM** encapsulates the ephemeral symmetric encryption key as part of the encrypted message, by encrypting it with the recipient's public key. In cryptography this process is known as "**key encapsulation**".
 
 The output from a KEM-based hybrid encryption scheme consists of **KEM block**, holding the encapsulated encrypted symmetric key \(or certain parameters used to derive it\), and **DEM block** \(data encapsulation mechanism\), holding the encapsulated symmetrically-encrypted data \(cipher parameters + ciphertext + optionally an authentication tag\).
 
 **Key encapsulation mechanisms** \(KEMs\) are used in the hybrid encryption schemes and in the integrated encryption schemes, where a random element is generated in the underlying public-key cryptosystem and a symmetric key is derived from this random element by hashing. This approach simplifies the process of combining asymmetric and symmetric encryption. Examples of modern key encapsulation mechanisms are: [**RSA-KEM**](https://tools.ietf.org/html/rfc5990), [**ECIES-KEM**](https://www.cosic.esat.kuleuven.be/nessie/reports/phase2/evalv2.pdf) and [**PSEC-KEM**](https://www.cryptrec.go.jp/cryptrec_03_spec_cypherlist_files/PDF/02_03e_jspec.pdf).
+
+**Key encapsulation** should not be confused with **key wrapping**.
+
+* **Key encapsulation** \(KEM\) refers to **public-key encryption of another key** \(symmetric or asymmetric\). It is used for creating provably secure **hybrid encryption schemes**, e.g. to encrypt an AES secret key by given ECC public key.
+
+* **Key wrapping** refers to **symmetric-key encryption of another key** \(which can be either a symmetric key or an asymmetric key\). It is used to encrypt, integrity-protect and transport cryptographic keys. Key wrapping provides privacy and integrity protection for specialized data such as cryptographic keys, without the use of nonces. For details see [RFC 3394](https://tools.ietf.org/html/rfc3394.html).
 
 ## Digital Signatures
 
