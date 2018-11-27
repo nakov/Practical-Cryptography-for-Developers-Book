@@ -104,3 +104,15 @@ Wrongly decrypted: b'\xe6!\n\x9a\xa9\x15\x12\xd9\xcb\x9cS\x86\xcc\xe1\x1d\x1a\x8
 
 Now it is your time to **play with the above code example**. Try to to encrypt and decrypt different messages, to change the input message, the key size, to hard-code the IV, the key and other parameters, switch to CBC mode, and see how the results change. Enjoy learning by playing.
 
+## AES-256-GCM Example
+
+Now, let's give a full example how to use the **AES-256-GCM** symmetric encryption construction.
+
+**TODO**
+
+**TODO**
+
+**TODO**
+
+
+
