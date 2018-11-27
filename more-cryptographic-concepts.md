@@ -14,6 +14,8 @@
 
 [https://en.wikipedia.org/wiki/Transport\_Layer\_Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)
 
+A cipher suite is a set of algorithms that help secure a network connection that uses Transport Layer Security \(TLS\) or its now-deprecated predecessor Secure Socket Layer \(SSL\). The set of algorithms that cipher suites usually contain include: a **key exchange** algorithm, a **symmetric encryption** algorithm, and a message **authentication code** \(MAC\) algorithm.
+
 ## External Authentication and OAuth
 
 ...

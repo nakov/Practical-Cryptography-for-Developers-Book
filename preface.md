@@ -107,10 +107,10 @@ This book covers the most important modern cryptographic concepts, crypto algori
 * Cryptographic **hash functions**: concepts, SHA-2, SHA-3, BLAKE2, RIPEMD160, code examples, insecure hash functions, collisions
 * **MAC** codes: concepts, HMAC, CMAK, UMAC, applications, MAC-based random generators, code examples
 * Key derivation functions \(**KDF**\): concepts, from password to encryption key, PBKDF2, Scrypt, Bcrypt, Linux crypt\(\), Argon2, code examples
-* **Password encryption** techniques: from clear text, through hashing to modern secure KDFs like Argon2
-* Random numbers and **secure random generators**: ...
-* **Key exchange** techniques: Diffie–Hellman Key Exchange \(DHKE\) and Elliptic Curve Diffie–Hellman \(ECDH\)
-* **Encryption** concepts: symmetric and asymmetric
+* **Password encryption** techniques: from clear text, through hashing, to modern secure KDFs like Argon2
+* Random numbers and **secure random generators**: concepts, entropy, secure random numbers, CSPRNG, code examples
+* **Key exchange** techniques: key establishment and key agreement, Diffie–Hellman Key Exchange \(DHKE\) and Elliptic Curve Diffie–Hellman \(ECDH\) with code examples
+* **Encryption** concepts: symmetric and asymmetric ciphers, secret keys, encryption schemes, public-key cryptosystems, private and public keys, hybrid encryption, digital signatures
 * Modern **symmetric key ciphers**: AES, ChaCha20, ...
 * Symmetric encryption **constructions**: AES-256-GCM, ChaCha20-Poly1307
 * **Asymmetric key ciphers** and public-key cryptosystems: RSA, ECC, ECDH
