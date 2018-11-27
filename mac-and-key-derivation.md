@@ -57,5 +57,5 @@ Another application of MAC codes is for **pseudo-random generator** functions. W
 next_seed = MAC(salt, seed)
 ```
 
-This **next pseudo-random number** is "randomly changes" after each calculation of the above formula and we can use it to generate the next random number in certain range.
+This **next pseudo-random number** is "randomly changed" after each calculation of the above formula and we can use it to generate the next random number in certain range. We shall demonstrated a fully working example in the "[Secure Random Generators](/secure-random-generators/pseudo-random-numbers-examples.md)" chapter.
 

@@ -105,7 +105,7 @@ The absence of **good free book about cryptography and crypto algorithms for dev
 This book covers the most important modern cryptographic concepts, crypto algorithms and cryptographic constructions, used in the software industry:
 
 * Cryptographic **hash functions**: concepts, SHA-2, SHA-3, BLAKE2, RIPEMD160, code examples, insecure hash functions, collisions
-* **MAC** codes: concepts, HMAC, CMAK, UMAC, applications, code examples
+* **MAC** codes: concepts, HMAC, CMAK, UMAC, applications, MAC-based random generators, code examples
 * Key derivation functions \(**KDF**\): concepts, from password to encryption key, PBKDF2, Scrypt, Bcrypt, Linux crypt\(\), Argon2, code examples
 * **Password encryption** techniques: from clear text, through hashing to modern secure KDFs like Argon2
 * Random numbers and **secure random generators**: ...
