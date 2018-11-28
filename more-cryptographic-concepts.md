@@ -44,6 +44,7 @@ Just to mention, the practical cryptography is endless. This is a list of crypto
 
 * S/MIME - ...
 
-* 
+* JSON Web Tokens \(JWT\)
+
 
 
