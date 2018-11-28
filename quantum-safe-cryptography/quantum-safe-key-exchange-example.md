@@ -6,7 +6,7 @@ In this example we shall demonstrate the how to use the [**NewHope key exchange*
 2. Bob takes the **message from Alice** \(polynomial + seed\) and calculates from it the **shared secret key** between Alice and Bob. Bob also generates internally a **private key** and uses it to calculate and sends a **public message** to Alice. This public message consists of **2 polynomials**, each represented by 1024 integer coefficients.
 3. Alice takes the **message from Bob** \(the 2 polynomials\) and calculates from it the **shared secret key** between Alice and Bob \(using her private key\). The calculated **shared key** consists of 32 bytes \(256 bits\), perfect for symmetric key encryption.
 
-To illustrate the **NewHop key exchange **algorithm, we shall use the [`PyNewHope`](https://github.com/nakov/PyNewHope) package from the Python's official PyPI repository:
+To illustrate the **NewHope key exchange **algorithm, we shall use the [`PyNewHope`](https://github.com/nakov/PyNewHope) package from the Python's official PyPI repository \(which is designed for educational purposes and is not certified for production use\):
 
 ```py
 pip install pynewhope
