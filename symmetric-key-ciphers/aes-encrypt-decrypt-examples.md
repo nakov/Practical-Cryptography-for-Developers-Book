@@ -4,7 +4,11 @@ Let's illustrate the **AES encryption** and **AES decryption** concepts through 
 
 The first example below will illustrate a simple **password-based AES encryption** \(PBKDF2 + AES-CTR\) without message authentication \(**unauthenticated encryption**\). The next example will add message authentication \(using the AES-GCM mode\), then will add password to key derivation \(AES-256-GCM + Scrypt\).
 
-## Install Python Libraries pyaes and pbkdf2
+## Simple AES-CTR Example
+
+Let's start with simple AES-256-CTR non-authenticated encryption.
+
+### Install Python Libraries `pyaes` and `pbkdf2`
 
 First, install the Python library `pyaes` that implements the **AES** symmetric key encryption algorithm:
 
@@ -20,7 +24,7 @@ pip install pbkdf2
 
 Now, let's play with a simple AES encrypt / decrypt example.
 
-## Password to Key Derivation
+### Password to Key Derivation
 
 First start by **key derivation**: from password to 256-bit encryption key.
 
@@ -44,7 +48,7 @@ AES encryption key: b'7625e224dc0f0ec91ad28c1ee67b1eb96d1a5459533c5c950f44aae1e3
 
 The derived **key** consists of **64 hex digits** \(32 bytes\), which represents a **256-bit** integer number. It will be different if you run the above code several times, because a random salt is used every time. If you use the same salt, the same key will be derived.
 
-## AES Encryption \(CTR Block Mode\)
+### AES Encryption \(CTR Block Mode\)
 
 Next, generate a **random 256-bit initial vector \(IV\)** for the AES CTR block mode and perform the **AES-256-CTR encryption**:
 
@@ -70,7 +74,7 @@ Note that after AES-CTR encryption the **initial vector \(IV\)** should be store
 
 Note also that if you encrypt the same **plaintext** with the same encryption **key** several times, the output will be **different** every time, due to the randomness in the **IV**. This is intended behavior and it increases the security, e.g. resistance to dictionary attacks.
 
-## AES Decryption \(CTR Block Mode\)
+### AES Decryption \(CTR Block Mode\)
 
 Now let's see how to **decrypt a ciphertext** using the AES-CTR-256 algorithm. The input consists of **ciphertext** + encryption **key** + the **IV** for the CTR counter. The output is the original **plaintext**. The code is pretty simple:
 
