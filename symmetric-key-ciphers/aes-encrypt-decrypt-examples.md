@@ -166,7 +166,7 @@ encryptedMsg {'ciphertext': b'1334cd5d487f7f47924187c94424a2079656838e063e5521e7
 decryptedMsg b'Message for AES-256-GCM + Scrypt encryption'
 ```
 
-It is visible that the **encryption key** above is 256 bits \(64 hex digits\), the **ciphertext** has the same length as the input message \(43 bytes\), the **IV** is 128 bits \(32 hex digits\) and the **authentication tag** is is 128 bits \(32 hex digits\). If we change something before the decryption \(e.g. the **ciphertext** of the **IV**\), we will get and **exception**, because the message integrity will be broken:
+It is visible that the **encryption key** above is 256 bits \(64 hex digits\), the **ciphertext** has the same length as the input message \(43 bytes\), the **IV** is 128 bits \(32 hex digits\) and the **authentication tag** is 128 bits \(32 hex digits\). If we change something before the decryption \(e.g. the **ciphertext** of the **IV**\), we will get and **exception**, because the message integrity will be broken:
 
 ```py
 encryptedMsg = (b'wrong chiphertext', encryptedMsg[1], encryptedMsg[2])
