@@ -1,4 +1,6 @@
-# Practical Cryptography for Developers - Free Book
+# Practical Cryptography for Developers - Free Book by Svetlin Nakov
+
+> **Warning**: this book is **not finished**! I am still working on some of the chapters. Once it is completed, I will publish it as PDF and EPUB. Be patient.
 
 [<img src="/assets/Practical-Cryptography-for-Developers-Book-Nakov-front-cover.png" alt="Practical Cryptography for Developers - Free Book by Svetlin Nakov - front cover" class="readme-book-cover-image" />](https://cryptobook.nakov.com)
 
