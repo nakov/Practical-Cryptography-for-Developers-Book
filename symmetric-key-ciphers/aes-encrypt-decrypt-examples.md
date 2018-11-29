@@ -1,6 +1,8 @@
-# AES Encryption / Decryption - Examples in Python
+# AES Encryption / Decryption \(AES-CTR, AES-GCM\) - Examples in Python
 
-Let's illustrate the **AES encryption** and **AES decryption** concepts through working **source code** in Python. The example below will illustrate a **password-based AES encryption**, without message authentication \(**unauthenticated encryption**\).
+Let's illustrate the **AES encryption** and **AES decryption** concepts through working **source code** in Python.
+
+The first example below will illustrate a simple **password-based AES encryption** \(PBKDF2 + AES-CTR\) without message authentication \(**unauthenticated encryption**\). The next example will add message authentication \(using the AES-GCM mode\), then will add password to key derivation \(AES-256-GCM + Scrypt\).
 
 ## Install Python Libraries pyaes and pbkdf2
 
@@ -112,7 +114,7 @@ Now, let's give a full example how to use the **AES-256-GCM** symmetric encrypti
 pip install pycryptodome
 ```
 
-Next, let's play with the below **AES-GCM example in Python**, which generates a random encryption key \(secret key\) and uses it to **encrypt** a text message, then **decrypts** it back to the original plaintext message: 
+Next, let's play with the below **AES-GCM example in Python**, which generates a random encryption key \(secret key\) and uses it to **encrypt** a text message, then **decrypts** it back to the original plaintext message:
 
 ```py
 from Crypto.Cipher import AES
