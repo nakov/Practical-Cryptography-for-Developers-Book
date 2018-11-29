@@ -50,7 +50,7 @@ The development of this book is supported by the [**Software University \(SoftUn
 
 ## Why Yet Another Book on Cryptography?
 
-Most books about cryptography on the market are written either in too **academic style** with a lot of theory and math or are **outdated** and do not describe the cryptography used today or are too small, **weak in content** and unfinished. Others are better, but are **not free** and accessible for everyone. This book tries to compensate all above mentioned weak sides of the existing cryptography books on the market: its is **free**, **developer-friendly**, **comprehensive**, with less math and more **code examples**.
+Most books about cryptography on the market are written either in too **academic style** with a lot of theory and math or are **outdated** and do not describe the cryptography used today or are too small, **weak in content** and unfinished. Others are better, but are **not free** and accessible for everyone. This book tries to compensate all above mentioned weak sides of the existing cryptography books on the market: it is **free**, **developer-friendly**, **comprehensive**, with less math and more **code examples**.
 
 ### Academic Cryptography Books
 
