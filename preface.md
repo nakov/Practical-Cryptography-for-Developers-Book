@@ -90,7 +90,7 @@ This is the list of **free books** about practical cryptography for developers:
 
 * [**Practical Cryptography With Go**](https://leanpub.com/gocrypto/read) \(by Kyle Isom, published 2015\) - a mini-book on how to use cryptography with the **Go** language, full of code examples. It has **free edition** \(read online\) and **paid editions** \(PDF, EPUB, MOBI\). The book is good, but its scope is limited to describe some concepts very briefly and demonstrate how to use them with code examples. It covers modern symmetric ciphers \(like AES-GCM and XSalsa20-Poly1305\), key derivation \(PBKDF2 and Scrypt\), key exchange and ECDH, digital signatures \(ECDSA and Ed25519\), and few other concepts.
 
-* [**The Laws of Cryptography with Java Code**](http://www.cs.utsa.edu/~wagner/lawsbookcolor/laws.pdf) \(by Neal Wagner, published 2003\) - academic book on cryptography with working Java examples, implementing certain crypto algorithms \(like the AES cipher and the RSA cryptosystem\).
+* [**The Laws of Cryptography with Java Code**](http://www.cs.utsa.edu/~wagner/lawsbookcolor/laws.pdf) \(by Neal Wagner, published 2003\) - academic-style book on cryptography with working Java examples, implementing certain crypto algorithms \(like the AES cipher and the RSA cryptosystem\).
 
 I could list a few developer-friendly** books for practical cryptography** with code examples, which have only paid / commercial versions \(**no free edition**\). Most of them are too deeply bound to certain technology like C, C++, Java or JavaScript and don't explain the concepts well. Others have different focus. Some are outdated, some are quite new. This is the list of what I found from my research about developer-friendly crypto books:
 
@@ -98,7 +98,7 @@ I could list a few developer-friendly** books for practical cryptography** with 
 
 * [**Secure Programming Cookbook for C and C++**](https://books.google.bg/books?id=aL3P3eJdiREC) \(by John Viega, Matt Messier\) - provides secure coding guidelines for **C++** developers, including topics from cryptography \(hashes, MAC codes, symmetric ciphers, RSA and DSA, random numbers\), with code examples \(published in 2009, slightly outdated\).
 
-* [**Cryptography for Developers**](https://books.google.bg/books?id=VaiYIZHduXQC) \(by Tom Denis\) - provides solid fundamentals in cryptography and crypto algorithms, along with implementations in **C** and **assembler** with lots of code examples. Covers hashes, HMAC, AES, slightly RSA and ECC. Slightly outdated \(published in 2007\).
+* [**Cryptography for Developers**](https://books.google.bg/books?id=VaiYIZHduXQC) \(by Tom Denis\) - provides solid fundamentals in cryptography and crypto algorithms, along with implementations in **C** and **assembler** with lots of code examples. Written in the middle between an academic style and a developer style. Covers hashes, HMAC, AES, slightly RSA and ECC. Slightly outdated \(published in 2007\).
 
 * [**Beginning Cryptography with Java**](https://books.google.bg/books?id=WLLAD2FKH3IC) \(by David Hook\) - a reference for JCA, JCE, JSSE and the Bouncy Castle crypto library with lots of code examples in Java \(published in 2005, outdated\).
 
