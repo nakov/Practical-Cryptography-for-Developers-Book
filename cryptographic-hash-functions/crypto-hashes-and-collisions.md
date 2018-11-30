@@ -12,7 +12,7 @@ A **collision** means the same hash value for two different inputs. For simple h
 
 **Collisions **in the cryptographic hash functions are **extremely unlikely **to be found, so crypto **hashes **are considered to almost uniquely identify their corresponding input. Moreover, it is extremely hard to find an input message that hashes to given value.
 
-Cryptographic hash functions are **one-way hash functions**, which are **infeasible to invert**. The chance to find a collision for a strong cryptographic hash function \(like SHA-256\) is extremely little. Let's define this in more details:
+Cryptographic hash functions are **one-way hash functions**, which are **infeasible to invert**. The chance to find a collision \(by brute force\) for a strong cryptographic hash function \(like SHA-256\) is extremely little. Let's define this in more details:
 
 * Let's have hash value `h`=`hash(p)` for certain strong cryptographic hash function `hash`.
 * It is expected to be **extremely hard **to find an input `p'`, such that `hash(p')`=`h`.
