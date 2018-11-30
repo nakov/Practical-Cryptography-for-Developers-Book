@@ -12,7 +12,7 @@ In computer science **random numbers** usually come from a **pseudo-random numbe
 
 ## Pseudo-Random Number Generators \(PRNG\)
 
-A pseudorandom number generator \(**PRNG**\) is used to stretch a small amount of **initial randomness  
+A pseudorandom number generator \(**PRNG**\) is used to stretch a small amount of **initial randomness    
 ** into a large amount of **pseudorandomness**, typically for use in cryptosystems. Note than **PRNGs** are not cryptographically secure and are different from **CSPRNGs**.
 
 **PRNGs** are functions that start from some **initial entropy** \(seed\) and calculate the next random number by some calculation which is unpredictable without knowing the seed. Such calculations are called **pseudo-random functions**.
