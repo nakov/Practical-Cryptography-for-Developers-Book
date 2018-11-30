@@ -6,7 +6,7 @@
 
 ## Hash Collisions
 
-**Collision** means the same hash value for two different inputs. For simple hash functions are easy to reach a collision. For example, assume a hash function `h(text)` sums of all character codes in a text. It will produce the same hash value \(collision\) for texts holding the same letters in different order, i.e. `h('abc') == h('cab') == h('bca')`. To avoid collisions, cryptographers have designed **collision-resistant** hash functions.
+A **collision** means the same hash value for two different inputs. For simple hash functions it is easy to reach a collision. For example, assume a hash function `h(text)` sums of all character codes in a text. It will produce the same hash value \(collision\) for texts holding the same letters in different order, i.e. `h('abc') == h('cab') == h('bca')`. To avoid collisions, cryptographers have designed **collision-resistant** hash functions.
 
 ## Cryptographic Hash Functions: No Collisions
 
