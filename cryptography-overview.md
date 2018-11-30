@@ -20,7 +20,7 @@ We shall learn later that behind this simple **AES encryption**, there are **man
 
 Cryptography deals with **storing and transmitting data in a secure way**, such that only those, for whom it is intended, can read and process it. This may involve **encrypting and decrypting data** using symmetric or asymmetric encryption schemes , where one or more **keys** are used to transform data from plain to encrypted form and back.
 
-**Symmetric encryption** \(like AES, Twofish and ChaCha20\) uses the same key to encrypt and decrypt messages, while **asymmetric encryption** uses a **public-key cryptosystem** \(like RSA or ECC\) and a key-pair: private key \(encryption key\) and corresponding public key \(decryption key\). Encryption algorithms are often combined in encryption schemes \(like AES-256-CTR-HMAC-SHA-256, ChaCha20-Poly1305 or ECIES-AES-128-GCM\).
+**Symmetric encryption** \(like AES, Twofish and ChaCha20\) uses the same key to encrypt and decrypt messages, while **asymmetric encryption** uses a **public-key cryptosystem** \(like RSA or ECC\) and a key-pair: public key \(encryption key\) and corresponding private key \(decryption key\). Encryption algorithms are often combined in encryption schemes \(like AES-256-CTR-HMAC-SHA-256, ChaCha20-Poly1305 or ECIES-secp256k1-AES-128-GCM\).
 
 Cryptography deals with **keys** \(large secret numbers\) and in many scenarios these **keys are derived **from numbers, passwords or passphrases using **key derivation algorithms** \(like PBKDF2 and Scrypt\).
 
