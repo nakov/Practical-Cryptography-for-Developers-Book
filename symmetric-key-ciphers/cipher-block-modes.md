@@ -28,7 +28,7 @@ This is what developers should know about the "[**block cipher modes of operatio
 
 * The [**GCM**](https://en.wikipedia.org/wiki/Galois/Counter_Mode) \(Galois/Counter Mode\) block mode takes all the advantages of the **CTR** mode and adds message **authentication** \(produces a cryptographical message authentication tag\). **GCM** is fast and efficient way to implement **authenticated encryption** in symmetric ciphers and it is **highly recommended** in the general case.
 
-* The CBC mode works in block of fixed size. Thus a [**padding algorithm**](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Padding) should be used to make the last block the same length after splitting the input data into blocks. Most applications use the [**PKCS7 padding scheme**](https://en.wikipedia.org/wiki/Padding_%28cryptography%29#PKCS#5_and_PKCS#7) or [**ANSI X.923**](https://en.wikipedia.org/wiki/Padding_%28cryptography%29#ANSI_X.923).
+* The **CBC** mode works in block of fixed size. Thus a [**padding algorithm**](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Padding) should be used to make the last block the same length after splitting the input data into blocks. Most applications use the [**PKCS7 padding scheme**](https://en.wikipedia.org/wiki/Padding_%28cryptography%29#PKCS#5_and_PKCS#7) or [**ANSI X.923**](https://en.wikipedia.org/wiki/Padding_%28cryptography%29#ANSI_X.923). In some scenarios the CBC block mode might be vulnerable to the [**"padding oracle" attack**](https://en.wikipedia.org/wiki/Padding_oracle_attack), so its is better to **avoid the CBC mode**.
 
 * Well-known **insecure block mode** is [**ECB**](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_Codebook_%28ECB%29) \(Electronic Codebook\), which encrypts equal input blocks as equal output blocks \(does not provide [cryptographic diffusion](https://en.wikipedia.org/wiki/Confusion_and_diffusion)\). **Don't use it! **It may compromise the entire encryption.
 
@@ -46,7 +46,7 @@ For each block in CTR mode a new unpredictable **keystream block** is generated 
 
 The following diagram explains visually how the **GCM block mode** \(Galois/Counter Mode\) works:
 
-![](/assets/GCM-Galois_Counter_Mode.png)The **GCM** mode uses a **counter**, which is increased for each block and calculated a message **authentication tag** \(MAC code\) after each processed block. The final authentication tag is calculated from the last block. Like all counter modes, GCM works as a **stream cipher**, and so it is essential that a **different IV** is used at the start for each stream that is encrypted. 
+![](/assets/GCM-Galois_Counter_Mode.png)The **GCM** mode uses a **counter**, which is increased for each block and calculated a message **authentication tag** \(MAC code\) after each processed block. The final authentication tag is calculated from the last block. Like all counter modes, GCM works as a **stream cipher**, and so it is essential that a **different IV** is used at the start for each stream that is encrypted.
 
 ### Choosing a Cipher Block Mode
 
@@ -66,7 +66,10 @@ For the **GCM** mode the IV may not be secret and unpredictable, but should be *
 
 In cryptography the concept of "[**authenticated encryption**](https://en.wikipedia.org/wiki/Authenticated_encryption)" \(**AE**\) refers to a scheme to **encrypt data** and simultaneously calculate an **authentication code** \(authentication tag / MAC\), used to provide message **authenticity** and **integrity**. If authenticated encryption scheme is used, at the moment of decryption it will be known if the **decryption is successful** \(i.e. whether the decryption key / password was correct and whether the encrypted data was not tampered\).
 
-Authenticated encryption \(AE\) is related to the similar concept [**authenticated encryption with associated data**](https://en.wikipedia.org/wiki/Authenticated_encryption#Authenticated_encryption_with_associated_data_%28AEAD%29)** \(AEAD\)**, which is a more secure variant of AE. **AEAD** binds associated data \(AD\) to the ciphertext and to the **context** where it's supposed to appear, so that attempts to "cut-and-paste" a valid ciphertext into a different context can be detected and rejected. AEAD is used in scenarios where encrypted and unencrypted data is used together \(e.g. in encrypted networking protocols\) and ensures that the entire data stream is authenticated and integrity protected. In other words, AEAD adds the ability to check the integrity and authenticity of some Associated Data \(AD\), also called "Additional Authenticated Data" \(AAD\), that is not encrypted.
+Authenticated encryption \(AE\) is related to the similar concept [**authenticated encryption with associated data**](https://en.wikipedia.org/wiki/Authenticated_encryption#Authenticated_encryption_with_associated_data_%28AEAD%29)** \(AEAD\)**, which is a more secure variant of AE. **AEAD** binds associated data \(AD\) to the ciphertext and to the **context** where it's supposed to appear, so that attempts to "cut-and-paste" a valid ciphertext into a different context can be detected and rejected. AEAD is used in scenarios where encrypted and unencrypted data is used together \(e.g. in encrypted networking protocols\) and ensures that the entire data stream is authenticated and integrity protected. In other words, AEAD adds  
+ the ability to check the integrity and authenticity of some  
+ Associated Data \(AD\), also called "Additional Authenticated Data"  
+ \(AAD\), that is not encrypted.
 
 Some encryption schemes \(like **ChaCha20-Poly1305** and **AES-GCM**\) provide **integrated authenticated encryption** \(AEAD\), while others \(like **AES-CBC** and **AES-CTR**\) need authentication to be added additionally \(if you need it\).
 
