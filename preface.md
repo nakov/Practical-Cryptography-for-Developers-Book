@@ -62,7 +62,7 @@ Many high-quality **academic cryptography books** exist on the market and some o
 
 * Тhe "[**Handbook of Applied Cryptography**](http://cacr.uwaterloo.ca/hac)" \(by Alfred J. Menezes, Paul C. van Oorschot and Scott A. Vanstone\) is excellent for higher degree students, but is **too academic for developers**. It is available for **free** and explains the theory and the cryptography concepts very well, with lots of high-level math, but it is definitely not for developers. It does not provide working code examples and does not refers the most used crypto libraries in the software industry. Slightly outdated \(published in 2001\).
 
-* Yes another good **academic cryptography book** is "[**Understanding Cryptography: A Textbook for Students and Practitioners**](https://books.google.bg/books?id=f24wFELSzkoC)" \(by Christof Paar, Bart Preneel, Jan Pelzl\). Excellent book on **cryptography concepts**, well organized, with algorithms in pseudocode, but it is not for developers. It does not provide code examples and recommended libraries for developers. Almost up to date \(published in 2010\), not free.
+* Yet another good **academic cryptography book** is "[**Understanding Cryptography: A Textbook for Students and Practitioners**](https://books.google.bg/books?id=f24wFELSzkoC)" \(by Christof Paar, Bart Preneel, Jan Pelzl\). Excellent book on **cryptography concepts**, well organized, with algorithms in pseudocode, but it is not for developers. It does not provide code examples and recommended libraries for developers. Almost up to date \(published in 2010\), not free.
 
 ### Crypto Libraries and Their Documentation
 
@@ -82,15 +82,23 @@ Still, these documentations and manuals are **one of the best free learning reso
 
 * [**Libgcrypt Manual**](https://gnupg.org/documentation/manuals/gcrypt/) - a cryptographic library, written in **C **as part of the GnuPG project. Comes with very light introduction to crypto concepts and a boring API documentation with almost no sample code.
 
-### Practical Cryptography: Paid Books
+### Practical Cryptography - Existing Books
 
 To be honest, I conducted a **comprehensive research of the book market** \(in Nov 2018\) to find the best developer-friendly cryptography books. I was **deeply disappointed**! I almost didn't find any good practical book about **cryptography for programmers**, which I could recommend to a friend-developer \(not scientist or university student\) with confidence that this book is really good and is really what developers need: modern cryptography + simple explained concepts + code examples. I found **very good academic books** and a few **books for developers** \(rich of code examples\) with either not great quality or very focused on certain technology \(like a API reference or library manual\). Some of them were also outdated, but still valuable.
+
+This is the list of **free books** about practical cryptography for developers:
+
+* [**Practical Cryptography With Go**](https://leanpub.com/gocrypto/read) \(by Kyle Isom, published 2015\) - a mini-book on how to use cryptography with the **Go** language, full of code examples. It has **free edition** \(read online\) and **paid editions** \(PDF, EPUB, MOBI\). The book is good, but its scope is limited to describe some concepts very briefly and demonstrate how to use them with code examples. It covers modern symmetric ciphers \(like AES-GCM and XSalsa20-Poly1305\), key derivation \(PBKDF2 and Scrypt\), key exchange and ECDH, digital signatures \(ECDSA and Ed25519\), and few other concepts.
+
+* [**The Laws of Cryptography with Java Code**](http://www.cs.utsa.edu/~wagner/lawsbookcolor/laws.pdf) \(by Neal Wagner, published 2003\) - academic book on cryptography with working Java examples, implementing certain crypto algorithms \(like the AES cipher and the RSA cryptosystem\).
 
 I could list a few developer-friendly** books for practical cryptography** with code examples, which have only paid / commercial versions \(**no free edition**\). Most of them are too deeply bound to certain technology like C, C++, Java or JavaScript and don't explain the concepts well. Others have different focus. Some are outdated, some are quite new. This is the list of what I found from my research about developer-friendly crypto books:
 
 * [**Serious Cryptography: A Practical Introduction to Modern Encryption**](https://books.google.bg/books?id=hLcrDwAAQBAJ) \(by by Jean-Philippe Aumasson\) - a strong book on cryptography, which combines academic approach with more practical approach, with some code examples in Python, but not for all concepts. Recent \(published in 2017\). Explains the modern cryptographic concepts and crypto-suits like AES-GCM, ChaCha20-Poly1305 and quantum-safe cryptography. This is maybe the best book of what I found.
 
 * [**Secure Programming Cookbook for C and C++**](https://books.google.bg/books?id=aL3P3eJdiREC) \(by John Viega, Matt Messier\) - provides secure coding guidelines for **C++** developers, including topics from cryptography \(hashes, MAC codes, symmetric ciphers, RSA and DSA, random numbers\), with code examples \(published in 2009, slightly outdated\).
+
+* [**Cryptography for Developers**](https://books.google.bg/books?id=VaiYIZHduXQC) \(by Tom Denis\) - provides solid fundamentals in cryptography and crypto algorithms, along with implementations in **C** and **assembler** with lots of code examples. Covers hashes, HMAC, AES, slightly RSA and ECC. Slightly outdated \(published in 2007\).
 
 * [**Beginning Cryptography with Java**](https://books.google.bg/books?id=WLLAD2FKH3IC) \(by David Hook\) - a reference for JCA, JCE, JSSE and the Bouncy Castle crypto library with lots of code examples in Java \(published in 2005, outdated\).
 
