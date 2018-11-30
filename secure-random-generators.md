@@ -1,6 +1,6 @@
 # Secure Random Number Generators, PRNG and CSPRNG
 
-In cryptography the **randomness** \(entropy\) plays very important role. In many algorithms, we need **random \(i.e. unpredictable\) numbers**. If these numbers are not truly random, the algorithms will be compromised.
+In cryptography the **randomness** \(entropy\) plays very important role. In many algorithms, we need **random \(i.e. unpredictable\) numbers**. If these numbers are not unpredictable, the algorithms will be compromised.
 
 For example, assume we need a **secret key**, that will protect our crypto assets. This secret key should be **randomly generated** in a way that nobody else should be able to generate or have the same key. If we generate the key from a **true random generator**, the it will be **unpredictable** and the system will be secure. Therefore "secure random" means "**unpredictable random**".
 
