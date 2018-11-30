@@ -66,6 +66,8 @@ Many high-quality **academic cryptography books** exist on the market and some o
 
 * Yet another good **academic cryptography book** is "[**Understanding Cryptography: A Textbook for Students and Practitioners**](https://books.google.bg/books?id=f24wFELSzkoC)" \(by Christof Paar, Bart Preneel, Jan Pelzl\). Excellent book on **cryptography concepts**, well organized, with algorithms in pseudocode, but it is not for developers. It does not provide code examples and recommended libraries for developers. Almost up to date \(published in 2010\), not free.
 
+* Yet another **academic book **on cryptographical concepts: "[**Practical Cryptography  **](https://books.google.bg/books?id=ThVRAAAAMAAJ)" \(by Niels Ferguson and Bruce Schneier, 2003\). Provides deep concepts and explanations of the popular crypto algorithms, along with pseudo-code. Slightly outdated \(published in 2003\).
+
 ### Crypto Libraries and Their Documentation
 
 Some **crypto libraries** try to provide **documentation** with crypto concepts and code examples, but they are typically **limited**, sometimes unfinished and not always consistently organized, with a lot of missing points and can serve to help you using certain library, but are not the best source to learn the cryptographic concepts.
