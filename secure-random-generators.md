@@ -12,7 +12,8 @@ In computer science **random numbers** usually come from a **pseudo-random numbe
 
 ## Pseudo-Random Number Generators \(PRNG\)
 
-A pseudorandom number generator \(**PRNG**\) is used to stretch a small amount of **initial randomness** into a large amount of **pseudorandomness**, typically for use in cryptosystems. Note than **PRNGs** are not cryptographically secure and are different from **CSPRNGs**.
+A pseudorandom number generator \(**PRNG**\) is used to stretch a small amount of **initial randomness  
+** into a large amount of **pseudorandomness**, typically for use in cryptosystems. Note than **PRNGs** are not cryptographically secure and are different from **CSPRNGs**.
 
 **PRNGs** are functions that start from some **initial entropy** \(seed\) and calculate the next random number by some calculation which is unpredictable without knowing the seed. Such calculations are called **pseudo-random functions**.
 
@@ -116,7 +117,10 @@ Many design have been proposed to construct CSPRNG algorithms:
 
 * **CSPRNG** based on secure **block ciphers** in counter mode, on **stream ciphers** or on secure **secure hash functions**.
 * **CSPRNG** based on number theory, relying on the difficulty of the integer factorization problem \(IFP\), the discrete logarithm problem \(DLP\) or the elliptic-curve discrete logarithm problem \(ECDLP\).
-* 
+* **CSPRNG** based on special design for cryptographic secure randomness, such as [Yarrow algorithm](https://en.wikipedia.org/wiki/Yarrow_algorithm) and [Fortuna](https://en.wikipedia.org/wiki/Fortuna_%28PRNG%29), which were used in MacOS and and FreeBSD.
+
+Most **CSPRNG** use a combination of **entropy** from the operating system and high-quality **PRNG** generator and they often "**reseed**", which means that when new entropy comes from the OS \(e.g. from user input, system interruptions, disk I/O or hardware random generators\), the underlying PRNG changes its internal state based on the new entropy bits coming. This constant reseeding over the time makes the CSPRNG really hard to predict and analyse.
+
 ## Conclusion: Use Secure Random Generator
 
 Always use **cryptographically secure random generator libraries**, like the `java.security.SecureRandom` in Java and the `secrets` library in Python:
