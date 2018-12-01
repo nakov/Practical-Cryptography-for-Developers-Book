@@ -1,6 +1,6 @@
 # Hash Functions - Examples in Python
 
-In this section we shall provide a few **examples **about calculating cryptographic hash functions in Python.
+In this section we shall provide a few **examples** about calculating cryptographic hash functions in Python.
 
 ## Calculating Cryptographic Hash Functions in Python
 
@@ -25,7 +25,7 @@ ripemd160 = hashlib.new('ripemd160', data).digest()
 print("RIPEMD-160:", binascii.hexlify(ripemd160))
 ```
 
-The expected **output **from the above example looks like this:
+The expected **output** from the above example looks like this:
 
 ```
 SHA-256:    b'2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
@@ -51,7 +51,7 @@ keccak256 = keccak.new(data=data, digest_bits=256).digest()
 print("Keccak256: ", binascii.hexlify(keccak256))
 ```
 
-The **output **from the above examples is:
+The **output** from the above examples is:
 
 ```
 Keccak256:  b'1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8'

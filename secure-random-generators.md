@@ -1,22 +1,25 @@
 # Secure Random Number Generators, PRNG and CSPRNG
 
-In cryptography the **randomness** \(entropy\) plays very important role. In many algorithms, we need **random \(i.e. unpredictable\) numbers**. If these numbers are not truly random, the algorithms will be compromised.
+In cryptography the **randomness** \(entropy\) plays very important role. In many algorithms, we need **random \(i.e. unpredictable\) numbers**. If these numbers are not unpredictable, the algorithms will be compromised.
 
-For example, assume we need a **secret key**, that will protect our crypto assets. This secret key should be **randomly generated** in a way that nobody else should be able to generate or have the same key. If we generate the key from a **true random generator**, the it will be **unpredictable** and the system will be secure. Therefore "secure random" means "**unpredictable random**".
+For example, assume we need a **secret key**, that will protect our financial assets. This secret key should be **randomly generated** in a way that nobody else should be able to generate or have the same key. If we generate the key from a **secure random generator**, the it will be **unpredictable** and the system will be secure. Therefore "secure random" means simply "**unpredictable random**".
 
 Let's discuss in bigger detail the **random numbers** in computer science and their role in **cryptography**, as well as pseudo-random numbers generators \(**PRNG**\), secure pseudo-random generators \(**CSPRNG**\) and some guidelines about how developers should generate and use random numbers in their code.
 
-# Random Generators and Cryptography
+# Random Generators
 
-In computer science **random numbers** usually come from a **pseudo-random number generators** \(PRNG\), initialized by some unpredictable initial randomness \(**entropy**\).
+In computer science **random numbers** usually come from a **pseudo-random number generators** \(PRNG\), initialized by some unpredictable initial randomness \(**entropy**\). In cryptography secure PRNGs are used, known as **CSPRNG**, which typically combined entropy with PRNG and other techniques to make the generated randomness **unpredictable**.
 
-## Pseudo-Random Number Generators
+## Pseudo-Random Number Generators \(PRNG\)
 
-**PRNGs** are functions that start from some **initial entropy** \(seed\) and calculate the next random number by some calculation which is unpredictable without the seed. Such calculations are called **pseudo-random functions**.
+A pseudorandom number generator \(**PRNG**\) is used to stretch a small amount of **initial randomness    
+** into a large amount of **pseudorandomness**, typically for use in cryptosystems. Note than **PRNGs** are not cryptographically secure and are different from **CSPRNGs**.
+
+**PRNGs** are functions that start from some **initial entropy** \(seed\) and calculate the next random number by some calculation which is unpredictable without knowing the seed. Such calculations are called **pseudo-random functions**.
 
 ![](/assets/pseudo-random-function.png)
 
-Pseudo-random functions usually use an internal **state**. At the start, the state is initialized by an **initial seed**. When the **next random number** is generated, it is calculated from the internal state \(using some computation or formula\), then the internal **state** of the pseudo-random function is changed \(using some computation or formula\). When the **next random number** is generated, it is again calculated based on the internal **state** of the function and this state is again changed and so on.
+Pseudo-random functions \(which are not secure for cryptography\) usually use an internal **state**. At the start, the state is initialized by an **initial seed**. When the **next random number** is generated, it is calculated from the internal state \(using some computation or formula\), then the internal **state** of the pseudo-random function is changed \(using some computation or formula\). When the **next random number** is generated, it is again calculated based on the internal **state** of the function and this state is again changed and so on.
 
 This process in its simplest form can be implemented as follows:
 
@@ -28,7 +31,9 @@ netNum():
   return state
 ```
 
-Of course, the **HMAC** function can be changed by some **cryptographic hash** function or another mathematical transformation like the [**Mersenne Twister**](https://en.wikipedia.org/wiki/Mersenne_Twister), but the main idea stays the same: pseudo-random generators have internal **state**, initialized with some **initial randomness** and over the time **change** their internal state and **generate pseudo-random numbers**, based on the current state. Good random number generators should be **fast** and should generate **statistical randomness** \(see the [Diehard tests](https://en.wikipedia.org/wiki/Diehard_tests)\), i.e. all numbers should have the same chance to be generated over the time.
+Of course, the **HMAC** function can be changed by some **cryptographic hash** function or another mathematical transformation like the [**Mersenne Twister**](https://en.wikipedia.org/wiki/Mersenne_Twister) \(which is not cryptographically secure\), but the main idea stays the same: pseudo-random generators have internal **state**, initialized with some **initial randomness** and over the time **change** their internal state and **generate pseudo-random numbers**, based on the current state.
+
+Good random number generators should be **fast** and should generate **statistical randomness** \(see the [Diehard tests](https://en.wikipedia.org/wiki/Diehard_tests)\), i.e. all numbers should have the same chance to be generated over the time. This is not sufficient cryptography, so CSPRNG have higher requirements.
 
 The above idea to generate random pseudo-numbers based on **HMAC\(key + counter\)**, with some complications, is known as the [**HMAC\_DRGB algorithm**](https://www.cs.cmu.edu/~kqy/resources/thesis.pdf), described in the security standard [NIST 800-90A](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-90a.pdf).
 
@@ -95,9 +100,26 @@ If you run this code through a **debugger** or in a slow environment, the produc
 
 Basically, when the initial random seed is initialized with a predictable number like the current time, crackers can **try all possibilities within the range of +/- 5 seconds** and find the exact initial seed and then compromise the security.
 
-## Randomness and Cryptography
+# Randomness and Cryptography
 
 Remember that **cryptography cannot work without unpredictable randomness**! If your random generator is compromised, it will generate predictable numbers and crackers will be able to decrypt your communication, reveal your private keys, tamper your digital signatures, etc. As a developer, you should always care how random numbers are generated in the cryptographic libraries you use.
+
+## CSPRNG \(Cryptography Secure Random Number Generators\)
+
+By definition **CSPRNG** \(Cryptography Secure Random Number Generators\) are a pseudo-random number generators \(PRNG\) with properties that make them **suitable for use in cryptography**. There are two major requirements for a PRNG to be a CSPRNG:
+
+* Satisfy the [**next-bit test**](https://en.wikipedia.org/wiki/Next-bit_test): if someone knows all **k** bits from the start of the PRNG, he would be unable to predict the bit **k+1** using reasonable computing resources.
+* Withstand the [**state compromise extensions**](https://www.owasp.org/index.php/PRNG_state_compromise_extension_attack): if an attacker guesses the internal state of the PRNG or it is revealed somehow, the attacker should be unable to reconstruct all previous random numbers prior to the revelation.
+
+The **entropy** in the operating system is usually of **limited amount** and waiting for more entropy is slow and unpractical. Most cryptographic applications use **CSPRNG**, which "stretch" the available entropy from the operating system into **more bits**, required for cryptographic purposes and comply to the above CSPRNG requirements.
+
+Many design have been proposed to construct CSPRNG algorithms:
+
+* **CSPRNG** based on secure **block ciphers** in counter mode, on **stream ciphers** or on secure **secure hash functions**.
+* **CSPRNG** based on number theory, relying on the difficulty of the integer factorization problem \(IFP\), the discrete logarithm problem \(DLP\) or the elliptic-curve discrete logarithm problem \(ECDLP\).
+* **CSPRNG** based on special design for cryptographic secure randomness, such as [Yarrow algorithm](https://en.wikipedia.org/wiki/Yarrow_algorithm) and [Fortuna](https://en.wikipedia.org/wiki/Fortuna_%28PRNG%29), which were used in MacOS and and FreeBSD.
+
+Most **CSPRNG** use a combination of **entropy** from the operating system and high-quality **PRNG** generator and they often "**reseed**", which means that when new entropy comes from the OS \(e.g. from user input, system interruptions, disk I/O or hardware random generators\), the underlying PRNG changes its internal state based on the new entropy bits coming. This constant reseeding over the time makes the CSPRNG really hard to predict and analyse.
 
 ## Conclusion: Use Secure Random Generator
 
@@ -109,4 +131,8 @@ print(secrets.randbelow(int(1e50)))
 ```
 
 The above code does not depend on the current time and basically generates an **unpredictable random number**, based on the entropy collected by the operating system.
+
+## 
+
+
 
