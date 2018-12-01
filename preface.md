@@ -161,4 +161,3 @@ Play with the **code examples**: run them, modify them, break them, explore and 
 Try to solve the **practical exercises** in chapter. Developers **learn best by writing code** and this is what I recommend. You are given well described exercise problems, with clear input and output, covering well the content after each major section.
 
 Now, start your developer **journey into the modern practical cryptography**. Enjoy the book!
-
