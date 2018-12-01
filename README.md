@@ -8,6 +8,8 @@ A modern **practical book** about **cryptography for developers** with code exam
 
 Author: **Svetlin Nakov**, PhD - [http://www.nakov.com](http://www.nakov.com)
 
+Contributors: Milen Stefanov, Marina Shideroff
+
 ISBN: **978-619-00-0870-5** (9786190008705)
 
 This book is free and open-source, published under the **[MIT license](https://opensource.org/licenses/MIT)**.
