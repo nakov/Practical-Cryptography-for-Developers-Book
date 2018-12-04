@@ -1,6 +1,6 @@
 # Hashing and Cryptographic Hash Functions
 
-In computer programming **hash functions **map text (or other data) to integer numbers. Usually different inputs maps to different outputs, but sometimes a **collision** may happen (different input with the same output).
+In computer programming **hash functions **map text \(or other data\) to integer numbers. Usually different inputs maps to different outputs, but sometimes a **collision** may happen \(different input with the same output\).
 
 ## Hashing
 
@@ -14,7 +14,7 @@ Hash functions are **irreversible by design**, which means that there is no fast
 
 In programming **hash functions** are used in the implementation of the data structure "**hash-table**" \(associative array\) which maps values of certain input type to values of another type, e.g. map product name \(text\) to product price \(decimal number\).
 
-A **naive hash function **is just to sum the bytes of the input data / text. It causes a lot of collisions, e.g. `hello` and `ehllo` will have the same hash code. **Better hash functions** may use the [Merkle–Damgård construction](https://en.wikipedia.org/wiki/Merkle%E2%80%93Damg%C3%A5rd_construction) scheme, which takes the first byte as **state**, then **transforms the state** \(e.g. multiplies it by a prime number like 31\), then **adds the next byte** to the state, then again transforms the state and adds the next byte, etc. This significantly reduces the rate of collisions and produces better distribution.
+A **naive hash function **is just to sum the bytes of the input data / text. It causes a lot of collisions, e.g. `hello` and `ehllo` will have the same hash code. **Better hash functions** may use the [Merkle–Damgård construction](https://en.wikipedia.org/wiki/Merkle–Damgård_construction) scheme, which takes the first byte as **state**, then **transforms the state** \(e.g. multiplies it by a prime number like 31\), then **adds the next byte** to the state, then again transforms the state and adds the next byte, etc. This significantly reduces the rate of collisions and produces better distribution.
 
 ## Cryptographic Hash Functions
 
@@ -31,6 +31,17 @@ SHA-256("hello") =
   "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
 ```
 
+The above SHA-256 calculation can be coded in Python like this:
+
+```py
+import hashlib, binascii
+
+sha256hash = hashlib.sha256(b'hello').digest()
+print("SHA-256('hello') = ", binascii.hexlify(sha256hash))
+```
+
+Run the above example code: [https://repl.it/@nakov/SHA-256hello](https://repl.it/@nakov/SHA-256hello).
+
 There is no efficient algorithm to find the input message \(in the above example `hello`\) from its hash value \(in the above example `2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824`\). It is well-known that cryptographic hash functions **cannot be reversed **back, so they are used widely to encode an input without revealing it \(e.g. encode a private key to a blockchain address without revealing the key\).
 
 As another **example**, we can take the cryptographic hash function `SHA3-512` and calculate the hash value of the same text message `hello`:
@@ -46,3 +57,4 @@ SHA3-512("hello") = "75d527c368f2efe848ecf6b073a36767800805e9eef2b1857d5f984f036
 ![](/assets/hash-functions-online.png)
 
 **Cryptographic hash functions **are widely used in cryptography, in computer programming and in blockchain systems.
+

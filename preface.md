@@ -152,6 +152,8 @@ You are free to adopt the code examples to other languages. At the end of the bo
 
 Most **application developers** \(e.g. Web devs, back-end devs, mobile devs and front-end devs\) **use higher level languages** \(like JS, Python, C\#, Java, PHP and Go\), but all of them will **understand the Python code** from the examples. If the code was given in C, it would be longer, more complex and less readable.
 
+**Python is widely supported** everywhere \(in Linux, Windows, Mac, on mobile devices and microcontrollers\). All examples can also run online in a virtual machine in **online Python environments** such as: [**Repl.it**](https://repl.it/languages/python3) and [**PythonAnywhere**](https://www.pythonanywhere.com).
+
 ## How to Read This Book?
 
 The recommended way to read this is **topic by topic** \(from the start to the end\). You may skip chapters and sections that you don't like, but please pass through them, because the content has internal dependencies.
@@ -161,3 +163,4 @@ Play with the **code examples**: run them, modify them, break them, explore and 
 Try to solve the **practical exercises** in chapter. Developers **learn best by writing code** and this is what I recommend. You are given well described exercise problems, with clear input and output, covering well the content after each major section.
 
 Now, start your developer **journey into the modern practical cryptography**. Enjoy the book!
+
