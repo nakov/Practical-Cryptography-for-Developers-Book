@@ -13,7 +13,7 @@ To install the **official SPHINCS+ signature** library [**PySPX**](https://githu
 pip install pyspx
 ```
 
-The `pyspx` package may not compile in Windows \(using the Visual C++ compiler\), so **Linux is recommended** \(or a Python virtual machine like [PythonAnywhere](https://www.pythonanywhere.com)\).
+The `pyspx` package may not compile in Windows \(using the Visual C++ compiler\), so **Linux is recommended** \(or a Python virtual machine like [PythonAnywhere](https://www.pythonanywhere.com) or [Repl.it](https://repl.it/languages/python3)\).
 
 Let's demonstrate the **SPHINCS+ signature **with the `shake256_128f` parameter set \(SPHINCS+, using SHAKE256-128 as hash function and in fast mode\), using this Python example:
 
