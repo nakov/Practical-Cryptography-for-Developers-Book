@@ -17,7 +17,7 @@ sha256hash = hashlib.sha256(b'hello').digest()
 print("SHA-256('hello') = ", binascii.hexlify(sha256hash))
 ```
 
-Run the above example code: [https://repl.it/@nakov/SHA3-256hello](https://repl.it/@nakov/SHA3-256hello).
+Run the above code example: [https://repl.it/@nakov/SHA3-256hello](https://repl.it/@nakov/SHA3-256hello).
 
 ## Hashing \(in Software Engineering\)
 
@@ -57,7 +57,7 @@ sha256hash = hashlib.sha256(b'hello').digest()
 print("SHA-256('hello') = ", binascii.hexlify(sha256hash))
 ```
 
-Run the above example code: [https://repl.it/@nakov/SHA-256hello](https://repl.it/@nakov/SHA-256hello).
+Run the above code example: [https://repl.it/@nakov/SHA-256hello](https://repl.it/@nakov/SHA-256hello).
 
 There is no efficient algorithm to find the input message \(in the above example `hello`\) from its hash value \(in the above example `2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824`\). It is well-known that cryptographic hash functions **cannot be reversed **back, so they are used widely to encode an input without revealing it \(e.g. encode a private key to a blockchain address without revealing the key\).
 
