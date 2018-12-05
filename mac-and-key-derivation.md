@@ -23,7 +23,7 @@ The above HMAC-SHA256 calculation can be coded in Python like this:
 ```py
 import hashlib, hmac, binascii
 
-mac = hmac.new(b'key', b'some smg', hashlib.sha256).digest()
+mac = hmac.new(b'key', b'some msg', hashlib.sha256).digest()
 print(binascii.hexlify(mac))
 ```
 
