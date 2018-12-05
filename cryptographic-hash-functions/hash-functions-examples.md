@@ -25,6 +25,8 @@ ripemd160 = hashlib.new('ripemd160', data).digest()
 print("RIPEMD-160:", binascii.hexlify(ripemd160))
 ```
 
+Run the above code example: [https://repl.it/@nakov/Hashes-SHA2-SHA3-BLAKE2-RIPEMD](https://repl.it/@nakov/Hashes-SHA2-SHA3-BLAKE2-RIPEMD).
+
 The expected **output** from the above example looks like this:
 
 ```
@@ -46,10 +48,13 @@ Now write some Python code to calculate a **Keccak-256** hash:
 
 ```
 from Crypto.Hash import keccak
+import binascii
 
-keccak256 = keccak.new(data=data, digest_bits=256).digest()
+keccak256 = keccak.new(data=b'hello', digest_bits=256).digest()
 print("Keccak256: ", binascii.hexlify(keccak256))
 ```
+
+Run the above code example: [https://repl.it/@nakov/Keccak256](https://repl.it/@nakov/Keccak256).
 
 The **output** from the above examples is:
 
