@@ -6,8 +6,8 @@ $(function() {
 			let codeBox = $(link).parent().prev();
 			if (codeBox.is("pre")) {
 				// A code box is found just before the code link --> inject the [Run] button
-				let runButton = $("<a href='#' class='run-code-button' style='float:right'>[Run]</a>");
-				let loadingBox = $("<span class='run-code-loading' style='float:right;display:none'>[Loading...]</span>");
+				let runButton = $("<a href='#' class='run-code-button' style='float:right'>Run</a>");
+				let loadingBox = $("<span class='run-code-loading' style='float:right;display:none'>Loading …</span>");
 				runButton.click(function() {
 					// Replace the code box with the embedded REPL box
 					loadingBox.show();
