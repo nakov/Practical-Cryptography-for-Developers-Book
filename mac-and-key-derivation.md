@@ -12,6 +12,23 @@ auth_code = MAC(key, msg)
 
 Typically, it behaves **like a hash function**: a minor change in the message or in the key results to totally different **MAC value**. It should be practically infeasible to change the key or the message and get the same **MAC value**. MAC codes, like hashes, are **irreversible**: it is impossible to recover the original message or the key from the MAC code. MAC algorithms are also known as "**keyed hash functions**", because they behave like a hash function with a key.
 
+For example, the MAC code can be calculated by the **HMAC-SHA256** algorithm like this:
+
+```py
+HMAC-SHA256('key', 'some msg') = 32885b49c8a1009e6d66662f8462e7dd5df769a7b725d1d546574e6d5d6e76ad
+```
+
+The above HMAC-SHA256 calculation can be coded in Python like this:
+
+```py
+import hashlib, hmac, binascii
+
+mac = hmac.new(b'key', b'some smg', hashlib.sha256).digest()
+print(binascii.hexlify(mac))
+```
+
+Run the above code example: [https://repl.it/@nakov/HMAC-SHA256](https://repl.it/@nakov/HMAC-SHA256).
+
 The MAC code is **digital authenticity code**, like a **digital signature**, but with **pre-shared key**. We shall learn more about digital signing and digital signatures later.
 
 ## MAC Algorithms
