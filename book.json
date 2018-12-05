@@ -5,7 +5,8 @@
         "anchors",
         "expandable-chapters-small",
         "katex",
-        "sitemap"
+        "sitemap",
+        "scripts"
     ],
     "pluginsConfig": {
         "ga": {
@@ -17,6 +18,11 @@
         },
         "sitemap": {
             "hostname": "https://cryptobook.nakov.com/"
+        },
+        "scripts": {
+            "files": [
+                "./assets/js/repl.it-code-runner.js"
+            ]
         }
     },
     "pdf": {
