@@ -1,4 +1,4 @@
-$(function() {
+gitbook.events.bind("page.change", function() {
 	let runCodeLinks = $("p:contains('Run the above code example:') a");
 	for (let link of runCodeLinks) {
 		if (typeof(link.href) == "string" && link.href.startsWith("https://repl.it/")) {
