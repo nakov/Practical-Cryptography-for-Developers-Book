@@ -55,7 +55,7 @@
     max-width: 960px;
 }
 
-a.run-code-button:hover {
+a.run-code-button:hover, a.run-code-button:active {
     background: #98d598;
     text-decoration: none;
 }
