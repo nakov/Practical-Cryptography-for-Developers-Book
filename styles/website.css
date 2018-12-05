@@ -64,7 +64,7 @@ a.run-code-button {
     float: right;
     background: #cae7ca;
     border-radius: 4px;
-    padding: 3px 8px;
+    padding: 3px 10px;
     text-shadow: 0px 0px 2px white;
     border: 1px solid #add2ad;
     margin-top: 3px;
@@ -74,7 +74,7 @@ span.run-code-loading {
     float: right;
     background: #ffd02b;
     border-radius: 4px;
-    padding: 3px 8px;
+    padding: 3px 10px;
     text-shadow: 0px 0px 2px white;
     border: 1px solid #eec036;
     margin-top: 3px;
