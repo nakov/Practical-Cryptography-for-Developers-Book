@@ -51,6 +51,6 @@
     white-space: pre-wrap;
 }
 
-.page-wrapper.page-inner {
+.page-wrapper .page-inner {
     max-width: 960px;
 }
