@@ -14,7 +14,7 @@ Typically, it behaves **like a hash function**: a minor change in the message or
 
 For example, the MAC code can be calculated by the **HMAC-SHA256** algorithm like this:
 
-```py
+```
 HMAC-SHA256('key', 'some msg') = 32885b49c8a1009e6d66662f8462e7dd5df769a7b725d1d546574e6d5d6e76ad
 ```
 
