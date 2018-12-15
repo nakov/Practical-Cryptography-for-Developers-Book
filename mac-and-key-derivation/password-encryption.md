@@ -1,8 +1,10 @@
-# Password Encryption: Encrypting User Passwords
+# Secure Password Storage and Password-Based Authentication 
 
-In software development we constantly use **password-based user authentication**. For example, if we have a Web site, we typically have admin panel, accessible after **login**, based on **username** + **password**.
+In software development we constantly use **password-based user authentication** and we need to **store user passwords securely** in a way that users can sign-up, authenticate and change their password, but in the same time attackers cannot decrypt the stored passwords back to clear text values, even if they manage to get access to the database holding the user accounts.
 
-Developers often need to keep **user passwords** in the database for their sites, apps or other systems. There are many ways to implement **password-based authentication**, most popular given in the table below:
+If we develop a Web site or Web app, we typically have admin panel, accessible after **login**, based on **username** + **password**. It is similar for mobile apps, web services and other password-protected systems: all they need **secure password storage** \(secure password management / strongly encrypted password storage\).
+
+Developers often store the **user passwords** for their sites, apps or other systems in a **database**, just like any other user data, but most systems apply some kind of **hashing**, **encryption** or **password authentication scheme**. There are many ways to implement the **password storage** for password-based authentication. The most popular of them are given in the table below:
 
 | **Approach** | **Security** | **Comments** |
 | :--- | :--- | :--- |
@@ -11,7 +13,7 @@ Developers often need to keep **user passwords** in the database for their sites
 | Salted hashed passwords | Average | Vulnerable to GPU-based and ASIC-based password cracking |
 | Secure KDF function \(like Argon2\) | High | Recommended, use strong KDF parameters |
 
-Let's review them and discuss the good and bad practices.
+Let's review these **password storage methods** and discuss their **level of security**, their strong and weak sides.
 
 ## Clear-Text Passwords - Never Do Anti-Pattern
 
@@ -29,7 +31,7 @@ A relative easy and **relatively insecure** method for password-based authentica
 
 * **Avoid this!** It is highly **insecure** method. Why? Because hashes are vulnerable to **dictionary attacks**.
 * To **check the password**, just compare the hash\(password for checking\) with the password hash from the database.
-* Crackers who gain access to the database, can use a **dictionary** holding the hashes of the most commonly used 10 million passwords and most passwords will be decrypted. The dictionary attack process is **extremely fast**, because it compares the hashes from the dictionary with the password hash \(trivial **string compare**\).
+* Crackers who gain access to the database, can use a **dictionary** holding the hashes of the most commonly used 10-20 million passwords and most of the passwords will be decrypted. The dictionary attack process is **extremely fast**, because it compares the hashes from the dictionary with the password hash \(trivial **string compare**\).
 * Search in Internet for [free **dictionaries** / wordlists for dictionary attack](https://www.google.com/search?q=password+cracking+dictionary+download). 
 
 ## Salted Hashed Passwords - Secure, but Not Enough
@@ -50,4 +52,6 @@ The most complicated and **most secure** method for password-based authenticatio
 * This method is **resistant to most attacks** and is considered as standard in the software industry. It is as **secure** as the KDF function with the selected KDF parameters.
 
 **Conclusion**: use secure KDF functions like **Argon2** and **Scrypt** to keep encrypted passwords in the database. Never use plain-text passwords!
+
+
 
