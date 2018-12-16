@@ -38,6 +38,8 @@ key = pbkdf2.PBKDF2(password, passwordSalt).read(32)
 print('AES encryption key:', binascii.hexlify(key))
 ```
 
+Run the above code example: https://repl.it/@nakov/AES-CTR
+
 The above code **derives a 256-bit key** using the **PBKDF2** key derivation algorithm from the password `s3cr3t*c0d3`. It uses a random password derivation **salt** \(128-bit\). This salt should be stored in the output, together with the ciphertext, because without it the decryption key cannot be derived again and the decryption will be impossible.
 
 The output from the above code may look like this:
