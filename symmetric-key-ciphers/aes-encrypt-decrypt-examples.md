@@ -38,7 +38,7 @@ key = pbkdf2.PBKDF2(password, passwordSalt).read(32)
 print('AES encryption key:', binascii.hexlify(key))
 ```
 
-Run the above code example: https://repl.it/@nakov/AES-CTR
+Run the above code example: [https://repl.it/@nakov/AES-CTR](https://repl.it/@nakov/AES-CTR)
 
 The above code **derives a 256-bit key** using the **PBKDF2** key derivation algorithm from the password `s3cr3t*c0d3`. It uses a random password derivation **salt** \(128-bit\). This salt should be stored in the output, together with the ciphertext, because without it the decryption key cannot be derived again and the decryption will be impossible.
 
@@ -64,6 +64,8 @@ ciphertext = aes.encrypt(plaintext)
 print('Encrypted:', binascii.hexlify(ciphertext))
 ```
 
+Run the above code example: https://repl.it/@nakov/AES-Encryption.
+
 The output from the above code may look like this:
 
 ```
@@ -88,6 +90,8 @@ decrypted = aes.decrypt(ciphertext)
 print('Decrypted:', decrypted)
 ```
 
+Run the above code example: https://repl.it/@nakov/AES-Decryption.
+
 The output of the above should be like this:
 
 ```
@@ -103,6 +107,8 @@ key = os.urandom(32)   # random decryption key
 aes = pyaes.AESModeOfOperationCTR(key, pyaes.Counter(iv))
 print('Wrongly decrypted:', aes.decrypt(ciphertext))
 ```
+
+Run the above code example: https://repl.it/@nakov/AES-Decryption-wrong-key.
 
 The output of the above incorrect decryption attempt might be like this:
 
