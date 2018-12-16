@@ -213,6 +213,7 @@ for k in range(0, 25):
     print(f"{k} * G = ({p.x}, {p.y})")
 ```
 
+Run the above code example:  https://repl.it/@nakov/EC-points.
 The above code demonstrates the **EC multiplication**. It multiplies the generator point **G** by 0, 1, 2, ..., 24. The output from the above program is as follows:
 
 ```
