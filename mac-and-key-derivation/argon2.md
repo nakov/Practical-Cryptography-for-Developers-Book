@@ -47,6 +47,8 @@ hash = argon2Hasher.hash("s3kr3tp4ssw0rd")
 print("Derived key:", hash)
 ```
 
+Run the above code example: https://repl.it/@nakov/Argon2
+
 The **Argon2** calculation takes several **input configuration settings**: **time\_cost** \(number of iterations\), **memory\_cost** \(memory to use in KB\), **parallelism** \(how many parallel threads to use\), **hash\_len** \(the size of the derived key\), **salt\_len** \(the size of the random generated salt, typically 128 bits / 16 bytes\).
 
 Sample **output** from the above code execution:
