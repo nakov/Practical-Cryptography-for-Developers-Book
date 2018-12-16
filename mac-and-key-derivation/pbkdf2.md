@@ -56,6 +56,8 @@ key = pbkdf2_hmac("sha256", passwd, salt, 50000, 32)
 print("Derived key:", binascii.hexlify(key))
 ```
 
+Run the above code example: https://repl.it/@nakov/PBKDF2.
+
 The **PBKDF2** calculation function takes several **input parameters**: **hash function** for the HMAC, the **password** \(bytes sequence\), the **salt** \(bytes sequence\), **iterations** count and the output **key length** \(number of bytes for the derived key\).
 
 The **output** from the above code execution is the following:
