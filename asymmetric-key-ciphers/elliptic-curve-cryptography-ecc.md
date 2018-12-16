@@ -270,6 +270,7 @@ for k in range(0, 25):
     print(f"{k} * G' = ({p.x}, {p.y})")
 ```
 
+Run the above code example: https://repl.it/@nakov/EC-points-by-generator-point.
 The output shows that the subgroup order of the new generator point is not 18, but is **3**. This is possible, because 18 is **not prime**. It is clear from the output, that **3** \* **G'** = **_infinity_** and the obtained subgroup order is **3**:
 
 ```
@@ -308,6 +309,7 @@ nG = curve.field.n * curve.g
 print(f"n * G = ({nG.x}, {nG.y})")
 ```
 
+Run the above code example: https://repl.it/@nakov/EC-points-in-real-world.
 The output is also similar to the previous example:
 
 ```
@@ -343,6 +345,7 @@ print("private key:", privKey)
 print("public key:", pubKey)
 ```
 
+Run the above code example: https://repl.it/@nakov/EC-points-private-public-key.
 The above code will produce output like this:
 
 ```

@@ -13,7 +13,7 @@ msg = b"sample message"
 print(binascii.hexlify(hmac_sha256(key, msg)))
 ```
 
-Run the above code example:** **[https://repl.it/@nakov/HMAC-SHA256-Examples](https://repl.it/@nakov/HMAC-SHA256-Examples**.**).
+Run the above code example:** **https://repl.it/@nakov/HMAC-SHA256-Examples.
 
 The above code will calculate and print the expected HMAC code \(like in our previous example\):
 
