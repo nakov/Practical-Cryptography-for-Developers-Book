@@ -12,7 +12,7 @@ In computer science **random numbers** usually come from a **pseudo-random numbe
 
 ## Pseudo-Random Number Generators \(PRNG\)
 
-A pseudorandom number generator \(**PRNG**\) is used to stretch a small amount of **initial randomness    
+A pseudorandom number generator \(**PRNG**\) is used to stretch a small amount of **initial randomness      
 ** into a large amount of **pseudorandomness**, typically for use in cryptosystems. Note than **PRNGs** are not cryptographically secure and are different from **CSPRNGs**.
 
 **PRNGs** are functions that start from some **initial entropy** \(seed\) and calculate the next random number by some calculation which is unpredictable without knowing the seed. Such calculations are called **pseudo-random functions**.
@@ -70,6 +70,8 @@ import random
 print(random.randrange(1000000, 9999999))
 ```
 
+Run the above code example: https://repl.it/@nakov/Random.
+
 The above code is assumed to generate a random number, but this number may be **predictable**. This is because the `random` library in Python \(in its old versions\) initializes the random generator **seed** by the **current time**. Thus, if you know the current time at the machine generating the random number \(obviously you know this roughly\), you will be able to predict the random seed and to predict the random numbers generated.
 
 To better illustrate this, look at this more explicit example which generates two random 50-digit integers:
@@ -86,6 +88,8 @@ r2 = random.randrange(1e49, 1e50-1)
 print(r1)
 print(r2)
 ```
+
+Run the above code example: https://repl.it/@nakov/Random-with-seed.
 
 The above code will print **two equal numbers**, both depending on the current time. It is obvious that the same time in the initial seed causes the same \(predictable\) pseudo-random numbers to be generated in the output. This is a sample output of the above code:
 
