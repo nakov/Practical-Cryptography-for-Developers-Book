@@ -36,6 +36,8 @@ else:
     print("\nError! Keys do not match.")
 ```
 
+Run the above code example: https://repl.it/@nakov/NewHope-key-exchange.
+
 Alice generates a **private key** + **public message** and sends her public message to Bob, then Bob calculates his copy of the **shared secret key** from Alice's message and generates a **public message** for Alice, and finally Alice calculates her copy of the **shared secret key** from her private key together with Bob's message.
 
 The **output** from the above code looks like this \(the 1024 polynomial coefficients are given in abbreviated form\):
