@@ -413,6 +413,7 @@ restored_p = uncompress_point(compressed_p, p, a, b)
 print(f"uncompressed = {restored_p}")
 ```
 
+Run the above code example: https://repl.it/@nakov/EC-point-compression-decompression.
 The output of the above code is:
 
 ```
