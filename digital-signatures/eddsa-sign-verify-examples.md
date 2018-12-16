@@ -30,6 +30,10 @@ except:
     print("Invalid signature!")
 ```
 
+
+
+Run the above code example: https://repl.it/@nakov/Ed25519-sign-verify.
+
 The output from the above sample code looks like this:
 
 ```
@@ -52,6 +56,8 @@ try:
 except:
     print("Invalid signature!")
 ```
+
+Run the above code example: https://repl.it/@nakov/Ed25519-verify-tampered-message.
 
 The output from the above sample code is as expected:
 
@@ -87,6 +93,8 @@ print("Public key (compressed, 57 bytes): ",
 print("Public key (point): ", pubKey)
 ```
 
+Run the above code example: https://repl.it/@nakov/Ed448-keys.
+
 The **Ed448 key pair** is generated randomly. According to [RFC 8032](https://tools.ietf.org/html/rfc8032#page-19) the Ed448 **private key** is generated from 57-byte random seed, which is transformed to 57-byte **public key** using the **SHAKE256**\(x, hash\_len=114\) hash function, along with EC point multiplication and the special key encoding rules for Ed448.
 
 The output from the above sample code may look like this:
@@ -113,6 +121,8 @@ valid = signer.verify(msg, signature, pubKey)
 print("Valid signature?", valid)
 ```
 
+Run the above code example: https://repl.it/@nakov/Ed448-sign-verify.
+
 The output from the above code example \(for the above Ed448 key pair\) is:
 
 ```
@@ -128,6 +138,8 @@ If we try to verify the same signature with a tampered message, the verification
 valid = signer.verify(b'Tampered msg', signature, pubKey)
 print("Valid signature?", valid)
 ```
+
+Run the above code example: https://repl.it/@nakov/Ed448-verify-tampered-message.
 
 The output from the above sample code is as expected:
 
