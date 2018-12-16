@@ -65,6 +65,8 @@ key = scrypt.hash(passwd, salt, 16384, 8, 1, 32)
 print("Derived key:", binascii.hexlify(key))
 ```
 
+Run the above code example: [https://repl.it/@nakov/Scrypt](https://repl.it/@nakov/Scrypt-hash).
+
 The **Scrypt** calculation function takes several **input parameters**: the **password** \(bytes sequence\), the **salt** \(bytes sequence\), **iterations** count, **block size** for each iteration, **parallelism** factor and the output **key length** \(number of bytes for the derived key\).
 
 The **output** from the above code execution is the following:
