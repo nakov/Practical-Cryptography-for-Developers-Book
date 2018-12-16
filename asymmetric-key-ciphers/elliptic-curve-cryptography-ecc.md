@@ -482,6 +482,7 @@ pubKeyCompressed = '0' + str(2 + pubKey.y % 2) + str(hex(pubKey.x)[2:])
 print('pubKey:', pubKeyCompressed)
 ```
 
+Run the above code example: https://repl.it/@nakov/secp256k1-curve.
 The above code defines the `secp256k1` curve through its domain parameters and calculates a **public key** by given **private key**. This is done by multiplying the curve generator **G** by the private key. The result is correct, like it is visible from the program output:
 
 ```
@@ -589,6 +590,7 @@ print("privKey:", binascii.hexlify(bytes(privKey)))
 print("pubKey: ", binascii.hexlify(bytes(pubKey)))
 ```
 
+Run the above code example: https://repl.it/@nakov/Curve25519.
 The sample output from the above code shows that both the **public** and the **private** (secret) keys on the **Curve25519** are encoded as **256-bit integers** (64 hex digits, 32 bytes) and this simplifies the developers:
 ```
 privKey: b'8175f7cd524a59b6efbd447985ce5d97c546b319521ff236203970e50052c641'
