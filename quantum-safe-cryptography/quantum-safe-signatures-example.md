@@ -42,6 +42,8 @@ print("Tampered message:", message)
 print("Tampered signature valid?", valid)
 ```
 
+Run the above code example: https://repl.it/@nakov/SPHINCSplus-signature.
+
 The above code is **fast**: it runs for portion of the second. The **output** from it looks like this:
 
 ```
@@ -82,6 +84,8 @@ valid = sphincs.verify(message, signature, public_key)
 print("Tampered message:", message)
 print("Tampered signature valid?", valid)
 ```
+
+Run the above code example: https://repl.it/@nakov/SPHINCSplus-signature-small-size.
 
 The produced **signature size now is smaller** \(~ 8KB, partially shown below\), but the time to generate the signature is drastically increased \(**signing takes a few seconds**, key generation and signature verification are still fast\):
 
