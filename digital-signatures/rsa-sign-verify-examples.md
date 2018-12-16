@@ -16,6 +16,8 @@ print(f"Public key:  (n={hex(keyPair.n)}, e={hex(keyPair.e)})")
 print(f"Private key: (n={hex(keyPair.n)}, d={hex(keyPair.d)})")
 ```
 
+Run the above code example: https://repl.it/@nakov/RSA-key.
+
 The **output** from the above code might look like this \(it will be different at each execution due to randomness\):
 
 ```
@@ -33,6 +35,8 @@ hash = int.from_bytes(sha512(msg).digest(), byteorder='big')
 signature = pow(hash, keyPair.d, keyPair.n)
 print("Signature:", hex(signature))
 ```
+
+Run the above code example: https://repl.it/@nakov/RSA-sign.
 
 The obtained digital signature is an integer in the range of the RSA key length \[0..._**n**_\). For the above **private key** and the above **message**, the obtained **signature** looks like this:
 
@@ -52,6 +56,8 @@ hashFromSignature = pow(signature, keyPair.e, keyPair.n)
 print("Signature valid:", hash == hashFromSignature)
 ```
 
+Run the above code example: https://repl.it/@nakov/RSA-sign-verify
+
 The output will show `True`, because the signature will be valid:
 
 ```
@@ -67,6 +73,8 @@ hash = int.from_bytes(sha512(msg).digest(), byteorder='big')
 hashFromSignature = pow(signature, keyPair.e, keyPair.n)
 print("Signature valid (tampered):", hash == hashFromSignature)
 ```
+
+Run the above code example: https://repl.it/@nakov/RSA-verify-again.
 
 Now, the signature will be **invalid** and the output from the above code will be:
 
@@ -118,6 +126,8 @@ try:
 except:
     print("Signature is invalid.")
 ```
+
+Run the above code example: https://repl.it/@nakov/PKCShash1.
 
 The output from the above code demonstrates that the **PKCS\#1 RSA signing** with 1024-bit RSA private key produces **1024-bit digital signature** and that it is successfully validated afterwards with the corresponding public key. If the message or the signature or the public key is tampered, the signature fails to validate. The output from the above example looks like this:
 
