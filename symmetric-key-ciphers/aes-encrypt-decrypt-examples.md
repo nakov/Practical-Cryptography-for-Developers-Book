@@ -64,7 +64,7 @@ ciphertext = aes.encrypt(plaintext)
 print('Encrypted:', binascii.hexlify(ciphertext))
 ```
 
-Run the above code example: https://repl.it/@nakov/AES-Encryption.
+Run the above code example: [https://repl.it/@nakov/AES-Encryption](https://repl.it/@nakov/AES-Encryption).
 
 The output from the above code may look like this:
 
@@ -90,7 +90,7 @@ decrypted = aes.decrypt(ciphertext)
 print('Decrypted:', decrypted)
 ```
 
-Run the above code example: https://repl.it/@nakov/AES-Decryption.
+Run the above code example: [https://repl.it/@nakov/AES-Decryption](https://repl.it/@nakov/AES-Decryption).
 
 The output of the above should be like this:
 
@@ -108,7 +108,7 @@ aes = pyaes.AESModeOfOperationCTR(key, pyaes.Counter(iv))
 print('Wrongly decrypted:', aes.decrypt(ciphertext))
 ```
 
-Run the above code example: https://repl.it/@nakov/AES-Decryption-wrong-key.
+Run the above code example: [https://repl.it/@nakov/AES-Decryption-wrong-key](https://repl.it/@nakov/AES-Decryption-wrong-key).
 
 The output of the above incorrect decryption attempt might be like this:
 
@@ -157,6 +157,8 @@ print("encryptedMsg", {
 decryptedMsg = decrypt_AES_GCM(encryptedMsg, secretKey)
 print("decryptedMsg", decryptedMsg)
 ```
+
+Run the above code example: https://repl.it/@nakov/AES-256-GCM.
 
 The AES-GCM encryption takes as input a **message** + **encryption key** and produces as output a set of values: { **ciphertext** + **nonce** + **authTag** }.
 
@@ -216,6 +218,8 @@ print("encryptedMsg", {
 decryptedMsg = decrypt_AES_GCM(encryptedMsg, password)
 print("decryptedMsg", decryptedMsg)
 ```
+
+Run the above code example: https://repl.it/@nakov/AES-256-GCM-with-Scrypt.
 
 The above code encrypts using **AES-256-GCM** given text **message** by given text **password**.
 
