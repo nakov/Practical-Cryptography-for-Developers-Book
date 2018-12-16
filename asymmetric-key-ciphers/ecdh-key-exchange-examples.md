@@ -38,6 +38,8 @@ print("Bob shared key:", compress(bobSharedKey))
 print("Equal shared keys:", aliceSharedKey == bobSharedKey)
 ```
 
+Run the above code example: https://repl.it/@nakov/ECDH-Key-Exchange.
+
 The **elliptic curve** used for the ECDH calculations is **256-bit** named curve `brainpoolP256r1`. The **private keys** are **256-bit** \(64 hex digits\) and are generated randomly. The **public keys** will be **257 bits** \(65 hex digits\), due to **key compression**.
 
 The **output** of the above code looks like this:
