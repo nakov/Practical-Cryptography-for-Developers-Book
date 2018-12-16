@@ -31,7 +31,7 @@ console.log("Public key (compressed):",
     pubKey.encodeCompressed("hex"));
 ```
 
-Run the above code example: https://repl.it/@nakov/Crypto-in-JS?language=javascript
+Run the above code example: [https://repl.it/@nakov/ECDSA-in-JS?language=javascript](https://repl.it/@nakov/Crypto-in-JS?language=javascript)
 
 ECDSA in JavaScript: Sign Message
 
