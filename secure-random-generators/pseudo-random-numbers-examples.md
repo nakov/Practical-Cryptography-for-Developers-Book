@@ -26,6 +26,8 @@ The above code produces time-depended \(predictable\) **pseudo-random sequence**
 1539884529.7564313|4 83874630241630198317549470506043001102325518306912594861433838548293113930135 --> 10
 ```
 
+Run the above code example: https://repl.it/@nakov/pseudo-random-numbers
+
 The **initial pseudo-random seed** is taken from the current time. The first pseudo-random number in the sequence comes from the **SHA-256 hash** of the initial **seed** + the number `0`, the second pseudo-random number comes from the hash of the initial **seed** + the number `1` and so on. To get an output of certain **range \[min...max\]** the 256-bit **hash** is divided to **\(max - min + 1\) **and **min** is added to it. The number `i`, together with the value `startSeed` hold the internal **state** of the random generator, which changes for each next random number.
 
 The above pseudo-random generator is based on the **random statistical distribution** of the **SHA-256** function. It is expected that the chance for each possible number to be generated is equal.
@@ -56,6 +58,8 @@ for i in range(5):
     rand = min + bigRand % (max - min + 1)
     print(nextSeed, bigRand, '-->', rand)
 ```
+
+Run the above code example: https://repl.it/@nakov/secure-random-generator.
 
 A **sample outpu**t from the above code may look like this:
 
