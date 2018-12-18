@@ -62,6 +62,8 @@ print("\nMessage:", msg)
 print("Signature (tampered msg) valid?", valid)
 ```
 
+Run the above code example: [https://repl.it/@nakov/ECDSA-sign-verify](https://repl.it/@nakov/ECDSA-sign-verify).
+
 The **output** from the above code is like this:
 
 ```
@@ -76,8 +78,6 @@ Signature valid? True
 Message: Tampered message
 Signature (tampered msg) valid? False
 ```
-
-Run the above code example: https://repl.it/@nakov/ECDSA-sign-verify.
 
 As it is visible from the above output, the random generated **secp256k1 private key **is **64 hex digits** \(256 bits\). After signing, the obtained signature {_**r**_, _**s**_} consists of 2 \* 256-bit integers. The **public key**, obtained by multiplying the private key by the curve generator point, consists of 2 \* 256 bits \(uncompressed\). The produced ECDSA digital signature verifies correctly after signing. If the message is tampered, the signature fails to verify.
 
@@ -103,7 +103,7 @@ for pk in recoveredPubKeys:
           hex(pk[0]) + ", " + hex(pk[1]) + ")")
 ```
 
-Run the above code example: https://repl.it/@nakov/ECDSA-public-key-recovery.
+Run the above code example: [https://repl.it/@nakov/ECDSA-public-key-recovery](https://repl.it/@nakov/ECDSA-public-key-recovery).
 
 The above code recovers the all **possible EC public keys** from the ECDSA **signature** + the signed **message**, using the algorithm, described in [http://www.secg.org/sec1-v2.pdf](http://www.secg.org/sec1-v2.pdf). Note that **multiple EC public keys** \(0, 1 or 2\) may match the message + signature. The expected output from the above code \(together with the previous code\) looks like this:
 
@@ -163,7 +163,7 @@ valid = signerPubKey.verify_msg(msg, signature)
 print("Signature valid?", valid)
 ```
 
-Run the above code example: https://repl.it/@nakov/ECDSA-public-key-recovery-extended.
+Run the above code example: [https://repl.it/@nakov/ECDSA-public-key-recovery-extended](https://repl.it/@nakov/ECDSA-public-key-recovery-extended).
 
 The output from the above code looks like this:
 
