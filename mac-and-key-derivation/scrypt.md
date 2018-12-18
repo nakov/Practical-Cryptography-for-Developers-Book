@@ -25,7 +25,7 @@ The **memory** in Scrypt is accessed in strongly **dependent order** at each ste
 Memory required = 128 * N * r * p bytes
 ```
 
-Example: e.g. 128 \* N \* r \* p = 128 \* 16384 \* 8 \* 1 = 16 MB   
+Example: e.g. 128 \* N \* r \* p = 128 \* 16384 \* 8 \* 1 = 16 MB  
                   \(or 128 \* N \* r \* p = 128 \* 2048 \* 8 \* 1 = 2 MB\)
 
 **Choosing parameters** depends on how much you want to wait and what level of security \(password cracking resistance\) do you want to achieve:
@@ -56,7 +56,7 @@ pip install scrypt
 Note that the `scrypt` package depends on OpenSSL, so first install it in its default location \(e.g. in `C:\OpenSSL-Win64` in Windows\), then install the **scrypt** Python package.
 
 Now, after the `scrypt` package is successfully installed, write the Python code to calculate a Scrypt hash:  
-\(_Note, we have chosen smaller number for iterations count. We did that just to increase the following example execution speed. In common usage, a higher iterations count is recommended, e.g. 16384 - see above_\)
+\(_Note, we have chosen smaller number for iterations count. We did that just to increase the following example execution speed. In common usage, a higher iterations count is recommended, e.g. 16384 - see above._\)
 
 ```python
 import scrypt, binascii
