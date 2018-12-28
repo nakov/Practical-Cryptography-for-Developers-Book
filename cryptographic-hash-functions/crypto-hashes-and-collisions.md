@@ -1,6 +1,6 @@
 # Cryptographic Hash Functions and Collisions
 
-**Different input **messages are expected to produce **different output **hash values \(message digest\).
+**Different input** messages are expected to produce **different output** hash values \(message digest\).
 
 ![](/assets/crypto-hash-function-examples.jpg)
 
