@@ -1,6 +1,6 @@
 # Hashing and Cryptographic Hash Functions
 
-In computer programming **hash functions **map text \(or other data\) to integer numbers. Usually different inputs maps to different outputs, but sometimes a **collision** may happen \(different input with the same output\).
+In computer programming **hash functions **map text (or other data) to integer numbers. Usually different inputs maps to different outputs, but sometimes a **collision** may happen (different input with the same output).
 
 **Cryptographic hash** functions transform text or binary data to fixed-length **hash value** and are known to be **collision-resistant** and **irreversible**. Example of cryptographic hash function is **SHA3-256**:
 
