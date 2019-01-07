@@ -47,7 +47,7 @@ hash = argon2Hasher.hash("s3kr3tp4ssw0rd")
 print("Derived key:", hash)
 ```
 
-Run the above code example: https://repl.it/@nakov/Argon2
+Run the above code example: [https://repl.it/@nakov/Argon2](https://repl.it/@nakov/Argon2)
 
 The **Argon2** calculation takes several **input configuration settings**: **time\_cost** \(number of iterations\), **memory\_cost** \(memory to use in KB\), **parallelism** \(how many parallel threads to use\), **hash\_len** \(the size of the derived key\), **salt\_len** \(the size of the random generated salt, typically 128 bits / 16 bytes\).
 
@@ -57,7 +57,7 @@ Sample **output** from the above code execution:
 Derived key: $argon2id$v=19$m=102400,t=50,p=8$JPoIjwAPeCGiLFwdhcCMwQ$Mf9d8TtMA7b21/8VTyW+zEYlzMo2TyPclkf4qnNUzCI
 ```
 
-Note that the above output is not the derived key, but a **hash string** in a standardized format, which holds the Argon2 algorithm config **parameters** + the derived **key** + the random **salt**. By design, the salt and the derived key should be different at each code execution.
+Note that the above output is not the derived key, but a **hash string** in a standardized format, which holds the Argon2 algorithm config **parameters** + the derived **key** + the random **salt**. By design, the salt and the derived key _should be different at each code execution_.
 
 Try to change the **time\_cost** or the **memory\_cost** settings and see how they affect the **execution time** for the key derivation.
 
