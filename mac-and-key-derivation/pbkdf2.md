@@ -38,7 +38,7 @@ Try to **increase the iterations count** to see how this affects the speed of ke
 
 Now, we shall write some **code in Python** to derive a key from a password using the **PBKDF2** algorithm.
 
-First, install the Python package `backports.pbkdf2` using the command:
+Firstly, install the Python package `backports.pbkdf2` using the command:
 
 ```
 pip install backports.pbkdf2
@@ -56,7 +56,7 @@ key = pbkdf2_hmac("sha256", passwd, salt, 50000, 32)
 print("Derived key:", binascii.hexlify(key))
 ```
 
-Run the above code example: https://repl.it/@nakov/PBKDF2.
+Run the above code example: [https://repl.it/@nakov/PBKDF2](https://repl.it/@nakov/PBKDF2).
 
 The **PBKDF2** calculation function takes several **input parameters**: **hash function** for the HMAC, the **password** \(bytes sequence\), the **salt** \(bytes sequence\), **iterations** count and the output **key length** \(number of bytes for the derived key\).
 
