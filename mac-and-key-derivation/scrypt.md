@@ -74,7 +74,7 @@ The **Scrypt** calculation function takes several **input parameters**: the **pa
 The **output** from the above code execution is the following:
 
 ```
-Derived key: b'1660a97efe9ea0ee1cc843e99cc00c1643925ea5b8096371950ec5c2f4c3fe48'
+Derived key: b'e813a6f6ccc4e9110193bf9efb7c0a489d76655f9e36629dccbeaf2a73bc0c6f'
 ```
 
 Try to change the number of **iterations** or the **block size** and see how they affect the **execution time**. Have in mind that the above Python implementation is not very fast. You may find fast Scrypt implementation in Internet.
