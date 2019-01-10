@@ -138,7 +138,7 @@ The RSA calculations work correctly. This is because the key-pair meets the RSA 
 
 In the real world, typically the RSA modulus **_n_** and the private exponent **_d_** are 3072-bit or 4096-bit integers and the public exponent **_e_** is 65537.
 
-For further reading, look at this excellent explanation about **how RSA works** in detail with explainations and examples: http://doctrina.org/How-RSA-Works-With-Examples.html.
+For further reading, look at this excellent explanation about **how RSA works** in detail with explanations and examples: http://doctrina.org/How-RSA-Works-With-Examples.html.
 
 Because RSA encryption is a **deterministic** (has no random component) attackers can successfully launch a **[chosen plaintext attack](https://en.wikipedia.org/wiki/Chosen-plaintext_attack)** against by encrypting likely plaintexts with the public key and test if they are equal to the ciphertext. This may not be a problem, but is a **weakness**, that should be considered when developers choose an encryption scheme.
 
