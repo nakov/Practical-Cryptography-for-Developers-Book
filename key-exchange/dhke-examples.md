@@ -45,7 +45,7 @@ Bob shared key: 0x60d96187ae1db8e8acac7795837a2964e4972ebf666eaecfa09135371a2de5
 Equal shared keys: True
 ```
 
-Note that your output will be different due to the **randomness** during the key generation process. The above code uses a 2048-bit public and privvate keys, as specified in the [RFC 3526 \(group 14\)](https://tools.ietf.org/html/rfc3526#section-3). You can change the DHKE **key size** \(from 1536-bits to 8192-bits\) by specifying a different RFC 3526 group \(e.g. 18 for 8192-bit keys\). For example change these two lines:
+Note that your output will be different due to the **randomness** during the key generation process. The above code uses a 2048-bit public and private keys, as specified in the [RFC 3526 \(group 14\)](https://tools.ietf.org/html/rfc3526#section-3). You can change the DHKE **key size** \(from 1536-bits to 8192-bits\) by specifying a different RFC 3526 group \(e.g. 18 for 8192-bit keys\). For example change these two lines:
 
 ```py
 alice = pyDHE.new(group=18)
