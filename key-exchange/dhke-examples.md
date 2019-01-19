@@ -52,7 +52,7 @@ alice = pyDHE.new(group=18)
 bob = pyDHE.new(group=18)
 ```
 
-Run the above code example: [https://repl.it/@nakov/DHKE-Example-2](https://repl.it/@nakov/DHKE-Example-2)
+Run the above code example: [https://repl.it/@nakov/DHKE-Example-2](https://repl.it/@nakov/DHKE-Example-2).
 
 The above changes will switch to **8192-bit keys** and will significantly slow-down the calculations. The output will look like this:
 
