@@ -4,7 +4,7 @@ In cryptography [**key establishment**](http://cacr.uwaterloo.ca/hac/about/chap1
 
 * In a** key agreement **scheme both parties contribute to the negotiation of the shared secret. Examples of key agreement schemes are Diffie-Hellman \(**DHKE**\) and Elliptic-Curve Diffie-Hellman \(**ECDH**\).
 
-* In a** key transport **scheme only one of the parties contributes to the shared secret and the other party obtains the secret from it. Key transport schemes are typically implemented through **public-key cryptography**, e.g. in the **RSA key exchange** the client encrypts a random session key by its private key and sends it to the server, where it is decrypted using the client's public key.
+* In a** key transport **scheme only one of the parties contributes to the shared secret and the other party obtains the secret from it. Key transport schemes are typically implemented through **public-key cryptography**, e.g. in the **RSA key exchange** the client encrypts a random session key by server's public key and sends it to the server, where it is decrypted using the server's private key.
 
 By design [**key exchange**](https://en.wikipedia.org/wiki/Key_exchange) schemes securely exchange cryptographic keys between two parties, in a way that noone else can obtain a copy of the keys. Typically, at the start of an **encrypted conversation** \(e.g. during the **TLS handshake** phase\), the parties first negotiate about the encryption keys \(the shared secret\) to be used during the conversation. **Key exchange schemes** are really important topic in the modern cryptography, because keys are exchanged hundreds of times by million devices and servers in Internet.
 
