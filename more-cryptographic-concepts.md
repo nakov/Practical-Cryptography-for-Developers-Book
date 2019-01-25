@@ -88,5 +88,7 @@ Just to mention, the practical cryptography is endless. This is a list of crypto
 
 * JSON Web Tokens \(JWT\)
 
+* Object Identifiers (OID) - https://en.wikipedia.org/wiki/Object_identifier, e.g. the algorithm "SHA-256" has OID "2.16.840.1.101.3.4.2.1".
+
 
 
