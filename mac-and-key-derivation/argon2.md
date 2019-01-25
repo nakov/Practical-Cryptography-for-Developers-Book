@@ -40,12 +40,28 @@ pip install argon2_cffi
 Now, write the Python code to calculate Argon2:
 
 ```python
-import argon2
+import argon2, binascii
 
-argon2Hasher = argon2.PasswordHasher(time_cost=50, memory_cost=102400, parallelism=8, hash_len=32, salt_len=16)
-hash = argon2Hasher.hash("s3kr3tp4ssw0rd")
-print("Derived key:", hash)
+hash = argon2.hash_password_raw(
+    time_cost=16, memory_cost=2**15, parallelism=2, hash_len=32,
+    password=b'password', salt=b'some salt', type=argon2.low_level.Type.ID)
+print("Argon2 raw hash:", binascii.hexlify(hash))
+
+argon2Hasher = argon2.PasswordHasher(
+    time_cost=16, memory_cost=2**15, parallelism=2, hash_len=32, salt_len=16)
+hash = argon2Hasher.hash("password")
+print("Argon2 hash (random salt):", hash)
+
+verifyValid = argon2Hasher.verify(hash, "password")
+print("Argon2 verify (correct password):", verifyValid)
+
+try:
+    argon2Hasher.verify(hash, "wrong123")
+except:
+    print("Argon2 verify (incorrect password):", False)
 ```
+
+The above code first derives a "**raw hash**" (256-bit key), which is argon2-based key derivation, just like with scrypt. It also derives a "**argon2 hash**", which holds the algorithm parameters, along with random salt and derived key. The later is used for password storing and verification. Finally, the calculated hashes are tested agains a correct and wrong password.
 
 Run the above code example: [https://repl.it/@nakov/Argon2](https://repl.it/@nakov/Argon2)
 
@@ -54,22 +70,29 @@ The **Argon2** calculation takes several **input configuration settings**: **tim
 Sample **output** from the above code execution:
 
 ```
-Derived key: $argon2id$v=19$m=102400,t=50,p=8$JPoIjwAPeCGiLFwdhcCMwQ$Mf9d8TtMA7b21/8VTyW+zEYlzMo2TyPclkf4qnNUzCI
+Argon2 raw hash: b'157f21dd3fdf7bafb76d2923ccaffa0b7be7cbae394709474d2bc66ee7b09d3e'
+Argon2 hash (random salt): $argon2id$v=19$m=32768,t=16,p=2$Rfy6J41W9idBU+n/8sZc6Q$i3QYYPtoogIAw78I2qqlUQ8vjzUXGG1V6QsBOq2NIp4
+Argon2 verify (correct password): True
+Argon2 verify (incorrect password): False
 ```
 
-Note that the above output is not the derived key, but a **hash string** in a standardized format, which holds the Argon2 algorithm config **parameters** + the derived **key** + the random **salt**. By design, the salt and the derived key _should be different at each code execution_.
+Note that the **argon2 hash** in the above output is written in a standardized format, which holds the Argon2 algorithm config **parameters** + the derived **key** + the random **salt**. By design, the salt and the derived key _should be different at each code execution_.
+
+Try to **execute the above code several times** to ensure that the **derived key** will be the same (because the salt is fixed) and the derived **argon2 hash** will be different at each execution (because a random salt is generated internally by the algorithm).
 
 Try to change the **time\_cost** or the **memory\_cost** settings and see how they affect the **execution time** for the key derivation.
 
 ## Storing Algorithm Settings + Salt + Hash Together
 
-In many applications, frameworks and tools, **Argon2 encrypted passwords are stored together with the algorithm settings and salt**, into a single string \(in certain format\), consisting of several parts, separated by `$` character. For example, the password `p@ss~123` can be stored in the Argon2 standard format like this \(several examples are given, to make the pattern apparent\):
+In many applications, frameworks and tools, **Argon2 encrypted passwords are stored together with the algorithm settings and salt**, into a single string (in certain format, like it was shown above), consisting of several parts, separated by `$` character. For example, the password `p@ss~123` can be stored in the Argon2 standard format like this (several examples are given, to make the pattern apparent):
 
 ```
 $argon2d$v=19$m=1024,t=16,p=4$c2FsdDEyM3NhbHQxMjM$2dVtFVPCezhvjtyu2PaeXOeBR+RUZ6SqhtD/+QF4F1o
 $argon2d$v=19$m=1024,t=16,p=4$YW5vdGhlcnNhbHRhbm90aGVyc2FsdA$KB7Nj7kK21YdGeEBQy7R3vKkYCz1cdR/I3QcArMhl/Q
 $argon2i$v=19$m=8192,t=32,p=1$c21hbGxzYWx0$lmO1aPPy3x0CcvrKpFLi1TL/uSVJ/eO5hPHiWZFaWvY
 ```
+
+All the above hashes hold the same password, but with different algotihm settings and different salt.
 
 ## When to Use Argon2?
 
