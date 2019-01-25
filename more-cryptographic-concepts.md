@@ -90,5 +90,7 @@ Just to mention, the practical cryptography is endless. This is a list of crypto
 
 * Object Identifiers (OID) - https://en.wikipedia.org/wiki/Object_identifier, e.g. the algorithm "SHA-256" has OID "2.16.840.1.101.3.4.2.1".
 
+* Cryptography Best Practices: https://gist.github.com/atoponce/07d8d4c833873be2f68c34f9afc5a78a
+
 
 
