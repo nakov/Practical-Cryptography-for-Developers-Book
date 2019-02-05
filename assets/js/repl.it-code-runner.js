@@ -32,3 +32,6 @@ gitbook.events.bind("page.change", function() {
 		}
 	}
 });
+
+// Sample usage: put the below text in your Markdown book source code:
+// Run the above code example: [https://repl.it/@nakov/Scrypt](https://repl.it/@nakov/Scrypt).
