@@ -21,7 +21,7 @@
         },
         "scripts": {
             "files": [
-                "./assets/js/repl.it-code-runner.js"
+                "/assets/js/repl.it-code-runner.js"
             ]
         }
     },
