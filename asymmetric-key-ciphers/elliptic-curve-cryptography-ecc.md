@@ -456,7 +456,7 @@ We already know that a 256-bit curve (which means that **_p_** and **n** are 256
 
 ### Python Examples with the "secp256k1" Curve
 
-Now let's put in actin the above domain parameters for the `secp256k1` curve. Let's define the EC and calculate the public key for certain private key:
+Now let's put in action the above domain parameters for the `secp256k1` curve. Let's define the EC and calculate the public key for certain private key:
 
 ```py
 from tinyec.ec import SubGroup, Curve
