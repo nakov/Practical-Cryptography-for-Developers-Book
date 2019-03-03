@@ -54,7 +54,7 @@ keccak256 = keccak.new(data=b'hello', digest_bits=256).digest()
 print("Keccak256:", binascii.hexlify(keccak256))
 ```
 
-Run the above code example: [https://repl.it/@nakov/Keccak256](https://repl.it/@nakov/Keccak256).
+Run the above code example: https://repl.it/@nakov/Keccak256-in-Python.
 
 The **output** from the above examples is:
 
