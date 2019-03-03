@@ -62,7 +62,7 @@ print("\nMessage:", msg)
 print("Signature (tampered msg) valid?", valid)
 ```
 
-Run the above code example: [https://repl.it/@nakov/ECDSA-sign-verify](https://repl.it/@nakov/ECDSA-sign-verify).
+Run the above code example: https://repl.it/@nakov/ECDSA-sign-verify-in-Python.
 
 The **output** from the above code is like this:
 
@@ -103,7 +103,7 @@ for pk in recoveredPubKeys:
           hex(pk[0]) + ", " + hex(pk[1]) + ")")
 ```
 
-Run the above code example: [https://repl.it/@nakov/ECDSA-public-key-recovery](https://repl.it/@nakov/ECDSA-public-key-recovery).
+Run the above code example: https://repl.it/@nakov/ECDSA-public-key-recovery-in-Python.
 
 The above code recovers the all **possible EC public keys** from the ECDSA **signature** + the signed **message**, using the algorithm, described in [http://www.secg.org/sec1-v2.pdf](http://www.secg.org/sec1-v2.pdf). Note that **multiple EC public keys** \(0, 1 or 2\) may match the message + signature. The expected output from the above code \(together with the previous code\) looks like this:
 
@@ -163,7 +163,7 @@ valid = signerPubKey.verify_msg(msg, signature)
 print("Signature valid?", valid)
 ```
 
-Run the above code example: [https://repl.it/@nakov/ECDSA-public-key-recovery-extended](https://repl.it/@nakov/ECDSA-public-key-recovery-extended).
+Run the above code example: https://repl.it/@nakov/ECDSA-public-key-recovery-extended-in-Python.
 
 The output from the above code looks like this:
 

@@ -30,9 +30,7 @@ except:
     print("Invalid signature!")
 ```
 
-
-
-Run the above code example: https://repl.it/@nakov/Ed25519-sign-verify.
+Run the above code example: https://repl.it/@nakov/Ed25519-sign-verify-in-Python.
 
 The output from the above sample code looks like this:
 
@@ -57,7 +55,7 @@ except:
     print("Invalid signature!")
 ```
 
-Run the above code example: https://repl.it/@nakov/Ed25519-verify-tampered-message.
+Run the above code example: https://repl.it/@nakov/Ed25519-verify-tampered-message-in-Python.
 
 The output from the above sample code is as expected:
 
@@ -93,7 +91,7 @@ print("Public key (compressed, 57 bytes): ",
 print("Public key (point): ", pubKey)
 ```
 
-Run the above code example: https://repl.it/@nakov/Ed448-keys.
+Run the above code example: https://repl.it/@nakov/Ed448-private-public-keys-in-Python.
 
 The **Ed448 key pair** is generated randomly. According to [RFC 8032](https://tools.ietf.org/html/rfc8032#page-19) the Ed448 **private key** is generated from 57-byte random seed, which is transformed to 57-byte **public key** using the **SHAKE256**\(x, hash\_len=114\) hash function, along with EC point multiplication and the special key encoding rules for Ed448.
 
@@ -121,7 +119,7 @@ valid = signer.verify(msg, signature, pubKey)
 print("Valid signature?", valid)
 ```
 
-Run the above code example: https://repl.it/@nakov/Ed448-sign-verify.
+Run the above code example: https://repl.it/@nakov/Ed448-sign-verify-in-Python.
 
 The output from the above code example \(for the above Ed448 key pair\) is:
 
@@ -139,7 +137,7 @@ valid = signer.verify(b'Tampered msg', signature, pubKey)
 print("Valid signature?", valid)
 ```
 
-Run the above code example: https://repl.it/@nakov/Ed448-verify-tampered-message.
+Run the above code example: https://repl.it/@nakov/Ed448-verify-tampered-message-in-Python.
 
 The output from the above sample code is as expected:
 
