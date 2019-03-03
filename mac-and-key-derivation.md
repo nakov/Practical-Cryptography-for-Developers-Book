@@ -27,7 +27,7 @@ mac = hmac.new(b'key', b'some msg', hashlib.sha256).digest()
 print(binascii.hexlify(mac))
 ```
 
-Run the above code example: [https://repl.it/@nakov/HMAC-SHA256](https://repl.it/@nakov/HMAC-SHA256).
+Run the above code example: https://repl.it/@nakov/HMAC-SHA256-in-Python.
 
 The MAC code is **digital authenticity code**, like a **digital signature**, but with **pre-shared key**. We shall learn more about digital signing and digital signatures later.
 
