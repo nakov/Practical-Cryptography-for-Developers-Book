@@ -31,7 +31,7 @@ console.log("Public key (compressed):",
     pubKey.encodeCompressed("hex"));
 ```
 
-Run the above code example: [https://repl.it/@nakov/ECDSA-in-JS.](https://repl.it/@nakov/secp256k1-curve-in-JS)
+Run the above code example: https://repl.it/@nakov/ECDSA-in-JS.
 
 ECDSA in JavaScript: Sign Message
 
@@ -46,7 +46,7 @@ console.log(`Msg hash: ${msgHash}`);
 console.log("Signature:", signature);
 ```
 
-Run the above code example: [https://repl.it/@nakov/ECDSA-sign-verify-in-JS.](https://repl.it/@nakov/ECDSA-sign-verify-in-JS[.]%28https://repl.it/@nakov/secp256k1-curve-in-JS)
+Run the above code example: https://repl.it/@nakov/ECDSA-sign-verify-in-JS.
 
 Complete example: [https://gist.github.com/nakov/1dcbe26988e18f7a4d013b65d8803ffc](https://gist.github.com/nakov/1dcbe26988e18f7a4d013b65d8803ffc).
 
@@ -65,7 +65,7 @@ let validSig = ec.verify(
 console.log("Signature valid?", validSig);
 ```
 
-Run the above code example: [https://repl.it/@nakov/ECDSA-sign-verify-in-JS.](https://repl.it/@nakov/ECDSA-sign-verify-in-JS[.]%28https://repl.it/@nakov/secp256k1-curve-in-JS)
+Run the above code example: https://repl.it/@nakov/ECDSA-sign-verify-in-JS.
 
 Complete example: [https://gist.github.com/nakov/1dcbe26988e18f7a4d013b65d8803ffc](https://gist.github.com/nakov/1dcbe26988e18f7a4d013b65d8803ffc)
 
