@@ -25,7 +25,7 @@ ripemd160 = hashlib.new('ripemd160', data).digest()
 print("RIPEMD-160:", binascii.hexlify(ripemd160))
 ```
 
-Run the above code example: [https://repl.it/@nakov/Hashes-SHA2-SHA3-BLAKE2-RIPEMD](https://repl.it/@nakov/Hashes-SHA2-SHA3-BLAKE2-RIPEMD).
+Run the above code example: [[https://repl.it/@nakov/Hashes-SHA2-SHA3-BLAKE2-RIPEMD](https://repl.it/@nakov/Hashes-SHA2-SHA3-BLAKE2-RIPEMD)-in-Python](https://repl.it/@nakov/Hashes-SHA2-SHA3-BLAKE2-RIPEMD-in-Python).
 
 The expected **output** from the above example looks like this:
 
