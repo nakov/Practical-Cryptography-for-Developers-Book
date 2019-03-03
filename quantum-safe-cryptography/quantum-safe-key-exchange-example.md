@@ -36,7 +36,7 @@ else:
     print("\nError! Keys do not match.")
 ```
 
-Run the above code example: https://repl.it/@nakov/NewHope-key-exchange.
+Run the above code example: https://repl.it/@nakov/NewHope-key-exchange-in-Python.
 
 Alice generates a **private key** + **public message** and sends her public message to Bob, then Bob calculates his copy of the **shared secret key** from Alice's message and generates a **public message** for Alice, and finally Alice calculates her copy of the **shared secret key** from her private key together with Bob's message.
 
