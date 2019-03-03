@@ -79,7 +79,7 @@ decryptKey = ecc_calc_decryption_key(privKey, ciphertextPubKey)
 print("decryption key:", compress_point(decryptKey))
 ```
 
-Run the above code example: https://repl.it/@nakov/ECC-Based-Secret-Key-Derivation.
+Run the above code example: https://repl.it/@nakov/ECC-based-secret-key-derivation-in-Python.
 
 The code is pretty simple and demonstrates that we can generate a pair { **secret key** + **ciphertext public key** } from given EC **public key** and later we can recover the same **secret key** from the pair { **ciphertext public key** + **private key** }. The above code produces output like this:
 
@@ -164,7 +164,7 @@ decryptedMsg = decrypt_ECC(encryptedMsg, privKey)
 print("decrypted msg:", decryptedMsg)
 ```
 
-Run the above code example: https://repl.it/@nakov/ECC-Based-Enc-Dec.
+Run the above code example: https://repl.it/@nakov/ECC-based-hybrid-encryption-decryption-in-Python.
 
 The above example starts from generating an ECC public + private **key pair** for the message recipient: `pubKey` + `privKey`, using the `tinyec` library. These keys will be used to **encrypt** the message `msg` through the hybrid encryption scheme \(asymmetric ECC + symmetric AES\) and to **decrypt** is later back to its original form.
 
