@@ -38,7 +38,7 @@ key = pbkdf2.PBKDF2(password, passwordSalt).read(32)
 print('AES encryption key:', binascii.hexlify(key))
 ```
 
-Run the above code example: [https://repl.it/@nakov/AES-CTR](https://repl.it/@nakov/AES-CTR)
+Run the above code example: https://repl.it/@nakov/AES-CTR-in-Python.
 
 The above code **derives a 256-bit key** using the **PBKDF2** key derivation algorithm from the password `s3cr3t*c0d3`. It uses a random password derivation **salt** \(128-bit\). This salt should be stored in the output, together with the ciphertext, because without it the decryption key cannot be derived again and the decryption will be impossible.
 
@@ -64,7 +64,7 @@ ciphertext = aes.encrypt(plaintext)
 print('Encrypted:', binascii.hexlify(ciphertext))
 ```
 
-Run the above code example: [https://repl.it/@nakov/AES-Encryption](https://repl.it/@nakov/AES-Encryption).
+Run the above code example: https://repl.it/@nakov/AES-encryption-in-Python.
 
 The output from the above code may look like this:
 
@@ -90,7 +90,7 @@ decrypted = aes.decrypt(ciphertext)
 print('Decrypted:', decrypted)
 ```
 
-Run the above code example: [https://repl.it/@nakov/AES-Decryption](https://repl.it/@nakov/AES-Decryption).
+Run the above code example: https://repl.it/@nakov/AES-decryption-in-Python.
 
 The output of the above should be like this:
 
@@ -108,7 +108,7 @@ aes = pyaes.AESModeOfOperationCTR(key, pyaes.Counter(iv))
 print('Wrongly decrypted:', aes.decrypt(ciphertext))
 ```
 
-Run the above code example: [https://repl.it/@nakov/AES-Decryption-wrong-key](https://repl.it/@nakov/AES-Decryption-wrong-key).
+Run the above code example: https://repl.it/@nakov/AES-decryption-wrong-key-in-Python.
 
 The output of the above incorrect decryption attempt might be like this:
 
@@ -158,7 +158,7 @@ decryptedMsg = decrypt_AES_GCM(encryptedMsg, secretKey)
 print("decryptedMsg", decryptedMsg)
 ```
 
-Run the above code example: https://repl.it/@nakov/AES-256-GCM.
+Run the above code example: https://repl.it/@nakov/AES-256-GCM-in-Python.
 
 The AES-GCM encryption takes as input a **message** + **encryption key** and produces as output a set of values: { **ciphertext** + **nonce** + **authTag** }.
 
@@ -182,6 +182,8 @@ It is visible that the **encryption key** above is 256 bits \(64 hex digits\), t
 encryptedMsg = (b'wrong chiphertext', encryptedMsg[1], encryptedMsg[2])
 decryptedMsg = decrypt_AES_GCM(encryptedMsg, secretKey)  # ValueError: MAC check failed
 ```
+
+Run the above code example: https://repl.it/@nakov/AES-256-GCM-wrong-chiphertext-in-Python.
 
 ## AES-256-GCM + Scrypt Example
 
@@ -219,7 +221,7 @@ decryptedMsg = decrypt_AES_GCM(encryptedMsg, password)
 print("decryptedMsg", decryptedMsg)
 ```
 
-Run the above code example: https://repl.it/@nakov/AES-256-GCM-with-Scrypt.
+Run the above code example: https://repl.it/@nakov/AES-256-GCM-with-Scrypt-in-Python.
 
 The above code encrypts using **AES-256-GCM** given text **message** by given text **password**.
 
