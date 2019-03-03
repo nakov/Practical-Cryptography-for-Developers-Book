@@ -29,7 +29,7 @@ privKeyPEM = keyPair.exportKey()
 print(privKeyPEM.decode('ascii'))
 ```
 
-Run the above code example: https://repl.it/@nakov/RSA-Key-Generation.
+Run the above code example: https://repl.it/@nakov/RSA-Key-Generation-in-Python.
 
 We use short key length to keep the sample input short, but in a real world scenario it is recommended to use 3072-bit or 4096-bit keys.
 
@@ -44,7 +44,7 @@ encrypted = encryptor.encrypt(msg)
 print("Encrypted:", binascii.hexlify(encrypted))
 ```
 
-Run the above code example: https://repl.it/@nakov/RSA-Encryption.
+Run the above code example: https://repl.it/@nakov/RSA-encryption-in-Python.
 
 ## RSA Decryption
 
@@ -56,7 +56,7 @@ decrypted = decryptor.decrypt(encrypted)
 print('Decrypted:', decrypted)
 ```
 
-Run the above code example: https://repl.it/@nakov/RSA-Decryption.
+Run the above code example: https://repl.it/@nakov/RSA-decryption-in-Python.
 
 ## Sample Output
 
