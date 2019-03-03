@@ -32,7 +32,7 @@ print("Bob shared key:", hex(bobSharedKey))
 print("Equal shared keys:", aliceSharedKey == bobSharedKey)
 ```
 
-Run the above code example: [https://repl.it/@nakov/Diffie-Hellman-Key-Exchange](https://repl.it/@nakov/Diffie-Hellman-Key-Exchange).
+Run the above code example: https://repl.it/@nakov/Diffie-Hellman-Key-Exchange-in-Python.
 
 When you run the above code, it will generate and print two **2048-bit public keys** \(for Alice and for Bob\). Assume that Allice and Bob have exchanged their public keys \(e.g. send them to each other through Internet\). Once Alice has received Bob's public key, she can **calculate the shared secret** by combining it to her private key. Respectively, once Bob has received Alice's public key, he can **calculate the shared secret** by combining it to his private key. The sample output from the above example shows that the shared secret is always the same number \(2048-bit integer\):
 
@@ -52,7 +52,7 @@ alice = pyDHE.new(group=18)
 bob = pyDHE.new(group=18)
 ```
 
-Run the above code example: [https://repl.it/@nakov/DHKE-Example-2](https://repl.it/@nakov/DHKE-Example-2).
+Run the above code example: https://repl.it/@nakov/DHKE-Example-in-Python.
 
 The above changes will switch to **8192-bit keys** and will significantly slow-down the calculations. The output will look like this:
 
