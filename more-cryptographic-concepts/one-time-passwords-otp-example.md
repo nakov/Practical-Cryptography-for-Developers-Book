@@ -22,7 +22,7 @@ totp_uri = pyotp.totp.TOTP(base32secret).provisioning_uri(
 print(totp_uri)
 ```
 
-Run the above code example: https://repl.it/@nakov/OTP-Server-Side.
+Run the above code example: https://repl.it/@nakov/OTP-Server-Side-in-Python.
 
 Sample output:
 
@@ -48,7 +48,7 @@ time.sleep(30)
 print('OTP code:', totp.now())
 ```
 
-Run the above code example: https://repl.it/@nakov/OTP-Client-Side.
+Run the above code example: https://repl.it/@nakov/OTP-Client-Side-in-Python.
 
 Sample output:
 
@@ -77,7 +77,7 @@ your_code = '123456'
 print(totp.verify('Code Valid:', your_code))
 ```
 
-Run the above code example: https://repl.it/@nakov/QR-code-scanner.
+Run the above code example: https://repl.it/@nakov/QR-code-scanner-in-Python.
 
 Output:
 
