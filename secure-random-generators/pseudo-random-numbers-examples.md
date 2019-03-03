@@ -16,7 +16,7 @@ for i in range(5):
     print(nextSeed, bigRand, '-->', rand)
 ```
 
-Run the above code example: [https://repl.it/@nakov/pseudo-random-numbers](https://repl.it/@nakov/pseudo-random-numbers).
+Run the above code example: https://repl.it/@nakov/Pseudo-random-numbers-in-Python.
 
 The above code produces time-depended \(predictable\) **pseudo-random sequence**:
 
@@ -59,7 +59,7 @@ for i in range(5):
     print(nextSeed, bigRand, '-->', rand)
 ```
 
-Run the above code example: [https://repl.it/@nakov/secure-random-generator](https://repl.it/@nakov/secure-random-generator).
+Run the above code example: https://repl.it/@nakov/secure-random-generator-in-Python.
 
 A **sample outpu**t from the above code may look like this:
 
