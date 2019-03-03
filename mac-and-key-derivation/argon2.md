@@ -61,9 +61,9 @@ except:
     print("Argon2 verify (incorrect password):", False)
 ```
 
-The above code first derives a "**raw hash**" (256-bit key), which is argon2-based key derivation, just like with scrypt. It also derives a "**argon2 hash**", which holds the algorithm parameters, along with random salt and derived key. The later is used for password storing and verification. Finally, the calculated hashes are tested agains a correct and wrong password.
+Run the above code example: [ ](https://repl.it/@nakov/Argon2)https://repl.it/@nakov/Argon2-in-Python.
 
-Run the above code example: [https://repl.it/@nakov/Argon2](https://repl.it/@nakov/Argon2)
+The above code first derives a "**raw hash**" \(256-bit key\), which is argon2-based key derivation, just like with scrypt. It also derives a "**argon2 hash**", which holds the algorithm parameters, along with random salt and derived key. The later is used for password storing and verification. Finally, the calculated hashes are tested agains a correct and wrong password.
 
 The **Argon2** calculation takes several **input configuration settings**: **time\_cost** \(number of iterations\), **memory\_cost** \(memory to use in KB\), **parallelism** \(how many parallel threads to use\), **hash\_len** \(the size of the derived key\), **salt\_len** \(the size of the random generated salt, typically 128 bits / 16 bytes\).
 
@@ -78,13 +78,13 @@ Argon2 verify (incorrect password): False
 
 Note that the **argon2 hash** in the above output is written in a standardized format, which holds the Argon2 algorithm config **parameters** + the derived **key** + the random **salt**. By design, the salt and the derived key _should be different at each code execution_.
 
-Try to **execute the above code several times** to ensure that the **derived key** will be the same (because the salt is fixed) and the derived **argon2 hash** will be different at each execution (because a random salt is generated internally by the algorithm).
+Try to **execute the above code several times** to ensure that the **derived key** will be the same \(because the salt is fixed\) and the derived **argon2 hash** will be different at each execution \(because a random salt is generated internally by the algorithm\).
 
 Try to change the **time\_cost** or the **memory\_cost** settings and see how they affect the **execution time** for the key derivation.
 
 ## Storing Algorithm Settings + Salt + Hash Together
 
-In many applications, frameworks and tools, **Argon2 encrypted passwords are stored together with the algorithm settings and salt**, into a single string (in certain format, like it was shown above), consisting of several parts, separated by `$` character. For example, the password `p@ss~123` can be stored in the Argon2 standard format like this (several examples are given, to make the pattern apparent):
+In many applications, frameworks and tools, **Argon2 encrypted passwords are stored together with the algorithm settings and salt**, into a single string \(in certain format, like it was shown above\), consisting of several parts, separated by `$` character. For example, the password `p@ss~123` can be stored in the Argon2 standard format like this \(several examples are given, to make the pattern apparent\):
 
 ```
 $argon2d$v=19$m=1024,t=16,p=4$c2FsdDEyM3NhbHQxMjM$2dVtFVPCezhvjtyu2PaeXOeBR+RUZ6SqhtD/+QF4F1o

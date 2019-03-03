@@ -67,7 +67,7 @@ key = pyscrypt.hash(passwd, salt, 2048, 8, 1, 32)
 print("Derived key:", key.hex())
 ```
 
-Run the above code example: [https://repl.it/@nakov/Scrypt](https://repl.it/@nakov/Scrypt).
+Run the above code example: https://repl.it/@nakov/Scrypt-in-Python.
 
 The **Scrypt** calculation function takes several **input parameters**: the **password** \(bytes sequence\), the **salt** \(bytes sequence\), **iterations** count, **block size** for each iteration, **parallelism** factor and the output **key length** \(number of bytes for the derived key\).
 
