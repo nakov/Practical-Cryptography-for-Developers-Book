@@ -46,13 +46,13 @@ A sample scenario for using MAC codes is like this:
 
 ![](/assets/MAC-message-authentication-code.png)
 
-## Authenticated Encryption: Encrypt / Decrypt Messages using MAC
+## Authenticated Encryption: Encryption including MAC by design
 
 Another scenario to use **MAC codes** is for [**authenticated encryption**](https://en.wikipedia.org/wiki/Authenticated_encryption)**: **when we **encrypt a message** and we want to be sure the **decryption password is correct** and the decrypted message is the same like the original message before encryption.
 
 * First, we **derive a key **from the password. We can use this key for the MAC calculation algorithm \(directly or hashed for better security\).
 * Next, we **encrypt the message** using the derived key and store the ciphertext in the output.
-* Finally, we calculate the **MAC code** using the derived key and the original message and we append it to the output.
+* Finally, we calculate the **MAC code** using the derived key and the original plaintext message and we append it to the output.
 
 When we **decrypt the encrypted message** \(ciphertext + MAC\), we proceed as follows:
 
@@ -62,7 +62,7 @@ When we **decrypt the encrypted message** \(ciphertext + MAC\), we proceed as fo
   * If the calculated MAC code matches the MAC code in the encrypted message, the **password is correct**.
   * Otherwise, it will be proven that the decrypted message is not the original message and this means that the **password is incorrect**
 
-Some **authenticated encryption algorithms** \(such as **AES-GCM** and **ChaCha20-Poly1305**\) integrate the MAC calculation into the encryption algorithm and the MAC verification into the decryption algorithm. We shall learn more about these algorithms later.
+**Authenticated encryption algorithms** \(such as **AES-GCM** and **ChaCha20-Poly1305**\) integrate the MAC calculation into the encryption algorithm and the MAC verification into the decryption algorithm. We shall learn more about these algorithms later.
 
 The MAC is stored along with the ciphertext and it **does not reveal **the password or the original message. Storing the MAC code, visible to anyone is safe, and after decryption, we know whether the message is the original one or not \(wrong password\).
 
