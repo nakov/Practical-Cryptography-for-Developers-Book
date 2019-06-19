@@ -1,4 +1,4 @@
-# Symmetric Key Ciphers - Overview
+# Symmetric Key Ciphers
 
 **Symmetric key ciphers** \(like **AES**, **ChaCha20**, **RC6**, **Twofish**, **CAST** and many others\) use the same key \(or password\) to **encrypt** and **decrypt** data. They are often used in combination with other algorithms into a **symmetric encryption schemes** \(like **ChaCha20-Poly1305** and **AES-128-GCM** and **AES-256-CTR-HMAC-SHA256**\), often with password to **key derivation** algorithms \(like **Scrypt** and **Argon2**\). Symmetric key ciphers are **quantum-resistant**, which means that powerful quantum computers will not be able to break their security \(when big enough key lengths are used\). Symmetric ciphers can encrypt data coming as blocks of fixed size \(**block ciphers**\) or data coming as a sequence of bytes \(**stream ciphers**\). Block ciphers can be transformed to stream ciphers by certain constructions, known as "**block cipher modes** of operation".
 
@@ -8,7 +8,7 @@
 
 When the input data is encrypted, it is transformed to **encrypted ciphertext** and when the ciphertext is decrypted, it is transformed back to the original input data.
 
-![](/assets/symmetric-key-encryption-decryption.gif)
+![](../.gitbook/assets/symmetric-key-encryption-decryption.gif)
 
 ## Symmetric Encryption Uses a Set of Algorithms
 

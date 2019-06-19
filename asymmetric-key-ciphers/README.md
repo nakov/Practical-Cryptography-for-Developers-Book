@@ -1,6 +1,6 @@
-# Asymmetric Key Ciphers and Public-Key Cryptography - Overview
+# Asymmetric Key Ciphers
 
-**Asymmetric key cryptosystems / public-key cryptosystems **\(like [**RSA**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29), [**elliptic curve cryptography \(ECC\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography), [**Diffie-Hellman**](https://en.wikipedia.org/wiki/Diffie–Hellman_key_exchange), [**ElGamal**](https://en.wikipedia.org/wiki/ElGamal_encryption), [**McEliece**](https://en.wikipedia.org/wiki/McEliece_cryptosystem), [**NTRU**](https://en.wikipedia.org/wiki/NTRU) and others\) use a pair of mathematically linked keys: **public key** \(encryption key\) and **private key** \(decryption key\).
+**Asymmetric key cryptosystems / public-key cryptosystems** \(like [**RSA**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29), [**elliptic curve cryptography \(ECC\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography), [**Diffie-Hellman**](https://en.wikipedia.org/wiki/Diffie–Hellman_key_exchange), [**ElGamal**](https://en.wikipedia.org/wiki/ElGamal_encryption), [**McEliece**](https://en.wikipedia.org/wiki/McEliece_cryptosystem), [**NTRU**](https://en.wikipedia.org/wiki/NTRU) and others\) use a pair of mathematically linked keys: **public key** \(encryption key\) and **private key** \(decryption key\).
 
 The asymmetric key cryptosystems provide **key-pair generation** \(private + public key\), **encryption algorithms** \(asymmetric key ciphers and encryption schemes like **RSA-OAEP** and **ECIES**\), **digital signature algorithms** \(like **DSA**, **ECDSA** and **EdDSA**\) and **key exchange algorithms** \(like **DHKE** and **ECDH**\).
 
@@ -11,7 +11,7 @@ A message **encrypted** by the **public key** is later **decrypted** by the **pr
 Well-known **public-key cryptosystems** are: [**RSA**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29), [**ECC**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography), [**ElGamal**](https://en.wikipedia.org/wiki/ElGamal_encryption), [**DHKE**](https://en.wikipedia.org/wiki/Diffie–Hellman_key_exchange), [**ECDH**](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie–Hellman), [**DSA**](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm), [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), [**EdDSA**](https://en.wikipedia.org/wiki/EdDSA), [**Schnorr signatures**](https://en.wikipedia.org/wiki/Schnorr_signature). Different public key cryptosystems may provide one or more of the following capabilities:
 
 * **Key-pair generation**: generate random pairs of private key + corresponding public key.
-* **Encryption **/ **decryption**: encrypt date by public key and decrypt data by private key \(often using a hybrid encryption scheme\).
+* **Encryption** / **decryption**: encrypt date by public key and decrypt data by private key \(often using a hybrid encryption scheme\).
 * **Digital signatures** \(message authentication\): sign messages by private key and verify signatures by public key.
 * **Key-exchange algorithms**: securely exchange cryptographic key between two parties over insecure channel.
 
@@ -33,13 +33,13 @@ To overcome the above limitations and to allow encrypting messages of any size, 
 
 This is how a large document or file can be **encrypted** by combining **public-key cryptography** and **symmetric crypto algorithm**:
 
-![](/assets/hybrid-encryption.png)
+![](../.gitbook/assets/hybrid-encryption%20%281%29.png)
 
 In the above diagram the encrypted symmetric key is known as **KEM block** \(encapsulated key, with public key encryption\) and the encrypted data file is known as **DEM block** \(encapsulated data, with symmetric encryption\). The encrypted message consists of these two blocks together \(encapsulated key + encapsulated data\).
 
 This is the corresponding **decryption** process \(decrypt an encrypted large document using **public-key cryptography** and **symmetric crypto algorithm**\):
 
-![](/assets/hybrid-decryption.png)
+![](../.gitbook/assets/hybrid-decryption.png)
 
 Examples of such asymmetric encryption schemes are: [**RSA-OAEP**](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding), [**RSA-KEM**](https://tools.ietf.org/html/rfc5990#appendix-A) and [**ECIES-KEM**](https://www.w3.org/TR/xmlsec-generic-hybrid/#sec-ecies-kem).
 
@@ -58,7 +58,6 @@ The output from a KEM-based hybrid encryption scheme consists of **KEM block**, 
 **Key encapsulation** should not be confused with **key wrapping**.
 
 * **Key encapsulation** \(KEM\) refers to **public-key encryption of another key** \(symmetric or asymmetric\). It is used for creating provably secure **hybrid encryption schemes**, e.g. to encrypt an AES secret key by given ECC public key.
-
 * **Key wrapping** refers to **symmetric-key encryption of another key** \(which can be either a symmetric key or an asymmetric key\). It is used to encrypt, integrity-protect and transport cryptographic keys. Key wrapping provides privacy and integrity protection for specialized data such as cryptographic keys, without the use of nonces. For details see [RFC 3394](https://tools.ietf.org/html/rfc3394.html).
 
 ## Digital Signatures

@@ -1,14 +1,16 @@
 # Python Crypto Libraries
 
+## Python Crypto Libraries
+
 ...
 
-# Cryptography in Python
+## Cryptography in Python
 
-* Hashes, ECC and ECDSA, eth_keys Library
+* Hashes, ECC and ECDSA, eth\_keys Library
 
-# ECDSA in Python: Generate / Load Keys
+## ECDSA in Python: Generate / Load Keys
 
-```py
+```python
 import eth_keys, eth_utils, binascii, os
 
 # privKey = eth_keys.keys.PrivateKey(os.urandom(32))
@@ -23,9 +25,9 @@ print('Public key (compressed):', pubKeyCompressed)
 print('Signer address:', address)
 ```
 
-# ECDSA in Python: Sign Message
+## ECDSA in Python: Sign Message
 
-```py
+```python
 msg = b'Message for signing'
 msgHash = eth_utils.keccak(msg)
 signature = privKey.sign_msg(msg)
@@ -37,9 +39,9 @@ print('Signature: [v = {0}, r = {1}, s = {2}]'.format(
 print('Signature (130 hex digits):', signature)
 ```
 
-# ECDSA in Python: Verify Signature
+## ECDSA in Python: Verify Signature
 
-```py
+```python
 msg = b'Message for signing'
 msgSigner = '0xa44f70834a711F0DF388ab016465f2eEb255dEd0'
 signature = eth_keys.keys.Signature(binascii.unhexlify(
@@ -50,3 +52,4 @@ signerAddress = signerPubKey.to_checksum_address()
 print('Signer address:', signerAddress)
 print('Signature valid?:', signerAddress == msgSigner)
 ```
+

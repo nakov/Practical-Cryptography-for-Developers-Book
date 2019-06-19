@@ -1,4 +1,4 @@
-# Exercises: Sign / Verify Messages using Ed25519
+# Exercises: EdDSA Sign and Verify
 
 In this exercise we shall **sign** and **verify** messages using the **EdDSA** digital signature algorithm and the `edwards25519` curve, following the technical specification from [RFC 8032](https://tools.ietf.org/html/rfc8032#page-9). The **Ed25519** digital signature algorithm can be found as library for the most programming languages.
 
@@ -10,14 +10,14 @@ Write a program to sign given text **message** with given **private key**. The i
 
 Sample input:
 
-```
+```text
 Message for Ed25519 signing
 de6d730f36a8607b8bfdaa79b3b1127291f1d50552c2fe05c5254a9719105c4a
 ```
 
 Sample output:
 
-```
+```text
 {
   "msg": "Message for Ed25519 signing",
   "pubKey":"7721a5832cb70cce1a960cf236d50a0e862555ccad400b5fee0bcf777f7ab476",
@@ -31,7 +31,7 @@ Write a program to **validate the Ed25519 digital signature**, created by the pr
 
 Sample input \(correctly signed message\):
 
-```
+```text
 {
   "msg": "Message for Ed25519 signing",
   "pubKey":"7721a5832cb70cce1a960cf236d50a0e862555ccad400b5fee0bcf777f7ab476",
@@ -41,13 +41,13 @@ Sample input \(correctly signed message\):
 
 Sample output:
 
-```
+```text
 valid
 ```
 
 Sample input \(tampered message\):
 
-```
+```text
 {
   "msg": "Tampered msg",
   "pubKey":"7721a5832cb70cce1a960cf236d50a0e862555ccad400b5fee0bcf777f7ab476",
@@ -57,9 +57,7 @@ Sample input \(tampered message\):
 
 Sample output:
 
-```
+```text
 invalid
 ```
-
-
 

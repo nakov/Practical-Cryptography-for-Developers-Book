@@ -1,3 +1,5 @@
+# Exercises: RSA Sign and Verify
+
 ## Exercises: RSA Sign / Verify
 
 In this exercise we shall **sign** messages and verify signatures using the **PKCS\#1 v.1.5 RSA** signature algorithm with 4096-bit keys, following the technical specification from [**RFC 8017**](https://tools.ietf.org/html/rfc8017#page-15), using **SHA3-512** for hashing the input message. The RSA-PKCS1 v1.5 digital signature algorithm can be found as library for the most programming languages.
@@ -10,7 +12,7 @@ Write a program to sign given text **message** with given 4096-bit **private key
 
 Sample **input** \(text message + PEM-encoded RSA private key\):
 
-```
+```text
 Message for RSA signing
 -----BEGIN RSA PRIVATE KEY-----
 MIIJJwIBAAKCAgEAoYjbzkMmss6BU/eCBYhs3bFRBVldM9DlaM7WhPZEgmYl7C1O
@@ -67,7 +69,7 @@ fi/wuMFXO7Zz9wyzEKuNXiFExo3FNRChSNonWCJj14Q8cuNW4S0J9hhvAg==
 
 Sample **output** \(message + hex-encoded signature + PEM-encoded RSA public key\):
 
-```
+```text
 Message for RSA signing
 28ce01ec0f8511e92407496b7aa777a8b38fbc27a3656c9862830427bf8a006d59d19ac3b3441f174aee2fe6560b2b5f91aeb72ffa150dad4bd4e93a3b78eabfb48f8051b09cdfc5cbb63b014a7beb81cae4220fa01bedf5fa10aa3b6dcdd7ad229fd7ce2e8883a4893bef532c7b7822993408577a20a198387e073e15e53ffab8d7f3c46fa50347cd45d7a5d319b66d4ead658297a2e7127cc6a1dc5e104beb3ae2ba390d5ae90a66bd8a537e4df296c212186754206c5a0b155c226a3a580e943db33bf9e9829ea3e38f00aafa0e4839bf4673d83b14c74cd9ac359afc3fa56ca7f3a8391e6fb234561b9deca9ac3fa9147d70b0f1189db734b5ea96f287c604467dab0efbf5f1c78437920283dfe6fbcd56f4e859e24ee37552b3b8de5c4fa35e65cf9fe63ec7e2fd155d503fec2648303e495d86af97ac53c14b203bdc7233365d481fda08cac905c48e31bd389bea0f983e035225c4fca269a66009332bbba83542dcd484832f4d40ab14eee3609aa78c01539984758592de3355b528de3c8a669442cbd6f03808226ef0c13924b9553b7af7ff02a6916f106061a7bcbe093f795d9455709ab2b030ff485e9993eb978ae57cabeade4747e981b47c36128c39df970d1f29c4e4a3c225a8384d55995599c9ce3afe14068f4eb4edeb120beb534955b519a4424f82136d3511a0dafad46b010c3fa15bd233bdc85a7fd42a
 -----BEGIN PUBLIC KEY-----
@@ -92,7 +94,7 @@ Write a program to **verify RSA signature** \(calculated by using **PKCS\#1 v.1.
 
 Sample input \(correctly signed message\):
 
-```
+```text
 Message for RSA signing
 28ce01ec0f8511e92407496b7aa777a8b38fbc27a3656c9862830427bf8a006d59d19ac3b3441f174aee2fe6560b2b5f91aeb72ffa150dad4bd4e93a3b78eabfb48f8051b09cdfc5cbb63b014a7beb81cae4220fa01bedf5fa10aa3b6dcdd7ad229fd7ce2e8883a4893bef532c7b7822993408577a20a198387e073e15e53ffab8d7f3c46fa50347cd45d7a5d319b66d4ead658297a2e7127cc6a1dc5e104beb3ae2ba390d5ae90a66bd8a537e4df296c212186754206c5a0b155c226a3a580e943db33bf9e9829ea3e38f00aafa0e4839bf4673d83b14c74cd9ac359afc3fa56ca7f3a8391e6fb234561b9deca9ac3fa9147d70b0f1189db734b5ea96f287c604467dab0efbf5f1c78437920283dfe6fbcd56f4e859e24ee37552b3b8de5c4fa35e65cf9fe63ec7e2fd155d503fec2648303e495d86af97ac53c14b203bdc7233365d481fda08cac905c48e31bd389bea0f983e035225c4fca269a66009332bbba83542dcd484832f4d40ab14eee3609aa78c01539984758592de3355b528de3c8a669442cbd6f03808226ef0c13924b9553b7af7ff02a6916f106061a7bcbe093f795d9455709ab2b030ff485e9993eb978ae57cabeade4747e981b47c36128c39df970d1f29c4e4a3c225a8384d55995599c9ce3afe14068f4eb4edeb120beb534955b519a4424f82136d3511a0dafad46b010c3fa15bd233bdc85a7fd42a
 -----BEGIN PUBLIC KEY-----
@@ -113,13 +115,13 @@ BwjlT6UvoivgK8C7iIrwQGUCAwEAAQ==
 
 Sample output:
 
-```
+```text
 valid
 ```
 
 Sample input \(tampered message\):
 
-```
+```text
 Tampered message
 28ce01ec0f8511e92407496b7aa777a8b38fbc27a3656c9862830427bf8a006d59d19ac3b3441f174aee2fe6560b2b5f91aeb72ffa150dad4bd4e93a3b78eabfb48f8051b09cdfc5cbb63b014a7beb81cae4220fa01bedf5fa10aa3b6dcdd7ad229fd7ce2e8883a4893bef532c7b7822993408577a20a198387e073e15e53ffab8d7f3c46fa50347cd45d7a5d319b66d4ead658297a2e7127cc6a1dc5e104beb3ae2ba390d5ae90a66bd8a537e4df296c212186754206c5a0b155c226a3a580e943db33bf9e9829ea3e38f00aafa0e4839bf4673d83b14c74cd9ac359afc3fa56ca7f3a8391e6fb234561b9deca9ac3fa9147d70b0f1189db734b5ea96f287c604467dab0efbf5f1c78437920283dfe6fbcd56f4e859e24ee37552b3b8de5c4fa35e65cf9fe63ec7e2fd155d503fec2648303e495d86af97ac53c14b203bdc7233365d481fda08cac905c48e31bd389bea0f983e035225c4fca269a66009332bbba83542dcd484832f4d40ab14eee3609aa78c01539984758592de3355b528de3c8a669442cbd6f03808226ef0c13924b9553b7af7ff02a6916f106061a7bcbe093f795d9455709ab2b030ff485e9993eb978ae57cabeade4747e981b47c36128c39df970d1f29c4e4a3c225a8384d55995599c9ce3afe14068f4eb4edeb120beb534955b519a4424f82136d3511a0dafad46b010c3fa15bd233bdc85a7fd42a
 -----BEGIN PUBLIC KEY-----
@@ -140,9 +142,7 @@ BwjlT6UvoivgK8C7iIrwQGUCAwEAAQ==
 
 Sample output:
 
-```
+```text
 invalid
 ```
-
-
 

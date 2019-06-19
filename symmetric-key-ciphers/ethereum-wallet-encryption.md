@@ -1,4 +1,4 @@
-# Ethereum UTC / JSON Wallet Encryption \(AES + Scrypt + MAC\)
+# Ethereum Wallet Encryption
 
 To illustrate the application of **the AES cipher in action**, we shall look into one **real-world example**: the standard **encrypted wallet file format** for the **Ethereum** blockchain. We shall see how **AES-128-CTR** cipher is combined with **Scrypt** and **MAC** to securely implement authenticated symmetric key encryption by text-based password.
 
@@ -14,7 +14,7 @@ The Ethereum **UTC / JSON keystores** keep the **encrypted private key** \(or wa
 
 Let's look into a **sample UTC / JSON keystore file**, which holds a password-protected 256-bit private key.
 
-```json
+```javascript
 {
   "version": 3,
   "id": "07a9f767-93c5-4842-9afd-b3b083659f04",
@@ -56,7 +56,7 @@ By default the key-derivation function is scrypt and uses **weak scrypt paramete
 
 To learn better the file format behind the Ethereum UTC / JSON keystore files, play with **MyEtherWallet**.
 
-![](/assets/MyEtherWallet.png)
+![](../.gitbook/assets/myetherwallet.png)
 
 Follow the steps below to create a new **random Ethereum crypto wallet** and view its encrypted JSON content:
 
@@ -66,3 +66,4 @@ Follow the steps below to create a new **random Ethereum crypto wallet** and vie
 * See **what's inside** the downloaded file.
 * Try to **make some changes**, try to decrypt it with wrong password and other changes.
 * Enjoy **learning by playing**.
+

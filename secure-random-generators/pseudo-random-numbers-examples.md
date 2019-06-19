@@ -1,8 +1,8 @@
-# Generating Pseudo Random Numbers - Example in Python
+# Pseudo-Random Numbers - Examples
 
 To get a better idea **how pseudo-random numbers are generated** in computer programming, let's play with at the following Python code, which generates 5 pseudo-random numbers in the range \[10...20\]:
 
-```py
+```python
 import hashlib, time
 
 startSeed = str(time.time()) + '|'
@@ -16,11 +16,11 @@ for i in range(5):
     print(nextSeed, bigRand, '-->', rand)
 ```
 
-Run the above code example: https://repl.it/@nakov/Pseudo-random-numbers-in-Python.
+Run the above code example: [https://repl.it/@nakov/Pseudo-random-numbers-in-Python](https://repl.it/@nakov/Pseudo-random-numbers-in-Python).
 
 The above code produces time-depended \(predictable\) **pseudo-random sequence**:
 
-```
+```text
 1539884529.7564313|0 80821949188459167822103620715837790870744533466506114260335306835341654043374 --> 20
 1539884529.7564313|1 74025479792630401388590516952955656999942018130178317853592496371994668720404 --> 12
 1539884529.7564313|2 82017697577161203981429946799250236982499988253633196542465974577893633076425 --> 18
@@ -28,7 +28,7 @@ The above code produces time-depended \(predictable\) **pseudo-random sequence**
 1539884529.7564313|4 83874630241630198317549470506043001102325518306912594861433838548293113930135 --> 10
 ```
 
-The **initial pseudo-random seed** is taken from the current time. The first pseudo-random number in the sequence comes from the **SHA-256 hash** of the initial **seed** + the number `0`, the second pseudo-random number comes from the hash of the initial **seed** + the number `1` and so on. To get an output of certain **range \[min...max\]** the 256-bit **hash** is divided to **\(max - min + 1\) **and **min** is added to it. The number `i`, together with the value `startSeed` hold the internal **state** of the random generator, which changes for each next random number.
+The **initial pseudo-random seed** is taken from the current time. The first pseudo-random number in the sequence comes from the **SHA-256 hash** of the initial **seed** + the number `0`, the second pseudo-random number comes from the hash of the initial **seed** + the number `1` and so on. To get an output of certain **range \[min...max\]** the 256-bit **hash** is divided to **\(max - min + 1\)** and **min** is added to it. The number `i`, together with the value `startSeed` hold the internal **state** of the random generator, which changes for each next random number.
 
 The above pseudo-random generator is based on the **random statistical distribution** of the **SHA-256** function. It is expected that the chance for each possible number to be generated is equal.
 
@@ -36,9 +36,9 @@ The above pseudo-random generator is based on the **random statistical distribut
 
 The above random generator is **not secure**, because it is not initialized by an unpredictable source of entropy. **Let's fix this**.
 
-We shall** initialize the initial randomness based on the keyboard events**. The user will be asked to enter something 5 times and the exact precise times of the moments of the user input, together with the data entered from the user will be joined as **initial randomness \(seed\)**. The collected text entropy can be shortened through SHA-256 hashing \(this will reduce it to 256 bits\). After the entropy is collected and the start seed is calculated, the same logic like at the previous example will be used to generate 5 random numbers in the range \[10...20\]. This is a sample Python implementation:
+We shall **initialize the initial randomness based on the keyboard events**. The user will be asked to enter something 5 times and the exact precise times of the moments of the user input, together with the data entered from the user will be joined as **initial randomness \(seed\)**. The collected text entropy can be shortened through SHA-256 hashing \(this will reduce it to 256 bits\). After the entropy is collected and the start seed is calculated, the same logic like at the previous example will be used to generate 5 random numbers in the range \[10...20\]. This is a sample Python implementation:
 
-```py
+```python
 import hashlib, time, binascii
 
 entropy = ''
@@ -59,11 +59,11 @@ for i in range(5):
     print(nextSeed, bigRand, '-->', rand)
 ```
 
-Run the above code example: https://repl.it/@nakov/secure-random-generator-in-Python.
+Run the above code example: [https://repl.it/@nakov/secure-random-generator-in-Python](https://repl.it/@nakov/secure-random-generator-in-Python).
 
 A **sample outpu**t from the above code may look like this:
 
-```
+```text
 Enter something [1 of 5]: first
 Enter something [2 of 5]: second
 Enter something [3 of 5]: random text

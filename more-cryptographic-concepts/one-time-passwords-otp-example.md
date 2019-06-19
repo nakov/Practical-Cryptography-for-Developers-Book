@@ -1,8 +1,8 @@
-# One-Time Passwords \(OTP\) - Examples in Python
+# One-Time Passwords \(OTP\) - Example
 
 In this section, we shall provide an **example** of how to generate and validate One-Time Passwords \(**OTP**\) in Python. The Python library of our choice is [**PyOTP**](https://github.com/pyauth/pyotp), which implement the [RFC 4226](https://tools.ietf.org/html/rfc4226) and [RFC 6238](https://tools.ietf.org/html/rfc6238) standards. If you want to use this library you should **follow the requirements** in those standards. Installation:
 
-```py
+```python
 pip install pyotp
 ```
 
@@ -10,7 +10,7 @@ pip install pyotp
 
 We need to **create a base32 secret** which has to be shared between the authentication server and the client. We will use [Google Authenticator OpenSource](https://github.com/google/google-authenticator) OTP model which produce a **URI for an exchange**, the secret and additional client-server details. It includes the shared secret, the client's username, and the issuer's name.
 
-```py
+```python
 import pyotp
 
 base32secret = pyotp.random_base32()
@@ -22,11 +22,11 @@ totp_uri = pyotp.totp.TOTP(base32secret).provisioning_uri(
 print(totp_uri)
 ```
 
-Run the above code example: https://repl.it/@nakov/OTP-Server-Side-in-Python.
+Run the above code example: [https://repl.it/@nakov/OTP-Server-Side-in-Python](https://repl.it/@nakov/OTP-Server-Side-in-Python).
 
 Sample output:
 
-```py
+```python
 Secret: S3K3TPI5MYA2M67V
 otpauth://totp/Secure%20App:alice%40google.com?secret=S3K3TPI5MYA2M67V&issuer=Secure%20App
 ```
@@ -35,7 +35,7 @@ otpauth://totp/Secure%20App:alice%40google.com?secret=S3K3TPI5MYA2M67V&issuer=Se
 
 Once the client stores the secret in a secure way, in a **time-interval** of a 30 seconds \(by default\) a new code will be generated.
 
-```py
+```python
 import pyotp
 import time
 
@@ -48,11 +48,11 @@ time.sleep(30)
 print('OTP code:', totp.now())
 ```
 
-Run the above code example: https://repl.it/@nakov/OTP-Client-Side-in-Python.
+Run the above code example: [https://repl.it/@nakov/OTP-Client-Side-in-Python](https://repl.it/@nakov/OTP-Client-Side-in-Python).
 
 Sample output:
 
-```
+```text
 Secret: S3K3TPI5MYA2M67V
 OTP code: 339838
 OTP code: 284911
@@ -62,11 +62,11 @@ OTP code: 284911
 
 You can install Google Authenticator from [Google Play](https://play.google.com) or [App Store](http://appstore.com) and scan the QR code below:
 
-![OTP Auth](/assets/one-time-passwords-otp-example-qr-code.png)
+![OTP Auth](../.gitbook/assets/one-time-passwords-otp-example-qr-code.png)
 
 Example validation check:
 
-```py
+```python
 import pyotp
 
 base32secret = 'S3K3TPI5MYA2M67V'
@@ -77,14 +77,12 @@ your_code = '123456'
 print(totp.verify('Code Valid:', your_code))
 ```
 
-Run the above code example: https://repl.it/@nakov/QR-code-scanner-in-Python.
+Run the above code example: [https://repl.it/@nakov/QR-code-scanner-in-Python](https://repl.it/@nakov/QR-code-scanner-in-Python).
 
 Output:
 
-```
+```text
 Secret: S3K3TPI5MYA2M67V
 Code Valid: True
 ```
-
-
 

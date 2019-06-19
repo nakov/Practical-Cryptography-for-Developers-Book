@@ -1,4 +1,4 @@
-# Exercises: Encrypt / Decrypt Messages using RSA
+# Exercises: RSA Encrypt / Decrypt
 
 In this exercise you shall **encrypt** and **decrypt** messages using the **RSA** public-key cryptosystem.
 
@@ -20,7 +20,7 @@ Write your code in programming language of choice.
 
 **Sample input**:
 
-```
+```text
 Secret message
 -----BEGIN PUBLIC KEY-----
 MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMYhCcGpfoebriBbFaUMMwH3B5t7udir
@@ -32,7 +32,7 @@ The above input uses a **512-bit RSA public key** and a small plain text message
 
 **Sample output** \(for the above input\):
 
-```
+```text
 218dd78c5e14b4d58efd10575b521db46c0caa5c699134abf18bbeeac170cfe446e25d0d82257082539e4ccd3e0aa8bffc1b07d2bde9e635a7b9b7fc6cf4c266
 ```
 
@@ -56,7 +56,7 @@ Write your code in programming language of choice.
 
 **Sample input**:
 
-```
+```text
 218dd78c5e14b4d58efd10575b521db46c0caa5c699134abf18bbeeac170cfe446e25d0d82257082539e4ccd3e0aa8bffc1b07d2bde9e635a7b9b7fc6cf4c266
 -----BEGIN RSA PRIVATE KEY-----
 MIIBOgIBAAJBAMYhCcGpfoebriBbFaUMMwH3B5t7udirODJehnQTPlWLf9SVfQdx
@@ -73,13 +73,13 @@ The above input uses a **512-bit RSA private key** and an encrypted **ciphertext
 
 **Sample output** \(for the above input\):
 
-```
+```text
 Secret message
 ```
 
 Another **sample input** \(wrong 512-bit private key\):
 
-```
+```text
 218dd78c5e14b4d58efd10575b521db46c0caa5c699134abf18bbeeac170cfe446e25d0d82257082539e4ccd3e0aa8bffc1b07d2bde9e635a7b9b7fc6cf4c266
 -----BEGIN RSA PRIVATE KEY-----
 MIIBOQIBAAJBAJd0kbrC4AxpcqBgWVPpb8IoI/kdQkF1twrfQtoMkHgB71vpY6Sg
@@ -94,7 +94,7 @@ IPctSCUtukz+7fdeOdw/0FINcUGvnQyuEK34UxE=
 
 The corresponding **output** should be:
 
-```
+```text
 Decryption failed!
 ```
 
@@ -134,3 +134,4 @@ Write a program to **decrypt** given encrypted message, produced by the previous
 
 * The decrypted original plaintext **message**
 * Print `Decryption failed!` if the message decryption is not successful \(e.g. wrong password\)
+

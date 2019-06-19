@@ -1,4 +1,4 @@
-# Popular Symmetric Encryption Algorithms
+# Popular Symmetric Algorithms
 
 Symmetric key encryption algorithms \(like **AES**\) are designed by mathematicians and cryptographers with the idea, that it should be **infeasible to decrypt the ciphertext** without having the encryption key. This is true for the modern **secure symmetric encryption algorithms** \(like AES and ChaCha20\) and may be disputable or false for others, which are considered **insecure symmetric encryption algorithms** \(like DES and RC4\).
 
@@ -45,7 +45,7 @@ Some other symmetric encryption algorithms were popular in the past, but are now
 
 ## Symmetric Encryption Schemes / Constructions
 
-In addition to the above mentioned symmetric key ciphers, cryptographers have proposed many **symmetric encryption schemes **\(constructions\), like the most popular authenticated encryption \(AEAD\) schemes:
+In addition to the above mentioned symmetric key ciphers, cryptographers have proposed many **symmetric encryption schemes** \(constructions\), like the most popular authenticated encryption \(AEAD\) schemes:
 
 * [**ChaCha20-Poly1305**](https://tools.ietf.org/html/rfc7539)
   * The **ChaCha20** stream cipher with integrated **Poly1305** authenticator \(integrated authenticated AEAD encryption\)

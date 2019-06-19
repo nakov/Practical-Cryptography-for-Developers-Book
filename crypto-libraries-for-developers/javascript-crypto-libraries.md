@@ -1,21 +1,23 @@
 # JavaScript Crypto Libraries
 
+## JavaScript Crypto Libraries
+
 ...
 
-# Cryptography in JavaScript
+## Cryptography in JavaScript
 
 * ECDSA with elliptic.js and js-sha3
 
-## ECDSA in JavaScript: Generate / Load Keys
+### ECDSA in JavaScript: Generate / Load Keys
 
-```js
+```javascript
 npm install elliptic
 npm install js-sha3
 ```
 
 ...
 
-```js
+```javascript
 let elliptic = require('elliptic');
 let sha3 = require('js-sha3');
 let ec = new elliptic.ec('secp256k1');
@@ -31,11 +33,11 @@ console.log("Public key (compressed):",
     pubKey.encodeCompressed("hex"));
 ```
 
-Run the above code example: https://repl.it/@nakov/ECDSA-in-JS.
+Run the above code example: [https://repl.it/@nakov/ECDSA-in-JS](https://repl.it/@nakov/ECDSA-in-JS).
 
 ECDSA in JavaScript: Sign Message
 
-```js
+```javascript
 let msg = 'Message for signing';
 let msgHash = sha3.keccak256(msg);
 let signature = 
@@ -46,13 +48,13 @@ console.log(`Msg hash: ${msgHash}`);
 console.log("Signature:", signature);
 ```
 
-Run the above code example: https://repl.it/@nakov/ECDSA-sign-verify-in-JS.
+Run the above code example: [https://repl.it/@nakov/ECDSA-sign-verify-in-JS](https://repl.it/@nakov/ECDSA-sign-verify-in-JS).
 
 Complete example: [https://gist.github.com/nakov/1dcbe26988e18f7a4d013b65d8803ffc](https://gist.github.com/nakov/1dcbe26988e18f7a4d013b65d8803ffc).
 
-## ECDSA in JavaScript: Verify Signature
+### ECDSA in JavaScript: Verify Signature
 
-```js
+```javascript
 let hexToDecimal = (x) => ec.keyFromPrivate(x, "hex")
   .getPrivate().toString(10);
 let pubKeyRecovered = ec.recoverPubKey(
@@ -65,7 +67,7 @@ let validSig = ec.verify(
 console.log("Signature valid?", validSig);
 ```
 
-Run the above code example: https://repl.it/@nakov/ECDSA-sign-verify-in-JS.
+Run the above code example: [https://repl.it/@nakov/ECDSA-sign-verify-in-JS](https://repl.it/@nakov/ECDSA-sign-verify-in-JS).
 
 Complete example: [https://gist.github.com/nakov/1dcbe26988e18f7a4d013b65d8803ffc](https://gist.github.com/nakov/1dcbe26988e18f7a4d013b65d8803ffc)
 

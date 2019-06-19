@@ -1,4 +1,4 @@
-# Sign / Verify Messages using EdDSA - Examples in Python
+# EdDSA: Sign / Verify - Examples
 
 After we explained in the previous section how the **EdDSA signatures** work, now it is time to demonstrate them with code examples. First, we shall demonstrated how to use Ed25519 signatures.
 
@@ -6,13 +6,13 @@ After we explained in the previous section how the **EdDSA signatures** work, no
 
 We shall use the Python library [`ed25519`](https://github.com/warner/python-ed25519), which is based on the Bernstein's original optimized highly optimized C implementation of the **Ed25519** signature algorithm \(EdDSA over the Curve25519 in Edwards form\):
 
-```py
+```python
 pip install ed25519
 ```
 
 Next, generate a **private + public key pair** for the Ed25519 cryptosystem, **sign** a sample message, and **verify** the signature:
 
-```py
+```python
 import ed25519
 
 privKey, pubKey = ed25519.create_keypair()
@@ -30,11 +30,11 @@ except:
     print("Invalid signature!")
 ```
 
-Run the above code example: https://repl.it/@nakov/Ed25519-sign-verify-in-Python.
+Run the above code example: [https://repl.it/@nakov/Ed25519-sign-verify-in-Python](https://repl.it/@nakov/Ed25519-sign-verify-in-Python).
 
 The output from the above sample code looks like this:
 
-```
+```text
 Private key (32 bytes): b'1498b5467a63dffa2dc9d9e069caf075d16fc33fdd4c3b01bfadae6433767d93'
 Public key (32 bytes):  b'b7a3c12dc0c8c748ab07525b701122b88bd78f600c76342d27f25e5f92444cde'
 Signature (64 bytes): b'6dd355667fae4eb43c6e0ab92e870edb2de0a88cae12dbd8591507f584fe4912babff497f1b8edf9567d2483d54ddc6459bea7855281b7a246a609e3001a4e08'
@@ -47,7 +47,7 @@ The **private key** is encoded as 64 hex digits \(32 bytes\). The **public key**
 
 If we try to verify a tampered message, the verification will fail:
 
-```py
+```python
 try:
     pubKey.verify(signature, "Tampered msg", encoding='hex')
     print("The signature is valid.")
@@ -55,11 +55,11 @@ except:
     print("Invalid signature!")
 ```
 
-Run the above code example: https://repl.it/@nakov/Ed25519-verify-tampered-message-in-Python.
+Run the above code example: [https://repl.it/@nakov/Ed25519-verify-tampered-message-in-Python](https://repl.it/@nakov/Ed25519-verify-tampered-message-in-Python).
 
 The output from the above sample code is as expected:
 
-```
+```text
 Invalid signature!
 ```
 
@@ -69,13 +69,13 @@ Now, let's demonstrate how to use the **Ed448 signature** \(EdDSA over the Curve
 
 We shall use the Python elliptic curve library [`ECPy`](https://github.com/cslashm/ECPy), which implements ECC with Weierstrass curves \(like `secp256k1` and `NIST P-256`\), Montgomery curves \(like `Curve25519` and `Curve448`\) and twisted Edwards curves \(like `Ed25519` and `Ed448`\):
 
-```py
+```python
 pip install ecpy
 ```
 
 Next, generate a **private + public key pair** for the Ed448 cryptosystem:
 
-```py
+```python
 from ecpy.curves import Curve
 from ecpy.keys import ECPrivateKey
 from ecpy.eddsa import EDDSA
@@ -91,13 +91,13 @@ print("Public key (compressed, 57 bytes): ",
 print("Public key (point): ", pubKey)
 ```
 
-Run the above code example: https://repl.it/@nakov/Ed448-private-public-keys-in-Python.
+Run the above code example: [https://repl.it/@nakov/Ed448-private-public-keys-in-Python](https://repl.it/@nakov/Ed448-private-public-keys-in-Python).
 
 The **Ed448 key pair** is generated randomly. According to [RFC 8032](https://tools.ietf.org/html/rfc8032#page-19) the Ed448 **private key** is generated from 57-byte random seed, which is transformed to 57-byte **public key** using the **SHAKE256**\(x, hash\_len=114\) hash function, along with EC point multiplication and the special key encoding rules for Ed448.
 
 The output from the above sample code may look like this:
 
-```
+```text
 Private key (57 bytes): ECPrivateKey:
   d: 625d3edeb5cd69b20b0b6387c3522a21d356ac40b408e34fb2f8442e2c91eee3f877afe583a2fd11770567df69178019d6fbc6357c35eefa3e
 Public key (compressed, 57 bytes):  b'261d23911e194ed0cb7f9233568e906d6abcf4d60f73451ca807636d8fa6e4ea5ca12f51d240299a0b86a61ccb2174ce4ed2a8c4f7a8cced00'
@@ -110,7 +110,7 @@ The **private key** is encoded as 114 hex digits \(57 bytes\). The **public key*
 
 Next, **sign** a sample message using the private key, and **verify** the signature using the public key after that:
 
-```py
+```python
 msg = b'Message for Ed448 signing'
 signature = signer.sign(msg, privKey)
 print("Signature (114 bytes):", binascii.hexlify(signature))
@@ -119,11 +119,11 @@ valid = signer.verify(msg, signature, pubKey)
 print("Valid signature?", valid)
 ```
 
-Run the above code example: https://repl.it/@nakov/Ed448-sign-verify-in-Python.
+Run the above code example: [https://repl.it/@nakov/Ed448-sign-verify-in-Python](https://repl.it/@nakov/Ed448-sign-verify-in-Python).
 
 The output from the above code example \(for the above Ed448 key pair\) is:
 
-```
+```text
 Signature (114 bytes): b'5114674f1ce8a2615f2b15138944e5c58511804d72a96260ce8c587e7220daa90b9e65b450ff49563744d7633b43a78b8dc6ec3e3397b50080a15f06ce8005ad817a1681a4e96ee6b4831679ef448d7c283b188ed64d399d6bac420fadf33964b2f2e0f2d1abd401e8eb09ab29e3ff280600'
 Valid signature? True
 ```
@@ -132,18 +132,16 @@ The signature is **deterministic**: the same message with the same private key p
 
 If we try to verify the same signature with a tampered message, the verification will fail:
 
-```py
+```python
 valid = signer.verify(b'Tampered msg', signature, pubKey)
 print("Valid signature?", valid)
 ```
 
-Run the above code example: https://repl.it/@nakov/Ed448-verify-tampered-message-in-Python.
+Run the above code example: [https://repl.it/@nakov/Ed448-verify-tampered-message-in-Python](https://repl.it/@nakov/Ed448-verify-tampered-message-in-Python).
 
 The output from the above sample code is as expected:
 
-```
+```text
 Valid signature? False
 ```
-
-
 

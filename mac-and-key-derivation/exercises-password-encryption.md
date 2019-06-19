@@ -1,6 +1,6 @@
-# Exercises: Securely Store Passwords for User Register / Login
+# Exercises: Password Encryption
 
-In this exercise you will design a **user authentication system** for modern a Web or mobile app, following the industry's best practices. Implement user **register** / **login** / **change password** functionality, using the **Argon2** secure password hashing with **random salt**. Keep the **usernames** and their corresponding Argon2 hashed **passwords** \(along with the Argon2 algorithm parameters and the random salt\) as key-value pairs in the form **username:argon2hash**, in a simple JSON document. In the real world you may use a **database** instead of **JSON **document, but let's keep the exercise simple.
+In this exercise you will design a **user authentication system** for modern a Web or mobile app, following the industry's best practices. Implement user **register** / **login** / **change password** functionality, using the **Argon2** secure password hashing with **random salt**. Keep the **usernames** and their corresponding Argon2 hashed **passwords** \(along with the Argon2 algorithm parameters and the random salt\) as key-value pairs in the form **username:argon2hash**, in a simple JSON document. In the real world you may use a **database** instead of **JSON** document, but let's keep the exercise simple.
 
 ...
 

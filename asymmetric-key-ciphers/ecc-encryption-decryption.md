@@ -1,20 +1,20 @@
-# ECC-Based Encryption / Decryption
+# ECC Encryption / Decryption
 
 In this section we shall explain how to implement **elliptic-curve based public-key encryption / decryption** \(asymmetric encryption scheme based on ECC\). This is **non-trivial** and usually involves a design of hybrid encryption scheme, involving ECC cryptography, ECDH key exchange and symmetric encryption algorithm.
 
 Assume we have a ECC **private-public key pair**. We want to encrypt and decrypt data using these keys. By definition, **asymmetric encryption** works as follows: if we **encrypt data by a private key**, we will be able to **decrypt** the ciphertext later by the corresponding **public key**:
 
-![](/assets/asymmetric-encryption-diagram.png)
+![](../.gitbook/assets/asymmetric-encryption-diagram.png)
 
 The above process can be directly applied for the **RSA** cryptosystem, but not for the **ECC**. The elliptic curve cryptography \(ECC\) **does not directly provide encryption** method. Instead, we can design a **hybrid encryption scheme** by using the **ECDH** \(Elliptic Curve Diffie–Hellman\) key exchange scheme to derive a **shared secret key** for symmetric data encryption and decryption.
 
 This is how most **hybrid encryption schemes** works \(the encryption process\):
 
-![](/assets/hybrid-encryption.png)
+![](../.gitbook/assets/hybrid-encryption.png)
 
 This is how most **hybrid encryption schemes** works \(the decryption process\):
 
-![](/assets/hybrid-decryption.png)
+![](../.gitbook/assets/hybrid-decryption%20%281%29.png)
 
 Let's get into details how to design and implement an **ECC-based hybrid encryption scheme**.
 
@@ -31,11 +31,11 @@ Assume we have a **cryptographic elliptic curve** over finite field, along with 
   1. Calculate the the ECDH shared secret: **sharedECCKey** = ciphertextPubKey \* privKey.
   2. Return the **sharedECCKey** and use it for the decryption.
 
-The above calculations use the same math, like the **ECDH** algorithm \(see the [previous section](/asymmetric-key-ciphers/ecdh-key-exchange.md)\). Recall that EC points have the following property:
+The above calculations use the same math, like the **ECDH** algorithm \(see the [previous section](ecdh-key-exchange.md)\). Recall that EC points have the following property:
 
 * \(_**a**_ \* **G**\) \* _**b**_ = \(_**b**_ \* **G**\) \* _**a**_
 
-Now, assume that _**a**_ = privKey, _**a**_ \* **G **= pubKey, _**b**_ = ciphertextPrivKey, _**b**_ \* **G** = ciphertextPubKey.
+Now, assume that _**a**_ = privKey, _**a**_ \* **G** = pubKey, _**b**_ = ciphertextPrivKey, _**b**_ \* **G** = ciphertextPubKey.
 
 The above equation takes the following form:
 
@@ -45,9 +45,9 @@ This is what exactly the above two functions calculate, directly following the *
 
 ## ECC-Based Secret Key Derivation - Example in Python
 
-The below Python code uses the `tinyec` library to generate a **ECC private-public key pair** for the message recipient \(based on the `brainpoolP256r1` curve\) and then derive a **secret shared key** \(for encryption\) and ephemeral **ciphertext public key** \(for ECDH\) from the recipient's **public key **and later derive the same **secret shared key** \(for decryption\) from the recipient's **private key** and the generated earlier ephemeral **ciphertext public key**:
+The below Python code uses the `tinyec` library to generate a **ECC private-public key pair** for the message recipient \(based on the `brainpoolP256r1` curve\) and then derive a **secret shared key** \(for encryption\) and ephemeral **ciphertext public key** \(for ECDH\) from the recipient's **public key** and later derive the same **secret shared key** \(for decryption\) from the recipient's **private key** and the generated earlier ephemeral **ciphertext public key**:
 
-```py
+```python
 from tinyec import registry
 import secrets
 
@@ -79,11 +79,11 @@ decryptKey = ecc_calc_decryption_key(privKey, ciphertextPubKey)
 print("decryption key:", compress_point(decryptKey))
 ```
 
-Run the above code example: https://repl.it/@nakov/ECC-based-secret-key-derivation-in-Python.
+Run the above code example: [https://repl.it/@nakov/ECC-based-secret-key-derivation-in-Python](https://repl.it/@nakov/ECC-based-secret-key-derivation-in-Python).
 
 The code is pretty simple and demonstrates that we can generate a pair { **secret key** + **ciphertext public key** } from given EC **public key** and later we can recover the same **secret key** from the pair { **ciphertext public key** + **private key** }. The above code produces output like this:
 
-```
+```text
 private key: 0x2e2921b4cde59cdf01e7a014a322abd530b3015085c31cb6e59502da761d29e9
 public key: 0x850d3873cf4ac50ddb54ddbd27f8225fc43bd3f4c2cc0a4f9d1f9ce15fc4eb711
 ciphertext pubKey: 0x71586f9999d3ee050005054bc681c1d96c5eb054ca15b080ba245e495627003b0
@@ -101,14 +101,14 @@ Once we have the **secret key**, we can use it for **symmetric data encryption**
 
 We shall use the `tinyec` and `pycryptodome` Python libraries respectively for ECC calculations and for the AES cipher:
 
-```
+```text
 pip install tinyec
 pip install pycryptodome
 ```
 
 Let's examine this full **ECC + AES hybrid encryption** example:
 
-```py
+```python
 from tinyec import registry
 from Crypto.Cipher import AES
 import hashlib, secrets, binascii
@@ -164,7 +164,7 @@ decryptedMsg = decrypt_ECC(encryptedMsg, privKey)
 print("decrypted msg:", decryptedMsg)
 ```
 
-Run the above code example: https://repl.it/@nakov/ECC-based-hybrid-encryption-decryption-in-Python.
+Run the above code example: [https://repl.it/@nakov/ECC-based-hybrid-encryption-decryption-in-Python](https://repl.it/@nakov/ECC-based-hybrid-encryption-decryption-in-Python).
 
 The above example starts from generating an ECC public + private **key pair** for the message recipient: `pubKey` + `privKey`, using the `tinyec` library. These keys will be used to **encrypt** the message `msg` through the hybrid encryption scheme \(asymmetric ECC + symmetric AES\) and to **decrypt** is later back to its original form.
 
@@ -178,7 +178,7 @@ The `decrypt_ECC(encryptedMsg{ciphertext, nonce, authTag, ciphertextPubKey}, pri
 
 The output from the above code looks like this:
 
-```
+```text
 original msg: b'Text to be encrypted by ECC public key and decrypted by its corresponding ECC private key'
 encrypted msg: {'ciphertext': b'b5953b3082fcefdbde91dd3c03cf83dde0822c19be6ae906a634db65115295e7cbcd7a1a492d69ba5be91990c70d8df9dc84360cf554f155ef81ce1f0ad44bd9fdabbc5f960517089262b3390e61b37610012bee4e6bcae335', 'nonce': b'9d55f4b5c87fff773d0457f3b23a953e', 'authTag': b'5c9d339778925aa4e44f43252a28681d', 'ciphertextPubKey': '0x21dbc985b625f2a42d0f86fc234b49b55477928bae73dfac73bafd9bed50abe70'}
 decrypted msg: b'Text to be encrypted by ECC public key and decrypted by its corresponding ECC private key'

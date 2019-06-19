@@ -1,4 +1,4 @@
-# Argon2: Secure, ASIC-Resistant KDF
+# Argon2
 
 [**Argon2**](https://en.wikipedia.org/wiki/Argon2) is modern **ASIC-resistant** and **GPU-resistant** secure key derivation function. It has better password cracking resistance \(when configured correctly\) than **PBKDF2**, **Bcrypt** and **Scrypt** \(for similar configuration parameters for CPU and RAM usage\).
 
@@ -25,7 +25,7 @@ The **Argon2** function has several variants:
 
 You can **play with the Argon2** password to key derivation function online here: [http://antelle.net/argon2-browser](http://antelle.net/argon2-browser).
 
-![](/assets/Argon2-online.png)
+![](../.gitbook/assets/argon2-online.png)
 
 ## Argon2 Calculation in Python - Example
 
@@ -33,7 +33,7 @@ Now, we shall write some **code in Python** to derive a key from a password usin
 
 First, install the Python package `argon2_cffi` using the command:
 
-```
+```text
 pip install argon2_cffi
 ```
 
@@ -61,7 +61,7 @@ except:
     print("Argon2 verify (incorrect password):", False)
 ```
 
-Run the above code example: [ ](https://repl.it/@nakov/Argon2)https://repl.it/@nakov/Argon2-in-Python.
+Run the above code example: [ ](https://repl.it/@nakov/Argon2)[https://repl.it/@nakov/Argon2-in-Python](https://repl.it/@nakov/Argon2-in-Python).
 
 The above code first derives a "**raw hash**" \(256-bit key\), which is argon2-based key derivation, just like with scrypt. It also derives a "**argon2 hash**", which holds the algorithm parameters, along with random salt and derived key. The later is used for password storing and verification. Finally, the calculated hashes are tested agains a correct and wrong password.
 
@@ -69,7 +69,7 @@ The **Argon2** calculation takes several **input configuration settings**: **tim
 
 Sample **output** from the above code execution:
 
-```
+```text
 Argon2 raw hash: b'157f21dd3fdf7bafb76d2923ccaffa0b7be7cbae394709474d2bc66ee7b09d3e'
 Argon2 hash (random salt): $argon2id$v=19$m=32768,t=16,p=2$Rfy6J41W9idBU+n/8sZc6Q$i3QYYPtoogIAw78I2qqlUQ8vjzUXGG1V6QsBOq2NIp4
 Argon2 verify (correct password): True
@@ -86,7 +86,7 @@ Try to change the **time\_cost** or the **memory\_cost** settings and see how th
 
 In many applications, frameworks and tools, **Argon2 encrypted passwords are stored together with the algorithm settings and salt**, into a single string \(in certain format, like it was shown above\), consisting of several parts, separated by `$` character. For example, the password `p@ss~123` can be stored in the Argon2 standard format like this \(several examples are given, to make the pattern apparent\):
 
-```
+```text
 $argon2d$v=19$m=1024,t=16,p=4$c2FsdDEyM3NhbHQxMjM$2dVtFVPCezhvjtyu2PaeXOeBR+RUZ6SqhtD/+QF4F1o
 $argon2d$v=19$m=1024,t=16,p=4$YW5vdGhlcnNhbHRhbm90aGVyc2FsdA$KB7Nj7kK21YdGeEBQy7R3vKkYCz1cdR/I3QcArMhl/Q
 $argon2i$v=19$m=8192,t=32,p=1$c21hbGxzYWx0$lmO1aPPy3x0CcvrKpFLi1TL/uSVJ/eO5hPHiWZFaWvY

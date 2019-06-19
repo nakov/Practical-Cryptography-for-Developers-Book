@@ -39,3 +39,4 @@ In this exercise session, you are assigned to write some code to **calculate cry
 | hello | 0a25f55d7308eca6b9567a7ed3bd1b46327f0f1ffdc804dd8bb5af40e88d78b88df0d002a89e2fdbd5876c523f1b67bc44e9f87047598e7548298ea1c81cfd73 |
 
 **Hints**: follow the Python examples, given earlier in this section or search in Internet.
+

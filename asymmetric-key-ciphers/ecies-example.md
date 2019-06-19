@@ -1,14 +1,14 @@
-# ECIES \(Elliptic Curve Integrated Encryption Scheme\) - Example
+# ECIES Encryption - Example
 
 Now, let's demonstrate how the **ECIES encryption scheme** works in practice in **Python**. We shall use a Python library [`eciespy`](https://kigawas.me/eciespy/):
 
-```py
+```python
 pip install eciespy
 ```
 
 A sample Python code to generate public / private **key pair** and **encrypt** and **decrypt** a message using ECIES is:
 
-```py
+```python
 from ecies.utils import generate_eth_key
 from ecies import encrypt, decrypt
 import binascii
@@ -29,13 +29,13 @@ decrypted = decrypt(privKeyHex, encrypted)
 print("Decrypted:", decrypted)
 ```
 
-Run the above code example: https://repl.it/@nakov/ECIES-in-Python.
+Run the above code example: [https://repl.it/@nakov/ECIES-in-Python](https://repl.it/@nakov/ECIES-in-Python).
 
 The above code is pretty simple: just generate ECC **public + private key pair** using `ecies.utils.generate_eth_key()` and call the `ecies.encrypt(pubKey, msg)` and `decrypt(privKey, encryptedMsg)` functions from the `eciespy` library.
 
 The **output** form the above code looks like this:
 
-```
+```text
 Encryption public key: 0x0dc8e06c055b45ecf110258ed5c0261ce2019b1bd0f8f226dcd010dade448b8f304a0915c68cdf7ddded8e4021d28fb92e27d08df695f48a0d2c41ddee750fc7
 Decryption private key: 0x487fd8b53c471e3c38484a0fbe4751ace67a9ed28e60ea6b0b44c445b881f99d
 Plaintext: b'Some plaintext for encryption'

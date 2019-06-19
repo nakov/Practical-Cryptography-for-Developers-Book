@@ -1,4 +1,4 @@
-# MAC Codes and Key Derivation Functions
+# MAC and Key Derivation
 
 **Message authentication codes** \(**MAC**\), **HMAC** \(hash-based message authentication code\) and **KDF** \(key derivation functions\) play important role in cryptography. Let's explain when we need **MAC**, how to calculate **HMAC** and how it is related to key derivation functions.
 
@@ -6,7 +6,7 @@
 
 **M**essage **A**uthentication **C**ode \(**MAC**\) is cryptographic code, calculated by given **key** and given **message**:
 
-```
+```text
 auth_code = MAC(key, msg)
 ```
 
@@ -14,20 +14,20 @@ Typically, it behaves **like a hash function**: a minor change in the message or
 
 For example, the MAC code can be calculated by the **HMAC-SHA256** algorithm like this:
 
-```
+```text
 HMAC-SHA256('key', 'some msg') = 32885b49c8a1009e6d66662f8462e7dd5df769a7b725d1d546574e6d5d6e76ad
 ```
 
 The above HMAC-SHA256 calculation can be coded in Python like this:
 
-```py
+```python
 import hashlib, hmac, binascii
 
 mac = hmac.new(b'key', b'some msg', hashlib.sha256).digest()
 print(binascii.hexlify(mac))
 ```
 
-Run the above code example: https://repl.it/@nakov/HMAC-SHA256-in-Python.
+Run the above code example: [https://repl.it/@nakov/HMAC-SHA256-in-Python](https://repl.it/@nakov/HMAC-SHA256-in-Python).
 
 The MAC code is **digital authenticity code**, like a **digital signature**, but with **pre-shared key**. We shall learn more about digital signing and digital signatures later.
 
@@ -44,19 +44,19 @@ A sample scenario for using MAC codes is like this:
 * We want to be sure that the **msg** is **not tampered**, which means that both the **key** and **msg** are correct and match the MAC code.
 * In case of **tampered message**, the MAC code will be incorrect.
 
-![](/assets/MAC-message-authentication-code.png)
+![](../.gitbook/assets/mac-message-authentication-code.png)
 
 ## Authenticated Encryption: Encrypt / Decrypt Messages using MAC
 
-Another scenario to use **MAC codes** is for [**authenticated encryption**](https://en.wikipedia.org/wiki/Authenticated_encryption)**: **when we **encrypt a message** and we want to be sure the **decryption password is correct** and the decrypted message is the same like the original message before encryption.
+Another scenario to use **MAC codes** is for [**authenticated encryption**](https://en.wikipedia.org/wiki/Authenticated_encryption)**:** when we **encrypt a message** and we want to be sure the **decryption password is correct** and the decrypted message is the same like the original message before encryption.
 
-* First, we **derive a key **from the password. We can use this key for the MAC calculation algorithm \(directly or hashed for better security\).
+* First, we **derive a key** from the password. We can use this key for the MAC calculation algorithm \(directly or hashed for better security\).
 * Next, we **encrypt the message** using the derived key and store the ciphertext in the output.
 * Finally, we calculate the **MAC code** using the derived key and the original message and we append it to the output.
 
 When we **decrypt the encrypted message** \(ciphertext + MAC\), we proceed as follows:
 
-* First, we **derive a key **from the password, entered by the user. It might be the correct password or wrong. We shall find out later.
+* First, we **derive a key** from the password, entered by the user. It might be the correct password or wrong. We shall find out later.
 * Next, we **decrypt the message** using the derived key. It might be the original message or incorrect message \(depends on the password entered\).
 * Finally, we calculate a **MAC code** using the derived key + the decrypted message.
   * If the calculated MAC code matches the MAC code in the encrypted message, the **password is correct**.
@@ -64,15 +64,15 @@ When we **decrypt the encrypted message** \(ciphertext + MAC\), we proceed as fo
 
 Some **authenticated encryption algorithms** \(such as **AES-GCM** and **ChaCha20-Poly1305**\) integrate the MAC calculation into the encryption algorithm and the MAC verification into the decryption algorithm. We shall learn more about these algorithms later.
 
-The MAC is stored along with the ciphertext and it **does not reveal **the password or the original message. Storing the MAC code, visible to anyone is safe, and after decryption, we know whether the message is the original one or not \(wrong password\).
+The MAC is stored along with the ciphertext and it **does not reveal** the password or the original message. Storing the MAC code, visible to anyone is safe, and after decryption, we know whether the message is the original one or not \(wrong password\).
 
 ## MAC-Based Pseudo-Random Generator
 
 Another application of MAC codes is for **pseudo-random generator** functions. We can start from certain **salt** \(constant number or the current date and time or some other randomness\) and some **seed** number \(last random number generated, e.g. **0**\). We can calculate the **next\_seed** as follows:
 
-```
+```text
 next_seed = MAC(salt, seed)
 ```
 
-This **next pseudo-random number** is "randomly changed" after each calculation of the above formula and we can use it to generate the next random number in certain range. We shall demonstrated a fully working example in the "[Secure Random Generators](/secure-random-generators/pseudo-random-numbers-examples.md)" chapter.
+This **next pseudo-random number** is "randomly changed" after each calculation of the above formula and we can use it to generate the next random number in certain range. We shall demonstrated a fully working example in the "[Secure Random Generators](../secure-random-generators/pseudo-random-numbers-examples.md)" chapter.
 

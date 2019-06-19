@@ -1,10 +1,10 @@
-# Scrypt Key Derivation
+# Scrypt
 
 [**Scrypt**](https://en.wikipedia.org/wiki/Scrypt) \([RFC 7914](https://tools.ietf.org/html/rfc7914.html)\) is a strong cryptographic key-derivation function \(KDF\). It is memory-intensive, designed to prevent **GPU**, **ASIC** and **FPGA** attacks \(highly efficient password cracking hardware\).
 
 The **Scrypt** algorithm takes several **input parameters** and produces the derived **key** as output:
 
-```
+```text
 key = Scrypt(password, salt, N, r, p, derived-key-len)
 ```
 
@@ -21,12 +21,12 @@ The **Scrypt config parameters** are:
 
 The **memory** in Scrypt is accessed in strongly **dependent order** at each step, so the memory access speed is the algorithm's bottleneck. The **memory required** to compute Scrypt key derivation is calculated as follows:
 
-```
+```text
 Memory required = 128 * N * r * p bytes
 ```
 
 Example: e.g. 128 \* N \* r \* p = 128 \* 16384 \* 8 \* 1 = 16 MB  
-                  \(or 128 \* N \* r \* p = 128 \* 2048 \* 8 \* 1 = 2 MB\)
+\(or 128 \* N \* r \* p = 128 \* 2048 \* 8 \* 1 = 2 MB\)
 
 **Choosing parameters** depends on how much you want to wait and what level of security \(password cracking resistance\) do you want to achieve:
 
@@ -41,7 +41,7 @@ In the **MyEtherWallet** crypto wallet, the default Scrypt parameters are N=8192
 
 You can play with **Scrypt** key derivation online here: [https://8gwifi.org/scrypt.jsp](https://8gwifi.org/scrypt.jsp).
 
-![](/assets/Scrypt-key-derivation.png)
+![](../.gitbook/assets/scrypt-key-derivation.png)
 
 ## Scrypt Calculation in Python - Example
 
@@ -49,7 +49,7 @@ Now, we shall write some **code in Python** to derive a key from a password usin
 
 First, install the Python package `scrypt` using the command:
 
-```
+```text
 pip install scrypt
 ```
 
@@ -67,13 +67,13 @@ key = pyscrypt.hash(passwd, salt, 2048, 8, 1, 32)
 print("Derived key:", key.hex())
 ```
 
-Run the above code example: https://repl.it/@nakov/Scrypt-in-Python.
+Run the above code example: [https://repl.it/@nakov/Scrypt-in-Python](https://repl.it/@nakov/Scrypt-in-Python).
 
 The **Scrypt** calculation function takes several **input parameters**: the **password** \(bytes sequence\), the **salt** \(bytes sequence\), **iterations** count, **block size** for each iteration, **parallelism** factor and the output **key length** \(number of bytes for the derived key\).
 
 The **output** from the above code execution is the following:
 
-```
+```text
 Derived key: b'e813a6f6ccc4e9110193bf9efb7c0a489d76655f9e36629dccbeaf2a73bc0c6f'
 ```
 
@@ -83,7 +83,7 @@ Try to change the number of **iterations** or the **block size** and see how the
 
 In many applications, frameworks and tools, **Scrypt encrypted passwords are stored together with the algorithm settings and salt**, into a single string \(in certain format\), consisting of several parts, separated by `$` character. For example, the password `p@ss~123` can be stored in the Scrypt standard format like this \(several examples are given, to make the pattern apparent\):
 
-```
+```text
 16384$8$1$kytG1MHY1KU=$afc338d494dc89be40e317788e3cd9166d066709db0e6481f0801bd918710f46
 16384$8$1$5gFGlElztY0=$560f6229356c281a525fad4e2fc4c209bb55c21dec789381335a32bb84888a5a
 32768$8$4$VGhlIHF1aWo=$54d657cec8b3aaca675b407e790bccf1dddb0a23665cd5f994820a736d4b58ba

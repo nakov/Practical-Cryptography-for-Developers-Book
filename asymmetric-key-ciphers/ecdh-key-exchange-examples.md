@@ -1,16 +1,16 @@
-# ECDH Key Exchange - Examples in Python
+# ECDH Key Exchange - Examples
 
 Now let's implement the **ECDH** algorithm \(Elliptic Curve Diffie–Hellman Key Exchange\) in Python.
 
 We shall use the `tinyec` library for ECC in Python:
 
-```py
+```python
 pip install tinyec
 ```
 
 Now, let's generate two public-private **key pairs**, exchange the **public keys** and calculate the **shared secret**:
 
-```py
+```python
 from tinyec import registry
 import secrets
 
@@ -38,13 +38,13 @@ print("Bob shared key:", compress(bobSharedKey))
 print("Equal shared keys:", aliceSharedKey == bobSharedKey)
 ```
 
-Run the above code example: https://repl.it/@nakov/ECDH-Key-Exchange-in-Python.
+Run the above code example: [https://repl.it/@nakov/ECDH-Key-Exchange-in-Python](https://repl.it/@nakov/ECDH-Key-Exchange-in-Python).
 
 The **elliptic curve** used for the ECDH calculations is **256-bit** named curve `brainpoolP256r1`. The **private keys** are **256-bit** \(64 hex digits\) and are generated randomly. The **public keys** will be **257 bits** \(65 hex digits\), due to **key compression**.
 
 The **output** of the above code looks like this:
 
-```
+```text
 Alice public key: 0x66c808e6b5be6d6620934bc6ffa2b8b47f9786c002bfb06d53a0c27535641a5d1
 Bob public key: 0x7d15195432d1ac7f38aeb054d07d9b2e1faa913b78ad04d5efdd4a1ee8d9a3191
 Now exchange the public keys (e.g. through Internet)

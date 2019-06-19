@@ -1,10 +1,10 @@
-# Sign / Verify Messages using ECDSA - Examples in Python
+# ECDSA: Sign / Verify - Examples
 
-After we explained in details how the **ECDSA signature **algorithm works, now let's demonstrate it in practice with **code examples**.
+After we explained in details how the **ECDSA signature** algorithm works, now let's demonstrate it in practice with **code examples**.
 
 In this example, we shall use the [`pycoin` ](https://github.com/richardkiss/pycoin)Python package, which implements the **ECDSA signature algorithm** with the curve `secp256k1` \(used in the Bitcoin cryptography\), as well as many other functionalities related to the Bitcoin blockchain:
 
-```py
+```python
 pip install pycoin
 ```
 
@@ -12,7 +12,7 @@ pip install pycoin
 
 First, define the functions for **hashing**, ECDSA **signing** and ECDSA **signature verification**:
 
-```py
+```python
 from pycoin.ecdsa import generator_secp256k1, sign, verify
 import hashlib, secrets
 
@@ -39,7 +39,7 @@ The `verifyECDSAsecp256k1(msg, signature, pubKey)` function takes a text **messa
 
 Now let's demonstrate the above defined functions to **sign** a message and **verify** its signature:
 
-```py
+```python
 # ECDSA sign message (using the curve secp256k1 + SHA3-256)
 msg = "Message for ECDSA signing"
 privKey = secrets.randbelow(generator_secp256k1.order())
@@ -62,11 +62,11 @@ print("\nMessage:", msg)
 print("Signature (tampered msg) valid?", valid)
 ```
 
-Run the above code example: https://repl.it/@nakov/ECDSA-sign-verify-in-Python.
+Run the above code example: [https://repl.it/@nakov/ECDSA-sign-verify-in-Python](https://repl.it/@nakov/ECDSA-sign-verify-in-Python).
 
 The **output** from the above code is like this:
 
-```
+```text
 Message: Message for ECDSA signing
 Private key: 0x79afbf7147841fca72b45a1978dd7669470ba67abbe5c220062924380c9c364b
 Signature: r=0xb83380f6e1d09411ebf49afd1a95c738686bfb2b0fe2391134f4ae3d6d77b78a, s=0x6c305afcac930a3ea1721c04d8a1a979016baae011319746323a756fbaee1811
@@ -79,13 +79,13 @@ Message: Tampered message
 Signature (tampered msg) valid? False
 ```
 
-As it is visible from the above output, the random generated **secp256k1 private key **is **64 hex digits** \(256 bits\). After signing, the obtained signature {_**r**_, _**s**_} consists of 2 \* 256-bit integers. The **public key**, obtained by multiplying the private key by the curve generator point, consists of 2 \* 256 bits \(uncompressed\). The produced ECDSA digital signature verifies correctly after signing. If the message is tampered, the signature fails to verify.
+As it is visible from the above output, the random generated **secp256k1 private key** is **64 hex digits** \(256 bits\). After signing, the obtained signature {_**r**_, _**s**_} consists of 2 \* 256-bit integers. The **public key**, obtained by multiplying the private key by the curve generator point, consists of 2 \* 256 bits \(uncompressed\). The produced ECDSA digital signature verifies correctly after signing. If the message is tampered, the signature fails to verify.
 
 ## Public Key Recovery from the ECDSA Signature
 
 As we already know, in ECDSA it is possible to **recover the public key from signature**. Let's demonstrate this by adding the following code at the end of the previous example:
 
-```py
+```python
 from pycoin.ecdsa import possible_public_pairs_for_signature
 
 def recoverPubKeyFromSignature(msg, signature):
@@ -103,11 +103,11 @@ for pk in recoveredPubKeys:
           hex(pk[0]) + ", " + hex(pk[1]) + ")")
 ```
 
-Run the above code example: https://repl.it/@nakov/ECDSA-public-key-recovery-in-Python.
+Run the above code example: [https://repl.it/@nakov/ECDSA-public-key-recovery-in-Python](https://repl.it/@nakov/ECDSA-public-key-recovery-in-Python).
 
 The above code recovers the all **possible EC public keys** from the ECDSA **signature** + the signed **message**, using the algorithm, described in [http://www.secg.org/sec1-v2.pdf](http://www.secg.org/sec1-v2.pdf). Note that **multiple EC public keys** \(0, 1 or 2\) may match the message + signature. The expected output from the above code \(together with the previous code\) looks like this:
 
-```
+```text
 Message: Message for ECDSA signing
 Private key: 0xc374556584db050001c2c9265b546e66d3dbbe8239d17427c176d834a19638dc
 Signature: r=0xd034c98af3274ad93f3c8ce944bbc17b11b6aa170c5f097ed98687fa0d93347c, s=0xa2318ceea2002caba38efbba3bf8ef8d43236a6edc33c040734d8eb2ed77f608
@@ -131,13 +131,13 @@ It is obvious that the **recovered possible public keys** are 2: one is equal to
 
 To **recover with confidence the public key** from ECDSA signature + message, we need a library that generates **extended ECDSA signatures** {_**r**_, _**s**_, _**v**_} and supports internally the public key recovery. Let's play with the `eth_keys` Python library:
 
-```py
+```python
 pip install eth_keys
 ```
 
 The [**eth\_keys**](https://github.com/ethereum/eth-keys/) is part of the Ethereum project and implements **secp256k1**-based ECC cryptography, private and public keys, ECDSA extended signatures {_**r**_, _**s**_, _**v**_} and Ethereum blockchain addresses. The following example demonstrates private key generation, message signing, public key recovery from signature + message and signature verification:
 
-```py
+```python
 import eth_keys, os
 
 # Generate the private + public key pair (using the secp256k1 curve)
@@ -163,11 +163,11 @@ valid = signerPubKey.verify_msg(msg, signature)
 print("Signature valid?", valid)
 ```
 
-Run the above code example: https://repl.it/@nakov/ECDSA-public-key-recovery-extended-in-Python.
+Run the above code example: [https://repl.it/@nakov/ECDSA-public-key-recovery-extended-in-Python](https://repl.it/@nakov/ECDSA-public-key-recovery-extended-in-Python).
 
 The output from the above code looks like this:
 
-```
+```text
 Private key (64 hex digits): 0x68abc765746a33272e47b0a96a0b4184048f70354221e04219fbc223bfe79794
 Public key (uncompressed, 128 hex digits): 0x30a6dc572da312587144e7ccda1e9abd901323adebe7091bb4985e1202c2a10bc25f681b3d2e1a671438f0b125287b473c09ca345c5583cd627232b536b9ca0a
 Message: b'Message for signing'

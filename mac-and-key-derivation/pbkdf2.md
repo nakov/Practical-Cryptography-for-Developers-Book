@@ -1,10 +1,10 @@
-# PBKDF2: Derive Key from Password
+# PBKDF2
 
 **PBKDF2** is a simple cryptographic key derivation function, which is resistant to [dictionary attacks](https://en.wikipedia.org/wiki/Dictionary_attack) and [rainbow table attacks](https://en.wikipedia.org/wiki/Rainbow_table). It is based on iteratively deriving **HMAC** many times with some padding. The **PBKDF2** algorithm is described in the Internet standard [RFC 2898 \(PKCS \#5\)](http://ietf.org/rfc/rfc2898.txt).
 
 **PBKDF2** takes several **input parameters** and produces the derived **key** as output:
 
-```
+```text
 key = pbkdf2(password, salt, iterations-count, hash-function, derived-key-len)
 ```
 
@@ -30,7 +30,7 @@ The **output data** is the **derived key** of requested length \(e.g. 256 bits\)
 
 Try **PBKDF2 key derivation** online here: [https://asecuritysite.com/encryption/PBKDF2z](https://asecuritysite.com/encryption/PBKDF2z).
 
-![](/assets/PBKDF2-calculator.png)
+![](../.gitbook/assets/pbkdf2-calculator.png)
 
 Try to **increase the iterations count** to see how this affects the speed of key derivation.
 
@@ -40,7 +40,7 @@ Now, we shall write some **code in Python** to derive a key from a password usin
 
 Firstly, install the Python package `backports.pbkdf2` using the command:
 
-```
+```text
 pip install backports.pbkdf2
 ```
 
@@ -56,13 +56,13 @@ key = pbkdf2_hmac("sha256", passwd, salt, 50000, 32)
 print("Derived key:", binascii.hexlify(key))
 ```
 
-Run the above code example: https://repl.it/@nakov/PBKDF2-in-Python.
+Run the above code example: [https://repl.it/@nakov/PBKDF2-in-Python](https://repl.it/@nakov/PBKDF2-in-Python).
 
 The **PBKDF2** calculation function takes several **input parameters**: **hash function** for the HMAC, the **password** \(bytes sequence\), the **salt** \(bytes sequence\), **iterations** count and the output **key length** \(number of bytes for the derived key\).
 
 The **output** from the above code execution is the following:
 
-```
+```text
 Derived key: b'52c5efa16e7022859051b1dec28bc65d9696a3005d0f97e506c42843bc3bdbc0'
 ```
 

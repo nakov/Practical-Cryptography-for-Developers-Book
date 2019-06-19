@@ -1,4 +1,4 @@
-# EdDSA and Ed25519: Elliptic Curve Digital Signatures
+# EdDSA and Ed25519
 
 **EdDSA** \(Edwards-curve Digital Signature Algorithm\) is a modern and secure digital signature algorithm based on performance-optimized elliptic curves, such as the 255-bit curve [**Curve25519**](https://en.wikipedia.org/wiki/Curve25519) and the 448-bit curve [**Curve448-Goldilocks**](https://en.wikipedia.org/wiki/Curve448). The EdDSA signatures use the **Edwards form** of the elliptic curves \(for performance reasons\), respectively `edwards25519` and `edwards448`. The **EdDSA** algorithm is based on the [**Schnorr signature algorithm**](https://en.wikipedia.org/wiki/Schnorr_signature) and relies on the difficulty of the **ECDLP problem**.
 
@@ -36,7 +36,7 @@ The produced **digital signature** is 64 bytes \(32 + 32 bytes\) for **Ed25519**
 
 ## EdDSA Verify Signature
 
-The **EdDSA signature verification **algorithm \([RFC 8032](https://tools.ietf.org/html/rfc8032#page-13)\) takes as input a text message _**msg**_ + the signer's EdDSA **public key** _**pubKey**_ + the EdDSA signature {_**R**_, _**s**_} and produces as output a boolean value \(valid or invalid signature\). EdDSA verification works as follows \(with minor simplifications\):
+The **EdDSA signature verification** algorithm \([RFC 8032](https://tools.ietf.org/html/rfc8032#page-13)\) takes as input a text message _**msg**_ + the signer's EdDSA **public key** _**pubKey**_ + the EdDSA signature {_**R**_, _**s**_} and produces as output a boolean value \(valid or invalid signature\). EdDSA verification works as follows \(with minor simplifications\):
 
 `EdDSA_signature_verify(msg, pubKey, signature { R, s } ) --> valid / invalid`
 
@@ -45,7 +45,7 @@ The **EdDSA signature verification **algorithm \([RFC 8032](https://tools.ietf.o
 3. Calculate _**P2**_ = _**R**_ + _**h**_ \* _**pubKey**_
 4. Return _**P1**_ == _**P2**_
 
-## How Does it Work? {#how-does-it-work}
+## How Does it Work? <a id="how-does-it-work"></a>
 
 During the verification the point _**P1**_ is calculated as: _**P1**_ = _**s**_ \* **G**.
 

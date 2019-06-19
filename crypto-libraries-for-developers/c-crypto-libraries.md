@@ -1,12 +1,14 @@
 # C\# Crypto Libraries
 
+## C\# Crypto Libraries
+
 ...
 
-# Cryptography in C\# and .NET
+## Cryptography in C\# and .NET
 
 * Bouncy Castle .NET and Nethereum:Hashes, ECC and ECDSA
 
-# .NET Cryptography and Bouncy Castle .NET
+## .NET Cryptography and Bouncy Castle .NET
 
 * Cryptography in C\# and .NET is based on:
   * The build-in libraries: **System.Security.Cryptography**
@@ -17,7 +19,7 @@
   * The cryptographic functionality is in Nethereum.Signer
   * Nethereum also includes the Bouncy Castle .NET library
 
-# ECDSA in C\#: Initialize the Application
+## ECDSA in C\#: Initialize the Application
 
 Install the "**Nethereum.Signer**" package from **NuGet**
 
@@ -25,7 +27,7 @@ Install the "**Nethereum.Signer**" package from **NuGet**
 dotnet add package Nethereum.Signer
 ```
 
-Import the **Nethereum Signer **namespaces:
+Import the **Nethereum Signer** namespaces:
 
 ```csharp
 using Nethereum.Signer;
@@ -34,13 +36,13 @@ using Nethereum.Util;
 using Nethereum.Hex.HexConvertors.Extensions;
 ```
 
-The **Bouncy Castle **namespaces will also be available, e.g.
+The **Bouncy Castle** namespaces will also be available, e.g.
 
 ```csharp
 Org.BouncyCastle.Math.EC.ECPoint p = …;
 ```
 
-## ECDSA in C\#: Generate / Load Keys
+### ECDSA in C\#: Generate / Load Keys
 
 ```csharp
 // var privKey = EthECKey.GenerateKey(); // Random private key
@@ -57,7 +59,7 @@ Console.WriteLine("Public key (compressed): {0}",
 
 Complete example:[https://gist.github.com/nakov/f2a579eb9893b29338b11e063d6f80c2](https://gist.github.com/nakov/f2a579eb9893b29338b11e063d6f80c2)
 
-## ECDSA in C\#: Sign Message
+### ECDSA in C\#: Sign Message
 
 ```csharp
 string msg = "Message for signing";
@@ -75,7 +77,7 @@ Console.WriteLine("Signature: [v = {0}, r = {1}, s = {2}]",
 
 Complete example:[https://gist.github.com/nakov/f2a579eb9893b29338b11e063d6f80c2](https://gist.github.com/nakov/f2a579eb9893b29338b11e063d6f80c2)
 
-## ECDSA in C\#: Verify Message
+### ECDSA in C\#: Verify Message
 
 ```csharp
 var pubKeyRecovered =
@@ -88,3 +90,4 @@ Console.WriteLine("Signature valid? {0}", validSig);
 ```
 
 Complete example:[https://gist.github.com/nakov/f2a579eb9893b29338b11e063d6f80c2](https://gist.github.com/nakov/f2a579eb9893b29338b11e063d6f80c2)
+

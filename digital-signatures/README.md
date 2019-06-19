@@ -1,4 +1,4 @@
-# Digital Signatures, ECDSA and EdDSA
+# Digital Signatures
 
 [**Digital signatures**](https://en.wikipedia.org/wiki/Digital_signature) are a cryptographic tool to **sign messages** and **verify message signatures** in order to provide proof of **authenticity** for digital messages or electronic documents. Digital signatures provide:
 
@@ -14,7 +14,7 @@
 
 **Digital signature** schemes typically use a **public-key cryptosystem** \(such as RSA or ECC\) and use a **public / private key pairs**. A message is signed by a private key and the signature is verified by the corresponding public key:
 
-![](/assets/public-key-cryptography-sign-verify.png)
+![](../.gitbook/assets/public-key-cryptography-sign-verify.png)
 
 Messages are **signed** by the sender using a **private key** \(signing key\). Typically the input message is **hashed** and then the **signature** is calculated by the signing algorithm. Most signature algorithms perform some calculation with the message hash + the signing key in a way that the result cannot be calculated without the signing key. The result from message signing is the **digital signature** \(one or more integers\):
 
@@ -27,7 +27,7 @@ Message **signatures** are **verified** by the corresponding **public key** \(ve
 A **message signature** mathematically guarantees that certain message was signed by certain \(secret\) **private key**, which corresponds to certain \(non-secret\) **public key**. After a message is signed, the message and **the signature cannot be modified** and thus message **authentication** and **integrity** is guaranteed. Anyone, who knows the **public key** of the message signer, can **verify the signature**. Аfter signing the signature author cannot reject the act of signing \(this is known as **non-repudiation**\).
 
 Most signature schemes work like it is shown at the following diagram:  
-![](/assets/signature-sign-verify.png)At **signing**, the input message is **hashed** \(either alone, or together with the public key and other input parameters\), then some **computation** \(based on elliptic curves, discrete logarithms or other cryptographic primitive\) calculates the **digital signature**. The produced **signed message** consists of the original message + the calculated signature.
+![](../.gitbook/assets/signature-sign-verify.png)At **signing**, the input message is **hashed** \(either alone, or together with the public key and other input parameters\), then some **computation** \(based on elliptic curves, discrete logarithms or other cryptographic primitive\) calculates the **digital signature**. The produced **signed message** consists of the original message + the calculated signature.
 
 At **signature verification**, the message for verification is **hashed** \(either alone or together with the public key\) and some computations are performed between the message **hash**, the **digital signature** and the **public key**, and finally a **comparison** decides whether the signature is valid or not.
 
@@ -56,10 +56,10 @@ RSA signatures are **deterministic** \(the same message + same private key produ
 
 The [**DSA \(Digital Signature Algorithm\)**](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm) is a cryptographically secure standard for **digital signatures** \(signing messages and signature verification\), based on the math of the **modular exponentiations** and discrete logarithms and the difficulty of the discrete logarithm problem \(**DLP**\). It is alternative of RSA and is used instead of RSA, because of patents limitations with RSA \(until Sept 2000\). **DSA** is variant of the [**ElGamal signature scheme**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme). The **DSA sign / verify** process works as follows:
 
-* The **DSA signing **algorithm computes a message **hash**, then generates a random integer **k** and computes the **signature** \(а pair of integers {**r**, **s**}\), where **r** is computed from **k** and **s** is computed using the message **hash** + the **private key** exponent + the random number **k**. Due to randomness, the signature is **non-deterministic**.
+* The **DSA signing** algorithm computes a message **hash**, then generates a random integer **k** and computes the **signature** \(а pair of integers {**r**, **s**}\), where **r** is computed from **k** and **s** is computed using the message **hash** + the **private key** exponent + the random number **k**. Due to randomness, the signature is **non-deterministic**.
 * The **DSA signature verification** algorithm involves computations, based on the message **hash** + the **public key** exponent + the **signature** {**r**, **s**}.
 
-The **random value k** \(generated when the signature is computed\) opens a potential vulnerability: if two different messages are signed using the same value of **k **and the same **private key**, then an attacker can compute the signer's private key directly \(see [https://github.com/tintinweb/ecdsa-private-key-recovery](https://github.com/tintinweb/ecdsa-private-key-recovery)\).
+The **random value k** \(generated when the signature is computed\) opens a potential vulnerability: if two different messages are signed using the same value of **k** and the same **private key**, then an attacker can compute the signer's private key directly \(see [https://github.com/tintinweb/ecdsa-private-key-recovery](https://github.com/tintinweb/ecdsa-private-key-recovery)\).
 
 A **deterministic-DSA** variant is defined in [**RFC 6979**](https://tools.ietf.org/html/rfc6979), which calculates the random number **k** as **HMAC** from the private key, the message hash and few other parameters. The **deterministic DSA is considered more secure**.
 
@@ -71,10 +71,10 @@ The [**ECDSA**](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_A
 
 **ECDSA** is adaptation of the classical **DSA** algorithm, which is derived from the [**ElGamal signature scheme**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme). More precisely, the **ECDSA** algorithm is a variant of the **ElGamal signature**, with some changes and optimizations to handle the representation of the group elements \(the points of the elliptic curve\). Like any other elliptic curve crypto algorithm, **ECDSA** uses an elliptic **curve** \(like the `secp256k1`\), **private key** \(random integer within the curve key length - for signing messages\) and **public key** \(EC point, calculated from the private key by multiplying it to the curve generator point - for verifying signatures\). The **ECDSA sign / verify** process works as follows:
 
-* The **ECDSA signing **algorithm computes a message **hash**, then generates a random integer **k** and computes the **signature** \(a pair of integers {**r**, **s**}\), where **r** is computed from **k** and **s** is computed using the message **hash** + the **private key** + the random number **k**. Due to the randomness, the signature is **non-deterministic**.
+* The **ECDSA signing** algorithm computes a message **hash**, then generates a random integer **k** and computes the **signature** \(a pair of integers {**r**, **s**}\), where **r** is computed from **k** and **s** is computed using the message **hash** + the **private key** + the random number **k**. Due to the randomness, the signature is **non-deterministic**.
 * The **ECDSA signature verification** algorithm involves computations, based on the message **hash** + the **public key** + the **signature** {**r**, **s**}.
 
-The **random value k** \(generated when the signature is computed\) opens a potential vulnerability: if two different messages are signed using the same value of **k **and the same **private key**, then an attacker can compute the signer's private key directly \(see [https://github.com/tintinweb/ecdsa-private-key-recovery](https://github.com/tintinweb/ecdsa-private-key-recovery)\).
+The **random value k** \(generated when the signature is computed\) opens a potential vulnerability: if two different messages are signed using the same value of **k** and the same **private key**, then an attacker can compute the signer's private key directly \(see [https://github.com/tintinweb/ecdsa-private-key-recovery](https://github.com/tintinweb/ecdsa-private-key-recovery)\).
 
 A **deterministic-ECDSA** variant is defined in [**RFC 6979**](https://tools.ietf.org/html/rfc6979), which calculates the random number **k** as **HMAC** from the private key + the message hash + few other parameters. The **deterministic ECDSA is considered more secure**.
 
@@ -84,11 +84,11 @@ A **deterministic-ECDSA** variant is defined in [**RFC 6979**](https://tools.iet
 
 **EdDSA** \(Edwards-curve Digital Signature Algorithm\) is a fast **digital signature algorithm**, using **elliptic curves** in Edwards form \(like [**Ed25519**](https://ed25519.cr.yp.to) and [**Ed448-Goldilocks**](https://eprint.iacr.org/2015/625.pdf)\), a deterministic variant of the [**Schnorr's signature**](https://en.wikipedia.org/wiki/Schnorr_signature) scheme, designed by a team of the well-known cryptographer [**Daniel Bernstein**](https://cr.yp.to/djb.html).
 
-**EdDSA** is more **simple** than **ECDSA**, more **secure** than **ECDSA** and is designed to be **faster** than **ECDSA** \(for curves with comparables key length\). Like **ECDSA**, the **EdDSA **signature scheme relies on the difficulty of the **ECDLP problem** \(elliptic-curve discrete logarithm problem\) for its security strength.
+**EdDSA** is more **simple** than **ECDSA**, more **secure** than **ECDSA** and is designed to be **faster** than **ECDSA** \(for curves with comparables key length\). Like **ECDSA**, the **EdDSA** signature scheme relies on the difficulty of the **ECDLP problem** \(elliptic-curve discrete logarithm problem\) for its security strength.
 
 The **EdDSA** signature algorithm is works with Edwards elliptic curves like **Curve25519** and **Curve448**, which are highly optimized for **performance** and **security**. It is shown that **Ed25519 signatures** are typically **faster** than traditional **ECDSA signatures** over curves with comparable key length. Still, the performance competition is disputable. The **EdDSA sign / verify** process works as follows:
 
-* The **EdDSA signing **algorithm generates a deterministic \(not random\) integer **r** \(computed by **hashing** the **message** and the hash of the **private key**\), then computes the **signature** {**Rs**, **s**}, where **Rs** is computed from **r** and **s** is computed from the **hash** of \(the **message** + the **public key** derived from the private + the number **r**\) + the **private key**. The signature is **deterministic** \(the same message signed by the same key always gives the same signature\).
+* The **EdDSA signing** algorithm generates a deterministic \(not random\) integer **r** \(computed by **hashing** the **message** and the hash of the **private key**\), then computes the **signature** {**Rs**, **s**}, where **Rs** is computed from **r** and **s** is computed from the **hash** of \(the **message** + the **public key** derived from the private + the number **r**\) + the **private key**. The signature is **deterministic** \(the same message signed by the same key always gives the same signature\).
 * The **EdDSA signature verification** algorithm involves elliptic-curve computations, based on the **message** \(hashed together with the public key and the EC point **Rs** from the signature\) + the **public key** + the number **s** from the **signature** {**Rs**, **s**}.
 
 By design **EdDSA** signatures are **deterministic** \(which improves their security\). A non-deterministic variant of EdDSA-signatures is easy to be designed by padding the input message with some random bytes before signing.

@@ -1,10 +1,10 @@
-# RSA Encryption / Decryption - Examples in Python
+# RSA Encrypt / Decrypt - Examples
 
 Now let's demonstrate how the RSA algorithms works by a simple **example in Python**. The below code will generate **random RSA key-pair**, will **encrypt** a short message and will **decrypt** it back to its original form, using the [**RSA-OAEP**](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding) padding scheme.
 
 First, install the `pycryptodome` package, which is a powerful Python library of low-level cryptographic primitives \(hashes, MAC codes, key-derivation, symmetric and asymmetric ciphers, digital signatures\):
 
-```
+```text
 pip install pycryptodome
 ```
 
@@ -12,7 +12,7 @@ pip install pycryptodome
 
 Now, let's write the Python code. First, **generate the RSA keys** \(1024-bit\) and print them on the console \(as hex numbers and in the PKCS\#8 PEM ASN.1 format\):
 
-```py
+```python
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
 import binascii
@@ -29,7 +29,7 @@ privKeyPEM = keyPair.exportKey()
 print(privKeyPEM.decode('ascii'))
 ```
 
-Run the above code example: https://repl.it/@nakov/RSA-Key-Generation-in-Python.
+Run the above code example: [https://repl.it/@nakov/RSA-Key-Generation-in-Python](https://repl.it/@nakov/RSA-Key-Generation-in-Python).
 
 We use short key length to keep the sample input short, but in a real world scenario it is recommended to use 3072-bit or 4096-bit keys.
 
@@ -37,32 +37,32 @@ We use short key length to keep the sample input short, but in a real world scen
 
 Next, **encrypt the message** using **RSA-OAEP** encryption scheme \(RSA with PKCS\#1 OAEP padding\) with the RSA **public key**:
 
-```py
+```python
 msg = b'A message for encryption'
 encryptor = PKCS1_OAEP.new(pubKey)
 encrypted = encryptor.encrypt(msg)
 print("Encrypted:", binascii.hexlify(encrypted))
 ```
 
-Run the above code example: https://repl.it/@nakov/RSA-encryption-in-Python.
+Run the above code example: [https://repl.it/@nakov/RSA-encryption-in-Python](https://repl.it/@nakov/RSA-encryption-in-Python).
 
 ## RSA Decryption
 
 ## Finally, **decrypt the message** using using **RSA-OAEP** with the RSA **private key**:
 
-```py
+```python
 decryptor = PKCS1_OAEP.new(keyPair)
 decrypted = decryptor.decrypt(encrypted)
 print('Decrypted:', decrypted)
 ```
 
-Run the above code example: https://repl.it/@nakov/RSA-decryption-in-Python.
+Run the above code example: [https://repl.it/@nakov/RSA-decryption-in-Python](https://repl.it/@nakov/RSA-decryption-in-Python).
 
 ## Sample Output
 
 A **sample output** of the code execution for the entire example is given below:
 
-```
+```text
 Public key: (n=0x9a11485bccb9569410a848fb1afdf2a81b17c1fa9f9eb546fd1deb873b49b693a4edf20eb8362c085cd5b28ba109dbad2bd257a013f57f745402e245b0cc2d553c7b2b8dbba57ebda7f84cfb32b7d9c254f03dbd0188e4b8e40c47b64c1bd2572834b936ffc3da9953657ef8bee80c49c2c12933c8a34804a00eb4c81248e01f, e=0x10001)
 -----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCaEUhbzLlWlBCoSPsa/fKoGxfB

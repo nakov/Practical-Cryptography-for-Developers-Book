@@ -1,4 +1,4 @@
-# TLS (Transport Layer Security) - Examples in Python
+# TLS - Example
 
 ...
 
@@ -9,3 +9,4 @@ Display the server certificate + the public key.
 Display info about the TLS cipher suite.
 
 ...
+

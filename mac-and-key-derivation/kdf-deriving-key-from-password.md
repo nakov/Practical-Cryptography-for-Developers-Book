@@ -1,9 +1,9 @@
-# Key Derivation Functions \(KDF\): Deriving a Key from Password
+# KDF: Deriving Key from Password
 
 Now let's explain in details how to **securely derive a key from a password** and the most popular **key derivation functions** \(**KDFs**\) used in practice: [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2), [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt), [Scrypt](https://en.wikipedia.org/wiki/Scrypt) and [Argon2](https://en.wikipedia.org/wiki/Argon2).
 
-**\[TODO: explain the Linux crypt: SHA-512 key derivation\]    
-**  
+**\[TODO: explain the Linux crypt: SHA-512 key derivation\]**    
+  
 We shall discuss the strong and weak sides of the above mentioned KDFs and when to use them.
 
 ## Key Derivation Functions - Concepts

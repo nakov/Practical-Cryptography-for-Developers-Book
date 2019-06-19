@@ -1,4 +1,4 @@
-# More Cryptographic Concepts for Developers
+# More Cryptographic Concepts
 
 ...
 
@@ -34,7 +34,7 @@ Two-Factor Authentication requires two of those three categories to be implement
 
 The **HOTP** algorithm is based on [HMAC](https://en.wikipedia.org/wiki/HMAC) and provides a symmetric generation of human-readable passwords, each used for only one authentication attempt. The key parameter of HTOP is a secret which has to be exchanged between the parties in advance:
 
-```
+```text
 HTOP(has_function, secret, value_length) -> htop
 htop.generate() -> auth_code
 htop.validate(auth_code) -> true/false
@@ -50,13 +50,13 @@ In the **COTP** scenario the HTOP function contains an internal counter. In orde
 
 Time-based One-Time Password Algorithm \(**TOTP**\) is an extension of COTP, where the **counter** is the current time, defined as **Unix time**. The **time-interval** is another parameter used for the generation of TOTP, which defines a period of time of which a given authentication code will be valid.
 
-```
+```text
 htop_counter = (current_time - initial_time) / time_interval
 ```
 
 For TOTP to work correctly both parties need to have synchronized clocks with minimal verification time-step window \(delay based on user's input, network latency, and clock time deviation\).
 
-```
+```text
 otp = TOTP(hash_function(secret), htop_counter)
 ```
 
@@ -66,7 +66,7 @@ A popular use case of Two-Factor Authentication is the **Google Authenticator**.
 
 An example of a web-based JavaScript [example](http://blog.tinisles.com/2011/10/google-authenticator-one-time-password-algorithm-in-javascript/) for using and testing TOTP:
 
-![Time-based One-time Password example](/assets/more-cryptographic-concepts-OTP-secret-QR-code.png)
+![Time-based One-time Password example](../.gitbook/assets/more-cryptographic-concepts-otp-secret-qr-code.png)
 
 ## Infected Cryptosystems and Crypto Backdoors
 
@@ -77,20 +77,11 @@ An example of a web-based JavaScript [example](http://blog.tinisles.com/2011/10/
 Just to mention, the practical cryptography is endless. This is a list of crypto concepts, algorithm, protocols and standards that we will not going to explain in this book, but you can read about them from the provided links:
 
 * Kerberos - ...
-
 * IPsec - ...
-
 * WiFi cryptography standards - ...
-
 * PGP - ...
-
 * S/MIME - ...
-
 * JSON Web Tokens \(JWT\)
-
-* Object Identifiers (OID) - https://en.wikipedia.org/wiki/Object_identifier, e.g. the algorithm "SHA-256" has OID "2.16.840.1.101.3.4.2.1".
-
-* Cryptography Best Practices: https://gist.github.com/atoponce/07d8d4c833873be2f68c34f9afc5a78a
-
-
+* Object Identifiers \(OID\) - [https://en.wikipedia.org/wiki/Object\_identifier](https://en.wikipedia.org/wiki/Object_identifier), e.g. the algorithm "SHA-256" has OID "2.16.840.1.101.3.4.2.1".
+* Cryptography Best Practices: [https://gist.github.com/atoponce/07d8d4c833873be2f68c34f9afc5a78a](https://gist.github.com/atoponce/07d8d4c833873be2f68c34f9afc5a78a)
 

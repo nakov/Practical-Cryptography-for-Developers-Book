@@ -1,4 +1,4 @@
-## Exercises: ECDH Key Exchange
+# Exercises: ECDH Key Exchange
 
 ...
 

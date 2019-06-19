@@ -1,4 +1,4 @@
-# Modern KDFs: Bcrypt, Scrypt and Argon2
+# Modern Key Derivation Functions
 
 **PBKDF2** has a major weakness: it is **not GPU-resistant** and **not ASIC-resistant**, because it uses relatively small amount of RAM and can be efficiently implemented on GPU \(graphics cards\) or **ASIC** \(specialized hardware\).
 
@@ -11,3 +11,4 @@ It takes a lot of **CPU time** to derive the key \(e.g. 0.2 sec\) + a lot of **R
 When a lot of CPU and RAM is used to derive the key from given password, **cracking passwords is slow** and inefficient \(e.g. 5-10 attempts / second\), even when using very good password cracking hardware and software. The goal of the modern KDF functions is to make practically infeasible to perform a brute-force attack to reverse the password from its hash.
 
 Let's discuss in more details **Scrypt**, **Bcrypt** and **Argon2**.
+

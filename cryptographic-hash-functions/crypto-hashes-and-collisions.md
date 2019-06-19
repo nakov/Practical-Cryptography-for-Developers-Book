@@ -1,8 +1,8 @@
-# Cryptographic Hash Functions and Collisions
+# Crypto Hashes and Collisions
 
 **Different input** messages are expected to produce **different output** hash values \(message digest\).
 
-![](/assets/crypto-hash-function-examples.jpg)
+![](../.gitbook/assets/crypto-hash-function-examples.jpg)
 
 ## Hash Collisions
 
@@ -15,7 +15,7 @@ A **collision** means the same hash value for two different inputs. For simple h
 Cryptographic hash functions are **one-way hash functions**, which are **infeasible to invert**. The chance to find a collision \(by brute force\) for a strong cryptographic hash function \(like SHA-256\) is extremely little. Let's define this in more details:
 
 * Let's have hash value `h`=`hash(p)` for certain strong cryptographic hash function `hash`.
-* It is expected to be **extremely hard **to find an input `p'`, such that `hash(p')`=`h`.
+* It is expected to be **extremely hard** to find an input `p'`, such that `hash(p')`=`h`.
 * For most modern strong cryptographic hash functions there are **no known collisions**.
 
 The **ideal cryptographic hash function** should have the following properties:

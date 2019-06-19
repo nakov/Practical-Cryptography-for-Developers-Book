@@ -1,28 +1,30 @@
 # Java Crypto Libraries
 
+## Java Crypto Libraries
+
 ...
 
-# Cryptography in Java
+## Cryptography in Java
 
 * JCA, Bouncy Castle and Web3j:Hashes, ECC and ECDSA
 
-# JCA, Bouncy Castle and Web3j
+## JCA, Bouncy Castle and Web3j
 
 * Cryptography in Java is based on the Java Cryptography Architecture \(JCA\)
   * Typical Java style: lot of boilerplate code
-* **Bouncy Castle **is the leading Java cryptography library
+* **Bouncy Castle** is the leading Java cryptography library
   * Docs: [https://www.bouncycastle.org/documentation.html](https://www.bouncycastle.org/documentation.html)
 * **Web3j** – a simplified library for Ethereum and secp256k1
   * Web3j – [https://github.com/web3j](https://github.com/web3j)
   * The cryptographic functionality is in web3j/crypto
 
-# ECDSA in Java: Install the Crypto Libraries
+## ECDSA in Java: Install the Crypto Libraries
 
 * This **Maven** dependency will install the following libraries:
   * **org.web3j.crypto**– Ethereum style secp256k1 EC cryptography
   * **org.bouncycastle**– BouncyCastle crypto provider for Java
 
-```xml
+```markup
 <dependency>
   <groupId>org.web3j</groupId>
   <artifactId>crypto</artifactId>
@@ -30,7 +32,7 @@
 </dependency>
 ```
 
-# ECDSA in Java: Initialize the Application
+## ECDSA in Java: Initialize the Application
 
 ```java
 import org.bouncycastle.util.encoders.Hex;
@@ -38,7 +40,7 @@ import org.web3j.crypto.*;
 import java.math.BigInteger;
 ```
 
-# ECDSA in Java: Generate / Load Keys
+## ECDSA in Java: Generate / Load Keys
 
 ```java
 // Generate random private key
@@ -55,7 +57,7 @@ System.out.println("Public key (compressed): " +
   compressPubKey(pubKey));
 ```
 
-# ECDSA in Java: Sign Message
+## ECDSA in Java: Sign Message
 
 ```java
 String msg = "Message for signing";
@@ -72,7 +74,7 @@ System.out.printf(
   Hex.toHexString(signature.getS()));
 ```
 
-# ECDSA in Java: Verify Signature
+## ECDSA in Java: Verify Signature
 
 ```java
 BigInteger pubKeyRecovered =
@@ -83,3 +85,4 @@ System.out.println("Recovered public key: " +
 boolean validSig = pubKey.equals(pubKeyRecovered);
 System.out.println("Signature valid? " + validSig);
 ```
+

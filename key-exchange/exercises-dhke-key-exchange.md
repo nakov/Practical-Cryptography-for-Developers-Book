@@ -1,4 +1,4 @@
-## Exercises: DHKE Key Exchange
+# Exercises: DHKE Key Exchange
 
 ...
 

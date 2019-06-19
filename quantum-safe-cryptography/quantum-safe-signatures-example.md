@@ -1,6 +1,6 @@
-# Quantum-Safe Signatures - Examples in Python
+# Quantum-Safe Signatures - Example
 
-In this example, we shall demonstrate the** **[**SPHINCS+** signature library](https://github.com/sphincs/sphincsplus). It implements **hash-based signatures**, which are designed to be **quantum-safe**. Note that the SPHINCS+ signatures are still **experimental** \(as of Nov 2018\) and their security is not still indisputably proven, because they are relatively new and are still not well analysed by cryptographers.
+In this example, we shall demonstrate the ****[**SPHINCS+** signature library](https://github.com/sphincs/sphincsplus). It implements **hash-based signatures**, which are designed to be **quantum-safe**. Note that the SPHINCS+ signatures are still **experimental** \(as of Nov 2018\) and their security is not still indisputably proven, because they are relatively new and are still not well analysed by cryptographers.
 
 We shall demonstrate the **SPHINCS+** cryptosystem for hash-based digital signatures, more precisely two of its configurations:
 
@@ -9,15 +9,15 @@ We shall demonstrate the **SPHINCS+** cryptosystem for hash-based digital signat
 
 To install the **official SPHINCS+ signature** library [**PySPX**](https://github.com/sphincs/pyspx) for Python, use the following command:
 
-```py
+```python
 pip install pyspx
 ```
 
 The `pyspx` package may not compile in Windows \(using the Visual C++ compiler\), so **Linux is recommended** \(or a Python virtual machine like [PythonAnywhere](https://www.pythonanywhere.com) or [Repl.it](https://repl.it/languages/python3)\).
 
-Let's demonstrate the **SPHINCS+ signature **with the `shake256_128f` parameter set \(SPHINCS+, using SHAKE256-128 as hash function and in fast mode\), using this Python example:
+Let's demonstrate the **SPHINCS+ signature** with the `shake256_128f` parameter set \(SPHINCS+, using SHAKE256-128 as hash function and in fast mode\), using this Python example:
 
-```py
+```python
 import pyspx.shake256_128f as sphincs
 import os, binascii
 
@@ -42,11 +42,11 @@ print("Tampered message:", message)
 print("Tampered signature valid?", valid)
 ```
 
-Run the above code example: https://repl.it/@nakov/SPHINCSplus-signature-in-Python.
+Run the above code example: [https://repl.it/@nakov/SPHINCSplus-signature-in-Python](https://repl.it/@nakov/SPHINCSplus-signature-in-Python).
 
 The above code is **fast**: it runs for portion of the second. The **output** from it looks like this:
 
-```
+```text
 Public key: b'73004fe93b401a2ab9e0f3ccebbb9d8fe38b0080033eb80a9ecd8028451bbbcb'
 Private key: b'e2e5f5f4574cc2774ee4b30c21f4067321a619d54dd92e539b6adcf6f932c6c573004fe93b401a2ab9e0f3ccebbb9d8fe38b0080033eb80a9ecd8028451bbbcb'
 Message: b'Message for SPHINCS+ shake256_128f signing'
@@ -60,7 +60,7 @@ It is visible from the above output that for the `shake256_128f` parameter set t
 
 Let's tweak the SPHINCS+ algorithm parameters to get shorter signature, using the `shake256_128s` parameter set \(SPHINCS+, using SHAKE256-128 as hash function and in slow mode\). This smaller signature will cost many times **more computing time for signing**. Let's change the algorithm parameters like this \(in fact the important change is at the first line only\):
 
-```py
+```python
 import pyspx.shake256_128s as sphincs
 import os, binascii
 
@@ -85,11 +85,11 @@ print("Tampered message:", message)
 print("Tampered signature valid?", valid)
 ```
 
-Run the above code example: https://repl.it/@nakov/SPHINCSplus-signature-smaller-size-in-Python.
+Run the above code example: [https://repl.it/@nakov/SPHINCSplus-signature-smaller-size-in-Python](https://repl.it/@nakov/SPHINCSplus-signature-smaller-size-in-Python).
 
 The produced **signature size now is smaller** \(~ 8KB, partially shown below\), but the time to generate the signature is drastically increased \(**signing takes a few seconds**, key generation and signature verification are still fast\):
 
-```
+```text
 Public key: b'd2ac35f1a6124b4a45d196b3fa9292b9bb3245f8c0dbdb586ea5879eb22487f0'
 Private key: b'8dc8e4cf3dc6fd28cb14a46fa2350dd41acdfb351c49e8caea86ca95ee2184ddd2ac35f1a6124b4a45d196b3fa9292b9bb3245f8c0dbdb586ea5879eb22487f0'
 Message: b'Message for SPHINCS+ shake256_128s signing'
@@ -99,5 +99,5 @@ Tampered message: b'Tampered msg'
 Tampered signature valid? False
 ```
 
-We may conclude that quantum-safe digital signature algorithms like **SPHINCS+ signatures** may replace ECDSA and EdDSA in the post-quantum computing era, but they still  have one big disadvantage: **large signatures**. For some applications the signature size may not be a problem, but for others smaller signatures are critical.
+We may conclude that quantum-safe digital signature algorithms like **SPHINCS+ signatures** may replace ECDSA and EdDSA in the post-quantum computing era, but they still have one big disadvantage: **large signatures**. For some applications the signature size may not be a problem, but for others smaller signatures are critical.
 
