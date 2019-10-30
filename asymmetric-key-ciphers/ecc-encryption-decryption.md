@@ -2,7 +2,7 @@
 
 In this section we shall explain how to implement **elliptic-curve based public-key encryption / decryption** \(asymmetric encryption scheme based on ECC\). This is **non-trivial** and usually involves a design of hybrid encryption scheme, involving ECC cryptography, ECDH key exchange and symmetric encryption algorithm.
 
-Assume we have a ECC **private-public key pair**. We want to encrypt and decrypt data using these keys. By definition, **asymmetric encryption** works as follows: if we **encrypt data by a private key**, we will be able to **decrypt** the ciphertext later by the corresponding **public key**:
+Assume we have a ECC **private-public key pair**. We want to encrypt and decrypt data using these keys. By definition, **asymmetric encryption** works as follows: if we **encrypt data by a public key**, we will be able to **decrypt** the ciphertext later by the corresponding **private key**:
 
 ![](../.gitbook/assets/asymmetric-encryption-diagram.png)
 
