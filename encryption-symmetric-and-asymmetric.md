@@ -114,7 +114,7 @@ pubKey: 02c324648931b89e3e8a0fc42c96e8e3be2e42812986573a40d46563bceaf75110
 
 ### Private Keys
 
-Message **encryption** and **signing** is done by a **private key**. The private keys are always kept **secret** by their owner, just like passwords. In the server infrastructure, private key usually stay in an encrypted and protected **keystore**. In the blockchain systems the private keys usually stay in specific software or hardware apps or devices called "**crypto wallets**", which store securely a set of private keys.
+Message **decryption** and **signing** is done by a **private key**. The private keys are always kept **secret** by their owner, just like passwords. In the server infrastructure, private key usually stay in an encrypted and protected **keystore**. In the blockchain systems the private keys usually stay in specific software or hardware apps or devices called "**crypto wallets**", which store securely a set of private keys.
 
 **Example** of 256-bit private key:
 
@@ -124,7 +124,7 @@ Message **encryption** and **signing** is done by a **private key**. The private
 
 ### Public Keys
 
-Message **decryption** and **signature verification** is done by the **public key**. Public keys are by design public information \(not a secret\). It is mathematically infeasible to calculate the private key from its corresponding public key.
+Message **encryption** and **signature verification** is done by the **public key**. Public keys are by design public information \(not a secret\). It is mathematically infeasible to calculate the private key from its corresponding public key.
 
 In many systems the **public key** is encapsulated in a **digital certificate**, which binds certain identity \(e.g. person or Internet domain name\) to certain public key. In blockchain systems public keys are usually published as parts of the blockchain transactions to help identify who has signed each transaction. In systems like PGP and SSH the public key is downloaded from the server once \(after manual user verification\) and is remembered for further use.
 
