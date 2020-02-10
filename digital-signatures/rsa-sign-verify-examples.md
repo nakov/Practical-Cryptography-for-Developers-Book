@@ -98,20 +98,21 @@ import binascii
 
 # Generate 1024-bit RSA key pair (private + public key)
 keyPair = RSA.generate(bits=1024)
+pubKey = keyPair.publickey()
 
 # Sign the message using the PKCS#1 v1.5 signature scheme (RSASP1)
-msg = b'A message for signing'
+msg = b'Message for RSA signing'
 hash = SHA256.new(msg)
 signer = PKCS115_SigScheme(keyPair)
 signature = signer.sign(hash)
 print("Signature:", binascii.hexlify(signature))
 
 # Verify valid PKCS#1 v1.5 signature (RSAVP1)
-msg = b'A message for signing'
+msg = b'Message for RSA signing'
 hash = SHA256.new(msg)
-signer = PKCS115_SigScheme(keyPair)
+verifier = PKCS115_SigScheme(pubKey)
 try:
-    signer.verify(hash, signature)
+    verifier.verify(hash, signature)
     print("Signature is valid.")
 except:
     print("Signature is invalid.")
@@ -119,9 +120,9 @@ except:
 # Verify invalid PKCS#1 v1.5 signature (RSAVP1)
 msg = b'A tampered message'
 hash = SHA256.new(msg)
-signer = PKCS115_SigScheme(keyPair)
+verifier = PKCS115_SigScheme(pubKey)
 try:
-    signer.verify(hash, signature)
+    verifier.verify(hash, signature)
     print("Signature is valid.")
 except:
     print("Signature is invalid.")
