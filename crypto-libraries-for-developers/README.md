@@ -5,7 +5,7 @@
 * Cryptography in **JavaScript**
   * ECDSA, elliptic.js, js-sha3.js
 * Cryptography libraries in **Python**
-  * ECDSA, eth\_keys
+  * ECDSA, eth\_keys, cryptography, PyCrypto
 * C\# and **.NET** cryptography
   * Bouncy Castle .NET, Nethereum
 * **Java** cryptography
@@ -28,7 +28,7 @@ TODO:
 
 * **JavaScript** and **Python** provide simple cryptography libraries
   * Hashes, ECC, ECDSA, AES, and many more
-* Cryptography is **C\#** is heavy
+* Cryptography in **C\#** is heavy
   * Use **Bouncy Castle .NET** for general crypto
   * Or **Nethereum** for simplified secp256k1
 * Cryptography in **Java** is heavy
