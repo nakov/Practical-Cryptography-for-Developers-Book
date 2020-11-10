@@ -72,9 +72,9 @@ import pyotp
 base32secret = 'S3K3TPI5MYA2M67V'
 print('Secret:', base32secret)
 
-totp = pyotp.TOTP(base32secret)
+totp = pyotp.totp.TOTP(base32secret)
 your_code = '123456'
-print(totp.verify('Code Valid:', your_code))
+print('Code Valid: ', totp.verify(your_code))
 ```
 
 Run the above code example: [https://repl.it/@nakov/QR-code-scanner-in-Python](https://repl.it/@nakov/QR-code-scanner-in-Python).
