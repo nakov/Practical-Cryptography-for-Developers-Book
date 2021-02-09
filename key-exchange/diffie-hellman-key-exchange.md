@@ -64,7 +64,7 @@ there is no efficient \(fast\) algorithm to find the secret exponent **s**. This
 
 The **Discrete Logarithm Problem \(DLP\)** in computer science is defined as follows:
 
-* By given element _**b**_ and value _**a**_ = _**bx**_ find the exponent _**x**_ \(if it exists\)
+* By given element _**b**_ and value _**a**_ = _**b<sup>x<sup>**_ find the exponent _**x**_ \(if it exists\)
 
 The exponent _**x**_ is called [**discrete logarithm**](https://en.wikipedia.org/wiki/Discrete_logarithm), i.e. **x** = _log_**b**\(**a**\). The elements _**a**_ and _**b**_ can be simple integers modulo _**p**_ \(from the [group ℤ/pℤ](https://en.wikipedia.org/wiki/Multiplicative_group_of_integers_modulo_n)\) or elements of [finite cyclic multiplicative group **G**](https://en.wikipedia.org/wiki/Cyclic_group) \(modulo _**p**_\), where _**p**_ is typically a prime number.
 
