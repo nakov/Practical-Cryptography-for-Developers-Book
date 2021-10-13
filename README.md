@@ -10,7 +10,7 @@ Author: **Svetlin Nakov**, PhD - [https://nakov.com](https://nakov.com)
 
 Contributors: Milen Stefanov, Marina Shideroff
 
-Sponsor: **SoftUni** (The Software University) - [https://softuni.org](https://nakov.com)
+Sponsor: **SoftUni** (Software University) - [https://softuni.org](https://softuni.org)
 
 ISBN: **978-619-00-0870-5** (9786190008705)
 
