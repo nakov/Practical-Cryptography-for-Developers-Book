@@ -102,7 +102,7 @@ The below functions are popular strong cryptographic hash functions, alternative
 
 * [**Whirlpool**](https://en.wikipedia.org/wiki/Whirlpool_%28hash_function) is secure cryptographic hash function, which produces 512-bit hashes.
 * [**SM3**](https://tools.ietf.org/id/draft-oscca-cfrg-sm3-01.html) is the crypto hash function, officialy standartized by the **Chinese government**. It is similar to SHA-256 \(based on the Merkle–Damgård construction\) and produces 256-bit hashes.
-* [**GOST**](https://en.wikipedia.org/wiki/GOST_%28hash_function) \(GOST R 34.11-94\) is secure cryptographic hash function, the Russian national standard, described in [RFC 4357](https://tools.ietf.org/html/rfc4357). It produces 256-bit hashes.
+* [**GOST**](https://en.wikipedia.org/wiki/GOST_%28hash_function%29) \(GOST R 34.11-94\) is secure cryptographic hash function, the Russian national standard, described in [RFC 4357](https://tools.ietf.org/html/rfc4357). It produces 256-bit hashes.
 
 The below functions are less popular alternatives to SHA-2, SHA-3 and BLAKE, finalists at the [SHA-3 NIST competition](https://en.wikipedia.org/wiki/NIST_hash_function_competition#Finalists):
 
