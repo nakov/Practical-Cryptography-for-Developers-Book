@@ -1,6 +1,6 @@
 # Exercises: Calculate HMAC
 
-Write a program to **calculate HMAC-SHA-384** of given text **message** by given **key**. Write your code in programming language of choice.
+Write a program to **calculate the HMAC-SHA-384** of given text **message** by given **key**. Write your code in programming language of choice.
 
 | **Input** | **Output** |
 | :--- | :--- |
