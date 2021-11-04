@@ -10,7 +10,7 @@ Simply calculating `hash_func(key + msg)` to obtain a MAC \(message authenticati
 HMAC(key, msg, hash_func) -> hash
 ```
 
-The results MAC code is a **message hash** mixed with a secret key. It has the cryptographic properties of hashes: **irreversible**, **collision resistant**, etc.
+The resulting MAC code is a **message hash** mixed with a secret key. It has the cryptographic properties of hashes: it is **irreversible**, **collision resistant**, etc.
 
 The `hash_func` can be any cryptographic hash function like `SHA-256`, `SHA-512`, `RIPEMD-160`, `SHA3-256` or `BLAKE2s`.
 
