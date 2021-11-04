@@ -24,7 +24,7 @@ To calculate a secure KDF it takes some **CPU time** to derive the key \(e.g. 0.
 
 When a modern KDF function is used with appropriate config parameters, **cracking passwords** will be **slow** \(e.g. 5-10 attempts per second, instead of thousands or millions attempts per second\).
 
-All of the above mentioned key-derivation algorithms \([PBKDF2](https://en.wikipedia.org/wiki/PBKDF2), [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt), [Scrypt](https://en.wikipedia.org/wiki/Scrypt) and [Argon2](https://en.wikipedia.org/wiki/Argon2)\) are not patented and **royalty-free** for public use.
+All of the above mentioned key-derivation algorithms \([PBKDF2](https://en.wikipedia.org/wiki/PBKDF2), [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt), [Scrypt](https://en.wikipedia.org/wiki/Scrypt) and [Argon2](https://en.wikipedia.org/wiki/Argon2)\) are not patented and are **royalty-free** for public use.
 
 Let's learn more about these modern KDF.
 
