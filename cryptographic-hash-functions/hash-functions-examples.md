@@ -1,10 +1,10 @@
 # Hash Functions - Examples
 
-In this section we shall provide a few **examples** about calculating cryptographic hash functions in Python.
+In this section we shall provide a few **examples** of calculating cryptographic hash functions in Python.
 
 ## Calculating Cryptographic Hash Functions in Python
 
-We shall use the standard Python library `hashlib`. The input data for hashing should be given as **bytes sequence** \(bytes object\), so we need to **encode the input string** using some text encoding, e.g. `utf8`. The produced **output data** is also a bytes sequence, which can be printed as hex digits using `binascii.hexlify()` as shown below:
+We shall use the standard Python library `hashlib`. The input data for hashing should be given asa  **bytes sequence** \(bytes object\), so we need to **encode the input string** using some text encoding, e.g. `utf8`. The produced **output data** is also a bytes sequence, which can be printed as hex digits using `binascii.hexlify()` as shown below:
 
 ```python
 import hashlib, binascii
