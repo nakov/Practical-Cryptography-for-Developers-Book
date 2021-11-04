@@ -20,18 +20,18 @@ Let's review these **password storage methods** and discuss their **level of sec
 The easiest and **most highly insecure** method for password storage and password-based authentication is to use [**clear-text passwords**](https://en.wikipedia.org/wiki/Plaintext) written directly in the database.
 
 * In this scenario to **check the password**, developers just compare the password for checking with the password from the database.
-* **Never do this!!!** It is anti-pattern for software development. It is **bad for many reasons**.
+* **Never do this!!!** It is an anti-pattern for software development. It is **bad for many reasons**.
   * Admins will be able to see user's passwords and this is really bad, because many users use **the same password for several sites / apps**, e.g. the same password for GMail, Facebook and Twitter.
   * **Admins should never know user's passwords**, but should be able to change them in case of emergency.
-  * If someone hacks the server and gains access to the database, he will **see all user's passwords** in plaintext.
+  * If someone hacks the server and gains access to the database, he will **see all users' passwords** in plaintext.
 * It is **very bad practice** to keep plaintext passwords in any information system / app in the world!
   * Just don't do it!
 
 ## Simple Password Hash - Highly Insecure
 
-A relatively easy and **relatively insecure** method for password storage and password-based authentication is to use **simple password hash** like **SHA-256**\(password\), written directly in the database.
+A relatively easy and **relatively insecure** method for password storage and password-based authentication is to use **simple password hash** like `SHA-256(password)`, written directly in the database.
 
-* In this scenario to **check the password**, developers just compare the **hash**\(_password for checking_\) with the password hash from the database.
+* In this scenario to **check the password**, developers just compare the `hash(_password for checking_)` with the password hash from the database.
 * **Avoid this!** It is highly **insecure** method.
   * Why? Because hashes are vulnerable to [**dictionary attacks**](https://en.wikipedia.org/wiki/Dictionary_attack).
   * Crackers who gain access to the database, can use a **dictionary** holding the hashes of the most commonly used 10-20 million passwords and most of the passwords will be decrypted.
@@ -41,7 +41,7 @@ A relatively easy and **relatively insecure** method for password storage and pa
 
 ## Salted Hashed Passwords - Secure, but Not Enough
 
-More complicated and **relatively secure** method for password storage and password-based authentication is to use **salted hashed passwords**, written in the database as pair { **salt** + **hash\(password + salt\)** }. The hash function can be any strong cryptographic hash like SHA-256.
+A more complicated and **relatively secure** method for password storage and password-based authentication is to use **salted hashed passwords**, written in the database as pair { **salt** + **hash\(password + salt\)** }. The hash function can be any strong cryptographic hash like SHA-256.
 
 * The idea is to keep different random **salt**, along with different **password hash**, changed every time, when the password is written in the database. Thus the same password is encrypted every time as different ciphertext { **salt** + **hash** }.
 * To **check the password**, developers **calculate the hash**\(password for checking\) using the **salt** from the database and compare the **calculated hash** with the **hash from the database**.
@@ -64,24 +64,24 @@ The most complicated and **most secure** method for secure password storage and 
 
 ## Password-Based Authentication
 
-Using a **secure password storage** is only one of the components of the process of **secure password-based authentication** for Web apps, mobile apps and Internet services. Systems, that use password-based-authentication are subject of many attacks:
+Using a **secure password storage** is only one of the components of the process of **secure password-based authentication** for Web apps, mobile apps and Internet services. Systems that use password based authentication are subject of many attacks:
 
 * **Password guessing attack**: attacker tries to guess / brute-force the user's password by attempting many logins in parallel.
   * Solved easily by adding **increasing login delay** \(wait time before the login is available again\) after each wrong login attempt or even temporary account locking. Delays / locking should be done by **IP address + username**, to avoid login problems for the legitimate users.
   * Secure **KDF-based password storage** delays the password guessing process, so it is highly recommended.
   * Using a [**CAPTCHA**](https://en.wikipedia.org/wiki/CAPTCHA) after a 2-3 unsuccessful login attempts provides quite good protection.
 * **Denial of service attack**: attacker may attempt to login too many times to overload the system or can try to lock some user account with too many invalid login attempts for the same user.
-  * The **protection** from this attack is similar to the previous attack: use a **CAPTCHA** and **delay the login** process for certain IP address after each login attempt.
+  * The **protection** from this attack is similar to the previous attack: use a **CAPTCHA** and **delay the login** process for certain IP addresses after each login attempt.
 * **Intercept and replay attack**: attacker may intercept the authentication communication \(to sniff the login / password / auth ticket / other credentials\) and use the intercepted credentials to login later.
   * Most systems solve this problem by using [**TLS**](https://en.wikipedia.org/wiki/Transport_Layer_Security) \(encrypted connection\) to securely send the authentication credentials \(password / authentication ticket\) to the server.
   * Other solutions include [challenge-response](https://en.wikipedia.org/wiki/Challenge–response_authentication) based **cryptographic authentication scheme**, such as the scheme used in the [Kerberos](https://en.wikipedia.org/wiki/Kerberos_%28protocol%29) protocol.
 * **Man-in-the-middle attack**: attacker can intercept and modify the intercepted traffic between the server and the client to trick the user to reveal its login credentials.
   * This is solved by using a [**TLS**](https://en.wikipedia.org/wiki/Transport_Layer_Security) secure connection with server certificate, which **authenticates the server**.
   * In some scenarios \(e.g. online banking\) **clients are also authenticated** by a digital certificate or OTP \(one-time password\).
-* **Compromised server attack**: if the authentication server and its database is compromised \(hacked\) and all its authentication data is leaked, the attacker should be unable to reveal user's plaintext passwords.
+* **Compromised server attack**: if the authentication server and its database is compromised \(hacked\) and all its authentication data is leaked, the attacker should be unable to reveal users' plaintext passwords.
   * First, it should be clear that if the authentication server is compromised, in all cases the **attackers will get unauthorised access**, because they will be able to intercept user's legitimate sessions \(their login and communication after successful login\) and use them to impersonate the user.
-  * Using a strongly **secure password storage** mechanism mitigates the risk for users' passwords to be revealed as plaintext. Still, attackers who gain access to the authentication server may inject password interception [backdoor](https://en.wikipedia.org/wiki/Backdoor_%28computing%29) and steal each user's plaintext credentials \(username + password\) during the login.
-  * The **backdoored server attack** can be stopped like this: the client generates a random number **r** and sends as authentication **HMAC\(password, r\)**; the server compares the HMAC with its stored password. This process may be combined with **client-side Scrypt or Argon2** computation and securely stored password at the server side \(Scrypt or Argon2 hashed\). In this scenario, unless the client software is not compromised, attackers who gained access to the authentication server will not obtain user's passwords in plaintext.
+  * Using a strongly **secure password storage** mechanism mitigates the risk for users' passwords to be revealed as plaintext. Still, attackers who gain access to the authentication server may inject a password interception [backdoor](https://en.wikipedia.org/wiki/Backdoor_%28computing%29) and steal each user's plaintext credentials \(username + password\) during the login.
+  * The **backdoored server attack** can be stopped like this: the client generates a random number **r** and sends as authentication **HMAC\(password, r\)**; the server compares the HMAC with its stored password. This process may be combined with **client-side Scrypt or Argon2** computation and securely stored password at the server side \(Scrypt or Argon2 hashed\). In this scenario, unless the client software is compromised, attackers who gain access to the authentication server will not obtain user's passwords in plaintext.
   * In Web applications, if the server is compromised it can **inject JavaScript code** to compromise the client itself. In desktop and mobiles apps, the client is more safe in case of compromised server.
 
 **Conclusions** about how to implement a secure password-based authentication for Web sites, apps and services:
