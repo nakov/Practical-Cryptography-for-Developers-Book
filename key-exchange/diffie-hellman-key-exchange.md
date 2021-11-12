@@ -14,25 +14,25 @@ The **Diffie–Hellman Key Exchange** protocol can be implemented using **discre
 
 ### Key Exchange by Mixing Colors
 
-The Diffie–Hellman Key Exchange protocol is very similar to the concept of "**key exchanging by mixing colors**", which has a good visual representation, which simplifies its understanding. This is why we shall first explain how to exchange a secret color by **color mixing**.
+The Diffie–Hellman Key Exchange protocol is very similar to the concept of "**visually mixing colors**", a helpful illustration for understanding **key exchange**.
 
-The design of color mixing key exchange scheme assumes that if we have two liquids of different colors, we can **easily mix the colors** and obtain a new color, but the reverse operation is almost impossible: **no way to separate the mixed colors** back to their original color components.
+The design of color mixing key exchange scheme assumes that if we have two liquids of different colors, we can **easily mix the colors** and obtain a new color, but the reverse operation is almost impossible: there is **no way to separate the mixed colors** into their original color components.
 
 This is the color exchange **scenario**, step by step:
 
 * **Alice** and **Bob**, agree on an arbitrary **starting \(shared\) color** that does not need to be kept secret \(e.g. _yellow_\).
 * **Alice** and **Bob** separately select a **secret color** that they keep to themselves \(e.g. _red_ and _sea green_\).
-* Finally **Alice** and **Bob** **mix** their secret color together with their mutually shared color. The obtained mixed colors area ready for public exchange \(in our case _orange_ and _light sky blue_\).
+* Finally **Alice** and **Bob** **mix** their secret color together with their mutually shared color. The resulting colors are ready for public exchange \(in our case _orange_ and _light sky blue_\).
 
 ![](../.gitbook/assets/key-exchange-by-color-mixing-part-1.png)
 
 The next steps in the color exchanging scenario are as follows:
 
 * **Alice** and **Bob** publicly **exchange** their two **mixed colors**.
-  * We assume that there is no efficient way to extract \(separate\) the secret color from the mixed color, so third parties who know the mixed colors cannot reveal the secret colors.
+  * There is no efficient way to extract \(separate\) the secret color from the mixed color, so third parties who know the mixed colors cannot discover the secret colors.
 * Finally, **Alice** and **Bob** mix together the color they received from the partner with their own secret color.
   * The result is the **final color mixture** \(_yellow-brown_\) which is identical to the partner's color mixture.
-  * It is the **securely exchanged shared key**.
+  * This is the **securely exchanged shared key**.
 
 ![](../.gitbook/assets/key-exchange-by-color-mixing-part-2.png)
 
@@ -64,7 +64,7 @@ there is no efficient \(fast\) algorithm to find the secret exponent **s**. This
 
 The **Discrete Logarithm Problem \(DLP\)** in computer science is defined as follows:
 
-* By given element _**b**_ and value _**a**_ = _**bx**_ find the exponent _**x**_ \(if it exists\)
+* Given element _**b**_ and value _**a**_ = _**bx**_ find the exponent _**x**_ \(if it exists\)
 
 The exponent _**x**_ is called [**discrete logarithm**](https://en.wikipedia.org/wiki/Discrete_logarithm), i.e. **x** = _log_**b**\(**a**\). The elements _**a**_ and _**b**_ can be simple integers modulo _**p**_ \(from the [group ℤ/pℤ](https://en.wikipedia.org/wiki/Multiplicative_group_of_integers_modulo_n)\) or elements of [finite cyclic multiplicative group **G**](https://en.wikipedia.org/wiki/Cyclic_group) \(modulo _**p**_\), where _**p**_ is typically a prime number.
 
@@ -98,7 +98,7 @@ In the most common implementation of DHKE \(following the [RFC 3526](https://too
 
 ### Security of the DHKE Protocol
 
-The DHKE protocol is based on the practical difficulty of the [Diffie–Hellman problem](https://en.wikipedia.org/wiki/Diffie–Hellman_problem), which is a variant of the well known in the computer science [DLP \(discrete logarithm problem\)](https://en.wikipedia.org/wiki/Discrete_Logarithm_Problem_%28DLP%29), for which no efficient algorithm still exists.
+The DHKE protocol is based on the practical difficulty of the [Diffie–Hellman problem](https://en.wikipedia.org/wiki/Diffie–Hellman_problem), which is a well-known variant of the [DLP \(discrete logarithm problem\)](https://en.wikipedia.org/wiki/Discrete_Logarithm_Problem_%28DLP%29), for which no efficient algorithm still exists.
 
 DHKE exchanges a **non-secret sequence of integer numbers** over insecure, public \(sniffable\) channel \(such as signal going through a cable or propagated by waves in the air\), but does not reveal the secretly-exchanged shared private key.
 
@@ -116,5 +116,5 @@ As live example, you can play with this online DHKE tool: [http://www.irongeek.c
 
 The [**Elliptic-Curve Diffie–Hellman \(ECDH\)**](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie–Hellman) is an anonymous key agreement protocol that allows two parties, each having an **elliptic-curve public–private key pair**, to establish a shared secret over an insecure channel.
 
-**ECDH** is a variant of the classical **DHKE** protocol, where the **modular exponentiation** calculations are replaced with **elliptic-curve** calculations for improved security. We shall explain in details the **elliptic-curve cryptography \(ECC\)** section later.
+**ECDH** is a variant of the classical **DHKE** protocol, where the **modular exponentiation** calculations are replaced with **elliptic-curve** calculations for improved security. We shall explain in detail the **elliptic-curve cryptography \(ECC\)** section later.
 
