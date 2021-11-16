@@ -592,7 +592,7 @@ pip install pynacl
 
 The [Python binding to the Networking and Cryptography \(NaCl\) library \(PyNaCl\)](https://pynacl.readthedocs.io) implements many modern cryptographic algorithms, including the EC point arithmetic over the **Curve25519** and **Ed25519** signatures.
 
-Next, generate a random 252-bit **private key** and its corresponding **public key** \(EC point\) on the **Curve25519** \(both keys will be encoded internally as **256-bit integers**\):
+Next, generate a random 251-bit **private key** and its corresponding **public key** \(EC point\) on the **Curve25519** \(both keys will be encoded internally as **256-bit integers**\):
 
 ```python
 from nacl.public import PrivateKey
