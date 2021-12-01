@@ -99,7 +99,7 @@ Digital signatures are widely used in the **finance industry** for authorizing p
 
 ### Key Pairs
 
-The **public key cryptography** uses a **pair of keys**: **public key** + **private key**. These keys are mathematically connected and are used together as **pair**.
+The **public key cryptography** uses a **pair of keys**: **public key** + **private key**. These keys are mathematically connected and are used together as a **pair**.
 
 In some public key cryptosystems \(like the Elliptic-Curve Cryptography - **ECC**\), the public key can be calculated from the private key. In other cryptosystems \(like **RSA**\), the public key and the private key are generated together but cannot be directly calculated from each other.
 
@@ -114,7 +114,7 @@ pubKey: 02c324648931b89e3e8a0fc42c96e8e3be2e42812986573a40d46563bceaf75110
 
 ### Private Keys
 
-Message **encryption** and **signing** is done by a **private key**. The private keys are always kept **secret** by their owner, just like passwords. In the server infrastructure, private key usually stay in an encrypted and protected **keystore**. In the blockchain systems the private keys usually stay in specific software or hardware apps or devices called "**crypto wallets**", which store securely a set of private keys.
+Message **encryption** and **signing** is done by a **private key**. The private keys are always kept **secret** by their owner, just like passwords. In the server infrastructure, private keys usually stay in an encrypted and protected **keystore**. In the blockchain systems the private keys usually stay in specific software or hardware apps or devices called "**crypto wallets**", which securely store a set of private keys.
 
 **Example** of 256-bit private key:
 
@@ -124,9 +124,9 @@ Message **encryption** and **signing** is done by a **private key**. The private
 
 ### Public Keys
 
-Message **decryption** and **signature verification** is done by the **public key**. Public keys are by design public information \(not a secret\). It is mathematically infeasible to calculate the private key from its corresponding public key.
+Message **decryption** and **signature verification** is done using the **public key**. Public keys are by design public information \(not a secret\). It is mathematically infeasible to calculate the private key from its corresponding public key.
 
-In many systems the **public key** is encapsulated in a **digital certificate**, which binds certain identity \(e.g. person or Internet domain name\) to certain public key. In blockchain systems public keys are usually published as parts of the blockchain transactions to help identify who has signed each transaction. In systems like PGP and SSH the public key is downloaded from the server once \(after manual user verification\) and is remembered for further use.
+In many systems the **public key** is encapsulated in a **digital certificate**, which binds a certain identity \(e.g. person or Internet domain name\) to a certain public key. In blockchain systems public keys are usually published as parts of the blockchain transactions to help identify who has signed each transaction. In systems like PGP and SSH the public key is downloaded from the server once \(after manual user verification\) and is remembered for further use.
 
 **Example** of 256-bit public key:
 
@@ -136,29 +136,29 @@ In many systems the **public key** is encapsulated in a **digital certificate**,
 
 In most blockchain systems the **blockchain address** is derived from the public key \(by hashing and other transformations\), so if you have someone's public key, you are assumed to have his blockchain address as well.
 
-A certain **public key** can be connected to certain **person** or **organization** or is used anonymously. You can never know who is the owner of the private key, corresponding to certain public key, unless you have additional proof, e.g. a [**digital certificate**](https://en.wikipedia.org/wiki/Public_key_certificate).
+A certain **public key** can be connected to a certain **person** or **organization** or is used anonymously. You can never know who is the owner of the private key, corresponding to certain public key, unless you have additional proof, e.g. a [**digital certificate**](https://en.wikipedia.org/wiki/Public_key_certificate).
 
 ## Popular Public Key Cryptosystems
 
-**Public key cryptosystems** provide mathematical framework and algorithms to generate public + private key pairs, to **sign**, **verify**, **encrypt** and **decrypt** messages and **exchange keys**, in a cryptographically secure way.
+**Public key cryptosystems** provide a mathematical framework and algorithms to generate public + private key pairs, to **sign**, **verify**, **encrypt** and **decrypt** messages and **exchange keys**, in a cryptographically secure way.
 
 Well-known public-key cryptosystems are: [**RSA**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29), [**ECC**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) and [**ElGamal**](https://en.wikipedia.org/wiki/ElGamal_encryption). Many **crypto algorithms** are based on the primitives from these cryptosystems like **RSA sign**, **RSA encrypt / decrypt**, **ECDH** key exchange and **ECDSA** and **EdDSA** signatures.
 
 ### The RSA Cryptosystem
 
-The [**RSA public-key cryptosystem**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29) is based on the math of **modular exponentiations** \(numbers raised to a power by modulus\) and some additional assumptions, together with the computational difficulty of the [**integer factorization problem**](https://en.wikipedia.org/wiki/RSA_problem). We shall discuss it later in details, along with examples.
+The [**RSA public-key cryptosystem**](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29) is based on the math of **modular exponentiations** \(numbers raised to a power by modulus\) and some additional assumptions, together with the computational difficulty of the [**integer factorization problem**](https://en.wikipedia.org/wiki/RSA_problem). We shall discuss it later in detail, along with examples.
 
 ### The ECC Cryptosystem
 
-The [**elliptic-curve cryptography \(ECC\) public-key cryptosystem**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) is based on the math of the on the algebraic structure of the **elliptic curves** over finite fields and the difficulty of the [**elliptic curve discrete logarithm problem \(ECDLP\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography#Rationale). The **ECC** usually comes together with the [**ECDSA** algorithm](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) \(elliptic-curve digital signature algorithm\). We shall discuss ECC and ECDSA in details, along with examples.
+The [**elliptic-curve cryptography \(ECC\) public-key cryptosystem**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) is based on the math of the on the algebraic structure of the **elliptic curves** over finite fields and the difficulty of the [**elliptic curve discrete logarithm problem \(ECDLP\)**](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography#Rationale). The **ECC** usually comes together with the [**ECDSA** algorithm](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) \(elliptic-curve digital signature algorithm\). We shall discuss ECC and ECDSA in detail, along with examples.
 
 ### ECC is Recommended in the General Case
 
-**ECC uses smaller keys**, ciphertexts and signatures than RSA and is recommended for most applications. It is mathematically proven that a **3072-bit RSA key** has similar cryptographic strength to a **256-bit ECC key**. Key generation is in ECC is significantly faster than with RSA.
+**ECC uses smaller keys**, ciphertexts and signatures than RSA and is recommended for most applications. It is mathematically proven that a **3072-bit RSA key** has similar cryptographic strength to a **256-bit ECC key**. Key generation in ECC is significantly faster than with RSA.
 
 Due to the above reasons most blockchain networks \(like Bitcoin and Ethereum\) use elliptic-curve-based cryptography \(ECC\) to secure the transactions.
 
-Note that both **RSA** and **ECC** cryptosystems are **not quantum-safe**, which means that if someone has enough powerful quantum computer, he will be able to derive the private key from given public key in just few seconds.
+Note that both **RSA** and **ECC** cryptosystems are **not quantum-safe**, which means that if someone has enough powerful quantum computer, he will be able to derive the private key from given public key in just a few seconds.
 
 ## Asymmetric Encryption in Practice
 
