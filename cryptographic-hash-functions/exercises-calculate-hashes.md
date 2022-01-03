@@ -1,6 +1,6 @@
 # Exercises: Calculate Hashes
 
-In this exercise session, you are assigned to write some code to **calculate cryptographic hashes**. Write a program to **calculate hashes** of given text message: **SHA-224**, **SHA-256**, **SHA3-224**, **SHA3-384**, **Keccak-384** and **Whirlpool**. Write your code in programming language of choice.
+In this exercise session, you are assigned to write some code to **calculate cryptographic hashes**. Write a program to **calculate hashes** of given a text message using **SHA-224**, **SHA-256**, **SHA3-224**, **SHA3-384**, **Keccak-384** and **Whirlpool**. Write your code in programming language of choice.
 
 ## Calculate **SHA-224 Hash**
 

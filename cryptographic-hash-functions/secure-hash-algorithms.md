@@ -1,6 +1,6 @@
 # Secure Hash Algorithms
 
-In the past, many **cryptographic hash algorithms** were proposed and used by software developers. Some of them was **broken** \(like **MD5** and **SHA1**\), some are still considered secure \(like **SHA-2**, **SHA-3** and **BLAKE2**\). Let's review the most widely used cryptographic hash functions \(algorithms\).
+In the past, many **cryptographic hash algorithms** were proposed and used by software developers. Some of them were **broken** \(like **MD5** and **SHA1**\), some are still considered secure \(like **SHA-2**, **SHA-3** and **BLAKE2**\). Let's review the most widely used cryptographic hash functions algorithms.
 
 ## Secure Hash Functions
 
@@ -8,9 +8,9 @@ In the past, many **cryptographic hash algorithms** were proposed and used by so
 
 ### SHA-2, SHA-256, SHA-512
 
-[**SHA-2**](https://en.wikipedia.org/wiki/SHA-2) is a family of strong cryptographic hash functions: **SHA-256** \(256 bits hash\), **SHA-384** \(384 bits hash\), **SHA-512** \(512 bits hash\), etc. It is based on the cryptographic concept "[**Merkle–Damgård construction**](https://en.wikipedia.org/wiki/Merkle–Damgård_construction)" and is considered **highly secure**. SHA-2 is published as official crypto standard in the United States.
+[**SHA-2**](https://en.wikipedia.org/wiki/SHA-2) is a family of strong cryptographic hash functions: **SHA-256** \(256 bits hash\), **SHA-384** \(384 bits hash\), **SHA-512** \(512 bits hash\), etc. It is based on the cryptographic concept "[**Merkle–Damgård construction**](https://en.wikipedia.org/wiki/Merkle–Damgård_construction)" and is considered **highly secure**. SHA-2 is published as an official crypto standard in the United States.
 
-**SHA-2** is widely used by developers and in cryptography and is considered cryptographically strong enough for modern commercial applications.
+**SHA-2** is widely used by developers in cryptography and is considered cryptographically strong enough for modern commercial applications.
 
 **SHA-256** is widely used in the **Bitcoin** blockchain, e.g. for identifying the transaction hashes and for the proof-of-work mining performed by the miners.
 
@@ -26,17 +26,17 @@ SHA-512('hello') = 9b71d224bd62f3785d96d46ad3ea3d73319bfbc2890caadae2dff72519673
 
 By design, **more bits at the hash output** are expected to achieve **stronger security** and higher collision resistance \(with some exceptions\). As general rule, 128-bit hash functions are weaker than 256-bit hash functions, which are weaker than 512-bit hash functions.
 
-Thus, SHA-512 is stronger than SHA-256, so we can expect that for SHA-512 it is more unlikely to practically find a collision than for SHA-256.
+Thus, SHA-512 is stronger than SHA-256, so we can expect that when using SHA-512 you are less likely to find a collision than when using SHA-256.
 
 ### SHA-3, SHA3-256, SHA3-512, Keccak-256
 
 [**SHA-3**](https://en.wikipedia.org/wiki/SHA-3) \(and its variants SHA3-224, SHA3-256, SHA3-384, SHA3-512\), is considered **more secure than SHA-2** \(SHA-224, SHA-256, SHA-384, SHA-512\) for the same hash length. For example, SHA3-256 provides **more cryptographic strength than SHA-256** for the same hash length \(256 bits\).
 
-The **SHA-3** family of functions are representatives of the "**Keccak**" hashes family, which are based on the cryptographic concept "[**sponge construction**](https://en.wikipedia.org/wiki/Sponge_function)". Keccak is the winner of the [SHA-3 NIST competition](https://en.wikipedia.org/wiki/NIST_hash_function_competition#Finalists).
+The **SHA-3** family of functions are representatives of the "**Keccak**" hashes family, which are based on the cryptographic concept "[**sponge construction**](https://en.wikipedia.org/wiki/Sponge_function)". Keccak was the winner of the [SHA-3 NIST competition](https://en.wikipedia.org/wiki/NIST_hash_function_competition#Finalists).
 
 Unlike **SHA-2**, the **SHA-3** family of cryptographic hash functions are not vulnerable to the "[**length extension attack**](https://en.wikipedia.org/wiki/Length_extension_attack)".
 
-**SHA-3** is considered **highly secure** and is published as official recommended crypto standard in the United States.
+**SHA-3** is considered **highly secure** and is published as an official recommended crypto standard in the United States.
 
 The hash function **Keccak-256**, which is used in the **Ethereum** blockchain, is a variant of SHA3-256 with some constants changed in the code.
 
@@ -62,7 +62,7 @@ The **BLAKE2** function is an improved version of **BLAKE**.
 
 **BLAKE2b** \(typically **512-bit**\) is BLAKE2 implementation, performance-optimized for 64-bit microprocessors.
 
-The **BLAKE2** hash function has similar security strength like SHA-3, but is less used by developers than SHA2 and SHA3.
+The **BLAKE2** hash function is similar in strength to SHA-3, but is less frequently used by developers compared with SHA2 and SHA3.
 
 Examples of BLAKE hashes:
 
@@ -100,15 +100,15 @@ Avoid using of the following hash algorithms, which are considered **insecure** 
 
 The below functions are popular strong cryptographic hash functions, alternatives to SHA-2, SHA-3 and BLAKE2:
 
-* [**Whirlpool**](https://en.wikipedia.org/wiki/Whirlpool_%28hash_function) is secure cryptographic hash function, which produces 512-bit hashes.
-* [**SM3**](https://tools.ietf.org/id/draft-oscca-cfrg-sm3-01.html) is the crypto hash function, officialy standartized by the **Chinese government**. It is similar to SHA-256 \(based on the Merkle–Damgård construction\) and produces 256-bit hashes.
-* [**GOST**](https://en.wikipedia.org/wiki/GOST_%28hash_function) \(GOST R 34.11-94\) is secure cryptographic hash function, the Russian national standard, described in [RFC 4357](https://tools.ietf.org/html/rfc4357). It produces 256-bit hashes.
+* [**Whirlpool**](https://en.wikipedia.org/wiki/Whirlpool_%28hash_function) is a secure cryptographic hash function, which produces 512-bit hashes.
+* [**SM3**](https://tools.ietf.org/id/draft-oscca-cfrg-sm3-01.html) is the crypto hash function, officialy standardized by the **Chinese government**. It is similar to SHA-256 \(based on the Merkle–Damgård construction\) and produces 256-bit hashes.
+* [**GOST**](https://en.wikipedia.org/wiki/GOST_%28hash_function) \(GOST R 34.11-94\) is a secure cryptographic hash function, the Russian national standard, described in [RFC 4357](https://tools.ietf.org/html/rfc4357). It produces 256-bit hashes.
 
 The below functions are less popular alternatives to SHA-2, SHA-3 and BLAKE, finalists at the [SHA-3 NIST competition](https://en.wikipedia.org/wiki/NIST_hash_function_competition#Finalists):
 
-* [**Skein**](https://en.wikipedia.org/wiki/Skein_%28hash_function) is secure cryptographic hash function, capable to derive 128, 160, 224, 256, 384, 512 and 1024-bit hashes.
-* [**Grøstl**](https://en.wikipedia.org/wiki/Grøstl) is secure cryptographic hash function, capable to derive 224, 256, 384 and 512-bit hashes.
-* [**JH**](https://en.wikipedia.org/wiki/JH_%28hash_function) is secure cryptographic hash function, capable to derive 224, 256, 384 and 512-bit hashes.
+* [**Skein**](https://en.wikipedia.org/wiki/Skein_%28hash_function) is a secure cryptographic hash function, capable of deriving 128, 160, 224, 256, 384, 512 and 1024-bit hashes.
+* [**Grøstl**](https://en.wikipedia.org/wiki/Grøstl) is a secure cryptographic hash function, capable of deriving 224, 256, 384 and 512-bit hashes.
+* [**JH**](https://en.wikipedia.org/wiki/JH_%28hash_function) is a secure cryptographic hash function, capable of deriving 224, 256, 384 and 512-bit hashes.
 
 ### No Collisions for SHA-256, SHA3-256, BLAKE2s and RIPEMD-160 are Known
 
@@ -116,7 +116,7 @@ As of Oct 2018, **no collisions are known** for: **SHA256**, **SHA3-256**, **Kec
 
 **Brute forcing** to find hash function collision as general costs: 2128 for SHA256 / SHA3-256 and 280 for RIPEMD160.
 
-Respectively, on a powerful enough **quantum computer**, it will cost less time: 2256/3 and 2160/3 respectively. Still \(as of September 2018\) so powerful quantum computers are not known to exist.
+On a powerful enough **quantum computer**, it will cost less time: 2256/3 and 2160/3 respectively. Still \(as of September 2018\) such powerful quantum computers are not known to exist.
 
 Learn more about cryptographic hash functions, their strength and **attack resistance** at: [https://z.cash/technology/history-of-hash-function-attacks.html](https://z.cash/technology/history-of-hash-function-attacks.html)
 

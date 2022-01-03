@@ -1,6 +1,6 @@
 # Exercises: Pseudo-Random Generator
 
-Write a code to generate **30 pseudo-random integers** in the range **\[1...10\]**, starting from certain **entropy**, taken as input, using **HMAC key derivation**.
+Write some code to generate **30 pseudo-random integers** in the range **\[1...10\]**, starting from certain **entropy**, taken as input, using **HMAC key derivation**.
 
 From the **entropy** generate a **seed** \(256-bit binary sequence\) using **SHA-256**:
 

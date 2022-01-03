@@ -1,6 +1,6 @@
 # Pseudo-Random Numbers - Examples
 
-To get a better idea **how pseudo-random numbers are generated** in computer programming, let's play with at the following Python code, which generates 5 pseudo-random numbers in the range \[10...20\]:
+To get a better idea **how pseudo-random numbers are generated** in computer programming, let's play with the following Python code, which generates 5 pseudo-random numbers in the range \[10...20\]:
 
 ```python
 import hashlib, time
@@ -78,7 +78,7 @@ f8a4eaceb16156b1a23f4b6d08e54665ffa4822949b22e01d6de4c5daae965e3|3 3011033199204
 f8a4eaceb16156b1a23f4b6d08e54665ffa4822949b22e01d6de4c5daae965e3|4 100466094724924763659843669256673300207383922129676800217664465341535622195997 --> 16
 ```
 
-Note that the **collected entropy is very hard to be predicted**. The cracker should guess all the text entered by the user and also guess the exact time for each of the 5 inputs. If the above is repeated 20 instead of 5 times, it will be even harder to predict \(the collected entropy will be bigger\).
+Note that the **collected entropy is very hard to predict**. The cracker should guess all the text entered by the user and also guess the exact time for each of the 5 inputs. If the above is repeated 20 instead of 5 times, it will be even harder to predict \(the collected entropy will be bigger\).
 
 Some cryptographical software use similar techniques like in the above code example when generating keys, password and randomness as general and now you know why: to collect entropy in an unpredictable way.
 

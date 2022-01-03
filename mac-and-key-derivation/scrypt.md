@@ -12,11 +12,11 @@ key = Scrypt(password, salt, N, r, p, derived-key-len)
 
 The **Scrypt config parameters** are:
 
+* `password`– the input password \(8-10 chars minimal length is recommended\)
+* `salt` – securely-generated random bytes \(64 bits minimum, 128 bits recommended\)
 * `N` – iterations count \(affects memory and CPU usage\), e.g. 16384 or 2048
 * `r` – block size \(affects memory and CPU usage\), e.g. 8
 * `p` – parallelism factor \(threads to run in parallel - affects the memory, CPU usage\), usually 1
-* `password`– the input password \(8-10 chars minimal length is recommended\)
-* `salt` – securely-generated random bytes \(64 bits minimum, 128 bits recommended\)
 * `derived-key-length` - how many bytes to generate as output, e.g. 32 bytes \(256 bits\)
 
 The **memory** in Scrypt is accessed in strongly **dependent order** at each step, so the memory access speed is the algorithm's bottleneck. The **memory required** to compute Scrypt key derivation is calculated as follows:
@@ -25,12 +25,16 @@ The **memory** in Scrypt is accessed in strongly **dependent order** at each ste
 Memory required = 128 * N * r * p bytes
 ```
 
-Example: e.g. 128 \* N \* r \* p = 128 \* 16384 \* 8 \* 1 = 16 MB  
-\(or 128 \* N \* r \* p = 128 \* 2048 \* 8 \* 1 = 2 MB\)
+Here's are a couple examples:
 
-**Choosing parameters** depends on how much you want to wait and what level of security \(password cracking resistance\) do you want to achieve:
+```text
+128 * 16384 * 8 * 1 = 16 MB  
+128 * 2048 * 8 * 1 = 2 MB
+```
 
-* Sample parameters for **interactive login**: N=16384, r=8, p=1 \(RAM = 2 MB\). For interactive login you most probably do not want to wait more than a 0.5 seconds, so the computations should be very slow. Also at the server side, it is usual that many users can login in the same time, so slow Scrypt computation will slow down the entire system.
+**Choosing parameters** depends on how long you want to wait and what level of security \(password cracking resistance\) you want to achieve:
+
+* Sample parameters for **interactive login**: N=16384, r=8, p=1 \(RAM = 2 MB\). For interactive login you most probably do not want to wait more than 0.5 seconds, so the computations should be reasonably fast. If many users are logging in in the same time, a slow Scrypt computation can slow down the entire system.
 * Sample parameters for **file encryption**: N=1048576, r=8, p=1 \(RAM = 1 GB\). When you encrypt your hard drive, you will unlock the encrypted data in rare cases, usually not more than 2-3 times per day, so you may want to wait for 2-3 seconds to increase the security.
 
 You can perform tests and choose the Scrypt parameters yourself during the design and development of your app or system. Always try to use the **fastest possible implementation of Scrypt** for your language and platform, because crackers will definitely use it. Some implementations \(e.g. in Python\) may be 100 times slower than the fastest ones!
@@ -56,7 +60,7 @@ pip install scrypt
 Note that the `scrypt` package depends on OpenSSL, so first install it in its default location \(e.g. in `C:\OpenSSL-Win64` in Windows\), then install the **scrypt** Python package.
 
 Now, after the `scrypt` package is successfully installed, write the Python code to calculate a Scrypt hash:  
-\(_Note, we have chosen smaller number for iterations count. We did that just to increase the following example execution speed. In common usage, a higher iterations count is recommended, e.g. 16384 - see above._\)
+\(_Note, we have chosen a smaller number for iterations count. We did that just to increase the following example execution speed. In common usage, a higher iterations count is recommended, e.g. 16384 - see above._\)
 
 ```python
 import pyscrypt
@@ -77,7 +81,7 @@ The **output** from the above code execution is the following:
 Derived key: b'e813a6f6ccc4e9110193bf9efb7c0a489d76655f9e36629dccbeaf2a73bc0c6f'
 ```
 
-Try to change the number of **iterations** or the **block size** and see how they affect the **execution time**. Have in mind that the above Python implementation is not very fast. You may find fast Scrypt implementation in Internet.
+Try to change the number of **iterations** or the **block size** and see how they affect the **execution time**. Have in mind that the above Python implementation is not very fast. You may find a faster Scrypt implementation on the Internet.
 
 ## Storing Algorithm Settings + Salt + Hash Together
 
