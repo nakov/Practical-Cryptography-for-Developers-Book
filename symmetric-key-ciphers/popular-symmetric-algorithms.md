@@ -20,7 +20,7 @@ The **Salsa20** cipher takes as input a **128-bit** or **256-bit symmetric secre
 
 ## Other Popular Symmetric Ciphers
 
-Other **modern secure symmetric ciphers**, used more rarely than EAS and ChaCha20, but still popular in the software developer and information security communities, are the following:
+Other **modern secure symmetric ciphers**, used more rarely than AES and ChaCha20, but still popular in the software developer and information security communities, are the following:
 
 * [**Serpent**](https://en.wikipedia.org/wiki/Serpent_%28cipher%29) - secure symmetric-key block cipher \(key size: 128, 192 or 256 bits\), public domain, not patented
 * [**Twofish**](https://en.wikipedia.org/wiki/Twofish) - secure symmetric-key block cipher \(key sizes: 128, 192 or 256 bits\), royalty-free, not patented
