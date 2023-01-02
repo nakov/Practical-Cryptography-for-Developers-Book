@@ -25,7 +25,7 @@ The public key EC point {_**x**_, _**y**_} can be **compressed** to just one of 
 
 ## ECDSA Sign
 
-The ECDSA signing algorithm \([**RFC 6979**](https://tools.ietf.org/html/rfc6979#section-3.2)\) takes as input a message _**msg**_ ****+ a private key _**privKey**_ ****and produces as output a **signature**, which consists of pair of integers {_**r**_, _**s**_}. The **ECDSA signing** algorithm is based on the [**ElGamal signature scheme**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme) and works as follows \(with minor simplifications\):
+The ECDSA signing algorithm \([**RFC 6979**](https://tools.ietf.org/html/rfc6979#section-3.2)\) takes as input a message _**msg**_ + a private key _**privKey**_ and produces as output a **signature**, which consists of pair of integers {_**r**_, _**s**_}. The **ECDSA signing** algorithm is based on the [**ElGamal signature scheme**](https://en.wikipedia.org/wiki/ElGamal_signature_scheme) and works as follows \(with minor simplifications\):
 
 1. Calculate the message **hash**, using a cryptographic hash function like SHA-256: _**h**_ = hash\(_**msg**_\)
 2. Generate securely a **random** number _**k**_ in the range \[1.._**n**_-1\]

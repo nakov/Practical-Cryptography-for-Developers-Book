@@ -10,9 +10,9 @@
 
 **Digital signatures** cannot identify who is the person, created a certain signature. This can be solved in combination with a [**digital certificate**](https://en.wikipedia.org/wiki/Public_key_certificate), which binds a public key owner with identity \(person, organization, web site or other\). By design digital signatures bind messages to public keys, not to digital identities.
 
-## Sign Messages and Verify Signatures: How It Works?
+## Sign Messages and Verify Signatures: How Does It Work?
 
-**Digital signature** schemes typically use a **public-key cryptosystem** \(such as RSA or ECC\) and use a **public / private key pairs**. A message is signed by a private key and the signature is verified by the corresponding public key:
+**Digital signature** schemes typically use a **public-key cryptosystem** \(such as RSA or ECC\) and use **public / private key pairs**. A message is signed by a private key and the signature is verified by the corresponding public key:
 
 ![](../.gitbook/assets/public-key-cryptography-sign-verify.png)
 
@@ -84,7 +84,7 @@ A **deterministic-ECDSA** variant is defined in [**RFC 6979**](https://tools.iet
 
 **EdDSA** \(Edwards-curve Digital Signature Algorithm\) is a fast **digital signature algorithm**, using **elliptic curves** in Edwards form \(like [**Ed25519**](https://ed25519.cr.yp.to) and [**Ed448-Goldilocks**](https://eprint.iacr.org/2015/625.pdf)\), a deterministic variant of the [**Schnorr's signature**](https://en.wikipedia.org/wiki/Schnorr_signature) scheme, designed by a team of the well-known cryptographer [**Daniel Bernstein**](https://cr.yp.to/djb.html).
 
-**EdDSA** is more **simple** than **ECDSA**, more **secure** than **ECDSA** and is designed to be **faster** than **ECDSA** \(for curves with comparables key length\). Like **ECDSA**, the **EdDSA** signature scheme relies on the difficulty of the **ECDLP problem** \(elliptic-curve discrete logarithm problem\) for its security strength.
+**EdDSA** is **simpler** than **ECDSA**, more **secure** than **ECDSA** and is designed to be **faster** than **ECDSA** \(for curves with comparable key lengths\). Like **ECDSA**, the **EdDSA** signature scheme relies on the difficulty of the **ECDLP problem** \(elliptic-curve discrete logarithm problem\) for its security strength.
 
 The **EdDSA** signature algorithm is works with Edwards elliptic curves like **Curve25519** and **Curve448**, which are highly optimized for **performance** and **security**. It is shown that **Ed25519 signatures** are typically **faster** than traditional **ECDSA signatures** over curves with comparable key length. Still, the performance competition is disputable. The **EdDSA sign / verify** process works as follows:
 
