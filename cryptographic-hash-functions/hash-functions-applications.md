@@ -34,7 +34,7 @@ In the above example the SHA-1 unique ID identifies a certain commit in GitHub.
 
 ## Proof-of-Work Algorithms
 
-**Proof-of-work** \(PoW\) algorithms. Most proof-of-work algorithms calculate a hash value which is bigger than certain value \(known as mining difficulty\). To find this hash value, miners calculate billions of different hashes and take the biggest of them, because hash numbers are unpredictable. For example, the proof of work problem might be defined as follows: find a number `p`, such that `hash(x + p)` holds 10 zero bits at its beginning.
+**Proof-of-work** \(PoW\) algorithms. Most proof-of-work algorithms seek to calculate a hash value which is smaller than certain value \(known as mining difficulty\). To find this hash value, miners calculate billions of different hashes and take the biggest of them, because hash numbers are unpredictable. For example, the proof of work problem might be defined as follows: find a number `p`, such that `hash(x + p)` holds 10 zero bits at its beginning.
 
 ## Cryptographic Hashes are Part of Modern Programming
 
