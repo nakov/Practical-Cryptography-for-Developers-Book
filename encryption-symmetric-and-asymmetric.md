@@ -112,6 +112,8 @@ privKey: 648fc1fa828c7f185d825c04a5b21af9e473b867eeee1acea4dbab938433e158
 pubKey: 02c324648931b89e3e8a0fc42c96e8e3be2e42812986573a40d46563bceaf75110
 ```
 
+Note that the pubKey value written here is a *compressed* pubkey, which is hex-encoded as 33 bytes (264 total bits). The actual pubkey varies depending on the algorithm being used, but the **secp256k1** curve generates a *point on a curve* which is actually the combination of a 256-bit X value and a 256-bit Y value. Using certain mathematical techniques, it is possible to calculate this full point using just one of these values and one extra bit. In this encoding, the extra bit is written using an extra byte. This will be covered in further detail in a later chapter.
+
 ### Private Keys
 
 Message **encryption** and **signing** is done by a **private key**. The private keys are always kept **secret** by their owner, just like passwords. In the server infrastructure, private key usually stay in an encrypted and protected **keystore**. In the blockchain systems the private keys usually stay in specific software or hardware apps or devices called "**crypto wallets**", which store securely a set of private keys.
