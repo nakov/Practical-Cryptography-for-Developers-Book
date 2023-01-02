@@ -16,7 +16,7 @@ The **secret key** used to **cipher** \(encrypt\) and **decipher** \(decrypt\) d
 
 Most applications use a [**password-to-key-derivation**](https://github.com/svetlin-nakov/practical-cryptography-for-developers/tree/34666e7576d7427e08bf3940a69214b0cda94676/content/part-1-blockchain-networks-concepts/blockchain-cryptography/blockchain-cryptography-overview/hmac-and-key-derivation.html) scheme to extract a **secret key** from certain **password**, because users tend to remember passwords easier than binary data. Additionally, **message authentication** is often incorporated along with the encryption to provide **integrity** and **authenticity** \(this encryption approach is known as "[**authenticated encryption**](https://en.wikipedia.org/wiki/Authenticated_encryption)"\).
 
-How does a **private key** look like? Let's start from a simple example of **256-bit secret key**, encoded as [**hex string**](https://en.wikipedia.org/wiki/Hexadecimal):
+What does a **private key** look like? Let's start from a simple example of **256-bit secret key**, encoded as [**hex string**](https://en.wikipedia.org/wiki/Hexadecimal):
 
 ```text
 02c324648931b89e3e8a0fc42c96e8e3be2e42812986573a40d46563bceaf75110
@@ -105,18 +105,20 @@ In some public key cryptosystems \(like the Elliptic-Curve Cryptography - **ECC*
 
 Usually, a **public / private key pair** is randomly generated in a secure environment \(e.g. in a hardware wallet\) and the public key is revealed, while the private key is securely stored in a crypto-wallet and is protected by a password or by multi-factor authentication.
 
-**Example** of 256-bit private key and its corresponding 256-bit public key \(based on **secp256k1** curve\):
+**Example** of 256-bit private key and its corresponding public key \(based on **secp256k1** curve\):
 
 ```text
 privKey: 648fc1fa828c7f185d825c04a5b21af9e473b867eeee1acea4dbab938433e158
 pubKey: 02c324648931b89e3e8a0fc42c96e8e3be2e42812986573a40d46563bceaf75110
 ```
 
+Note that the pubKey value written here is a *compressed* pubkey, which is hex-encoded as 33 bytes (264 total bits). The actual pubkey varies depending on the algorithm being used, but the **secp256k1** curve generates a *point on a curve* which is actually the combination of a 256-bit X value and a 256-bit Y value. Using certain mathematical techniques, it is possible to calculate this full point using just one of these values and one extra bit. In this encoding, the extra bit is written using an extra byte. This will be covered in further detail in a later chapter.
+
 ### Private Keys
 
 Message **encryption** and **signing** is done by a **private key**. The private keys are always kept **secret** by their owner, just like passwords. In the server infrastructure, private key usually stay in an encrypted and protected **keystore**. In the blockchain systems the private keys usually stay in specific software or hardware apps or devices called "**crypto wallets**", which store securely a set of private keys.
 
-**Example** of 256-bit private key:
+**Example** of a 256-bit private key:
 
 ```text
 648fc1fa828c7f185d825c04a5b21af9e473b867eeee1acea4dbab938433e158
@@ -128,7 +130,7 @@ Message **decryption** and **signature verification** is done by the **public ke
 
 In many systems the **public key** is encapsulated in a **digital certificate**, which binds certain identity \(e.g. person or Internet domain name\) to certain public key. In blockchain systems public keys are usually published as parts of the blockchain transactions to help identify who has signed each transaction. In systems like PGP and SSH the public key is downloaded from the server once \(after manual user verification\) and is remembered for further use.
 
-**Example** of 256-bit public key:
+**Example** of a compressed public key:
 
 ```text
 02c324648931b89e3e8a0fc42c96e8e3be2e42812986573a40d46563bceaf75110

@@ -2,7 +2,7 @@
 
 The [**Advanced Encryption Standard \(AES\)**](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) cipher, also known as "**Rijndael**" is a popular, secure, widely used **symmetric key block cipher** algorithm, used officially as recommended encryption technology standard in the United States. **AES** operates using **block size of 128 bits** and symmetric **keys of length** **128**, **160**, **192**, **224** and **256** bits.
 
-## AES is Secure and Very Popular Symmetric Encryption Algorithm
+## AES is a Secure and Very Popular Symmetric Encryption Algorithm
 
 The **AES** symmetric encryption algorithm is considered **highly secure** \(when configured correctly\) and no significant practical attacks are known for AES in its history.
 

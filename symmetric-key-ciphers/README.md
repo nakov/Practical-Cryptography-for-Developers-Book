@@ -14,7 +14,7 @@ When the input data is encrypted, it is transformed to **encrypted ciphertext** 
 
 It is important to know as a concept that symmetric-key encryption algorithms usually do not work standalone. They work together with other related crypto algorithms, into a **symmetric encryption scheme** / **symmetric encryption construction**.
 
-In most encryption schemes an **encryption** is combined with password to **key derivation** algorithm and **message authentication** scheme \(see [authenticated encryption](https://en.wikipedia.org/wiki/Authenticated_encryption)\). Typically a symmetric encryption procedure uses a sequence of steps, involving different crypto algorithms:
+In most encryption schemes an **encryption** is combined with a password to a **key derivation** algorithm and a **message authentication** scheme \(see [authenticated encryption](https://en.wikipedia.org/wiki/Authenticated_encryption)\). Typically a symmetric encryption procedure uses a sequence of steps, involving different crypto algorithms:
 
 * **Password-to-key derivation** algorithm \(like Scrypt or Argon2\): to allow using a password instead of a key and to make password cracking hard and slow to be performed.
 * **Block to stream cipher transformation** algorithm \(block cipher mode like **CBC** or **CTR**\) + **message padding** algorithm like **PKCS7** \(in some modes\): to allow encrypting data of arbitrary size using a block cipher algorithm \(like **AES**\).

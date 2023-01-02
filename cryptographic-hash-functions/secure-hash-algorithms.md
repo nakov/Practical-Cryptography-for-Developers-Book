@@ -77,7 +77,7 @@ BLAKE2b('hello') = e4cfa39a3d37be31c59609e807970799caa68a19bfaa15135f165085e01d4
 
 The **160-bit** variant of **RIPEMD** is widely used in practice, while the other variations like RIPEMD-128, RIPEMD-256 and RIPEMD-320 are not popular and have disputable security strengths.
 
-As recommendation, **prefer using SHA-2 and SHA-3** instead of RIPEMD, because they are more stronger than RIPEMD, due to higher bit length and less chance for collisions.
+As recommendation, **prefer using SHA-2 and SHA-3** instead of RIPEMD, because they are stronger than RIPEMD, due to higher bit length and less chance for collisions.
 
 Examples of RIPEMD hashes:
 

@@ -20,7 +20,7 @@ The above example comes from the `/etc/shadow` file in a modern Linux system. Th
 
 ## Generate Unique ID
 
-Generate an \(**almost**\) **unique ID** of certain document / message. Cryptographic hash functions almost uniquely identify documents based on their content. In theory **collisions are possible** with any cryptographic hash function, but are very unlikely to happen, so most systems \(like **Git**\) assume that the hash function they use is **collistion free**.
+Generate an \(**almost**\) **unique ID** of certain document / message. Cryptographic hash functions almost uniquely identify documents based on their content. In theory **collisions are possible** with any cryptographic hash function, but are very unlikely to happen, so most systems \(like **Git**\) assume that the hash function they use is **collision free**.
 
 Usually a document is **hashed** and the **document ID** \(hash value\) is used later to prove the existence of the document, or to retrieve the document from a storage system. Example of hash-based unique IDs are the commit hashes in **Git** and **GitHub**, based on the content of the commit \(e.g. `3c3be25bc1757ca99aba55d4157596a8ea217698`\) and the **Bitcoin** addresses \(e.g. `1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2`\).
 
@@ -34,7 +34,7 @@ In the above example the SHA-1 unique ID identifies a certain commit in GitHub.
 
 ## Proof-of-Work Algorithms
 
-**Proof-of-work** \(PoW\) algorithms. Most proof-of-work algorithms calculate a hash value which is bigger than certain value \(known as mining difficulty\). To find this hash value, miners calculate billions of different hashes and take the biggest of them, because hash numbers are unpredictable. For example, the proof of work problem might be defined as follows: find a number `p`, such that `hash(x + p)` holds 10 zero bits at its beginning.
+**Proof-of-work** \(PoW\) algorithms. Most proof-of-work algorithms seek to calculate a hash value which is smaller than certain value \(known as mining difficulty\). To find this hash value, miners calculate billions of different hashes and take the biggest of them, because hash numbers are unpredictable. For example, the proof of work problem might be defined as follows: find a number `p`, such that `hash(x + p)` holds 10 zero bits at its beginning.
 
 ## Cryptographic Hashes are Part of Modern Programming
 
