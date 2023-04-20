@@ -30,7 +30,7 @@ The ECDSA signing algorithm \([**RFC 6979**](https://tools.ietf.org/html/rfc6979
 1. Calculate the message **hash**, using a cryptographic hash function like SHA-256: _**h**_ = hash\(_**msg**_\)
 2. Generate securely a **random** number _**k**_ in the range \[1.._**n**_-1\]
    * In case of **deterministic-ECDSA**, the value _**k**_ is HMAC-derived from _**h**_ + _**privKey**_ \(see [RFC 6979](https://tools.ietf.org/html/rfc6979#section-3.2)\)
-3. Calculate the random point _**R**_ = _**k**_ \* **G** and take its x-coordinate: _**r**_ = _**R**_**.x**
+3. Calculate the random point _**R**_ = _**k**_ \* **G** and take its x-coordinate modulo n : _**r**_ = $$R.x \pmod n$$
 4. Calculate the signature proof: _**s**_ = $$k^{-1} * (h + r * privKey) \pmod n$$
    * The modular inverse $$k^{-1} \pmod n$$ is an integer, such that $$k * k^{-1} \equiv 1 \pmod n$$
 5. Return the **signature** {_**r**_, _**s**_}.
