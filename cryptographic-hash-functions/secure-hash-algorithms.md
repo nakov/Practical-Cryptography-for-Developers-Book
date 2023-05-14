@@ -54,7 +54,7 @@ SHAKE-256('hello', 160) = 1234075ae4a1e77316cf2d8000974581a343b9eb
 
 ### BLAKE2 / BLAKE2s / BLAKE2b
 
-[**BLAKE**](https://en.wikipedia.org/wiki/BLAKE_%28hash_function\) / **BLAKE2** / **BLAKE2s** / **BLAKE2b** is a family of fast, highly secure cryptographic hash functions, providing calculation of 160-bit, 224-bit, 256-bit, 384-bit and 512-bit digest sizes, widely used in modern cryptography. BLAKE is one of the finalists at the [SHA-3 NIST competition](https://en.wikipedia.org/wiki/NIST_hash_function_competition#Finalists).
+[**BLAKE**](https://en.wikipedia.org/wiki/BLAKE_%28hash_function\)) / **BLAKE2** / **BLAKE2s** / **BLAKE2b** is a family of fast, highly secure cryptographic hash functions, providing calculation of 160-bit, 224-bit, 256-bit, 384-bit and 512-bit digest sizes, widely used in modern cryptography. BLAKE is one of the finalists at the [SHA-3 NIST competition](https://en.wikipedia.org/wiki/NIST_hash_function_competition#Finalists).
 
 The **BLAKE2** function is an improved version of **BLAKE**.
 
