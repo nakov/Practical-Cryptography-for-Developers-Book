@@ -1,6 +1,6 @@
-# One-Time Passwords \(OTP\) - Example
+# One-Time Passwords (OTP) - Example
 
-In this section, we shall provide an **example** of how to generate and validate One-Time Passwords \(**OTP**\) in Python. The Python library of our choice is [**PyOTP**](https://github.com/pyauth/pyotp), which implement the [RFC 4226](https://tools.ietf.org/html/rfc4226) and [RFC 6238](https://tools.ietf.org/html/rfc6238) standards. If you want to use this library you should **follow the requirements** in those standards. Installation:
+In this section, we shall provide an **example** of how to generate and validate One-Time Passwords (**OTP**) in Python. The Python library of our choice is [**PyOTP**](https://github.com/pyauth/pyotp), which implement the [RFC 4226](https://tools.ietf.org/html/rfc4226) and [RFC 6238](https://tools.ietf.org/html/rfc6238) standards. If you want to use this library you should **follow the requirements** in those standards. Installation:
 
 ```python
 pip install pyotp
@@ -33,7 +33,7 @@ otpauth://totp/Secure%20App:alice%40google.com?secret=S3K3TPI5MYA2M67V&issuer=Se
 
 ## Client-Side Setup
 
-Once the client stores the secret in a secure way, in a **time-interval** of a 30 seconds \(by default\) a new code will be generated.
+Once the client stores the secret in a secure way, in a **time-interval** of a 30 seconds (by default) a new code will be generated.
 
 ```python
 import pyotp
@@ -52,7 +52,7 @@ Run the above code example: [https://repl.it/@nakov/OTP-Client-Side-in-Python](h
 
 Sample output:
 
-```text
+```
 Secret: S3K3TPI5MYA2M67V
 OTP code: 339838
 OTP code: 284911
@@ -81,8 +81,7 @@ Run the above code example: [https://repl.it/@nakov/QR-code-scanner-in-Python](h
 
 Output:
 
-```text
+```
 Secret: S3K3TPI5MYA2M67V
 Code Valid: True
 ```
-

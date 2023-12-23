@@ -1,10 +1,9 @@
-# Linux crypt\(\)
+# Linux crypt()
 
 ... ...
 
-**\[TODO: write a few words about the crypt\(\) function in Linux\]**
+**\[TODO: write a few words about the crypt() function in Linux]**
 
-See [https://en.wikipedia.org/wiki/Crypt\_\(C](https://en.wikipedia.org/wiki/Crypt_%28C)\)
+See [https://en.wikipedia.org/wiki/Crypt\_(C](https://en.wikipedia.org/wiki/Crypt\_\(C))
 
 ... ...
-

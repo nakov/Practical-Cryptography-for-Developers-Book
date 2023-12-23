@@ -9,4 +9,3 @@ Display the server certificate + the public key.
 Display info about the TLS cipher suite.
 
 ...
-

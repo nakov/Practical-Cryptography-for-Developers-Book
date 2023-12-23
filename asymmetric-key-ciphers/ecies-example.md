@@ -35,7 +35,7 @@ The above code is pretty simple: just generate ECC **public + private key pair**
 
 The **output** form the above code looks like this:
 
-```text
+```
 Encryption public key: 0x0dc8e06c055b45ecf110258ed5c0261ce2019b1bd0f8f226dcd010dade448b8f304a0915c68cdf7ddded8e4021d28fb92e27d08df695f48a0d2c41ddee750fc7
 Decryption private key: 0x487fd8b53c471e3c38484a0fbe4751ace67a9ed28e60ea6b0b44c445b881f99d
 Plaintext: b'Some plaintext for encryption'
@@ -44,4 +44,3 @@ Decrypted: b'Some plaintext for encryption'
 ```
 
 The Python `eciespy` library internally uses **ECC** cryptography over the **secp256k1** curve + **AES-256-GCM** authenticated encryption. Note that the above encrypted message holds together 4 values: `{cipherPubKey, AES-nonce, authTag, AES-ciphertext}`, packed in binary form and not directly visible from the above output.
-

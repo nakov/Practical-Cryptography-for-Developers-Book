@@ -70,4 +70,3 @@ console.log("Signature valid?", validSig);
 Run the above code example: [https://repl.it/@nakov/ECDSA-sign-verify-in-JS](https://repl.it/@nakov/ECDSA-sign-verify-in-JS).
 
 Complete example: [https://gist.github.com/nakov/1dcbe26988e18f7a4d013b65d8803ffc](https://gist.github.com/nakov/1dcbe26988e18f7a4d013b65d8803ffc)
-

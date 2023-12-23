@@ -8,13 +8,13 @@
 
 [https://cryptography.io/en/latest/x509/](https://cryptography.io/en/latest/x509/)
 
-## Transport Layer Security \(TLS\) and SSL
+## Transport Layer Security (TLS) and SSL
 
 ...
 
-[https://en.wikipedia.org/wiki/Transport\_Layer\_Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)
+[https://en.wikipedia.org/wiki/Transport\_Layer\_Security](https://en.wikipedia.org/wiki/Transport\_Layer\_Security)
 
-A cipher suite is a set of algorithms that help secure a network connection that uses Transport Layer Security \(TLS\) or its now-deprecated predecessor Secure Socket Layer \(SSL\). The set of algorithms that cipher suites usually contain include: a **key exchange** algorithm, a **symmetric encryption** algorithm, and a message **authentication code** \(MAC\) algorithm.
+A cipher suite is a set of algorithms that help secure a network connection that uses Transport Layer Security (TLS) or its now-deprecated predecessor Secure Socket Layer (SSL). The set of algorithms that cipher suites usually contain include: a **key exchange** algorithm, a **symmetric encryption** algorithm, and a message **authentication code** (MAC) algorithm.
 
 ## External Authentication and OAuth
 
@@ -28,13 +28,13 @@ Multi-Factor authentication adds additional layers of identity authentication. U
 * What I have
 * What I am
 
-Two-Factor Authentication requires two of those three categories to be implemented. The most common case of **Two-Factor Authentication** is a **user password** and a device on which will be sent/generate **one-time-password**. To generate a one-time-password \(OTP\) the HMAC-based One-time Password algorithm is used.
+Two-Factor Authentication requires two of those three categories to be implemented. The most common case of **Two-Factor Authentication** is a **user password** and a device on which will be sent/generate **one-time-password**. To generate a one-time-password (OTP) the HMAC-based One-time Password algorithm is used.
 
-### HMAC-based One-time Password \(HOTP\)
+### HMAC-based One-time Password (HOTP)
 
 The **HOTP** algorithm is based on [HMAC](https://en.wikipedia.org/wiki/HMAC) and provides a symmetric generation of human-readable passwords, each used for only one authentication attempt. The key parameter of HTOP is a secret which has to be exchanged between the parties in advance:
 
-```text
+```
 HTOP(has_function, secret, value_length) -> htop
 htop.generate() -> auth_code
 htop.validate(auth_code) -> true/false
@@ -42,21 +42,21 @@ htop.validate(auth_code) -> true/false
 
 The **hash\_func** can be any cryptographic hash function. The **secret** is the arbitrary byte string which must be shared between the parties and kept private. **value\_length** defines the **auth\_code** length.
 
-### Counter-based One-Time Password algorithm \(COTP\)
+### Counter-based One-Time Password algorithm (COTP)
 
 In the **COTP** scenario the HTOP function contains an internal counter. In order for parties to successfully authenticate each other they have to keep their counters in sync. Each time HOTP is requested to generate an **auth\_code** the counter increments.
 
-### Time-based One-Time Password Algorithm \(TOTP\)
+### Time-based One-Time Password Algorithm (TOTP)
 
-Time-based One-Time Password Algorithm \(**TOTP**\) is an extension of COTP, where the **counter** is the current time, defined as **Unix time**. The **time-interval** is another parameter used for the generation of TOTP, which defines a period of time of which a given authentication code will be valid.
+Time-based One-Time Password Algorithm (**TOTP**) is an extension of COTP, where the **counter** is the current time, defined as **Unix time**. The **time-interval** is another parameter used for the generation of TOTP, which defines a period of time of which a given authentication code will be valid.
 
-```text
+```
 htop_counter = (current_time - initial_time) / time_interval
 ```
 
-For TOTP to work correctly both parties need to have synchronized clocks with minimal verification time-step window \(delay based on user's input, network latency, and clock time deviation\).
+For TOTP to work correctly both parties need to have synchronized clocks with minimal verification time-step window (delay based on user's input, network latency, and clock time deviation).
 
-```text
+```
 otp = TOTP(hash_function(secret), htop_counter)
 ```
 
@@ -81,7 +81,6 @@ Just to mention, the practical cryptography is endless. This is a list of crypto
 * WiFi cryptography standards - ...
 * PGP - ...
 * S/MIME - ...
-* JSON Web Tokens \(JWT\)
-* Object Identifiers \(OID\) - [https://en.wikipedia.org/wiki/Object\_identifier](https://en.wikipedia.org/wiki/Object_identifier), e.g. the algorithm "SHA-256" has OID "2.16.840.1.101.3.4.2.1".
+* JSON Web Tokens (JWT)
+* Object Identifiers (OID) - [https://en.wikipedia.org/wiki/Object\_identifier](https://en.wikipedia.org/wiki/Object\_identifier), e.g. the algorithm "SHA-256" has OID "2.16.840.1.101.3.4.2.1".
 * Cryptography Best Practices: [https://gist.github.com/atoponce/07d8d4c833873be2f68c34f9afc5a78a](https://gist.github.com/atoponce/07d8d4c833873be2f68c34f9afc5a78a)
-

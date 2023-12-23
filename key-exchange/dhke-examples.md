@@ -1,6 +1,6 @@
 # DHKE - Examples
 
-Let's give a simple code example in Python to demonstrate the classical **Diffie–Hellman Key Exchange \(DHKE\) algorithm**.
+Let's give a simple code example in Python to demonstrate the classical **Diffie–Hellman Key Exchange (DHKE) algorithm**.
 
 First, install the Python package `PyDHE`:
 
@@ -34,9 +34,9 @@ print("Equal shared keys:", aliceSharedKey == bobSharedKey)
 
 Run the above code example: [https://repl.it/@nakov/Diffie-Hellman-Key-Exchange-in-Python](https://repl.it/@nakov/Diffie-Hellman-Key-Exchange-in-Python).
 
-When you run the above code, it will generate and print two **2048-bit public keys** \(for Alice and for Bob\). Assume that Allice and Bob have exchanged their public keys \(e.g. send them to each other through Internet\). Once Alice has received Bob's public key, she can **calculate the shared secret** by combining it to her private key. Respectively, once Bob has received Alice's public key, he can **calculate the shared secret** by combining it to his private key. The sample output from the above example shows that the shared secret is always the same number \(2048-bit integer\):
+When you run the above code, it will generate and print two **2048-bit public keys** (for Alice and for Bob). Assume that Allice and Bob have exchanged their public keys (e.g. send them to each other through Internet). Once Alice has received Bob's public key, she can **calculate the shared secret** by combining it to her private key. Respectively, once Bob has received Alice's public key, he can **calculate the shared secret** by combining it to his private key. The sample output from the above example shows that the shared secret is always the same number (2048-bit integer):
 
-```text
+```
 Alice public key: 0xa26c2f1354a8f58abbf78172730595c4de8277962ebe92100793f99ea80f66abe5e75a14a52e86ce1c086c1ca2e1662b3900510346d848b425d34279ceea92661fb1166b9438589c0b57eb4ebb69e0c3844ebe5ad4c0e316b637d47148d69dc2387c2968c82d198114a6c0f14a605a9e85110d24a9db4f11963b9b13dc788c0538096cadffd258364c63621f6bb1a3e515d3741af4619e62452a394fab9d84be7cee255fdd7216401cafee6471b4adbb77e93f878f1bb4df633e0632522b51fe70fc154e7d3e60a69f815a4e2a84506f05b1ccfce01e873cd7dc51fba0b6eac66af1c0a7500f71af405a6c34ffd27a1239180c22fbddf8dc15d30c821c57307d
 Bob public key: 0x822660dfff1af80c237402263dda9e0e417fa04547a4e36041a35a152df28b0ac66b059d9e0034c7cd58b6b7edbc8a20bf1bdc2af6534bd6f2dbcffeb9a4aa9f038461994622f786258beb8f6493594e1559e5ebf5a92ba60335f668a9ccbf8d6d87460f21d94938ac40cfd78d062571f68aa7e7fbabed4ba582e8e831288670004ae64be113a2c7b5b9a472ba4733ea4f29c1b1f30ead3729908d9bb54278a499b2c16cc62d4f330a28cdd302bf655f3d724b6d5b0655c9299ada183d8bed4e98c2f0d93339eb3c22c88c9d000de4ea3286b6be5b96e7d7cccb7b8d6a079264e155c5b25b5aca21ccfed7d21d5dce79845fe5456419504ec9c2a896448572e7
 Now exchange the public keys (e.g. through Internet)
@@ -45,7 +45,7 @@ Bob shared key: 0x60d96187ae1db8e8acac7795837a2964e4972ebf666eaecfa09135371a2de5
 Equal shared keys: True
 ```
 
-Note that your output will be different due to the **randomness** during the key generation process. The above code uses a 2048-bit public and private keys, as specified in the [RFC 3526 \(group 14\)](https://tools.ietf.org/html/rfc3526#section-3). You can change the DHKE **key size** \(from 1536-bits to 8192-bits\) by specifying a different RFC 3526 group \(e.g. 18 for 8192-bit keys\). For example change these two lines:
+Note that your output will be different due to the **randomness** during the key generation process. The above code uses a 2048-bit public and private keys, as specified in the [RFC 3526 (group 14)](https://tools.ietf.org/html/rfc3526#section-3). You can change the DHKE **key size** (from 1536-bits to 8192-bits) by specifying a different RFC 3526 group (e.g. 18 for 8192-bit keys). For example change these two lines:
 
 ```python
 alice = pyDHE.new(group=18)
@@ -56,7 +56,7 @@ Run the above code example: [https://repl.it/@nakov/DHKE-Example-in-Python](http
 
 The above changes will switch to **8192-bit keys** and will significantly slow-down the calculations. The output will look like this:
 
-```text
+```
 Alice public key: 0x86b2c2bda3982af803084b65d982c08f3462046d154c9ee6fb7c8dcdd4a2922b72487c46e42777ea8bbfad73ca2f340397ddc2b3ddb215891b4811fe014ae176918cc01817e4d9358e6053ed49790e224721bd14abe7cdeac10be211782d0b1a110c5968654873b1eb3e591c6e5acd0197459aac04da06620d424b327124dee4958fe49be3f44100591e8560a0e137abb9c47973e4701b3e127a05482934b3b9fdb4117365c476bb6665d867b2dd58cab72073bcb6632883fba3043b8544a4726fcd013f1676963d612f634675674de1d295e90101d9a0523ae1717eb2ea11a05e4902af572a9bfff0344c3383e8b85fa7db234927b053d098eda9fda0970c92917caa95fe4dc79376f6b8f0ee4a9682c88870c36b345049b3ef89bdcfc0f8751b02afa88b22fd5b94d33a49bcf6d262255ac18e27e96675f311b654f99fa31e060f7e2afbd888099bba072cefaab1e1c40a73845c139e3feaecee76965b71255473b485976e7f7d87e2ff61a62ddadd5f7f02e9353f5d4f091360418eb7935e83d1e6355c82feff3583725017e8b8b6148af839e3e7cfd3d549b679d9878544366676509b61b590ce25abbb440207b23fec9c04daef70590c46d720af273d6dafb34d2e5b68e24499a4b7ac254ee000712dd0e4ae72299fb103098b8d54c2c28a66e74d52db4853bb695cbff9a09f8223c55f1e2fd351d419a091cc643b3abc42a477ef6f3eb9d2913e45bcb3ba76771bccfafa85abe3cf37c42bf1baf59f122785ec47b51b45c4ba0875e6a80230c5035e45c1cf32e8b7b52ee44e2c3b06330c29f047dd5b0983ae8db34d1ca1a127d1da72d4e0244690c63af4ecf3003152a1cfaa5b4139c361cd3cc54fb7e91bdcac9bf81498da90cf249621df90947ccbece28c5befec6bf832d873e18293e7b8e9562596c4b50c61e1aff9b8d13a02df25675c5045aec14d3e83253d210ae7e6f2c62d622c7bcaf87cd6a4bb63a25d18cc0672fe3488eefb058231daf17a570382ffb56e490b1e5003284ca5a8978aa4c09d3e9a11eae379bd66fe86999c10fbe1eb6763d1b6b4f277e8347462e91f127a0f2fe8a9a16381452e3515608e950587f74e1f85b10ab32e667248f8764d90a8b92eb6bcce14cf7306fa56bc7852a0f2811651665f2121a6253e3e4bfecb12b54c8cd11a54d74346c3b9f2c8c7b71ea60fce8eb1d3badcea909b7f082e4e4a4ad4e2a501b2fd3a4c7acd48b416706dc3fbda180cec831bacd558fc15cfa3e19347bb5297ac7a4b931b6e19f9b0dfb0c07696727402c1c5215c0822776147a9a9c7c10bc04d23d6cee974fc37a32fd758cd09bff9f0b1cdd9e09734aa0abe0dc9f3a74415c411ce2b07369445d6e4929a0132db60024cf260b17fb3401beb794a5a365a3be92677fb68f60e091cb5cfc5d767290c4655d6922c2bd194671d5b
 Bob public key: 0xbae8a1e6b00ee2df7996323f2d03dd650dcc19e5f2de8c77b4dcd0c611ab50e1bdd41c5d3b8060a3047616b0a2e55aee0d8211b1d7b18e996e3cd02cf3580247ca42707f73a02266beb077f50b32940c2e09f08f1906f177bb1ce3fb6c8516d2f45091aba35a1afac904e694e4c844c3603fd7c8750c15ae349486160d4ce5fce0c228c8edcd6599f0e680f6928ea7bbec0e9e3787f1476ce02692a22862df0213287dbc0864602c29314f3de68625940d4dd1ac47d506015dbfee92cda106e5f13360b7d805973b03634726e2e0905bf61736d188cd3d90f667543547496fa0d9b609320d84d09cde89ff5c1077e811664102f0c69cad41f620fb0ce9651708b8dc3caec2a78029d449e30976cbe943d39545a1a3979febbf3e890d2bb389180addcb5af1606baedc4ad2479fe840adae9a64df36de02b019ff2b639dec3234d844656ef894273e07c272fbd1c650ea853bcdc3518118bf78dc9959a83633e43a04245d563c2e948be7fa1ffa21e1bb203ae9339e5d9e7a1e0c8ba53cd3c67fc8ba63b1a266299eeb4f66810854b5780e6cb232d04350079ffc58914ec8d9b3345321c1d55ab0b87fbcd58c01d63d276497cdcfcf79615cac39af387322baeca6dd1659f4646c487dcae7a84ca77d61fdbd99e81fab7111d6396eb387497a4f914dd45ca67a2e3c026ddd12f4446397af8fe724228a9aad6e40fe6f788aae5999d60866934f81519b0f709818150b9f61a2a7f1e742423a6da12e05b30a6b4f64f93d3eacda690ad390ec6358bcfc0de052fdff8c1ede1e3ea5dff104551771d8f3f4556ef8cb64df7b9a66d56e5964dc31ab28bdacd46d7a6ea994fbb6fe302b34ffa2cb095f5a4ee9bee18ae2f6ca29f269bb55995804f9925c10a7e5e5ad3010734b01b192f047c433e04fd836e0ef77b3d6a05503e1692168c664058d5562bec8f53d3839a117e170add42aa7cd941532cbc6eb6d5f411742cc436ceb679c8f827d538ccc3064dd41b91a77d5f3e68a44b63af94c95bc93656cdc7a6e9776db02c9ada793f8a1e16315f39b664564aa676d9cc8a304aa5ab1849b49b905cc18bb798c2ac8db40a3e0533224dba5b0084ff5855cf840123b29d8738a2df891f32fd883d984b37aed8a3ffb8c121e5a4e187dc8165d3aacf7698b01dc405590c14acd22e0e2a483d71a8d28d671f1b5f3c6ea06121b4c8adc6e261720b3dcd66748659cda7ddd8db727dfbf58047386b32a3a3bb7288c85d8712a984abb68d7f364d5498c8be4e3e15b87a8b6794d9fd19e36d416344659a7c427bd1723a5d4574bb6ac9be7181045ec4c1c8d2cd6ca9c7d7187647a6637e684cb57fd16ea635c18de9845487db591db7bebd3373b5b62f623080a2e007061b0e7a481ffa53e8e6801cfa562feb8b5794b4a363d3163ebcc2f7e69d8f3334d6564a5dd1020
 Now exchange the public keys (e.g. through Internet)
@@ -66,4 +66,3 @@ Equal shared keys: True
 ```
 
 Enjoy to modify and experiment with the above code to learn the DHKE protocol.
-

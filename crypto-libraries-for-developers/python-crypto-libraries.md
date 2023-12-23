@@ -52,4 +52,3 @@ signerAddress = signerPubKey.to_checksum_address()
 print('Signer address:', signerAddress)
 print('Signature valid?:', signerAddress == msgSigner)
 ```
-

@@ -10,7 +10,7 @@
 
 ## JCA, Bouncy Castle and Web3j
 
-* Cryptography in Java is based on the Java Cryptography Architecture \(JCA\)
+* Cryptography in Java is based on the Java Cryptography Architecture (JCA)
   * Typical Java style: lot of boilerplate code
 * **Bouncy Castle** is the leading Java cryptography library
   * Docs: [https://www.bouncycastle.org/documentation.html](https://www.bouncycastle.org/documentation.html)
@@ -85,4 +85,3 @@ System.out.println("Recovered public key: " +
 boolean validSig = pubKey.equals(pubKeyRecovered);
 System.out.println("Signature valid? " + validSig);
 ```
-

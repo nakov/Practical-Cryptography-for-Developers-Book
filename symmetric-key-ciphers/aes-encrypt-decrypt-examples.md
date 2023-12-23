@@ -2,7 +2,7 @@
 
 Let's illustrate the **AES encryption** and **AES decryption** concepts through working **source code** in Python.
 
-The first example below will illustrate a simple **password-based AES encryption** \(PBKDF2 + AES-CTR\) without message authentication \(**unauthenticated encryption**\). The next example will add message authentication \(using the AES-GCM mode\), then will add password to key derivation \(AES-256-GCM + Scrypt\).
+The first example below will illustrate a simple **password-based AES encryption** (PBKDF2 + AES-CTR) without message authentication (**unauthenticated encryption**). The next example will add message authentication (using the AES-GCM mode), then will add password to key derivation (AES-256-GCM + Scrypt).
 
 ## Simple AES-CTR Example
 
@@ -40,19 +40,19 @@ print('AES encryption key:', binascii.hexlify(key))
 
 Run the above code example: [https://repl.it/@nakov/AES-CTR-in-Python](https://repl.it/@nakov/AES-CTR-in-Python).
 
-The above code **derives a 256-bit key** using the **PBKDF2** key derivation algorithm from the password `s3cr3t*c0d3`. It uses a random password derivation **salt** \(128-bit\). This salt should be stored in the output, together with the ciphertext, because without it the decryption key cannot be derived again and the decryption will be impossible.
+The above code **derives a 256-bit key** using the **PBKDF2** key derivation algorithm from the password `s3cr3t*c0d3`. It uses a random password derivation **salt** (128-bit). This salt should be stored in the output, together with the ciphertext, because without it the decryption key cannot be derived again and the decryption will be impossible.
 
 The output from the above code may look like this:
 
-```text
+```
 AES encryption key: b'7625e224dc0f0ec91ad28c1ee67b1eb96d1a5459533c5c950f44aae1e32f2da3'
 ```
 
-The derived **key** consists of **64 hex digits** \(32 bytes\), which represents a **256-bit** integer number. It will be different if you run the above code several times, because a random salt is used every time. If you use the same salt, the same key will be derived.
+The derived **key** consists of **64 hex digits** (32 bytes), which represents a **256-bit** integer number. It will be different if you run the above code several times, because a random salt is used every time. If you use the same salt, the same key will be derived.
 
-### AES Encryption \(CTR Block Mode\)
+### AES Encryption (CTR Block Mode)
 
-Next, generate a **random 256-bit initial vector \(IV\)** for the AES CTR block mode and perform the **AES-256-CTR encryption**:
+Next, generate a **random 256-bit initial vector (IV)** for the AES CTR block mode and perform the **AES-256-CTR encryption**:
 
 ```python
 # Encrypt the plaintext with the given key:
@@ -68,17 +68,17 @@ Run the above code example: [https://repl.it/@nakov/AES-encryption-in-Python](ht
 
 The output from the above code may look like this:
 
-```text
+```
 Encrypted: b'53022cf12c5959ddf3e733128930dd3d52e3ea'
 ```
 
-The **ciphertext** consists of **38 hex digits** \(19 bytes, 152 bits\). This is the size of the input data, the message `Text for encryption`.
+The **ciphertext** consists of **38 hex digits** (19 bytes, 152 bits). This is the size of the input data, the message `Text for encryption`.
 
-Note that after AES-CTR encryption the **initial vector \(IV\)** should be stored along with the ciphertext, because without it, the decryption will be impossible. The **IV** should be randomly generated for each AES encryption \(not hard-coded\) for higher security.
+Note that after AES-CTR encryption the **initial vector (IV)** should be stored along with the ciphertext, because without it, the decryption will be impossible. The **IV** should be randomly generated for each AES encryption (not hard-coded) for higher security.
 
 Note also that if you encrypt the same **plaintext** with the same encryption **key** several times, the output will be **different** every time, due to the randomness in the **IV**. This is intended behavior and it increases the security, e.g. resistance to dictionary attacks.
 
-### AES Decryption \(CTR Block Mode\)
+### AES Decryption (CTR Block Mode)
 
 Now let's see how to **decrypt a ciphertext** using the AES-CTR-256 algorithm. The input consists of **ciphertext** + encryption **key** + the **IV** for the CTR counter. The output is the original **plaintext**. The code is pretty simple:
 
@@ -94,7 +94,7 @@ Run the above code example: [https://repl.it/@nakov/AES-decryption-in-Python](ht
 
 The output of the above should be like this:
 
-```text
+```
 Decrypted: b'Text for encryption'
 ```
 
@@ -112,7 +112,7 @@ Run the above code example: [https://repl.it/@nakov/AES-decryption-wrong-key-in-
 
 The output of the above incorrect decryption attempt might be like this:
 
-```text
+```
 Wrongly decrypted: b'\xe6!\n\x9a\xa9\x15\x12\xd9\xcb\x9cS\x86\xcc\xe1\x1d\x1a\x8blw'
 ```
 
@@ -126,7 +126,7 @@ Now, let's give a full example how to use the **AES-256-GCM** symmetric encrypti
 pip install pycryptodome
 ```
 
-Next, let's play with the below **AES-GCM example in Python**, which generates a random encryption key \(secret key\) and uses it to **encrypt** a text message, then **decrypts** it back to the original plaintext message:
+Next, let's play with the below **AES-GCM example in Python**, which generates a random encryption key (secret key) and uses it to **encrypt** a text message, then **decrypts** it back to the original plaintext message:
 
 ```python
 from Crypto.Cipher import AES
@@ -163,20 +163,20 @@ Run the above code example: [https://repl.it/@nakov/AES-256-GCM-in-Python](https
 The AES-GCM encryption takes as input a **message** + **encryption key** and produces as output a set of values: { **ciphertext** + **nonce** + **authTag** }.
 
 * The **ciphertext** is the encrypted message.
-* The **nonce** is the randomly generated initial vector \(IV\) for the GCM construction.
-* The **authTag** is the message authentication code \(MAC\) calculated during the encryption.
+* The **nonce** is the randomly generated initial vector (IV) for the GCM construction.
+* The **authTag** is the message authentication code (MAC) calculated during the encryption.
 
-The encryption **key size** generated in the above code is 256 bits \(32 bytes\) and it configures the AES-GCM cipher as AES-256-GCM. If we change the key size to 128 bits or 192 bits, we shall use AES-128-GCM or AES-192-GCM respectively.
+The encryption **key size** generated in the above code is 256 bits (32 bytes) and it configures the AES-GCM cipher as AES-256-GCM. If we change the key size to 128 bits or 192 bits, we shall use AES-128-GCM or AES-192-GCM respectively.
 
 The output from the above code looks like this:
 
-```text
+```
 Encryption key: b'233f8ce4ac6aa125927ccd98af5750d08c9c61d98a3f5d43cbf096b4caaebe80'
 encryptedMsg {'ciphertext': b'1334cd5d487f7f47924187c94424a2079656838e063e5521e7779e441aa513de268550a89917fbfb0492fc', 'aesIV': b'2f3849399c60cb04b923bd33265b81c7', 'authTag': b'af453a410d142bc6f926c0f3bc776390'}
 decryptedMsg b'Message for AES-256-GCM + Scrypt encryption'
 ```
 
-It is visible that the **encryption key** above is 256 bits \(64 hex digits\), the **ciphertext** has the same length as the input message \(43 bytes\), the **IV** is 128 bits \(32 hex digits\) and the **authentication tag** is 128 bits \(32 hex digits\). If we change something before the decryption \(e.g. the **ciphertext** of the **IV**\), we will get and **exception**, because the message integrity will be broken:
+It is visible that the **encryption key** above is 256 bits (64 hex digits), the **ciphertext** has the same length as the input message (43 bytes), the **IV** is 128 bits (32 hex digits) and the **authentication tag** is 128 bits (32 hex digits). If we change something before the decryption (e.g. the **ciphertext** of the **IV**), we will get and **exception**, because the message integrity will be broken:
 
 ```python
 encryptedMsg = (b'wrong chiphertext', encryptedMsg[1], encryptedMsg[2])
@@ -225,15 +225,14 @@ Run the above code example: [https://repl.it/@nakov/AES-256-GCM-with-Scrypt-in-P
 
 The above code encrypts using **AES-256-GCM** given text **message** by given text **password**.
 
-* During the **encryption**, the Scrypt KDF function is used \(with some fixed parameters\) to **derive a secret key** from the password. The randomly generated **KDF salt** for the key derivation is stored together with the encrypted message and will be used during the decryption. Then the input message is **AES-encrypted** using the secret key and the output consists of **ciphertext** + **IV** \(random nonce\) + **authTag**. The final output holds these 3 values + the **KDF salt**.
-* During the **decryption**, the Scrypt key derivation \(with the same parameters\) is used to derive the same **secret key** from the encryption **password**, together with the **KDF salt** \(which was generated randomly during the encryption\). Then the ciphertext is **AES-decrypted** using the secret key, the IV \(nonce\) and the authTag. In case of success, the result is the decrypted original **plaintext**. In case of error, the authentication tag will fail to authenticate the decryption process and an **exception** will be thrown.
+* During the **encryption**, the Scrypt KDF function is used (with some fixed parameters) to **derive a secret key** from the password. The randomly generated **KDF salt** for the key derivation is stored together with the encrypted message and will be used during the decryption. Then the input message is **AES-encrypted** using the secret key and the output consists of **ciphertext** + **IV** (random nonce) + **authTag**. The final output holds these 3 values + the **KDF salt**.
+* During the **decryption**, the Scrypt key derivation (with the same parameters) is used to derive the same **secret key** from the encryption **password**, together with the **KDF salt** (which was generated randomly during the encryption). Then the ciphertext is **AES-decrypted** using the secret key, the IV (nonce) and the authTag. In case of success, the result is the decrypted original **plaintext**. In case of error, the authentication tag will fail to authenticate the decryption process and an **exception** will be thrown.
 
 The **output** from the above code looks like this:
 
-```text
+```
 encryptedMsg {'kdfSalt': b'2dd0b783290747ba62a63fc53591170d', 'ciphertext': b'223ed888dcd216dcd40c47ff7cdaa7fd7eab65f4f0405350a43c5cad5b6b47b527c709edec29d7d6967518', 'aesIV': b'7f114d946c77508ed2e6afe652c78f21', 'authTag': b'e84a14b9542320a0b1473141c989c48f'}
 decryptedMsg b'Message for AES-256-GCM + Scrypt encryption'
 ```
 
-If you run the same code, the output will be different, due to randomness \(random KDF salt + random AES nonce\).
-
+If you run the same code, the output will be different, due to randomness (random KDF salt + random AES nonce).
