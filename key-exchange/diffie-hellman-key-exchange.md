@@ -4,7 +4,7 @@
 
 [**Diffie–Hellman Key Exchange**](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman\_key\_exchange) (DHKE) is a cryptographic method to **securely exchange cryptographic keys** (key agreement protocol) over a public (insecure) channel in a way that overheard communication does not reveal the keys. The exchanged keys are used later for encrypted communication (e.g. using a symmetric cipher like AES).
 
-**DHKE** was one of the first **public-key protocols**, which allows two parties to exchange data securely, so that is someone sniffs the communication between the parties, the information exchanged can be revealed.
+**DHKE** was one of the first **public-key protocols**, which allows two parties to exchange data securely, so that if someone sniffs the communication between the parties, the information exchanged cannot be revealed.
 
 The Diffie–Hellman (DH) method is **anonymous key agreement scheme**: it allows two parties that have no prior knowledge of each other to jointly establish a **shared secret key over an insecure channel**.
 
