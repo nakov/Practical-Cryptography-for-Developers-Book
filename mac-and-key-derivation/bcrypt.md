@@ -4,7 +4,7 @@
 
 ## Bcrypt - Example
 
-You can play with **Bcrypt** here: [https://www.dailycred.com/article/bcrypt-calculator](https://www.dailycred.com/article/bcrypt-calculator).
+You can play with **Bcrypt** here: [https://bcrypt-generator.com/](https://bcrypt-generator.com/).
 
 ![](../.gitbook/assets/bcrypt-online-example.png)
 
